@@ -1,12 +1,15 @@
+import Banner from "../../Components/banner";
 
 const Home = () => {
     return (
         <div>
 
+
+
             {/* banner section starts */}
 
             <section>
-
+                <Banner></Banner>
             </section>
 
             {/* banner section ends */}
