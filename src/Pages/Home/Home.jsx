@@ -1,6 +1,4 @@
-import Banner from "../../Components/Banner/Banner";
-import TeamCodeWoms from "../../Components/CodeWoms/TeamCodeWoms";
-import TeamArrowTeams from "../../Components/TeamArrow/TeamArrowTeams";
+
 
 const Home = () => {
     return (
@@ -10,7 +8,6 @@ const Home = () => {
 
             <section>
 
-                <Banner></Banner>
 
             </section>
 
@@ -24,7 +21,6 @@ const Home = () => {
             <section>
 
 
-                <TeamArrowTeams></TeamArrowTeams>
 
             </section>
             {/* 2nd banner section ends */}
@@ -37,7 +33,6 @@ const Home = () => {
             <section>
 
 
-                <TeamCodeWoms></TeamCodeWoms>
             </section>
 
             {/* team cidewoms ends */}
