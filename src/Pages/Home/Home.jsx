@@ -1,4 +1,4 @@
-import Banner from "../../Components/Banner.jsx/banner";
+import Banner from "../../Components/Banner/Banner";
 import TeamCodeWoms from "../../Components/CodeWoms/TeamCodeWoms";
 import TeamArrowTeams from "../../Components/TeamArrow/TeamArrowTeams";
 
