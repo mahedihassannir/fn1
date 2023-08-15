@@ -1,11 +1,15 @@
+import TeamArrow from "../../Components/TeamArrow/TeamArrow";
+
 
 const Home = () => {
     return (
         <div>
 
-            {/* banner section starts */}
+            {/* banner section starts  team codehubs */}
 
             <section>
+
+
 
             </section>
 
@@ -13,11 +17,28 @@ const Home = () => {
 
             {/* ------------------------------------------------- */}
 
-            {/* 2nd banner section starts  */}
+
+
+            {/* team arrow starts */}
             <section>
+
+                <TeamArrow></TeamArrow>
+
 
             </section>
             {/* 2nd banner section ends */}
+
+            {/* ------------------------------------------------- */}
+
+
+            {/* team cidewoms starts */}
+
+            <section>
+
+
+            </section>
+
+            {/* team cidewoms ends */}
 
 
 
