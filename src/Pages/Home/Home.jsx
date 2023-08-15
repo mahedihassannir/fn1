@@ -1,3 +1,7 @@
+import Avengers from "../../Components/Avengers/Avengers";
+import CodeWorms from "../../Components/CodeWorms/CodeWorms";
+import TeamArrow from "../../Components/TeamArrow/TeamArrow";
+
 
 const Home = () => {
     return (
@@ -7,7 +11,7 @@ const Home = () => {
 
             <section>
 
-
+           <Avengers></Avengers>
 
             </section>
 
@@ -20,6 +24,8 @@ const Home = () => {
             {/* team arrow starts */}
             <section>
 
+                <TeamArrow></TeamArrow>
+
 
             </section>
             {/* 2nd banner section ends */}
@@ -30,11 +36,10 @@ const Home = () => {
             {/* team cidewoms starts */}
 
             <section>
-
+                <CodeWorms></CodeWorms>
             </section>
 
             {/* team cidewoms ends */}
-
 
 
 
