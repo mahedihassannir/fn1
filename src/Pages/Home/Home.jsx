@@ -1,3 +1,5 @@
+import TeamArrow from "../../Components/TeamArrow/TeamArrow";
+
 
 const Home = () => {
     return (
@@ -20,6 +22,8 @@ const Home = () => {
             {/* team arrow starts */}
             <section>
 
+                <TeamArrow></TeamArrow>
+
 
             </section>
             {/* 2nd banner section ends */}
@@ -34,7 +38,6 @@ const Home = () => {
             </section>
 
             {/* team cidewoms ends */}
-
 
 
 
