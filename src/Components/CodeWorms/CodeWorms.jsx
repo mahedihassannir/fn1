@@ -5,11 +5,15 @@ import SmallCategory from "../SmallCategory/SmallCategory";
 const CodeWorms = () => {
     return (
         <div>
+            {/* Author Name: Nabila  */}
            <section> 
         <SmallCategory></SmallCategory>
             </section> 
             <section>
                 <FlashSale></FlashSale>
+            </section>
+            <section>
+                
             </section>
         </div>
     );
