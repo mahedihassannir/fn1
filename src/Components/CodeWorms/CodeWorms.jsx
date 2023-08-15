@@ -6,9 +6,9 @@ const CodeWorms = () => {
     return (
         <div>
             {/* Author Name: Nabila  */}
-           <section> 
-        <SmallCategory></SmallCategory>
-            </section> 
+            <section>
+                <SmallCategory></SmallCategory>
+            </section>
             <section>
                 <FlashSale></FlashSale>
             </section>
@@ -16,7 +16,7 @@ const CodeWorms = () => {
 
             </section>
             <section>
-                
+
             </section>
         </div>
     );
