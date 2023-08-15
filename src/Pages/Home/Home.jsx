@@ -1,3 +1,4 @@
+import TeamArrow from "../../Components/TeamArrow/TeamArrow";
 
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
             {/* banner section starts  team codehubs */}
 
             <section>
+
 
 
             </section>
@@ -20,6 +22,7 @@ const Home = () => {
             {/* team arrow starts */}
             <section>
 
+                <TeamArrow></TeamArrow>
 
 
             </section>
