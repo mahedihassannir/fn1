@@ -2,6 +2,16 @@ import img1 from '../../assets/imgs/img2.jpg'
 import img2 from '../../assets/imgs/img3.jpg'
 import img3 from '../../assets/imgs/img4.jpg'
 
+
+/**
+ * 
+ * author:Mahedi Hassan
+ * Date:15/8/2023
+ * Description:This par is for flash sell 
+ * 
+ * 
+ */
+
 const Mahedi = () => {
     return (
         <div>
