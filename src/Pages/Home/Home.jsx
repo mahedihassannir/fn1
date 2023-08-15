@@ -1,3 +1,5 @@
+import CodeWorms from "../../Components/CodeWorms/CodeWorms";
+import TeamArrow from "../../Components/TeamArrow/TeamArrow";
 
 
 const Home = () => {
@@ -7,6 +9,7 @@ const Home = () => {
             {/* banner section starts  team codehubs */}
 
             <section>
+
 
 
             </section>
@@ -20,6 +23,7 @@ const Home = () => {
             {/* team arrow starts */}
             <section>
 
+                <TeamArrow></TeamArrow>
 
 
             </section>
@@ -31,8 +35,7 @@ const Home = () => {
             {/* team cidewoms starts */}
 
             <section>
-
-
+                <CodeWorms></CodeWorms>
             </section>
 
             {/* team cidewoms ends */}
