@@ -1,3 +1,4 @@
+import CodeWorms from "../../Components/CodeWorms/CodeWorms";
 import TeamArrow from "../../Components/TeamArrow/TeamArrow";
 
 
@@ -34,7 +35,7 @@ const Home = () => {
             {/* team cidewoms starts */}
 
             <section>
-
+                <CodeWorms></CodeWorms>
             </section>
 
             {/* team cidewoms ends */}
