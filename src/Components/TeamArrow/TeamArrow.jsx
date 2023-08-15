@@ -10,7 +10,7 @@ const TeamArrow = () => {
             <section>
 
                 {/* habib vai */}
-                <h3 className="text-4xl font-bold">Habib vai make your work done</h3>
+                <h3 className="text-4xl font-bold">i am ready to work</h3>
 
             </section>
             {/* this part for you habib vai ends */}
