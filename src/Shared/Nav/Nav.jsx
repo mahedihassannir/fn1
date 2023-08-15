@@ -1,4 +1,8 @@
-/** @format */
+/** 
+ * Author Name: MG Rakib
+ * Descripation: Navbar
+ * Date: 16-08-2023
+*/
 
 import { Link } from "react-router-dom";
 import { AiOutlineGift } from "react-icons/ai";
