@@ -1,4 +1,6 @@
 
+
+
 const Home = () => {
     return (
         <div>
@@ -6,7 +8,7 @@ const Home = () => {
             {/* banner section starts */}
 
             <section>
-
+                
             </section>
 
             {/* banner section ends */}
@@ -15,12 +17,14 @@ const Home = () => {
 
             {/* 2nd banner section starts  */}
             <section>
-
+    
             </section>
             {/* 2nd banner section ends */}
 
+   
 
-
+    
+        
 
         </div>
     );
