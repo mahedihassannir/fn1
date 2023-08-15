@@ -13,6 +13,9 @@ const CodeWorms = () => {
                 <FlashSale></FlashSale>
             </section>
             <section>
+
+            </section>
+            <section>
                 
             </section>
         </div>
