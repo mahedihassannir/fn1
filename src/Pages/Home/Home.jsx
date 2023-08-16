@@ -7,7 +7,7 @@ const Home = () => {
     return (
         <div>
 
-            {/* banner section starts  team codehubs */}
+            {/* banner section starts  team Avengers */}
 
             <section>
 
