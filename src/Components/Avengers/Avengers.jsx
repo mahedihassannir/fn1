@@ -1,10 +1,10 @@
-import React from 'react';
-import Baners from './Baners/Baners';
+
+import Banner from './Banner/Banner';
 
 const Avengers = () => {
     return (
         <div>
-            <Baners></Baners>
+            <Banner></Banner>
         </div>
     );
 };
