@@ -111,7 +111,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 					<img
 						src='https://i.ibb.co/P9tbKgZ/logo.jpg'
 						alt=''
-						className='h-16'
+						className='h-14'
 					/>
 				</div>
 
