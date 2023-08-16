@@ -1,3 +1,4 @@
+import Avengers from "../../Components/Avengers/Avengers";
 import CodeWorms from "../../Components/CodeWorms/CodeWorms";
 import TeamArrow from "../../Components/TeamArrow/TeamArrow";
 
@@ -13,7 +14,7 @@ const Home = () => {
 
             <section>
 
-
+           <Avengers></Avengers>
 
             </section>
 
