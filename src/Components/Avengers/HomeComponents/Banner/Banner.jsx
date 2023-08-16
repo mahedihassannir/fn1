@@ -13,7 +13,7 @@ import './Banner.css'
 
 const Banner = () => {
     return (
-        <div className=' my-5'>
+        <div className='my-5'>
            <div className='md:flex md:gap-4 h-full items-center lg:flex '>
            <div className='md:w-3/4 mb-5 lg:mb-0 md:mb-0 bg-gray-500 lg:w-2/3'>
            <Swiper

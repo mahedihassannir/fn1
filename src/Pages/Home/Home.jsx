@@ -1,4 +1,5 @@
-import Avengers from "../../Components/Avengers/Avengers";
+
+import Avengers from "../../Components/Avengers/HomeComponents/Avengers";
 import CodeWorms from "../../Components/CodeWorms/CodeWorms";
 import TeamArrow from "../../Components/TeamArrow/TeamArrow";
 
