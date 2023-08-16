@@ -98,7 +98,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 		event.stopPropagation();
 		setIsSecondNavOpen(!isSecondNavOpen);
 	};
-	
+
 	return (
 		<div>
 			<ul className='hidden md:flex items-start justify-center gap-10 py-2'>
@@ -111,7 +111,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 					<img
 						src='https://i.ibb.co/P9tbKgZ/logo.jpg'
 						alt=''
-						className='h-20'
+						className='h-14'
 					/>
 				</div>
 
