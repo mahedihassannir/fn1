@@ -1,4 +1,4 @@
-import FlashSale from "../Components/FlashSale/FlashSale";
+
 import SmallCategory from "../Components/SmallCategory/SmallCategory";
 
 
@@ -9,7 +9,7 @@ const CodeWorms = () => {
                 <SmallCategory></SmallCategory>
             </section>
             <section>
-                <FlashSale></FlashSale>
+              
             </section>
         </div>
     );
