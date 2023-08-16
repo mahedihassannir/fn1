@@ -178,9 +178,11 @@ const FlashSale = () => {
                         </div>
                     </div>
                 </div>
-               
+
+                {/* this the btn */}
+
                 <div className='mx-auto text-center'>
-                <button className='py-3 px-32 rounded-lg bg-[#FC9E66] text-white font-bold text-lg text-center'>Load More</button>
+                    <button className='py-3 px-32 rounded-lg bg-[#FC9E66] text-white font-bold text-lg text-center mb-40'>Load More</button>
                 </div>
                 <div></div>
                 <div></div>
