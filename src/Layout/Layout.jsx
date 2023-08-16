@@ -5,7 +5,7 @@ import Nav from "../Shared/Nav/Nav";
 import { useEffect, useState } from "react";
 
 const Main = () => {
-   const [isNavOpen, setIsNavOpen] = useState(true)
+   const [isNavOpen, setIsNavOpen] = useState(false)
    
     useEffect(() => {
 		const handleScroll = () => {

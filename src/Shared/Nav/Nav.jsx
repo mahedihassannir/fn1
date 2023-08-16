@@ -98,6 +98,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 		event.stopPropagation();
 		setIsSecondNavOpen(!isSecondNavOpen);
 	};
+	
 	return (
 		<div>
 			<ul className='hidden md:flex items-start justify-center gap-10 py-2'>
