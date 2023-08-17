@@ -26,7 +26,7 @@ export const ContexM = createContext(null)
 
 
 
-const AuthProvider = () => {
+const AuthProvider = ({ children }) => {
 
 
     const [user, Setuser] = useState(null);
