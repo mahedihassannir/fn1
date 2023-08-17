@@ -1,11 +1,13 @@
 import {
-    createBrowserRouter,
+	createBrowserRouter,
 } from "react-router-dom";
 
 import Main from "../Layout/Layout";
 import Home from "../Pages/Home/Home";
 import Contact from "../Pages/Contact/Contact";
 import SingleProduct from "../Pages/SingleProduct/SingleProduct";
+import Register from "../Login/regester";
+import Login from "../Login/login";
 
 
 const router = createBrowserRouter([
@@ -21,11 +23,25 @@ const router = createBrowserRouter([
 				path: "contact",
 				element: <Contact></Contact>,
 			},
-            {
-                // avengers 
+			{
+				// avengers 
 				path: "products/:id",
 				element: <SingleProduct></SingleProduct>,
 			},
+
+			{
+				// Team Arrow
+				path: "login",
+				element: <Login></Login>,
+			},
+
+			{
+				// Team Arrow 
+				path: "register",
+				element: <Register></Register>,
+			},
+
+
 		],
 	},
 ]);
