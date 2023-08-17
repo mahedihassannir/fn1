@@ -5,8 +5,10 @@ import Nav from "../Shared/Nav/Nav";
 import { useEffect, useState } from "react";
 
 const Main = () => {
+	/**
+	 * when isNavOpen is true then scroll will be stop
+	 */
    const [isNavOpen, setIsNavOpen] = useState(false)
-   
     useEffect(() => {
 		const handleScroll = () => {
 			if (isNavOpen) {
