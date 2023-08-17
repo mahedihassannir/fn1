@@ -5,7 +5,7 @@ const SmallCategory = () => {
         <div className="mx-20">
             <div className="mt-12 mx-auto max-w-7xl container mb-2">
                 <h2 className="text-3xl font-bold mb-4">Categories</h2>
-                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-x-4 sm:gap-x-4 md:gap-x-4">
+                <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-x-4 sm:gap-x-2 md:gap-x-2">
                   
                     <div className="w-[140px] mb-2 hover:shadow-xl transition ease-in-out delay-150 bg-blue-50 hover:-translate-y-1 hover:scale-100 hover:bg-indigo-100 duration-100">
                         <div className="flex justify-center items-center ">
