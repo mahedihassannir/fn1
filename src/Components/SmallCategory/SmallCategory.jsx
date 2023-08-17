@@ -37,7 +37,7 @@ const SmallCategory = () => {
                         <div className="flex justify-center items-center ">
                         <img className="pt-2" src="https://i.ibb.co/tLsJXZS/img14.png" alt="" />
                         </div>
-                        <p className="font-bold text-center">Remote control Toys..</p>
+                        <p className="font-bold text-center">Remote control toys..</p>
                     </div>
                     <div className="w-[140px] hover:shadow-xl mb-2 transition ease-in-out delay-150 bg-blue-50 hover:-translate-y-1 hover:scale-100 hover:bg-indigo-100 duration-100">
                        <div className="flex justify-center items-center ">
