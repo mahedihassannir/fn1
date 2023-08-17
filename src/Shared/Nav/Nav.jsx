@@ -9,6 +9,7 @@ import { AiOutlineGift } from "react-icons/ai";
 import { HiOutlineSearch, HiMenu, HiOutlineMinusSm } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import { useState } from "react";
+import { FaUser } from "react-icons/fa";
 
 
 const Nav = ({ isNavOpen, setIsNavOpen }) => {
@@ -45,13 +46,13 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 			</div>
 			{/* ACCOUNT  */}
 			<div className='flex items-center gap-1 text-white'>
-				<AiOutlineGift className='text-[#FC9E66] text-3xl' />
-				<p className='leading-4 font-bold'>
+				<FaUser className='text-[#FC9E66] text-3xl' />
+				<Link to="/login" className='leading-4 font-bold'>
 					Account <br />
 					<span className='text-xs font-normal'>
 						Register or Login
 					</span>{" "}
-				</p>
+				</Link>
 			</div>
 			
 			
