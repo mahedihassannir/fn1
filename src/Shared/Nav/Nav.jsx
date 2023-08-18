@@ -231,8 +231,9 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 				{/* overlay div when menu bar oepn for mobile */}
 				<div
-					className={`md:hidden absolute ${isNavOpen ? "top-0 left-0" : "top-0 left-[444px]"
-						}  bg-[#0000008a]  w-[100vw] h-screen duration-500`}
+					className={`md:hidden absolute ${
+						isNavOpen ? "top-0 left-0" : "top-0 left-[844px]"
+					}  bg-[#0000008a]  w-[100vw] h-screen duration-500`}
 				></div>
 			</div>
 		</div>
