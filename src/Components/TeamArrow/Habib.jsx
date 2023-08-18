@@ -1,7 +1,5 @@
 import React from 'react';
-import image1 from'../../assets/imgs/img2.jpg'
-import image2 from'../../assets/imgs/img3.jpg'
-import image3 from'../../assets/imgs/img4.jpg'
+
 
 const Habib = () => {
     return (
@@ -19,38 +17,67 @@ const Habib = () => {
                 </div>
             </section>
            
-            <section className='my-5'>
+            <section className='my-5 '>
                  {/* catagory section there are make card responsiv*/}
 
-                <div className='grid grid-cols-3 gap-3 md:grid-cols-6 bg-slate-300'>
-                    {/* image div1 */}
-                    <div className=''>
-                        <img src={image1} alt="" />
+                <div className='grid grid-cols-3 gap-3 md:grid-cols-6 '>
+                    {/* image div1 */} 
+                    <div className='flex space-x-2 justify-center items-center  duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                        <img className=' h-10 w-10' src="https://i.ibb.co/9pkQGZ7/img17.png" alt="" />
+
+                        <div>
+                            <h1 className='text-lg font-semibold'> Drown</h1>
+                            <p> Drown Catagory </p>
+                        </div>
                     </div>
 
                       {/* image div2 */}
-                    <div>
-                        <img src={image2} alt="" />
+                    <div  className='flex space-x-2 justify-center items-center    duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                        <img className=' h-10 w-10' src="https://i.ibb.co/Cb8LV8T/img16.png" alt="" />
+
+                        <div>
+                            <h1 className='text-lg font-semibold'> Phone </h1>
+                            <p> Phone Catagory </p>
+                        </div>
                     </div>
 
                       {/* image div3 */}
-                    <div>
-                        <img src={image3} alt="" />
+                    <div  className='flex space-x-2 justify-center items-center duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                        <img className=' h-10 w-10' src="https://i.ibb.co/XXfvpQZ/img15.png" alt="" />
+
+                        <div>
+                            <h1 className='text-lg font-semibold'> Kaybord </h1>
+                            <p> Drown Catagory </p>
+                        </div>
                     </div>
 
                       {/* image div4 */}
-                    <div>
-                        <img src={image1} alt="" />
+                    <div  className='flex space-x-2 justify-center items-center duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                        <img className=' h-10 w-10' src="https://i.ibb.co/tLsJXZS/img14.png" alt="" />
+                        <div>
+                            <h1 className='text-lg font-semibold'> Charger </h1>
+                            <p> Charger Catagory </p>
+                        </div>
                     </div>
 
                       {/* image div5 */}
-                    <div>
-                        <img src={image2} alt="" />
+                    <div  className='flex space-x-2 justify-center items-center duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                        <img className=' h-10 w-10' src="https://i.ibb.co/k0gnpwT/img13.png" alt="" />
+
+                        <div>
+                            <h1 className='text-lg font-semibold'> Electic </h1>
+                            <p> Electic Catagory </p>
+                        </div>
                     </div>
 
                       {/* image div6 */}
-                    <div>
-                        <img src={image1} alt="" />
+                    <div  className='flex space-x-2 justify-center items-center duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                        <img className=' h-10 w-10' src="https://i.ibb.co/k0gnpwT/img13.png" alt="" />
+
+                        <div>
+                            <h1 className='text-lg font-semibold'> Camara</h1>
+                            <p>Camara Catagory </p>
+                        </div>
                     </div>
                    
                      
