@@ -8,6 +8,7 @@ import Contact from "../Pages/Contact/Contact";
 import SingleProduct from "../Pages/SingleProduct/SingleProduct";
 import Register from "../Login/regester";
 import Login from "../Login/login";
+import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
 				// avengers 
 				path: "products/:id",
 				element: <SingleProduct></SingleProduct>,
+			},
+			{
+				// avengers 
+				path: "proceed_to_checkout",
+				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
 
 			{
