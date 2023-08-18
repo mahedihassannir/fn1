@@ -32,7 +32,7 @@ const Habib = () => {
                     </div>
 
                       {/* image div2 */}
-                    <div  className='flex space-x-2 justify-center items-cente duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                    <div  className='flex space-x-2 justify-center items-center    duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
                         <img className=' h-10 w-10' src="https://i.ibb.co/Cb8LV8T/img16.png" alt="" />
 
                         <div>
@@ -42,7 +42,7 @@ const Habib = () => {
                     </div>
 
                       {/* image div3 */}
-                    <div  className='flex space-x-2 justify-center items-cente duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                    <div  className='flex space-x-2 justify-center items-center duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
                         <img className=' h-10 w-10' src="https://i.ibb.co/XXfvpQZ/img15.png" alt="" />
 
                         <div>
@@ -52,7 +52,7 @@ const Habib = () => {
                     </div>
 
                       {/* image div4 */}
-                    <div  className='flex space-x-2 justify-center items-cente duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                    <div  className='flex space-x-2 justify-center items-center duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
                         <img className=' h-10 w-10' src="https://i.ibb.co/tLsJXZS/img14.png" alt="" />
                         <div>
                             <h1 className='text-lg font-semibold'> Charger </h1>
@@ -61,7 +61,7 @@ const Habib = () => {
                     </div>
 
                       {/* image div5 */}
-                    <div  className='flex space-x-2 justify-center items-cente duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                    <div  className='flex space-x-2 justify-center items-center duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
                         <img className=' h-10 w-10' src="https://i.ibb.co/k0gnpwT/img13.png" alt="" />
 
                         <div>
@@ -71,7 +71,7 @@ const Habib = () => {
                     </div>
 
                       {/* image div6 */}
-                    <div  className='flex space-x-2 justify-center items-cente duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
+                    <div  className='flex space-x-2 justify-center items-center duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
                         <img className=' h-10 w-10' src="https://i.ibb.co/k0gnpwT/img13.png" alt="" />
 
                         <div>
