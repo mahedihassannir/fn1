@@ -10,6 +10,7 @@ import { BsChevronRight } from "react-icons/bs";
 import { TbCurrencyTaka } from "react-icons/tb";
 
 const PaymentDetails = () => {
+	
 	return (
 		<div>
 			<div className='text-xs font-semibold '>
@@ -89,7 +90,7 @@ const PaymentDetails = () => {
 				</div>
 
 				<div className='pt-5'>
-					<button className='py-3 w-full bg-[#F57224] hover:bg-[#DADADA] duration-300 hover:text-gray-500 text-white rounded'>
+					<button  className='py-3 w-full bg-[#F57224] hover:bg-[#DADADA] duration-300 hover:text-gray-500 text-white rounded'>
 						Place Order
 					</button>
 				</div>
