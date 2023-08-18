@@ -116,7 +116,7 @@ const Register = () => {
 
     return (
 
-        < div className="w-11/12 mx-auto my-4 h-auto md:h-[80vh] flex justify-center items-center" >
+        <div className="w-11/12 mx-auto my-4 h-auto md:h-[80vh] flex justify-center items-center" >
 
             <div className="w-11/12 shadow-md py-10 px-2   ">
                 <h3 className="text-black pb-4 md:pb-4  md:text-3xl font-semibold ">Register page</h3>
