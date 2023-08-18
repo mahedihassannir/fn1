@@ -1,15 +1,21 @@
+
+import Avengers from "../../Components/Avengers/HomeComponents/Avengers";
+import CodeWorms from "../../Components/CodeWorms/CodeWorms";
 import TeamArrow from "../../Components/TeamArrow/TeamArrow";
+
+
 
 
 const Home = () => {
     return (
         <div>
 
+
             {/* banner section starts  team codehubs */}
 
             <section>
 
-
+           <Avengers></Avengers>
 
             </section>
 
@@ -34,13 +40,11 @@ const Home = () => {
             {/* team cidewoms starts */}
 
             <section>
-
+                <CodeWorms></CodeWorms>
             </section>
 
             {/* team cidewoms ends */}
-
-
-
+        
 
         </div>
     );
