@@ -11,7 +11,7 @@ import Avengers from "../../Components/Avengers/SingleProductComponents/Avengers
 const SingleProduct = () => {
     return (
 		<div className='my-3 md:px-20'>
-			{/* top section for MGR */}
+			
 			<section>
 				<Avengers />
 			</section>

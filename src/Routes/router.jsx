@@ -6,6 +6,7 @@ import Main from "../Layout/Layout";
 import Home from "../Pages/Home/Home";
 import Contact from "../Pages/Contact/Contact";
 import SingleProduct from "../Pages/SingleProduct/SingleProduct";
+import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
 
 
 const router = createBrowserRouter([
@@ -21,10 +22,15 @@ const router = createBrowserRouter([
 				path: "contact",
 				element: <Contact></Contact>,
 			},
-            {
-                // avengers 
+			{
+				// avengers
 				path: "products/:id",
 				element: <SingleProduct></SingleProduct>,
+			},
+			{
+				// avengers
+				path: "proceed_to_checkout",
+				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
 		],
 	},

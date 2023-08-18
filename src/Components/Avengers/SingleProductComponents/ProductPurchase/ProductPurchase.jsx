@@ -1,3 +1,8 @@
+/**
+ * Author: MG Rakib
+ * description: ProductPurchase
+ * date: 17aug,2023
+ */
 
 import Rating from 'react-rating';
 import { FaStar, FaRegStar, FaRegHeart } from "react-icons/fa";
@@ -5,6 +10,7 @@ import { HiShare } from "react-icons/hi";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import takaIcon from '../../../../assets/taka.png'
 import takaIconGray from '../../../../assets/taka_gray.png'
+import { Link } from 'react-router-dom';
 const ProductPurchase = () => {
     return (
 		<div>
@@ -194,9 +200,14 @@ const ProductPurchase = () => {
 						</div>
 
 						<div className='flex items-center gap-5 mt-4'>
-							<button className='bg-[#2ABBE8] py-3 flex-1 text-white text-xl font-semibold'>
-								Bye Now
-							</button>
+							<Link
+								to='/proceed_to_checkout'
+								className='flex-1'
+							>
+								<button className='bg-[#2ABBE8] py-3  text-white text-xl font-semibold w-full'>
+									Bye Now
+								</button>
+							</Link>
 							<button className='bg-[#F57224] py-3 flex-1 text-white text-xl font-semibold'>
 								Add to Cart
 							</button>
