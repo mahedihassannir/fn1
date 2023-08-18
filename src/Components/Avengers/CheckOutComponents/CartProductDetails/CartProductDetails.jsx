@@ -34,6 +34,7 @@ const CartProductDetails = () => {
 							</p>
 						</div>
 						<div>
+							{/* TODO: emplement change funtionality */}
 							<button className='text-[#2ABBE8]'>Change</button>
 						</div>
 					</div>
@@ -43,6 +44,7 @@ const CartProductDetails = () => {
 						<p>Email to:</p>
 						<div className='flex items-center gap-2'>
 							<p>mgrakibbd@gmail.com</p>
+							{/* TODO: emplement change funtionality */}
 							<button className='text-[#2ABBE8]'>Edit</button>
 						</div>
 					</div>
