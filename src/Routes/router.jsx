@@ -29,6 +29,9 @@ import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
 
 
 import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
+import Lips from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Lips";
+import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Eyes";
+import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
 
 const router = createBrowserRouter([
 	{
@@ -142,6 +145,38 @@ const router = createBrowserRouter([
 				element: <Female></Female>
 
 			},
+
+			{
+
+				path: "lips",
+				element: <Lips></Lips>
+
+			},
+			{
+
+				path: "face",
+				element: <Face></Face>
+
+			},
+			{
+
+				path: "eyes",
+				element: <Eyes></Eyes>
+
+			},
+			{
+
+				path: "nails",
+				element: <Nails></Nails>
+
+			},
+			{
+
+				path: "mensCare",
+				element: <MensCare></MensCare>
+
+			},
+
 
 
 
