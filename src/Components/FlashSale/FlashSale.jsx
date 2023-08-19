@@ -3,11 +3,11 @@ import { FaStar } from 'react-icons/fa';
 const FlashSale = () => {
     return (
       <div className='mx-16'>
-          <div className="max-w-7xl container mx-auto">
+          <div className="max-w-7xl container sm:w-full">
             <div>
-                <div className=" px-4 py-4">
+                <div className="mt-8 p-4">
                     <h2 className='text-3xl mb-2 font-bold'>Just For You</h2>
-                    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+                    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-4 md:space-x-2'>
                         <div className='w-[230px]'>
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
@@ -104,7 +104,7 @@ const FlashSale = () => {
 
 
 
-                    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 mt-4 gap-4 md:gap-3 lg:gap-2 sm:gap-2'>
+                    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-4 md:space-x-2'>
                         <div className='w-[230px]'>
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
