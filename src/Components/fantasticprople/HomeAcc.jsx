@@ -12,7 +12,6 @@ import useProducts from "../../Hooks/Fantastic/useProducts";
 const HomeAcc = () => {
     // all products
     const { products, loading } = useProducts()
-    console.log(products)
 
     // filter only homeAcc related data
     const beautyProducts = products.filter(beauty => beauty.category === "beauty")
@@ -52,9 +51,13 @@ const HomeAcc = () => {
                            <img className='rounded-t-lg' src={beauty.image} alt="" />
                             <p className='absolute top-0 rounded-t-lg right-0 bg-orange-500  rounded-l-full text-white font-bold px-1'>-10%</p>
                            </div>
-                           <p className='font-bold my-2'>{beauty.name}</p>
+                           <div className='pl-2'>
+                           <div className='h-14 overflow-hidden'>
+                           <p className='font-bold my-2 overflow-hidden'>{beauty.name}</p>
+                           </div>
                            <p className='font-bold mt-8 text-orange-500'><span className='font-extrabold'>৳</span>{beauty.price}</p>
                            <p className='line-through text-sm text-zinc-400'><span className='font-extrabold'>৳</span>{beauty.price}</p>
+                           </div>
                            <div className='text-center'>
                            <button class="mt-4 bg-gray-200 w-full py-1 rounded  text-green-700 font-extrabold">Add To Cart</button>
                            </div>
