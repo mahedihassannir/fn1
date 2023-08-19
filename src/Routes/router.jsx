@@ -32,6 +32,7 @@ import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
 import Lips from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Lips";
 import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Eyes";
 import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
+import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/MensCare";
 
 const router = createBrowserRouter([
 	{
