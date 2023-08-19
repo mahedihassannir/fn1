@@ -26,6 +26,8 @@ import Beauty from "../Components/fantasticprople/Beauty";
 import HomeAcc from "../Components/fantasticprople/HomeAcc";
 import Below from "../Components/fantasticprople/Below";
 import Kids from "../Components/fantasticprople/Kids";
+import Female from "../Components/fantasticprople/FashaionmaleFemail/Female/Female";
+import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
 // this is make by fantastic people ends 
 
 
@@ -135,6 +137,20 @@ const router = createBrowserRouter([
 
 				path: "kids",
 				element: <Kids></Kids>
+
+			},
+			// male 
+			{
+
+				path: "male",
+				element: <Male></Male>
+
+			},
+			// female category section
+			{
+
+				path: "female",
+				element: <Female></Female>
 
 			},
 
