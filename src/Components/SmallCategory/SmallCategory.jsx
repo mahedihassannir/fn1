@@ -1,6 +1,9 @@
 
 
+
 const SmallCategory = () => {
+
+
     return (
         <div className="mx-20">
             <div className="mt-12 mx-auto max-w-7xl container mb-2 shadow">
@@ -14,13 +17,14 @@ const SmallCategory = () => {
                         <p className="font-bold  text-center">Mobile Accessories..</p>
                     </div>
                     
-                    
+                   
                     <div className="w-[140px] hover:shadow-2xl mb-2">
                        <div className="flex justify-center items-center ">
                        <img className="pt-2" src="https://i.ibb.co/Cb8LV8T/img16.png" alt="" />
                        </div>
                         <p className="font-bold text-center">Mobile Accessories..</p>
                     </div>
+                    
                     <div className="w-[140px] hover:shadow-2xl mb-2">
                        <div className="flex justify-center items-center ">
                        <img className="pt-2" src="https://i.ibb.co/k0gnpwT/img13.png" alt="" />

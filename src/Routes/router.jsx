@@ -8,7 +8,7 @@ import Contact from "../Pages/Contact/Contact";
 import SingleProduct from "../Pages/SingleProduct/SingleProduct";
 import Register from "../Login/regester";
 import Login from "../Login/login";
-
+// import UseItems from "../Hooks/FantasticCode/UseItems";
 
 const router = createBrowserRouter([
 	{
@@ -40,10 +40,21 @@ const router = createBrowserRouter([
 				path: "register",
 				element: <Register></Register>,
 			},
+			// CodeWorms
+			// {
+			// 	path: "/category",
+			// 	element: <UseItems></UseItems>
+			// },
+			
+			
 
 
 		],
+		
+			
 	},
+	
+
 ]);
 
 export default router
