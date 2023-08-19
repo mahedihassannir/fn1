@@ -8,11 +8,27 @@ import { Link } from "react-router-dom";
 import { AiOutlineGift } from "react-icons/ai";
 import { HiOutlineSearch, HiMenu, HiOutlineMinusSm } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
-import { useState } from "react";
-import { FaUser } from "react-icons/fa";
+import { useContext, useState } from "react";
+import { FaArrowRight, FaChevronCircleRight, FaClone, FaCut, FaUser } from "react-icons/fa";
+import { ContexM } from "../../Authentication/AuthProvider/AuthProvider";
 
 
 const Nav = ({ isNavOpen, setIsNavOpen }) => {
+
+
+	const { user, Logout } = useContext(ContexM)
+
+
+	const handleLogout = () => {
+
+		Logout();
+
+
+
+	}
+
+
+
 	const navItem = (
 		<>
 			{/* latest offers  */}
@@ -45,17 +61,60 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 				</p>
 			</div>
 			{/* ACCOUNT  */}
-			<div className='flex items-center gap-1 text-white'>
-				<FaUser className='text-[#FC9E66] text-3xl' />
-				<Link to="/login" className='leading-4 font-bold'>
-					Account <br />
-					<span className='text-xs font-normal'>
-						Register or Login
-					</span>{" "}
-				</Link>
-			</div>
-			
-			
+			<Link to="/login" className='flex items-center gap-1 text-white'>
+
+
+				{
+
+					user ?
+
+						<abbr title={user.displayName} className="cursor-pointer">
+
+							<img className="h-10 rounded-full" src={user.photoURL} alt="" />
+						</abbr>
+
+
+						: < FaUser className='text-[#FC9E66] text-3xl' />
+
+				}
+
+
+				<div className='leading-4 font-bold'>
+					{
+						user
+							?
+							""
+
+
+							:
+							<span>
+								Account
+							</span>
+
+
+					}
+
+					<br />
+					{
+						user ?
+							"" :
+
+							<span className='text-xs font-normal'>
+								Register or Login
+							</span>
+					}
+				</div>
+			</Link>
+
+
+			{
+				user &&
+				<div onClick={handleLogout} className="flex font-bold hover:text-red-500 items-center gap-1 text-white">
+					<button className="">Logout</button>
+				</div>
+
+			}
+
 		</>
 	);
 
@@ -93,7 +152,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 		setIsNavOpen(true)
 	}
 
-	
+
 	const [isSecondNavOpen, setIsSecondNavOpen] = useState(false);
 	const handelSecondNav = event => {
 		event.stopPropagation();
@@ -148,16 +207,14 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 				{/* navbar for mobile  */}
 				<div
-					className={`md:hidden absolute bg-black top-0 ${
-						isNavOpen ? "right-0" : "-right-96"
-					} flex flex-col gap-5 h-screen p-5 duration-300 z-[999] overflow-y-auto`}
+					className={`md:hidden absolute bg-black top-0 ${isNavOpen ? "right-0" : "-right-96"
+						} flex flex-col gap-5 h-screen p-5 duration-300 z-[999] overflow-y-auto`}
 				>
 					<div
-						className={`pb-3 mt-5 ‍ relative ${
-							isNavOpen
-								? "right-[0px] opacity-100"
-								: "right-[244px] opacity-25"
-						}  z-40 duration-500`}
+						className={`pb-3 mt-5 ‍ relative ${isNavOpen
+							? "right-[0px] opacity-100"
+							: "right-[244px] opacity-25"
+							}  z-40 duration-500`}
 					>
 						<IoClose className='text-white text-2xl' />
 					</div>
@@ -172,22 +229,19 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 								className='flex flex-col gap-[4px] relative w-[20px]'
 							>
 								<div
-									className={`w-4 h-[2px] bg-white origin-center duration-300 ${
-										isSecondNavOpen && "-rotate-45 absolute"
-									}`}
+									className={`w-4 h-[2px] bg-white origin-center duration-300 ${isSecondNavOpen && "-rotate-45 absolute"
+										}`}
 								></div>
 								<div
-									className={`w-4 h-[2px] bg-white origin-center duration-300 ${
-										isSecondNavOpen && "rotate-45"
-									}`}
+									className={`w-4 h-[2px] bg-white origin-center duration-300 ${isSecondNavOpen && "rotate-45"
+										}`}
 								></div>
 							</div>
 							<p>nav items</p>
 						</div>
 						<div
-							className={`${
-								isSecondNavOpen ? "max-h-[400px]" : "max-h-0"
-							}  overflow-hidden text-gray-400 duration-300 list-none`}
+							className={`${isSecondNavOpen ? "max-h-[400px]" : "max-h-0"
+								}  overflow-hidden text-gray-400 duration-300 list-none`}
 						>
 							{topNavItems}
 						</div>
@@ -196,9 +250,8 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 				{/* overlay div when menu bar oepn for mobile */}
 				<div
-					className={`md:hidden absolute ${
-						isNavOpen ? "top-0 left-0" : "top-0 left-[444px]"
-					}  bg-[#0000008a]  w-[100vw] h-screen duration-500`}
+					className={`md:hidden absolute ${isNavOpen ? "top-0 left-0" : "top-0 left-[844px]"
+						}  bg-[#0000008a]  w-[100vw] h-screen duration-500`}
 				></div>
 			</div>
 		</div>
