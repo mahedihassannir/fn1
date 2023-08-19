@@ -21,7 +21,7 @@ const Food = () => {
     return (
         <section>
             {/* food swiper banner */}
-            <div className='mb-20 mx-20'>
+            <div className='lg:mx-20 my-10'>
                 <Swiper
                     spaceBetween={30}
                     centeredSlides={true}
@@ -44,7 +44,7 @@ const Food = () => {
             </div>
 
             {/* display Foods */}
-            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 mx-20'>
+            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 lg:mx-20 my-10'>
                 {
                     foodProducts.map(foods => <div key={foods._id}>
                         <div className='hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg'>
@@ -56,7 +56,7 @@ const Food = () => {
                            <p className='font-bold mt-8 text-orange-500'><span className='font-extrabold'>৳</span>{foods.price}</p>
                            <p className='line-through text-sm text-zinc-400'><span className='font-extrabold'>৳</span>{foods.price}</p>
                            <div className='text-center'>
-                           <button class="hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer mt-4 bg-gray-200 w-full py-1 rounded  text-green-700 font-extrabold">Add To Cart</button>
+                           <button class="mt-4 bg-gray-200 w-full py-1 rounded  text-green-700 font-extrabold">Add To Cart</button>
                            </div>
                         </div>
                     </div>)
