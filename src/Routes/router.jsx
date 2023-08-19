@@ -28,6 +28,7 @@ import Kids from "../Components/fantasticprople/Kids";
 
 import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
 import PaymentSuccess from "../Components/Avengers/PaymentSuccess/PaymentSuccess";
+import PaymentFailed from "../Components/PaymentFailed/PaymentFailed";
 
 const router = createBrowserRouter([
 	{
@@ -56,6 +57,11 @@ const router = createBrowserRouter([
 				// avengers Toma PAYMENT SUCCESS ROUTE
 				path: "payment/success/:tranId",
 				element: <PaymentSuccess></PaymentSuccess>,
+			},
+			{
+				// avengers Toma PAYMENT Fail ROUTE
+				path: "payment/fail/:tranId",
+				element: <PaymentFailed></PaymentFailed>
 			},
 
 			
