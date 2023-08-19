@@ -2,14 +2,33 @@ import {
 	createBrowserRouter,
 } from "react-router-dom";
 
+// make by leader 
 import Main from "../Layout/Layout";
 import Home from "../Pages/Home/Home";
 import Contact from "../Pages/Contact/Contact";
+// make by leader ends 
+
+
 import SingleProduct from "../Pages/SingleProduct/SingleProduct";
+
+// make by arrow
 import Register from "../Login/regester";
 import Login from "../Login/login";
-import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
+// make by arrow ends
 
+// this is make by fantastic people 
+import Fashion from "../Components/fantasticprople/Fashion";
+import Food from "../Components/fantasticprople/Food";
+import Beauty from "../Components/fantasticprople/Beauty";
+import HomeAcc from "../Components/fantasticprople/HomeAcc";
+import Below from "../Components/fantasticprople/Below";
+import Kids from "../Components/fantasticprople/Kids";
+import Female from "../Components/fantasticprople/FashaionmaleFemail/Female/Female";
+import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
+// this is make by fantastic people ends 
+
+
+import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
 
 const router = createBrowserRouter([
 	{
@@ -46,6 +65,106 @@ const router = createBrowserRouter([
 				path: "register",
 				element: <Register></Register>,
 			},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// starts
+			// Fantastic people work starts
+
+			{
+
+				path: "food",
+				element: <Food></Food>
+
+			},
+			{
+
+				path: "fashion",
+				element: <Fashion></Fashion>
+
+			},
+			{
+
+				path: "beauty",
+				element: <Beauty></Beauty>
+
+			},
+			{
+
+				path: "homeacc",
+				element: <HomeAcc></HomeAcc>
+
+			},
+			{
+
+				path: "below499",
+				element: <Below></Below>
+
+			},
+			{
+
+				path: "kids",
+				element: <Kids></Kids>
+
+			},
+			// male 
+			{
+
+				path: "male",
+				element: <Male></Male>
+
+			},
+			// female category section
+			{
+
+				path: "female",
+				element: <Female></Female>
+
+			},
+
+
+
+			// Fantastic people work ends
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 		],
