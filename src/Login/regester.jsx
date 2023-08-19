@@ -1,12 +1,55 @@
-import { FaFacebook, FaGoogle } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
+/**
+ * 
+ * author:mahedi hassan
+ * description:authinticate the user
+ * date:18/8/2023
+ * 
+ */
 
-const Login = () => {
+
+
+import { useContext } from "react";
+import { FaFacebook, FaGoogle } from "react-icons/fa";
+
+import { ContexM } from "../Authentication/AuthProvider/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 
 
+
+// reg conpo
+const Register = () => {
+
+
+
+    // for navigation 
+    const navigate = useNavigate();
+    // for navigation ends
+
+
+    // the contex form authprovider
+    // contex
+    const { creareUser, UpdateUser, loginwithpopup } = useContext(ContexM)
+
+
+    const handleGoogleLogin = () => {
+
+        loginwithpopup()
+            .then(res => {
+                const user = res.user
+
+                navigate('/')
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+
+    }
+
+    // handler for registration
     const handleReg = (e) => {
-
         // for no reloade 
         e.preventDefault();
         // for no reloade ends 
@@ -17,6 +60,55 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         // temp image
+        const image = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_8kVrRKvn48kDPt79Je7wZIuT6nUSr3l5DQ&usqp=CAU"
+        // from iput values ends
+
+
+        console.log({ name, email, password });
+
+        creareUser(email, password)
+            // create user res
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+
+
+
+                // update user name
+                UpdateUser(name, image)
+                    .then(() => {
+                        console.log("profiel update done");
+                    })
+
+                    .catch(err => {
+                        console.log({ massageFromphoto: err.message });
+                    })
+
+
+                // user info to upload in server
+                const userinfo = { name: name, email: user.email, password: password, emailVerified: user.emailVerified, anonimus: user.isAnonymous, }
+                // user info to upload in ends
+
+
+
+
+                // this section is for upload data in server 
+
+                // this section is for upload data in server  ends
+
+
+
+
+                // if all ok navigate in home page 
+                navigate("/")
+                // if all ok navigate in home page ends 
+            })
+            // any err 
+            .catch(err => {
+                console.log({ massagehere2: err.message });
+            })
+        // any err 
+
 
 
 
@@ -27,13 +119,24 @@ const Login = () => {
         <div className="w-11/12 mx-auto my-4 h-auto md:h-[80vh] flex justify-center items-center" >
 
             <div className="w-11/12 shadow-md py-10 px-2   ">
+                <h3 className="text-black pb-4 md:pb-4  md:text-3xl font-semibold ">Register page</h3>
+
                 <h3 className="text-black pb-4 md:pb-10 text-1xl md:text-3xl font-semibold ">Welcome To E-com</h3>
+                
+
+
 
                 {/* handle reg  */}
                 <form onSubmit={handleReg} className="md:flex   ">
 
                     {/* this is from div */}
                     <div className="md:w-1/2">
+                        <label htmlFor="">
+                            <span>Your Name</span>
+                        </label>
+                        <br />
+
+                        <input name="name" className=" my-2 w-full md:w-3/4 py-3 border-[2px] pl-2 border-gray-400" type="text" placeholder="Please enter your Name" />
 
                         {/* email */}
                         <br />
@@ -62,16 +165,18 @@ const Login = () => {
                     {/* this is btn and other div */}
                     <div className="md:w-1/2   mt-2 md:mt-0">
 
-                        {/* this is redirect to register page */}
+                        {/* this is redirect to login page */}
                         <div className="">
 
                             <h3 className="flex gap-1 font-semibold">
 
-                                New member ?
+                                Have a account ?
 
                                 <span className="text-blue-700 ">
-                                    <Link to="/register">
-                                        register</Link>
+                                    <Link to="/login">
+                                        login
+
+                                    </Link>
                                 </span>
 
                                 <span>here</span>
@@ -80,7 +185,9 @@ const Login = () => {
                             </h3>
                         </div>
 
-                        {/* this is redirect to register page */}
+                        {/* this is redirect to login page ends */}
+
+
 
 
                         {/* login btn  */}
@@ -114,9 +221,9 @@ const Login = () => {
                         {/* Google login starts */}
                         <div className="mt-4 text-center md:text-left">
 
-                            <button className="  w-11/12 md:w-3/5 mx-auto bg-red-600 py-3 rounded-sm text-white font-semibold  ">
+                            <button onClick={handleGoogleLogin} className="  w-11/12 md:w-3/5 mx-auto bg-red-600 py-3 rounded-sm text-white font-semibold  ">
                                 <span className="flex justify-center items-center">
-                                    <span><FaGoogle className="text-3xl text-white mr-4"></FaGoogle></span> <span>Fackbook</span>
+                                    <span><FaGoogle className="text-3xl text-white mr-4"></FaGoogle></span> <span>Google</span>
 
                                 </span>
                             </button>
@@ -136,11 +243,7 @@ const Login = () => {
 
 
         </ div >
-
-
-
-
     );
 };
 
-export default Login;
+export default Register;
