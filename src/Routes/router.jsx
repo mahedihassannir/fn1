@@ -33,6 +33,7 @@ import Lips from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/
 import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Eyes";
 import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
 import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/MensCare";
+import Face from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Face";
 
 const router = createBrowserRouter([
 	{
