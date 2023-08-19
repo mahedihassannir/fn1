@@ -29,8 +29,11 @@ import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
 
 
 import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
-import PaymentSuccess from "../Components/Avengers/PaymentSuccess/PaymentSuccess";
-import PaymentFailed from "../Components/PaymentFailed/PaymentFailed";
+import Lips from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Lips";
+import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Eyes";
+import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
+import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/MensCare";
+import Face from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Face";
 
 const router = createBrowserRouter([
 	{
@@ -155,6 +158,38 @@ const router = createBrowserRouter([
 				element: <Female></Female>
 
 			},
+
+			{
+
+				path: "lips",
+				element: <Lips></Lips>
+
+			},
+			{
+
+				path: "face",
+				element: <Face></Face>
+
+			},
+			{
+
+				path: "eyes",
+				element: <Eyes></Eyes>
+
+			},
+			{
+
+				path: "nails",
+				element: <Nails></Nails>
+
+			},
+			{
+
+				path: "mensCare",
+				element: <MensCare></MensCare>
+
+			},
+
 
 
 
