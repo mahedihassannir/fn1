@@ -10,14 +10,14 @@ import { BsChevronRight } from "react-icons/bs";
 import { TbCurrencyTaka } from "react-icons/tb";
 //import { result } from "lodash";
 
-const PaymentDetails = () => {
+const PaymentDetails = ({singleProductData}) => {
 	const onSubmit = () => {
 		const data = {
 			"currency": "BDT",
-			"Total_Payment": 688,
-			"productId": 1,
-			"productName": "redmi",
-			"category": "phone",
+			"Total_Payment": singleProductData?.price,
+			"productId": singleProductData?._id,
+			"productName": singleProductData?.name,
+			"category": singleProductData?.category,
 			"cus_name": "Toma",
 			"cus_id": 8,
 			"cus_email": "toma@com",
@@ -81,7 +81,7 @@ const PaymentDetails = () => {
 							<p className=''>Items Total</p>
 							<div className='flex items-center gap-1'>
 								<TbCurrencyTaka />
-								<span>688</span>
+								<span>{singleProductData?.price}</span>
 							</div>
 						</div>
 						{/* Delivery Fee */}
@@ -105,7 +105,7 @@ const PaymentDetails = () => {
 							<p>Total Payment</p>
 							<div className='flex items-center gap-1'>
 								<TbCurrencyTaka />
-								<span>688</span>
+								<span>{singleProductData?.price}</span>
 							</div>
 						</div>
 
