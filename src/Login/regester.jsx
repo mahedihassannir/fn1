@@ -98,6 +98,19 @@ const Register = () => {
 
 
 
+                fetch(`http://localhost:5000/userlogindetail`, {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(userinfo)
+                })
+                    .then(res => res.json())
+                    .then(data => {
+
+                        console.log(data);
+                    })
+
 
                 // if all ok navigate in home page 
                 navigate("/")
@@ -122,7 +135,7 @@ const Register = () => {
                 <h3 className="text-black pb-4 md:pb-4  md:text-3xl font-semibold ">Register page</h3>
 
                 <h3 className="text-black pb-4 md:pb-10 text-1xl md:text-3xl font-semibold ">Welcome To E-com</h3>
-                
+
 
 
 
