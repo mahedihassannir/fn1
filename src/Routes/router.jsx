@@ -13,6 +13,7 @@ import SingleProduct from "../Pages/SingleProduct/SingleProduct";
 
 // make by arrow
 import Register from "../Login/regester";
+import Login from '../Login/login'
 
 // make by arrow ends
 
@@ -32,6 +33,24 @@ import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/
 import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
 import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/MensCare";
 import Face from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Face";
+
+// CodeWorms
+import Drone from "../Components/CodeWorms/LargeCategroy/Drone";
+import Mobile from "../Components/CodeWorms/LargeCategroy/Mobile";
+import Iphone from '../Components/CodeWorms/LargeCategroy/Iphone';
+import Computer from "../Components/CodeWorms/LargeCategroy/Computer";
+import Wireless from "../Components/CodeWorms/LargeCategroy/Wireless";
+import Charger from "../Components/CodeWorms/LargeCategroy/Charger";
+import Cable from "../Components/CodeWorms/LargeCategroy/Cable";
+import Electronics from "../Components/CodeWorms/LargeCategroy/Electronics";
+import Wifi from "../Components/CodeWorms/LargeCategroy/Wifi";
+import HeadPhones from "../Components/CodeWorms/LargeCategroy/HeadPhones";
+import ElectricalToy from "../Components/CodeWorms/LargeCategroy/ElectricalToy";
+import Tablet from "../Components/CodeWorms/LargeCategroy/Tablet";
+import Keyboard from "../Components/CodeWorms/LargeCategroy/Keyboard";
+import Mouse from "../Components/CodeWorms/LargeCategroy/Mouse";
+import Laptop from "../Components/CodeWorms/LargeCategroy/Laptop";
+import Socket from "../Components/CodeWorms/LargeCategroy/Socket";
 
 const router = createBrowserRouter([
 	{
