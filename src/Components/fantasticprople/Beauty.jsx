@@ -1,4 +1,4 @@
-// Date:8/9/23
+// Date:08/19/23
 // Author: MASUM
 // Description: All Beauty display
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,7 +16,6 @@ const Beauty = () => {
 
     // filter only beauty related data
     const beautyProducts = products.filter(beauty => beauty.category === "beauty")
-   console.log(beautyProducts)
 
     return (
         <section>
@@ -43,7 +42,8 @@ const Beauty = () => {
                 </Swiper>
             </div>
             {/* display beauty category */}
-            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 lg:mx-20 my-10'>
+            <div className='flex  justify-center'>
+            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-16 gap-y-10 lg:mx-20 my-10 justify-center items-center text-center'>
                 <Link to="/lips"><img src="https://i.ibb.co/k4mKbt5/beauty-category-1.jpg" alt="" /></Link>
                 <Link to="/eyes"><img src="https://i.ibb.co/NTgJrMd/cf489e8d-5af8-4cdc-bf1c-4592f3cd462e-BD-185-250.jpg" alt="" /></Link>
                 <Link to="/face"><img src="https://i.ibb.co/41DMyK9/220ea7f1-d952-433d-afb9-85b13141b51e-BD-185-250.jpg" alt="" /></Link>
@@ -63,6 +63,7 @@ const Beauty = () => {
                 <img src="https://i.ibb.co/9cBNXMm/b222c861-8f8f-4855-ab72-fabced045c54-BD-185-250.jpg" alt="" />
                 <img src="https://i.ibb.co/HdG70xT/e4bfb387-a627-4397-8071-594f051c650b-BD-185-250.png" alt="" />
                 
+            </div>
             </div>
 
             {/* display Beauty products */}
