@@ -15,6 +15,7 @@ import app from '../firebase';
 import { useEffect } from 'react';
 import { createContext } from 'react';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
 
 const auth = getAuth(app)
 
@@ -96,6 +97,63 @@ const AuthProvider = ({ children }) => {
         });
     };
 
+    //avengers 
+    //add to cart function
+    //Toma
+    const addToCart = (singleProduct, quantity = 1) => {
+        const addedProduct = {
+            _id: singleProduct?._id,
+            price: singleProduct?.price,
+            product_name: singleProduct?.name,
+            quantity: quantity
+        }
+        fetch("http://localhost:5000/post/product", {
+            method: "POST",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(addedProduct)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.message === 'Product already exists') {
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'error',
+                        title: 'Product already exists',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                } else {
+                    setTotalCart(totalCart + 1)
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: 'Product added successfully',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+
+                }
+            })
+
+
+
+
+    }
+
+
+    const [totalCart, setTotalCart] = useState(0)
+    useEffect(() => {
+        fetch("http://localhost:5000/totalCart/quantity")
+            .then(res => res.json())
+            .then(data => {
+                setTotalCart(data?.totalCart)
+            })
+
+
+    }, [])
+
+
+
 
     // all values to work with contex
     const userInfos = {
@@ -105,7 +163,10 @@ const AuthProvider = ({ children }) => {
         singinUser,
         Logout,
         loader,
-        loginwithpopup
+        loginwithpopup,
+        addToCart,
+        totalCart,
+        setTotalCart
     }
 
     return <ContexM.Provider value={userInfos}>
