@@ -55,10 +55,21 @@ const router = createBrowserRouter([
 			},
 			{
 				// avengers 
-				path: "proceed_to_checkout",
+				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
+			{
+				// avengers Toma PAYMENT SUCCESS ROUTE
+				path: "payment/success/:tranId",
+				element: <PaymentSuccess></PaymentSuccess>,
+			},
+			{
+				// avengers Toma PAYMENT Fail ROUTE
+				path: "payment/fail/:tranId",
+				element: <PaymentFailed></PaymentFailed>
+			},
 
+			
 			{
 				// Team Arrow
 				path: "login",
