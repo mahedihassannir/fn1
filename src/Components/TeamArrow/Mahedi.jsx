@@ -72,7 +72,7 @@ const Mahedi = () => {
 
                                         {/* this div is for title and pricing starts */}
                                         <div className="">
-                                            <h1 className="text-lg ">my name is mahedi hassan i am a mern. . .</h1>
+                                            <h1 className="text-lg ">{res.name}</h1>
                                             <h3 className="text-2xl text-[#F96921]">$242</h3>
                                         </div>
                                         {/* this div is for title and pricing starts */}
