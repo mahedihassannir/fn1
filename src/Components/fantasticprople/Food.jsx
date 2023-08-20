@@ -1,4 +1,4 @@
-// Date:8/9/23
+// Date:08/19/23
 // Author: MASUM
 // Description: All Food display
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,7 +15,7 @@ const Food = () => {
 
     // filter only food related data
     const foodProducts = products.filter(foods => foods.category === "food")
-   
+//    console.log(foodProducts)
 
     return (
         <section>
@@ -59,7 +59,7 @@ const Food = () => {
                            <p className='line-through text-sm text-zinc-400'><span className='font-extrabold'>৳</span>{foods.price}</p>
                            </div>
                            <div className='text-center'>
-                           <button class="mt-4 bg-gray-200 w-full py-1 rounded  text-green-700 font-extrabold">Add To Cart</button>
+                           <button className="mt-4 bg-gray-200 w-full py-1 rounded  text-green-700 font-extrabold">Add To Cart</button>
                            </div>
                         </div>
                     </div>)
