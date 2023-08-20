@@ -34,6 +34,8 @@ import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/
 import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
 import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/MensCare";
 import Face from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Face";
+import DashBoardManage from "../Dashboard/DashBoardManage/DashBoardManage";
+import Analytics from "../Dashboard/adminpanel/Pages/Analytics";
 
 const router = createBrowserRouter([
 	{
@@ -179,9 +181,6 @@ const router = createBrowserRouter([
 
 			},
 
-
-
-
 			// Fantastic people work ends
 
 
@@ -206,6 +205,237 @@ const router = createBrowserRouter([
 
 		],
 	},
+	// this area for dashboard work
+	{
+		path: "dashboard",
+		element:
+			<DashBoardManage>
+			</DashBoardManage>,
+		children: [
+
+
+			{
+				path: "analytics",
+				element: <Analytics></Analytics>
+			}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			//TODO 
+
+			// this side is for user
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// TODO
+
+			// this side is for seller
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			
+		]
+
+
+	}
 ]);
 
 export default router
