@@ -27,23 +27,11 @@ import Kids from "../Components/fantasticprople/Kids";
 
 
 import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
-import Login from "../Login/login";
-import Drone from "../Components/CodeWorms/LargeCategroy/Drone";
-import Mobile from "../Components/CodeWorms/LargeCategroy/Mobile";
-import Iphone from "../Components/CodeWorms/LargeCategroy/Iphone";
-import Computer from "../Components/CodeWorms/LargeCategroy/Computer";
-import Wireless from "../Components/CodeWorms/LargeCategroy/Wireless";
-import Charger from "../Components/CodeWorms/LargeCategroy/Charger";
-import Cable from "../Components/CodeWorms/LargeCategroy/Cable";
-import Electronics from "../Components/CodeWorms/LargeCategroy/Electronics";
-import Wifi from "../Components/CodeWorms/LargeCategroy/Wifi";
-import HeadPhones from "../Components/CodeWorms/LargeCategroy/HeadPhones";
-import ElectricalToy from "../Components/CodeWorms/LargeCategroy/ElectricalToy";
-import Keyboard from "../Components/CodeWorms/LargeCategroy/Keyboard";
-import Tablet from "../Components/CodeWorms/LargeCategroy/Tablet";
-import Mouse from "../Components/CodeWorms/LargeCategroy/Mouse";
-import Laptop from "../Components/CodeWorms/LargeCategroy/Laptop";
-import Socket from "../Components/CodeWorms/LargeCategroy/Socket";
+import Lips from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Lips";
+import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Eyes";
+import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
+import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/MensCare";
+import Face from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Face";
 
 const router = createBrowserRouter([
 	{
@@ -211,6 +199,38 @@ const router = createBrowserRouter([
 				element: <Kids></Kids>
 
 			},
+
+			{
+
+				path: "lips",
+				element: <Lips></Lips>
+
+			},
+			{
+
+				path: "face",
+				element: <Face></Face>
+
+			},
+			{
+
+				path: "eyes",
+				element: <Eyes></Eyes>
+
+			},
+			{
+
+				path: "nails",
+				element: <Nails></Nails>
+
+			},
+			{
+
+				path: "mensCare",
+				element: <MensCare></MensCare>
+
+			},
+
 
 
 
