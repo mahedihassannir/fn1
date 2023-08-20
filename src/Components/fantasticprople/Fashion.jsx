@@ -52,7 +52,7 @@ const Fashion = () => {
                            <p className='font-bold mt-8 text-orange-500'><span className='font-extrabold'>৳</span>{fashionProducts.price}</p>
                            </div>
                            <div className='text-center'>
-                           <button class=" mt-4 bg-orange-500 w-full py-1 rounded  text-white font-extrabold">Shop Now</button>
+                           <button className=" mt-4 bg-orange-500 w-full py-1 rounded  text-white font-extrabold">Shop Now</button>
                            </div>
                         </div>
                     </div>)

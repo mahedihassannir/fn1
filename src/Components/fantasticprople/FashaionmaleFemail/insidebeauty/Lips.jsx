@@ -15,7 +15,6 @@ const Lips = () => {
 
     // filter only lips related data
     const lipsProducts = products.filter(lips => lips.category === "beauty" && lips.product==="lips")
-    console.log(lipsProducts)
    
 
     return (
@@ -60,7 +59,7 @@ const Lips = () => {
                            <p className='line-through text-sm text-zinc-400'><span className='font-extrabold'>৳</span>{lips.price}</p>
                            </div>
                            <div className='text-center'>
-                           <button class="mt-4 bg-gray-200 w-full py-1 rounded  text-green-700 font-extrabold">Add To Cart</button>
+                           <button className="mt-4 bg-gray-200 w-full py-1 rounded  text-green-700 font-extrabold">Add To Cart</button>
                            </div>
                         </div>
                     </div>)
