@@ -7,7 +7,7 @@
  */
 import SingleCartProductCard from "../SingleCartProductCard/SingleCartProductCard";
 
-const CartProductDetails = () => {
+const CartProductDetails = ({singleProductData}) => {
 	return (
 		<div className='flex flex-col gap-5'>
 			{/* user address  */}
@@ -53,8 +53,8 @@ const CartProductDetails = () => {
 
 			{/* cart product  */}
 			<div className='flex flex-col gap-5'>
-				<SingleCartProductCard />
-				<SingleCartProductCard />
+				<SingleCartProductCard singleProductData={singleProductData} />
+			
 			</div>
 		</div>
 	);

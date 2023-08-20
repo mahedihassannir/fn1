@@ -8,9 +8,37 @@
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { BsChevronRight } from "react-icons/bs";
 import { TbCurrencyTaka } from "react-icons/tb";
+//import { result } from "lodash";
 
-const PaymentDetails = () => {
-	
+const PaymentDetails = ({singleProductData}) => {
+	const onSubmit = () => {
+		const data = {
+			"currency": "BDT",
+			"Total_Payment": singleProductData?.price,
+			"productId": singleProductData?._id,
+			"productName": singleProductData?.name,
+			"category": singleProductData?.category,
+			"cus_name": "Toma",
+			"cus_id": 8,
+			"cus_email": "toma@com",
+			"cus_add1": "Mirpur"
+		}
+		fetch("http://localhost:5000/order", {
+			method: "POST",
+			headers: { "content-type": "application/json" },
+			body: JSON.stringify(data)
+		})
+		.then(res=>res.json())
+		.then(result=>{
+			console.log(result)
+			window.location.replace(result.url)
+		})
+
+	}
+
+
+
+
 	return (
 		<div>
 			<div className='text-xs font-semibold '>
@@ -53,7 +81,7 @@ const PaymentDetails = () => {
 							<p className=''>Items Total</p>
 							<div className='flex items-center gap-1'>
 								<TbCurrencyTaka />
-								<span>688</span>
+								<span>{singleProductData?.price}</span>
 							</div>
 						</div>
 						{/* Delivery Fee */}
@@ -77,7 +105,7 @@ const PaymentDetails = () => {
 							<p>Total Payment</p>
 							<div className='flex items-center gap-1'>
 								<TbCurrencyTaka />
-								<span>688</span>
+								<span>{singleProductData?.price}</span>
 							</div>
 						</div>
 
@@ -90,7 +118,7 @@ const PaymentDetails = () => {
 				</div>
 
 				<div className='pt-5'>
-					<button  className='py-3 w-full bg-[#F57224] hover:bg-[#DADADA] duration-300 hover:text-gray-500 text-white rounded'>
+					<button onClick={onSubmit} className='py-3 w-full bg-[#F57224] hover:bg-[#DADADA] duration-300 hover:text-gray-500 text-white rounded'>
 						Place Order
 					</button>
 				</div>

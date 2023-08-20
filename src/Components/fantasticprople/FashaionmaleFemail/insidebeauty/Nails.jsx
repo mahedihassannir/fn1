@@ -12,10 +12,8 @@ import useProducts from '../../../../Hooks/Fantastic/useProducts';
 const Nails = () => {
     // all products
     const { products, loading } = useProducts()
-
     // filter only nails related data
-    const nailsProducts = products.filter(nails => nails.category === "beauty" && nails.product==="nails")
-   
+    const nailsProducts = products.filter(nails => nails.category === "beauty" && nails.product === "nails")
 
     return (
         <section>
@@ -47,20 +45,20 @@ const Nails = () => {
                 {
                     nailsProducts.map(nails => <div key={nails._id}>
                         <div className='hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg'>
-                           <div className='relative'>
-                           <img className='rounded-t-lg' src={nails.image} alt="" />
-                            <p className='absolute top-0 rounded-t-lg right-0 bg-orange-500  rounded-l-full text-white font-bold px-1'>-10%</p>
-                           </div>
-                           <div className='pl-2'>
-                           <div className='h-14 overflow-hidden'>
-                           <p className='overflow-hidden font-bold'>{nails.name}</p>
-                           </div>
-                           <p className='font-bold mt-8 text-orange-500'><span className='font-extrabold'>৳</span>{nails.price}</p>
-                           <p className='line-through text-sm text-zinc-400'><span className='font-extrabold'>৳</span>{nails.price}</p>
-                           </div>
-                           <div className='text-center'>
-                           <button class="mt-4 bg-gray-200 w-full py-1 rounded  text-green-700 font-extrabold">Add To Cart</button>
-                           </div>
+                            <div className='relative'>
+                                <img className='rounded-t-lg' src={nails.image} alt="" />
+                                <p className='absolute top-0 rounded-t-lg right-0 bg-orange-500  rounded-l-full text-white font-bold px-1'>-10%</p>
+                            </div>
+                            <div className='pl-2'>
+                                <div className='h-14 overflow-hidden'>
+                                    <p className='overflow-hidden font-bold'>{nails.name}</p>
+                                </div>
+                                <p className='font-bold mt-8 text-orange-500'><span className='font-extrabold'>৳</span>{nails.price}</p>
+                                <p className='line-through text-sm text-zinc-400'><span className='font-extrabold'>৳</span>{nails.price}</p>
+                            </div>
+                            <div className='text-center'>
+                                <button class="mt-4 bg-gray-200 w-full py-1 rounded  text-green-700 font-extrabold">Add To Cart</button>
+                            </div>
                         </div>
                     </div>)
                 }
