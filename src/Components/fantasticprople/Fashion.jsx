@@ -16,7 +16,7 @@ const Fashion = () => {
     //console.log(allFashionProducts)
     return (
         <section>
-            {/* banner */}
+            {/* fashion banner */}
             <img className="my-10" src="https://i.ibb.co/fYkQS5K/Screenshot-2023-08-17-182335-1.png" alt="" />
 
            {/* category */}
