@@ -3,7 +3,7 @@
 import { TbCurrencyTaka } from "react-icons/tb";
 import { FaRegTrashAlt } from "react-icons/fa";
 
-const SingleCartProductCard = () => {
+const SingleCartProductCard = ({singleProductData}) => {
 	return (
 		<div className='text-xs p-5 border rounded font-semibold'>
 			{/* product image quantity */}
@@ -11,7 +11,7 @@ const SingleCartProductCard = () => {
 				{/* product image  */}
 				<div className='w-[60px]'>
 					<img
-						src='https://i.ibb.co/PgdpJzh/img2.jpg'
+						src={singleProductData?.image}
                         alt=''
                         className="w-full"
 					/>
@@ -20,7 +20,7 @@ const SingleCartProductCard = () => {
 				<div className='flex items-center justify-between flex-1 gap-2'>
 					{/* product name  */}
 					<div>
-						<h3>A9 Mini WiFi Camera 1080P Full HD Night Vision</h3>
+						<h3>{singleProductData?.name}</h3>
 						<p>
 							<small className='text-gray-500'>
 								No Brand,Color Family:Black
@@ -57,7 +57,7 @@ const SingleCartProductCard = () => {
 
 						<div className='flex items-center '>
 							<TbCurrencyTaka />
-							<p>539</p>
+							<p>{singleProductData?.price}</p>
 						</div>
 					</div>
 				</div>

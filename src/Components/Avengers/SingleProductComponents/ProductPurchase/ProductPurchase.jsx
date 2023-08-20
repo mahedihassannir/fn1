@@ -11,7 +11,10 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import takaIcon from '../../../../assets/taka.png'
 import takaIconGray from '../../../../assets/taka_gray.png'
 import { Link } from 'react-router-dom';
-const ProductPurchase = () => {
+const ProductPurchase = ({singleProductData}) => {
+	
+// const { name, description, image, category,price} = singleProductData
+
     return (
 		<div>
 			<div className='flex flex-col md:flex-row gap-10'>
@@ -19,7 +22,7 @@ const ProductPurchase = () => {
 				<div className='w-full md:w-1/3 '>
 					<div>
 						<img
-							src='https://i.ibb.co/PgdpJzh/img2.jpg'
+							src={singleProductData?.image}
 							alt=''
 							className='w-full'
 						/>
@@ -32,21 +35,21 @@ const ProductPurchase = () => {
 							<div className='flex items-center gap-3'>
 								<div className='w-[70px] p-1 border border-[#F57224]'>
 									<img
-										src='https://i.ibb.co/PgdpJzh/img2.jpg'
+										src={singleProductData?.image}
 										alt=''
 									/>
 								</div>
 
 								<div className='w-[70px] p-1 '>
 									<img
-										src='https://i.ibb.co/PgdpJzh/img2.jpg'
+										src={singleProductData?.image}
 										alt=''
 									/>
 								</div>
 
 								<div className='w-[70px] p-1 '>
 									<img
-										src='https://i.ibb.co/PgdpJzh/img2.jpg'
+										src={singleProductData?.image}
 										alt=''
 									/>
 								</div>
@@ -57,14 +60,11 @@ const ProductPurchase = () => {
 					</div>
 				</div>
 
-				{/* product Details  */}
+			{/* product Details  */}
 				<div className='w-full md:w-2/3  font-normal'>
 					{/* name  */}
 					<h4 className='text-xl md:text-2xl font-bold'>
-						Cross body Bag for Men Official Messenger Bag Bike Rider
-						Crossbody Bag Pu Leather Bag Sholder Bag Diagonal
-						Package Handbag Bag For Men Corss Body Shoulder Bag For
-						Men
+						{singleProductData?.name}
 					</h4>
 
 					{/* rating and share  */}
@@ -121,7 +121,7 @@ const ProductPurchase = () => {
 									className='w-[25px]'
 								/>
 							</div>
-							<span>555</span>
+							<span>{singleProductData?.price}</span>
 						</div>
 
 						<div className='mt-2'>
@@ -201,7 +201,7 @@ const ProductPurchase = () => {
 
 						<div className='flex items-center gap-5 mt-4'>
 							<Link
-								to='/proceed_to_checkout'
+								to={`/proceed_to_checkout/${singleProductData?._id}`}
 								className='flex-1'
 							>
 								<button className='bg-[#2ABBE8] py-3  text-white text-xl font-semibold w-full'>
