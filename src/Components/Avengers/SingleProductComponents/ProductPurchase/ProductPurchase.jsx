@@ -11,11 +11,18 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import takaIcon from '../../../../assets/taka.png'
 import takaIconGray from '../../../../assets/taka_gray.png'
 import { Link } from 'react-router-dom';
-const ProductPurchase = ({singleProductData}) => {
-	
-// const { name, description, image, category,price} = singleProductData
+import { useContext, useState } from 'react';
+import { ContexM } from '../../../../Authentication/AuthProvider/AuthProvider';
 
-    return (
+const ProductPurchase = ({ singleProductData }) => {
+	
+	//default quantity value
+	const [quantity, setQuantity] = useState(1)
+
+	//add to cart function import from auth 
+	const { addToCart } = useContext(ContexM)
+
+	return (
 		<div>
 			<div className='flex flex-col md:flex-row gap-10'>
 				{/* product Image  */}
@@ -60,7 +67,7 @@ const ProductPurchase = ({singleProductData}) => {
 					</div>
 				</div>
 
-			{/* product Details  */}
+				{/* product Details  */}
 				<div className='w-full md:w-2/3  font-normal'>
 					{/* name  */}
 					<h4 className='text-xl md:text-2xl font-bold'>
@@ -187,13 +194,17 @@ const ProductPurchase = ({singleProductData}) => {
 							</p>
 
 							<div className='flex gap-2'>
-								<div className='w-[30px] h-[30px] bg-[#EFF0F5] cursor-pointer font-bold flex items-center justify-center rounded-md'>
+								<button
+									onClick={() => setQuantity(quantity - 1)}
+									className={`w-[30px] h-[30px] bg-[#EFF0F5] font-bold flex items-center justify-center rounded-md ${quantity <= 1 ? 'bg-gray-300' : 'cursor-pointer'}`}
+									disabled={quantity <= 1}
+								>
 									-
-								</div>
+								</button>
 								<h1 className='w-[30px] h-[30px] border flex items-center justify-center rounded-md text-lg'>
-									1
+									{quantity}
 								</h1>
-								<div className='w-[30px] h-[30px] bg-[#EFF0F5] cursor-pointer font-bold flex items-center justify-center rounded-md'>
+								<div onClick={() => setQuantity(quantity + 1)} className=' w-[30px] h-[30px] bg-[#EFF0F5] cursor-pointer font-bold flex items-center justify-center rounded-md'>
 									+
 								</div>
 							</div>
@@ -208,7 +219,7 @@ const ProductPurchase = ({singleProductData}) => {
 									Bye Now
 								</button>
 							</Link>
-							<button className='bg-[#F57224] py-3 flex-1 text-white text-xl font-semibold'>
+							<button onClick={() => addToCart(singleProductData, quantity)} className='bg-[#F57224] py-3 flex-1 text-white text-xl font-semibold'>
 								Add to Cart
 							</button>
 						</div>

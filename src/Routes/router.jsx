@@ -34,6 +34,8 @@ import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/
 import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
 import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/MensCare";
 import Face from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Face";
+import PaymentSuccess from "../Components/Avengers/PaymentSuccess/PaymentSuccess";
+import PaymentFailed from "../Components/PaymentFailed/PaymentFailed";
 
 const router = createBrowserRouter([
 	{
