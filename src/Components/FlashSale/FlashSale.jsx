@@ -1,4 +1,9 @@
+// author:Nabila
+// Date:18/8/2023
+// Description:This par is for 'just for you'
+
 import { FaStar } from 'react-icons/fa';
+
 
 const FlashSale = () => {
     return (
@@ -7,8 +12,8 @@ const FlashSale = () => {
             <div>
                 <div className="mt-8 p-4">
                     <h2 className='text-3xl mb-2 font-bold'>Just For You</h2>
-                    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-4 md:space-x-2'>
-                        <div className='w-[230px]'>
+                    <div className='grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-4 mb-4'>
+                        <div className='w-[230px] hover:shadow-2xl'>
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
                                 <p className='font-bold'>New Trendy Look Very Stylish<br /> Black Bag Pack....</p>
@@ -26,7 +31,7 @@ const FlashSale = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-[230px]">
+                        <div className="w-[230px] hover:shadow-2xl">
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
                                 <p className='font-bold'>New Trendy Look Very Stylish<br /> Black Bag Pack....</p>
@@ -44,7 +49,7 @@ const FlashSale = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='w-[230px]'>
+                        <div className='w-[230px] hover:shadow-2xl'>
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
                                 <p className='font-bold'>New Trendy Look Very Stylish<br /> Black Bag Pack....</p>
@@ -62,7 +67,7 @@ const FlashSale = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='w-[230px]'>
+                        <div className='w-[230px] hover:shadow-2xl'>
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
                                 <p className='font-bold'>New Trendy Look Very Stylish<br /> Black Bag Pack....</p>
@@ -81,7 +86,7 @@ const FlashSale = () => {
                             </div>
                         </div>
 
-                        <div className='w-[230px]'>
+                        <div className='w-[230px] hover:shadow-2xl'>
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
                                 <p className='font-bold'>New Trendy Look Very Stylish<br /> Black Bag Pack....</p>
@@ -104,8 +109,8 @@ const FlashSale = () => {
 
 
 
-                    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-4 md:space-x-2'>
-                        <div className='w-[230px]'>
+                    <div className='grid grid-cols-2 md:mx-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-4 md:space-x-2'>
+                        <div className='w-[230px] hover:shadow-2xl'>
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
                                 <p className='font-bold'>New Trendy Look Very Stylish<br /> Black Bag Pack....</p>
@@ -123,7 +128,7 @@ const FlashSale = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-[230px]">
+                        <div className="w-[230px] hover:shadow-2xl">
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
                                 <p className='font-bold'>New Trendy Look Very Stylish<br /> Black Bag Pack....</p>
@@ -141,7 +146,7 @@ const FlashSale = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='w-[230px]'>
+                        <div className='w-[230px] hover:shadow-2xl'>
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
                                 <p className='font-bold'>New Trendy Look Very Stylish<br /> Black Bag Pack....</p>
@@ -159,7 +164,7 @@ const FlashSale = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='w-[230px]'>
+                        <div className='w-[230px] hover:shadow-2xl'>
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
                                 <p className='font-bold'>New Trendy Look Very Stylish<br /> Black Bag Pack....</p>
@@ -177,7 +182,7 @@ const FlashSale = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className='w-[230px]'>
+                        <div className='w-[230px] hover:shadow-2xl'>
                             <img src="https://i.ibb.co/PgdpJzh/img2.jpg" alt="bag" />
                             <div className='p-4 bg-white'>
                                 <p className='font-bold'>New Trendy Look Very Stylish<br /> Black Bag Pack....</p>

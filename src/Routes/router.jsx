@@ -13,7 +13,8 @@ import SingleProduct from "../Pages/SingleProduct/SingleProduct";
 
 // make by arrow
 import Register from "../Login/regester";
-import Login from "../Login/login";
+import Login from '../Login/login'
+
 // make by arrow ends
 
 // this is make by fantastic people 
@@ -23,8 +24,6 @@ import Beauty from "../Components/fantasticprople/Beauty";
 import HomeAcc from "../Components/fantasticprople/HomeAcc";
 import Below from "../Components/fantasticprople/Below";
 import Kids from "../Components/fantasticprople/Kids";
-import Female from "../Components/fantasticprople/FashaionmaleFemail/Female/Female";
-import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
 // this is make by fantastic people ends 
 
 
@@ -36,6 +35,26 @@ import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebea
 import Face from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Face";
 import DashBoardManage from "../Dashboard/DashBoardManage/DashBoardManage";
 import Analytics from "../Dashboard/adminpanel/Pages/Analytics";
+import PaymentSuccess from "../Components/Avengers/PaymentSuccess/PaymentSuccess";
+import PaymentFailed from "../Components/PaymentFailed/PaymentFailed";
+
+// CodeWorms
+import Drone from "../Components/CodeWorms/LargeCategroy/Drone";
+import Mobile from "../Components/CodeWorms/LargeCategroy/Mobile";
+import Iphone from '../Components/CodeWorms/LargeCategroy/Iphone';
+import Computer from "../Components/CodeWorms/LargeCategroy/Computer";
+import Wireless from "../Components/CodeWorms/LargeCategroy/Wireless";
+import Charger from "../Components/CodeWorms/LargeCategroy/Charger";
+import Cable from "../Components/CodeWorms/LargeCategroy/Cable";
+import Electronics from "../Components/CodeWorms/LargeCategroy/Electronics";
+import Wifi from "../Components/CodeWorms/LargeCategroy/Wifi";
+import HeadPhones from "../Components/CodeWorms/LargeCategroy/HeadPhones";
+import ElectricalToy from "../Components/CodeWorms/LargeCategroy/ElectricalToy";
+import Tablet from "../Components/CodeWorms/LargeCategroy/Tablet";
+import Keyboard from "../Components/CodeWorms/LargeCategroy/Keyboard";
+import Mouse from "../Components/CodeWorms/LargeCategroy/Mouse";
+import Laptop from "../Components/CodeWorms/LargeCategroy/Laptop";
+import Socket from "../Components/CodeWorms/LargeCategroy/Socket";
 
 const router = createBrowserRouter([
 	{
@@ -57,14 +76,25 @@ const router = createBrowserRouter([
 			},
 			{
 				// avengers 
-				path: "proceed_to_checkout",
+				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
+			{
+			// 	// avengers Toma PAYMENT SUCCESS ROUTE
+				path: "payment/success/:tranId",
+				element: <PaymentSuccess></PaymentSuccess>
+			},
+			{
+				// avengers Toma PAYMENT Fail ROUTE
+				path: "payment/fail/:tranId",
+				element: <PaymentFailed></PaymentFailed>
+			},
 
+			
 			{
 				// Team Arrow
 				path: "login",
-				element: <Login></Login>,
+				element: <Login></Login>
 			},
 
 			{
@@ -72,6 +102,74 @@ const router = createBrowserRouter([
 				path: "register",
 				element: <Register></Register>,
 			},
+			// CodeWorms
+			{
+				path: 'drone',
+				element: <Drone></Drone>
+			},
+			{
+				path: 'mobile',
+				element: <Mobile></Mobile>
+			},
+			{
+				path: 'iphone',
+				element: <Iphone></Iphone>
+			},
+			{
+				path: 'computer',
+				element: <Computer></Computer>
+			},
+			{
+				path: 'wireless',
+				element: <Wireless></Wireless>
+			},
+			{
+				path: 'charger',
+				element: <Charger></Charger>
+			},
+			{
+				path: 'cable',
+				element: <Cable></Cable>
+			},
+			{
+				path: 'electronics',
+				element: <Electronics></Electronics>
+			},
+			{
+				path: 'wifi',
+				element: <Wifi></Wifi>
+			},
+			{
+				path: 'headphones',
+				element: <HeadPhones></HeadPhones>
+			},
+			{
+				path: 'toys',
+				element: <ElectricalToy></ElectricalToy>
+			},
+			{
+				path: 'tablet',
+				element: <Tablet></Tablet>
+			},
+			{
+				path: 'keyboard',
+				element: <Keyboard></Keyboard>
+			},
+			{
+				path: 'mouse',
+				element: <Mouse></Mouse>
+			},
+			{
+				path: 'laptop',
+				element: <Laptop></Laptop>
+			},
+			{
+				path: 'socket',
+				element: <Socket></Socket>
+			},
+			
+			
+			
 
 
 
@@ -135,20 +233,6 @@ const router = createBrowserRouter([
 				element: <Kids></Kids>
 
 			},
-			// male 
-			{
-
-				path: "male",
-				element: <Male></Male>
-
-			},
-			// female category section
-			{
-
-				path: "female",
-				element: <Female></Female>
-
-			},
 
 			{
 
@@ -204,6 +288,8 @@ const router = createBrowserRouter([
 
 
 		],
+		
+			
 	},
 	// this area for dashboard work
 	{
@@ -436,6 +522,8 @@ const router = createBrowserRouter([
 
 
 	}
+	
+
 ]);
 
 export default router

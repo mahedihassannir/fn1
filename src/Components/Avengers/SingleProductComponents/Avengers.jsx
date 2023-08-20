@@ -9,13 +9,14 @@
 import ProductDelivery from "./ProductDelivery/ProductDelivery";
 import ProductPurchase from "./ProductPurchase/ProductPurchase";
 
-const Avengers = () => {
+const Avengers = ({singleProductData}) => {
+	
 	return (
 		<div>
 			{/* Product Purchase and cart btn section starts  team AVENGERS */}
 			{/* this section for MGR */}
 			<section>
-				<ProductPurchase></ProductPurchase>
+				<ProductPurchase singleProductData={singleProductData} ></ProductPurchase>
 			</section>
 			{/*  Product Purchase and cart btn section End */}
 
@@ -24,7 +25,7 @@ const Avengers = () => {
 			{/* product delivery details section starts  team AVENGERS */}
 			{/* this section for MGR */}
 			<section>
-				<ProductDelivery></ProductDelivery>
+				<ProductDelivery ></ProductDelivery>
 			</section>
 			{/* product delivery details section End  */}
 		</div>
