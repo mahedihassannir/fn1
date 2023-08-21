@@ -1,7 +1,10 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import useProducts from '../../Hooks/Fantastic/useProducts';
 
 const Kids = () => {
+    const { products } = useProducts()
+    const kids = products?.filter(x => x?.category ==="kids")
     return (
         <section>
         {/* kids swiper banner */}
@@ -27,15 +30,18 @@ const Kids = () => {
 
             </Swiper>
             <div className="grid grid-cols-6 gap-5 my-10">
-                <div className=" grid gap-5 p-5 hover:shadow">
-                    <img src={`https://gotoshop.com.bd/image/cache/catalog/multivendor/4/kidstoys/20201003_004613-500x500.jpg`} />
-                    <h1 className=" font-semibold">Toy Name:</h1>
-                    <div>
-                        <p className=" font-bold">Price</p>
-                        <p className=" text-sm line-through">100</p>
-                    </div>
-                    <button className=" text-green-700 font-bold uppercase rounded bg-gray-200 py-1 hover:bg-gray-100">Add To Cart</button>
-                </div>
+            {
+                    kids?.map((x, index) =>
+                        <div key={index} className=" grid gap-5 p-5 hover:shadow">
+                            <img src={x.image} />
+                            <h1 className=" font-semibold">{x.name}</h1>
+                            <div>
+                                <p className=" font-bold">{x.price}</p>
+                                <p className=" text-sm line-through">100</p>
+                            </div>
+                            <button className=" text-green-700 font-bold uppercase rounded bg-gray-200 py-1 hover:bg-gray-100">Add To Cart</button>
+                        </div>)
+                }
             </div>
         </div>
 
