@@ -6,6 +6,7 @@ import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 const Below = () => {
    const {products,loading} = useProducts()
    const belowProducts = products.filter(below => below.category==="below")
+   console.log(belowProducts)
     return (
         <section>
         {/* food swiper banner */}

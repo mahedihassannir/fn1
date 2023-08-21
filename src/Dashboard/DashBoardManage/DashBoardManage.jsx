@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../adminpanel/Sidebar/Sidebar";
-
 const DashBoardManage = () => {
     return (
         <div>

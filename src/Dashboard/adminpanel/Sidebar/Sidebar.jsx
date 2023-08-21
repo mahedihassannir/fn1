@@ -8,11 +8,7 @@ const isAdmin = true
 const Sidebar = () => {
     return (
         <div>
-
-            hi i am sidebar
-
             
-
         </div>
     );
 };
