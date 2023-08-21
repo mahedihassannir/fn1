@@ -76,6 +76,11 @@ const router = createBrowserRouter([
 			},
 			{
 				// avengers 
+				path: "proceed_to_checkout",
+				element: <ProceedToCheckout></ProceedToCheckout>,
+			},
+			{
+				// avengers 
 				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
