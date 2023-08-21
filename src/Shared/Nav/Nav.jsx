@@ -201,13 +201,13 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 			<div className='bg-[#000000]  md:px-20 flex justify-between items-center p-3 gap-4 md:gap-12 relative'>
 				{/* logo */}
-				<div className='text-white'>
+				<Link to="/" className='text-white'>
 					<img
 						src='https://i.ibb.co/P9tbKgZ/logo.jpg'
 						alt=''
 						className='h-14'
 					/>
-				</div>
+				</Link>
 
 				{/* search div  */}
 				<div className='flex-1 '>
