@@ -1,0 +1,12 @@
+.sidbarContainer::-webkit-scrollbar{
+    width: 5px;
+}
+
+
+.sidbarContainer::-webkit-scrollbar-thumb{
+    background-color: #19D895;
+    border-radius: 5px;
+}
+.sidbarContainer::-webkit-scrollbar-track{
+    background-color: rgb(243, 243, 243);
+}
