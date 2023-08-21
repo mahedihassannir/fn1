@@ -13,10 +13,12 @@ import { FaArrowRight, FaChevronCircleRight, FaClone, FaCut, FaUser } from "reac
 import { ContexM } from "../../Authentication/AuthProvider/AuthProvider";
 
 
+
 const Nav = ({ isNavOpen, setIsNavOpen }) => {
+//get added quantity from auth provider
 
 
-	const { user, Logout } = useContext(ContexM)
+	const { user, Logout, totalCart } = useContext(ContexM)
 
 
 	const handleLogout = () => {
@@ -26,6 +28,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 
 	}
+
 
 
 
@@ -44,8 +47,21 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 			{/* CART  */}
 			<div className='flex items-center gap-1 text-white'>
-				<AiOutlineGift className='text-[#FC9E66] text-3xl' />
-				<p className='leading-4 font-bold'>
+				
+				<div className="relative">
+					<div >
+						<div className="relative">
+							<div className="flex justify-center items-center h-[20px] w-[20px] bg-white p-1 rounded-full absolute -left-3 -top-2">
+								<span className="text-black rounded-full text-[10px] font-semibold "> <small>+</small>{totalCart}</span>
+							</div>
+							<AiOutlineGift className="text-[#FC9E66] text-3xl" />
+						</div>
+					</div>
+				</div>
+
+
+
+				<p className='leading-4 font-bold '>
 					Cart <br />
 					<span className='text-xs font-normal'>Add items</span>{" "}
 				</p>
@@ -185,13 +201,13 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 			<div className='bg-[#000000]  md:px-20 flex justify-between items-center p-3 gap-4 md:gap-12 relative'>
 				{/* logo */}
-				<div className='text-white'>
+				<Link to="/" className='text-white'>
 					<img
 						src='https://i.ibb.co/P9tbKgZ/logo.jpg'
 						alt=''
 						className='h-14'
 					/>
-				</div>
+				</Link>
 
 				{/* search div  */}
 				<div className='flex-1 '>

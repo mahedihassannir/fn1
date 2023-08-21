@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 
 const isAdmin = true
@@ -12,9 +11,7 @@ const Sidebar = () => {
 
             hi i am sidebar
 
-            <Link to="analytics">analytics</Link>
-
-
+            
 
         </div>
     );

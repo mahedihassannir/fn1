@@ -8,6 +8,7 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import useProducts from "../../Hooks/Fantastic/useProducts";
 import { Link } from 'react-router-dom';
+import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 
 
 const Beauty = () => {
@@ -69,24 +70,7 @@ const Beauty = () => {
             {/* display Beauty products */}
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 lg:mx-20 my-10'>
                 {
-                    beautyProducts.map(beauty => <div key={beauty._id}>
-                        <div className='hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg'>
-                           <div className='relative'>
-                           <img className='rounded-t-lg' src={beauty.image} alt="" />
-                            <p className='absolute top-0 rounded-t-lg right-0 bg-orange-500  rounded-l-full text-white font-bold px-1'>-10%</p>
-                           </div>
-                           <div className='pl-2'>
-                           <div className='h-14 overflow-hidden'>
-                           <p className='font-bold my-2 overflow-hidden'>{beauty.name}</p>
-                           </div>
-                           <p className='font-bold mt-8 text-orange-500'><span className='font-extrabold'>৳</span>{beauty.price}</p>
-                           <p className='line-through text-sm text-zinc-400'><span className='font-extrabold'>৳</span>{beauty.price}</p>
-                           </div>
-                           <div className='text-center'>
-                           <button className="mt-4 bg-gray-200 w-full py-1 rounded  text-green-700 font-extrabold">Add To Cart</button>
-                           </div>
-                        </div>
-                    </div>)
+                    beautyProducts.map(beauty => <CardsOfProducts singleProduct={beauty}/>)
                 }
             </div>
 
