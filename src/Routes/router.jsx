@@ -55,6 +55,7 @@ import Mouse from "../Components/CodeWorms/LargeCategroy/Mouse";
 import Laptop from "../Components/CodeWorms/LargeCategroy/Laptop";
 import Socket from "../Components/CodeWorms/LargeCategroy/Socket";
 import Analytics from "../Dashboard/Avengers/adminpanel/Pages/Analytics";
+import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
 
 const router = createBrowserRouter([
 	{
@@ -303,6 +304,10 @@ const router = createBrowserRouter([
 			{
 				path: "analytics",
 				element: <Analytics></Analytics>
+			},
+			{
+				path: "customer",
+				element: <Customer></Customer>
 			}
 
 
