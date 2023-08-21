@@ -4,7 +4,7 @@ import useProducts from '../../Hooks/Fantastic/useProducts';
 
 const Kids = () => {
     const { products } = useProducts()
-    const kids = products?.filter(x => x?.category === "kids")
+    const kids = products?.filter(x => x?.category ==="kids")
     return (
         <section>
         {/* kids swiper banner */}
