@@ -34,7 +34,6 @@ import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty
 import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/MensCare";
 import Face from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Face";
 import DashBoardManage from "../Dashboard/DashBoardManage/DashBoardManage";
-import Analytics from "../Dashboard/adminpanel/Pages/Analytics";
 import PaymentSuccess from "../Components/Avengers/PaymentSuccess/PaymentSuccess";
 import PaymentFailed from "../Components/PaymentFailed/PaymentFailed";
 
@@ -55,6 +54,8 @@ import Keyboard from "../Components/CodeWorms/LargeCategroy/Keyboard";
 import Mouse from "../Components/CodeWorms/LargeCategroy/Mouse";
 import Laptop from "../Components/CodeWorms/LargeCategroy/Laptop";
 import Socket from "../Components/CodeWorms/LargeCategroy/Socket";
+import Analytics from "../Dashboard/Avengers/adminpanel/Pages/Analytics";
+import Orders from "../Dashboard/Avengers/adminpanel/Pages/Orders/Orders";
 
 const router = createBrowserRouter([
 	{
@@ -303,12 +304,16 @@ const router = createBrowserRouter([
 			<DashBoardManage>
 			</DashBoardManage>,
 		children: [
-
+			
 
 			{
 				path: "analytics",
 				element: <Analytics></Analytics>
-			}
+			},
+			{
+				path: "orders",
+				element: <Orders></Orders>
+			},
 
 
 
