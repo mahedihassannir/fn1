@@ -8,8 +8,10 @@ const CardsOfProducts = ({singleProduct}) => {
        <div className='relative'>
       <Link to={`/products/${singleProduct._id}`}> <img className='rounded-t-lg' src={singleProduct.image} alt="" /></Link>
         <p className='absolute top-0 rounded-t-lg right-0 bg-orange-500  rounded-l-full text-white font-bold px-1'>-10%</p>
-        <p className='absolute top-0  left-2 bg-orange-100 opacity-100 rounded-full text-orange-500 font-semibold px-1'>0 Sold</p>
-        <p className='absolute bottom-0  left-0 bg-orange-500 text-white font-bold px-1 flex items-center'><FaStar/>HOT</p>
+        {singleProduct.sold && <p className='absolute top-0  left-2 bg-orange-100 opacity-100 rounded-full text-orange-500 font-semibold px-1'>0 Sold</p>}
+        {
+          singleProduct.hot && <p className='absolute bottom-0  left-0 bg-orange-500 text-white font-bold px-1 flex items-center'><FaStar/>HOT</p>
+        }
        </div>
        <div className='pl-2'>
        <div className='h-14 overflow-hidden'>
