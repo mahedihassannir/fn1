@@ -1,19 +1,39 @@
 
 
+import PageTitleAndRefresh from "../../PageTitleAndRefresh/PageTitleAndRefresh";
+import OrdersDetails from "./OrdersDetails/OrdersDetails";
+import OrdersTable from "./OrdersTable/OrdersTable";
+import { BiChevronsLeft, BiChevronsRight } from "react-icons/bi";
 const Avengers = () => {
     return (
 		<div className='text-[#0A1727]'>
-			<div className='bg-white p-3 rounded flex items-center justify-between '>
-				<h3 className='text-2xl font-bold'>Orders</h3>
+			<PageTitleAndRefresh title={"Orders"} />
 
-				<div className='flex items-center text-[11px] font-bold gap-2'>
-					<div>
-                        <p>Data Referesh</p>
-                        
-					</div>
+			<div className='my-4'>
+				{/* orders OrdersDetails */}
+				<OrdersDetails />
 
-					<div className='px-8 border border-[#0a172783] py-1 rounded'>
-						<p>August 22, 2023 01:20 AM</p>
+				{/* Order table  */}
+				<div className='mt-4 bg-white rounded px-3 overflow-x-auto'>
+					<OrdersTable />
+				</div>
+
+				{/* pagination for order  */}
+				<div className='px-3 mt-4'>
+					<div className='text-xs font-semibold flex items-center gap-2'>
+						<div className='w-[25px] h-[25px]  flex items-center justify-center text-[#035ECF] text-xl cursor-pointer font-normal rounded'>
+							<BiChevronsLeft />
+						</div>
+						<button className='w-[25px] h-[25px] bg-[#035ECF] flex items-center justify-center text-white rounded'>
+							1
+						</button>
+						<button className='w-[25px] h-[25px] border border-[#035ECF] flex items-center justify-center text-[#035ECF] hover:bg-[#035ECF] hover:text-white duration-150 rounded'>
+							2
+						</button>
+
+						<div className='w-[25px] h-[25px]  flex items-center justify-center text-[#035ECF] text-xl cursor-pointer font-normal rounded'>
+							<BiChevronsRight />
+						</div>
 					</div>
 				</div>
 			</div>
