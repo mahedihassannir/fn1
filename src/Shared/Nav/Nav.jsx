@@ -31,7 +31,6 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 
 
-
 	const navItem = (
 		<>
 			{/* latest offers  */}
