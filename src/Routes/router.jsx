@@ -55,12 +55,16 @@ import Mouse from "../Components/CodeWorms/LargeCategroy/Mouse";
 import Laptop from "../Components/CodeWorms/LargeCategroy/Laptop";
 import Socket from "../Components/CodeWorms/LargeCategroy/Socket";
 import Analytics from "../Dashboard/Avengers/adminpanel/Pages/Analytics";
+<<<<<<< HEAD
+import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
+=======
 import Orders from "../Dashboard/Avengers/adminpanel/Pages/Orders/Orders";
 import UserHome from "../Dashboard/FantasticUserPanel/UserHome/UserHome";
 import UserOrder from "../Dashboard/FantasticUserPanel/UserOrder/UserOrder";
 import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgress";
 import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
 import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
+>>>>>>> 1e20fdaf0c5181da7f596614ee52e7c7faa9ed4d
 
 const router = createBrowserRouter([
 	{
@@ -316,12 +320,18 @@ const router = createBrowserRouter([
 				element: <Analytics></Analytics>
 			},
 			{
+<<<<<<< HEAD
+				path: "customer",
+				element: <Customer></Customer>
+			}
+=======
 				path: "orders",
 				element: <Orders></Orders>
 			},
 
 
 			// ends
+>>>>>>> 1e20fdaf0c5181da7f596614ee52e7c7faa9ed4d
 
 
 
