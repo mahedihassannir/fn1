@@ -1,8 +1,8 @@
 
 const Analytics = () => {
     return (
-        <div>
-
+        <div className="bg-red-400"> 
+Analytics
         </div>
     );
 };

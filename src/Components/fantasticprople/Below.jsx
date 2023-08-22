@@ -1,16 +1,24 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import useProducts from '../../Hooks/Fantastic/useProducts';
-import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 
 const Below = () => {
-   const {products,loading} = useProducts()
-   const belowProducts = products.filter(below => below.category==="below")
-   console.log(belowProducts)
+    {/*
+             category thakbe below499 =>tk
+
+             all products under 499 tk  that`
+             s it
+            
+            then filter category === "below499"
+
+            ok
+            
+            */}
+    const { products } = useProducts()
+    const below499 = products?.filter(x => x?.category === "below")
+
     return (
-        <section>
-        {/* food swiper banner */}
-        <div className='lg:mx-20 my-10'>
+        <div className="m-10">
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -23,23 +31,29 @@ const Below = () => {
                 }}
                 navigation={true}
                 modules={[Autoplay, Pagination, Navigation]}
-                className="mySwiper "
+                className="mySwiper"
             >
-                <SwiperSlide><img className='w-full' src="https://gcp-img.slatic.net/lazada/8f730e50-b4a8-49f1-8f32-65c7ba064da5_BD-1188-344.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='w-full' src="https://gcp-img.slatic.net/lazada/cb115603-66b4-4f66-8f52-646caf8d728c_BD-1188-344.jpg" alt="" /></SwiperSlide>
-                <SwiperSlide><img className='w-full' src="https://gcp-img.slatic.net/lazada/514f9952-7f9f-4cf3-9ef1-b717ffdf93de_BD-1188-344.jpg" alt="" /></SwiperSlide>
+                <SwiperSlide><img src="https://i.ibb.co/YbFwRqm/low-price.jpg" /></SwiperSlide>
+                <SwiperSlide><img src="https://i.ibb.co/YbFwRqm/low-price.jpg" /></SwiperSlide>
+                <SwiperSlide><img src="https://i.ibb.co/YbFwRqm/low-price.jpg" /></SwiperSlide>
+                <SwiperSlide><img src="https://i.ibb.co/YbFwRqm/low-price.jpg" /></SwiperSlide>
 
             </Swiper>
+            <div className="grid grid-cols-6 gap-5 my-10">
+                {
+                    below499?.map((x, index) =>
+                        <div key={index} className=" grid gap-5 p-5 hover:shadow">
+                            <img src={x.image} />
+                            <h1 className=" font-semibold">{x.name}</h1>
+                            <div>
+                                <p className=" font-bold">{x.price}</p>
+                                <p className=" text-sm line-through">100</p>
+                            </div>
+                            <button className=" text-green-700 font-bold uppercase rounded bg-gray-200 py-1 hover:bg-gray-100">Add To Cart</button>
+                        </div>)
+                }
+            </div>
         </div>
-
-        {/* display Foods */}
-        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 lg:mx-20 my-10'>
-            {
-                belowProducts.map(below => <CardsOfProducts singleProduct={below}/>)
-            }
-        </div>
-
-    </section>
     );
 };
 

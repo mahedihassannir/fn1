@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-const isAdmin = true
+// const isAdmin = true
 // const user = true
 // const seller = true
 
