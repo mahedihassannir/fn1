@@ -56,6 +56,11 @@ import Laptop from "../Components/CodeWorms/LargeCategroy/Laptop";
 import Socket from "../Components/CodeWorms/LargeCategroy/Socket";
 import Analytics from "../Dashboard/Avengers/adminpanel/Pages/Analytics";
 import Orders from "../Dashboard/Avengers/adminpanel/Pages/Orders/Orders";
+import UserHome from "../Dashboard/FantasticUserPanel/UserHome/UserHome";
+import UserOrder from "../Dashboard/FantasticUserPanel/UserOrder/UserOrder";
+import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgress";
+import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
+import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
 
 const router = createBrowserRouter([
 	{
@@ -86,7 +91,7 @@ const router = createBrowserRouter([
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
 			{
-			// 	// avengers Toma PAYMENT SUCCESS ROUTE
+				// 	// avengers Toma PAYMENT SUCCESS ROUTE
 				path: "payment/success/:tranId",
 				element: <PaymentSuccess></PaymentSuccess>
 			},
@@ -96,7 +101,7 @@ const router = createBrowserRouter([
 				element: <PaymentFailed></PaymentFailed>
 			},
 
-			
+
 			{
 				// Team Arrow
 				path: "login",
@@ -173,9 +178,9 @@ const router = createBrowserRouter([
 				path: 'socket',
 				element: <Socket></Socket>
 			},
-			
-			
-			
+
+
+
 
 
 
@@ -294,17 +299,17 @@ const router = createBrowserRouter([
 
 
 		],
-		
-			
+
+
 	},
-	// this area for dashboard work
+// this area for dashboard work
 	{
 		path: "dashboard",
 		element:
 			<DashBoardManage>
 			</DashBoardManage>,
 		children: [
-			
+
 
 			{
 				path: "analytics",
@@ -316,6 +321,7 @@ const router = createBrowserRouter([
 			},
 
 
+			// ends
 
 
 
@@ -332,6 +338,83 @@ const router = createBrowserRouter([
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+			// this area for the user panel work
+
+
+			// fantastic people routes
+
+			{
+
+				path: "dashboard/userhome",
+				element: <UserHome></UserHome>
+
+			},
+			// this is for user order
+			{
+
+				path: "dashboard/userorder",
+				element: <UserOrder></UserOrder>
+
+			},
+
+			// this is for user order ends
+
+			// user progress 
+			{
+
+				path: "dashboard/userprogress",
+				element: <UserProgress></UserProgress>
+
+
+			},
+
+			// user progress ends 
+
+
+			// user wishlist starts
+			{
+
+				path: "dashboard/userwishlist",
+				element: <UserWhichlist></UserWhichlist>
+
+
+			},
+			// user wishlist ends
+
+			// user userpayment starts
+
+			{
+
+				path: "dashboard/userpaymenthistory",
+				element: <UserpaymentHistory></UserpaymentHistory>
+
+
+			},
+			// user userpayment ends
+
+
+
+
+
+
+
+			// this area for the user panel work ends
 
 
 
@@ -527,12 +610,12 @@ const router = createBrowserRouter([
 
 
 
-			
+
 		]
 
 
 	}
-	
+
 
 ]);
 
