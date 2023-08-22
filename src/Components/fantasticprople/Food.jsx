@@ -13,10 +13,8 @@ import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 const Food = () => {
     // all products
     const { products, loading } = useProducts()
-    console.log(products)
     // filter only food related data
     const foodProducts = products.filter(foods => foods.category === "food")
-//    console.log(foodProducts)
 
     return (
         <section>

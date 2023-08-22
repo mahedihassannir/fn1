@@ -3,6 +3,8 @@ import Footer from "../Shared/Footer/Footer";
 import Nav from "../Shared/Nav/Nav";
 
 import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { ContexM } from "../Authentication/AuthProvider/AuthProvider";
 
 const Main = () => {
 	/**
@@ -20,8 +22,16 @@ const Main = () => {
 
 		handleScroll();
 	}, [isNavOpen]);
+
+
+	
     return (
-		<div onClick={() => setIsNavOpen(false)} className="overflow-x-hidden">
+		<div onClick={() => {
+			// close navbar 
+			setIsNavOpen(false)
+			
+
+		}} className="overflow-x-hidden">
 			<Nav
 				isNavOpen={isNavOpen}
 				setIsNavOpen={setIsNavOpen}

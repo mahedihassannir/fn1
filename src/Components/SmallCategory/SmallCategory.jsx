@@ -9,7 +9,7 @@ const SmallCategory = () => {
 
 
     return (
-        <div className="mx-20">
+        <div className="">
             <div className="mt-12 mx-auto max-w-7xl container mb-2 shadow">
                 <h2 className="text-3xl font-bold mb-4">Categories</h2>
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-x-4 sm:gap-x-2 md:gap-x-2">
