@@ -55,6 +55,7 @@ import Mouse from "../Components/CodeWorms/LargeCategroy/Mouse";
 import Laptop from "../Components/CodeWorms/LargeCategroy/Laptop";
 import Socket from "../Components/CodeWorms/LargeCategroy/Socket";
 import Analytics from "../Dashboard/Avengers/adminpanel/Pages/Analytics";
+import Orders from "../Dashboard/Avengers/adminpanel/Pages/Orders/Orders";
 
 const router = createBrowserRouter([
 	{
@@ -73,6 +74,11 @@ const router = createBrowserRouter([
 				// avengers 
 				path: "products/:id",
 				element: <SingleProduct></SingleProduct>,
+			},
+			{
+				// avengers 
+				path: "proceed_to_checkout",
+				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
 			{
 				// avengers 
@@ -303,7 +309,11 @@ const router = createBrowserRouter([
 			{
 				path: "analytics",
 				element: <Analytics></Analytics>
-			}
+			},
+			{
+				path: "orders",
+				element: <Orders></Orders>
+			},
 
 
 
