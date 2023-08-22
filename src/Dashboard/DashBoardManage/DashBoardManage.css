@@ -2,6 +2,9 @@
     width: 5px;
 }
 
+.dashboardContainer::-webkit-scrollbar{
+    width: 0px;
+}
 
 .sidbarContainer::-webkit-scrollbar-thumb{
     background-color: #19D895;

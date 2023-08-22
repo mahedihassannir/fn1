@@ -11,9 +11,43 @@ import { useState } from "react";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { IoCloudDoneSharp } from "react-icons/io5";
 import { HiOutlineDotsVertical } from "react-icons/hi";
+
+import { useContext } from "react";
+import { ContexM } from "../../../../../Authentication/AuthProvider/AuthProvider";
+import { RiRefund2Line } from "react-icons/ri";
+import SelectComponent from "../../../SelectComponent/SelectComponent";
+
 const OrdersDetails = () => {
-    const [showCategory, setShowCategory] = useState(false);
-    const [showSorting, setShowSorting] = useState(false);
+    
+	
+	
+	const {
+		showCategory,
+		setShowCategory,
+		showSorting,
+		setShowSorting,
+		category,
+		setCategory,
+		sorting,
+		setSorting,
+	} = useContext(ContexM);
+
+	console.log(category, " this is category", sorting);
+	
+	const allCategory = [
+		"All Products",
+		"Electronics",
+		"Groceries",
+		"Fashion",
+		"Services",
+	];
+	const sortingDate = [
+		"Default Sorting",
+		"By Name: A-Z",
+		"By Name: Z-A",
+		"Rating High to Low",
+		"Rating Low to High"
+	];
 	return (
 		<div>
 			<p>Sales period:</p>
@@ -25,51 +59,25 @@ const OrdersDetails = () => {
 				{/* sort by category and name or price  */}
 				<div className='flex justify-between items-center gap-5'>
 					{/* sort by category */}
-					<div
-						onClick={() => setShowCategory(!showCategory)}
-						className=' border py-1 px-3 bg-white rounded hover:border hover:border-blue-500 duration-500 cursor-pointer w-[180px] flex items-center justify-between relative'
-					>
-						<small>All Products</small>
-
-						<small>
-							<AiOutlineCaretDown
-								className={`${
-									showCategory && "rotate-180 "
-								} duration-300`}
-							/>
-						</small>
-
-						<div
-							className={`px-3  bg-white shadow absolute w-full left-0 top-[115%] overflow-hidden rounded duration-500 ${
-								!showCategory
-									? "max-h-0 opacity-0"
-									: "max-h-[200px] opacity-100 py-1"
-							}`}
-						>
-							<div className='py-[4px]  text-[10px] font-semibold '>
-								All Products
-							</div>
-							<div className='py-[4px]  text-[10px] font-semibold '>
-								Electronics
-							</div>
-							<div className='py-[4px]  text-[10px] font-semibold '>
-								Groceries
-							</div>
-							<div className='py-[4px]  text-[10px] font-semibold '>
-								Fashion
-							</div>
-							<div className='py-[4px]  text-[10px] font-semibold '>
-								Services
-							</div>
-						</div>
-					</div>
+					<SelectComponent
+						items={allCategory}
+						stateValue={showCategory}
+						setStateValue={setShowCategory}
+						anotehrStateSate={setShowSorting}
+						setValue={setCategory}
+						valueDisplay={category}
+					/>
 
 					{/* sort by name or price  */}
-					<div
-						onClick={() => setShowSorting(!showSorting)}
+					{/* <div
+						onClick={event => {
+							event.stopPropagation();
+							setShowSorting(!showSorting);
+							setShowCategory(false);
+						}}
 						className=' border py-1 px-3 bg-white rounded hover:border hover:border-blue-500 duration-500 cursor-pointer w-[180px] flex items-center justify-between relative'
 					>
-						<small>All Products</small>
+						<small>Default Sorting</small>
 
 						<small>
 							<AiOutlineCaretDown
@@ -102,7 +110,15 @@ const OrdersDetails = () => {
 								Ratting: Low to High
 							</div>
 						</div>
-					</div>
+					</div> */}
+					<SelectComponent
+						items={sortingDate}
+						stateValue={showSorting}
+						setStateValue={setShowSorting}
+						anotehrStateSate={setShowCategory}
+						setValue={setSorting}
+						valueDisplay={sorting}
+					/>
 				</div>
 			</div>
 
@@ -142,7 +158,7 @@ const OrdersDetails = () => {
 					</div>
 					{/* title  */}
 					<small>
-						<p className='font-semibold'>Orders Completed</p>
+						<p className='font-semibold'>Orders Confirmed</p>
 					</small>
 
 					<div>
@@ -163,7 +179,7 @@ const OrdersDetails = () => {
 					</div>
 					{/* title  */}
 					<small>
-						<p className='font-semibold'>Orders Completed</p>
+						<p className='font-semibold'>Orders Canceled</p>
 					</small>
 
 					<div>
@@ -171,11 +187,11 @@ const OrdersDetails = () => {
 					</div>
 				</div>
 
-				{/* order canceled  */}
+				{/* order refunded  */}
 				<div className='px-3 py-4 col-span-1  bg-white shadow-[0px_0px_10px_rgba(0,0,0,.2)] flex flex-col gap-2'>
 					<div className='flex items-center justify-between'>
-						<div className='w-[30px] h-[30px] rounded-sm bg-[#035ECF] flex items-center justify-center text-xl text-white'>
-							<IoCloudDoneSharp />
+						<div className='w-[30px] h-[30px] rounded-sm bg-[#515C6B] flex items-center justify-center text-xl text-white'>
+							<RiRefund2Line />
 						</div>
 
 						<div>
@@ -184,28 +200,7 @@ const OrdersDetails = () => {
 					</div>
 					{/* title  */}
 					<small>
-						<p className='font-semibold'>Orders Completed</p>
-					</small>
-
-					<div>
-						<p className='text-2xl font-bold leading-4'>2345</p>
-					</div>
-				</div>
-
-				{/* order canceled  */}
-				<div className='px-3 py-4 col-span-1  bg-white shadow-[0px_0px_10px_rgba(0,0,0,.2)] flex flex-col gap-2'>
-					<div className='flex items-center justify-between'>
-						<div className='w-[30px] h-[30px] rounded-sm bg-[#035ECF] flex items-center justify-center text-xl text-white'>
-							<IoCloudDoneSharp />
-						</div>
-
-						<div>
-							<HiOutlineDotsVertical className='cursor-pointer text-xl text-[#035ecf]' />
-						</div>
-					</div>
-					{/* title  */}
-					<small>
-						<p className='font-semibold'>Orders Completed</p>
+						<p className='font-semibold'>Orders Refunded</p>
 					</small>
 
 					<div>
