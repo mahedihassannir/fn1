@@ -99,6 +99,7 @@ const AuthProvider = ({ children }) => {
 
     //avengers 
     //add to cart function
+    // TODO add user email to the add cart product
     //Toma
     const addToCart = (singleProduct, quantity = 1) => {
         const addedProduct = {

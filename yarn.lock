@@ -5884,10 +5884,17 @@ supports-preserve-symlinks-flag@^1.0.0:
   resolved "https://registry.npmjs.org/supports-preserve-symlinks-flag/-/supports-preserve-symlinks-flag-1.0.0.tgz"
   integrity sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==
 
+<<<<<<< HEAD
 sweetalert2@^11.7.27:
   version "11.7.27"
   resolved "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.7.27.tgz"
   integrity sha512-QbRXGQn1sb7HEhzA/K2xtWIwQHh/qkSbb1w6jYcTql2xy17876lTREEt1D4X6Q0x2wHtfUjKJ+Cb8IVkRoq7DQ==
+=======
+sweetalert2@^11.7.26:
+  version "11.7.26"
+  resolved "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.7.26.tgz"
+  integrity sha512-mrkLPk54DkqZ8rtFpUsTAV+LaX6Bn0C5r7NTzn0VB6tScaEHCC5BBAQaBdZNd3qDJLPF0FT6/YHPDaEtL1x/Zw==
+>>>>>>> fef90f97810c5898414c1d70ae3156156418be5f
 
 swiper@^10.1.0:
   version "10.1.0"
