@@ -60,6 +60,7 @@ import UserHome from "../Dashboard/FantasticUserPanel/UserHome/UserHome";
 import UserOrder from "../Dashboard/FantasticUserPanel/UserOrder/UserOrder";
 import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgress";
 import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
+import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
 
 const router = createBrowserRouter([
 	{
@@ -301,7 +302,7 @@ const router = createBrowserRouter([
 
 
 	},
-	// this area for dashboard work
+// this area for dashboard work
 	{
 		path: "dashboard",
 		element:
