@@ -5,7 +5,7 @@ const UserOrder = () => {
             <div className="my-10 ">
                 <h1 className=" font-bold pb-5">Active Orders</h1>
                 <div className="grid gap-5">
-                    <div className=" text-gray-700 text-sm font-semibold p-5 border shadow grid grid-cols-2" >
+                    <div className=" text-gray-700 bg-white text-sm font-semibold p-5 shadow grid grid-cols-2" >
                         <div>
                             <p className="">Order Number #30030</p>
                             <h1>Total Price: 5000 Taka</h1>
@@ -14,10 +14,10 @@ const UserOrder = () => {
                             <p>Estimate Delivery Time: 22nd Aug 2023 - 30 Aug 2023</p>
                         </div>
                         <div className=" flex justify-end items-center">
-                            <button className=" border border-black shadow px-3 py-1 text-green-800 hover:bg-white rounded">View details</button  >
+                            <button className=" border border-black shadow px-3 py-1 text-green-800 hover:bg-gray-200 rounded">View details</button  >
                         </div>
                     </div>
-                    <div className=" text-gray-700 text-sm font-semibold p-5 border shadow grid grid-cols-2" >
+                    <div className=" text-gray-700  bg-white text-sm font-semibold p-5 shadow grid grid-cols-2" >
                         <div>
                             <p className="">Order Number #30031</p>
                             <h1>Total Price: 5000 Taka</h1>
@@ -26,14 +26,14 @@ const UserOrder = () => {
                             <p>Estimate Delivery Time: 22nd Aug 2023 - 30 Aug 2023</p>
                         </div>
                         <div className=" flex justify-end items-center">
-                            <button className=" border border-black shadow px-3 py-1 text-green-800 hover:bg-white rounded">View details</button  >
+                            <button className=" border border-black shadow px-3 py-1 text-green-800 hover:bg-gray-200 rounded">View details</button  >
                         </div>
                     </div>
                 </div>
                 
                 <h1 className=" font-bold py-5">Previous Orders</h1>
                 <div className="grid gap-5">
-                    <div className=" text-gray-700 text-sm font-semibold p-5 border shadow grid grid-cols-2" >
+                    <div className=" text-gray-700  bg-white text-sm font-semibold p-5 shadow grid grid-cols-2" >
                         <div>
                             <p className="">Order Number #30029</p>
                             <h1>Total Price: 5000 Taka</h1>
@@ -42,7 +42,7 @@ const UserOrder = () => {
                             <p>Delivery Time: 22nd Aug 2023</p>
                         </div>
                         <div className=" flex justify-end items-center">
-                            <button className=" border border-black shadow px-3 py-1 text-green-800 hover:bg-white rounded">View details</button  >
+                            <button className=" border border-black shadow px-3 py-1 text-green-800 hover:bg-gray-200 rounded">View details</button  >
                         </div>
                     </div>
                 </div>
