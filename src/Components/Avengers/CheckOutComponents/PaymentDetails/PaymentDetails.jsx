@@ -8,42 +8,63 @@
 import { MdOutlineLocalOffer } from "react-icons/md";
 import { BsChevronRight } from "react-icons/bs";
 import { TbCurrencyTaka } from "react-icons/tb";
+import { useState } from "react";
+
 //import { result } from "lodash";
 
-const PaymentDetails = ({singleProductData}) => {
+const PaymentDetails = ({ singleProductData }) => {
+	// for delivery info
+	const [deliveryInfo, setDeliveryInfo] = useState({
+		deliveryFee: 60,
+		deliveryDiscount: 30,
+	});
+
+	// calculate total taka
+	const totalTaka = singleProductData.reduce(
+		(vlaue, product) =>
+			product.quantity
+				? product?.price * product.quantity
+				: product?.price + vlaue,
+		0
+	);
+
+	// calculate final amount widn delivery charge
+	const [totalAmount, setTotalAmount] = useState(
+		totalTaka + (deliveryInfo?.deliveryFee - deliveryInfo?.deliveryDiscount)
+	);
+
+	// for sslcommerze payment
 	const onSubmit = () => {
 		const data = {
-			"currency": "BDT",
-			"Total_Payment": singleProductData?.price,
-			"productId": singleProductData?._id,
-			"productName": singleProductData?.name,
-			"category": singleProductData?.category,
-			"cus_name": "Toma",
-			"cus_id": 8,
-			"cus_email": "toma@com",
-			"cus_add1": "Mirpur"
-		}
+			currency: "BDT",
+			Total_Payment: totalAmount,
+			productId: singleProductData?._id,
+			productName: singleProductData?.name,
+			category: singleProductData?.category,
+			cus_name: "Toma",
+			cus_id: 8,
+			cus_email: "toma@com",
+			cus_add1: "Mirpur",
+		};
 		fetch("http://localhost:5000/order", {
 			method: "POST",
 			headers: { "content-type": "application/json" },
-			body: JSON.stringify(data)
+			body: JSON.stringify(data),
 		})
-		.then(res=>res.json())
-		.then(result=>{
-			console.log(result)
-			window.location.replace(result.url)
-		})
-
-	}
-
-
-
+			.then(res => res.json())
+			.then(result => {
+				console.log(result);
+				window.location.replace(result.url);
+			});
+	};
 
 	return (
 		<div>
 			<div className='text-xs font-semibold '>
 				<div className='pb-5 border-b'>
 					<p>Discount and Payment</p>
+
+					{/* apply promo code  */}
 					<div>
 						<div className='mt-3 flex justify-between items-center'>
 							<div className='flex items-center gap-1 '>
@@ -81,7 +102,7 @@ const PaymentDetails = ({singleProductData}) => {
 							<p className=''>Items Total</p>
 							<div className='flex items-center gap-1'>
 								<TbCurrencyTaka />
-								<span>{singleProductData?.price}</span>
+								<span>{totalTaka}</span>
 							</div>
 						</div>
 						{/* Delivery Fee */}
@@ -89,7 +110,7 @@ const PaymentDetails = ({singleProductData}) => {
 							<p>Delivery Fee</p>
 							<div className='flex items-center gap-1'>
 								<TbCurrencyTaka />
-								<span>688</span>
+								<span>{deliveryInfo?.deliveryFee}</span>
 							</div>
 						</div>
 						{/* Delivery Discount */}
@@ -97,7 +118,7 @@ const PaymentDetails = ({singleProductData}) => {
 							<p>Delivery Discount</p>
 							<div className='flex items-center gap-1'>
 								<TbCurrencyTaka />
-								<span>688</span>
+								<span>{deliveryInfo?.deliveryDiscount}</span>
 							</div>
 						</div>
 						{/*Total Payment */}
@@ -105,7 +126,7 @@ const PaymentDetails = ({singleProductData}) => {
 							<p>Total Payment</p>
 							<div className='flex items-center gap-1'>
 								<TbCurrencyTaka />
-								<span>{singleProductData?.price}</span>
+								<span>{totalAmount}</span>
 							</div>
 						</div>
 
@@ -118,7 +139,11 @@ const PaymentDetails = ({singleProductData}) => {
 				</div>
 
 				<div className='pt-5'>
-					<button onClick={onSubmit} className='py-3 w-full bg-[#F57224] hover:bg-[#DADADA] duration-300 hover:text-gray-500 text-white rounded'>
+					{/* payment btn  */}
+					<button
+						onClick={onSubmit}
+						className='py-3 w-full bg-[#F57224] hover:bg-[#DADADA] duration-300 hover:text-gray-500 text-white rounded'
+					>
 						Place Order
 					</button>
 				</div>

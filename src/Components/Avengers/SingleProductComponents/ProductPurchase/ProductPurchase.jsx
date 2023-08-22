@@ -2,28 +2,30 @@
  * Author: MG Rakib
  * description: ProductPurchase
  * date: 17aug,2023
+ *
+ * @format
  */
 
-import Rating from 'react-rating';
+import Rating from "react-rating";
 import { FaStar, FaRegStar, FaRegHeart } from "react-icons/fa";
 import { HiShare } from "react-icons/hi";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import takaIcon from '../../../../assets/taka.png'
-import takaIconGray from '../../../../assets/taka_gray.png'
-import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
-import { ContexM } from '../../../../Authentication/AuthProvider/AuthProvider';
+import takaIcon from "../../../../assets/taka.png";
+import takaIconGray from "../../../../assets/taka_gray.png";
+import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
+import { SyncLoader } from "react-spinners";
 
 const ProductPurchase = ({ singleProductData }) => {
-	
 	//default quantity value
-	const [quantity, setQuantity] = useState(1)
+	const [quantity, setQuantity] = useState(1);
 
-	//add to cart function import from auth 
-	const { addToCart } = useContext(ContexM)
+	//add to cart function import from auth
+	const { addToCart, loaddingForCart } = useContext(ContexM);
 
 	return (
-		<div>
+		<div className='relative'>
 			<div className='flex flex-col md:flex-row gap-10'>
 				{/* product Image  */}
 				<div className='w-full md:w-1/3 '>
@@ -196,7 +198,11 @@ const ProductPurchase = ({ singleProductData }) => {
 							<div className='flex gap-2'>
 								<button
 									onClick={() => setQuantity(quantity - 1)}
-									className={`w-[30px] h-[30px] bg-[#EFF0F5] font-bold flex items-center justify-center rounded-md ${quantity <= 1 ? 'bg-gray-300' : 'cursor-pointer'}`}
+									className={`w-[30px] h-[30px] bg-[#EFF0F5] font-bold flex items-center justify-center rounded-md ${
+										quantity <= 1
+											? "bg-gray-300"
+											: "cursor-pointer"
+									}`}
 									disabled={quantity <= 1}
 								>
 									-
@@ -204,7 +210,10 @@ const ProductPurchase = ({ singleProductData }) => {
 								<h1 className='w-[30px] h-[30px] border flex items-center justify-center rounded-md text-lg'>
 									{quantity}
 								</h1>
-								<div onClick={() => setQuantity(quantity + 1)} className=' w-[30px] h-[30px] bg-[#EFF0F5] cursor-pointer font-bold flex items-center justify-center rounded-md'>
+								<div
+									onClick={() => setQuantity(quantity + 1)}
+									className=' w-[30px] h-[30px] bg-[#EFF0F5] cursor-pointer font-bold flex items-center justify-center rounded-md'
+								>
 									+
 								</div>
 							</div>
@@ -219,13 +228,24 @@ const ProductPurchase = ({ singleProductData }) => {
 									Bye Now
 								</button>
 							</Link>
-							<button onClick={() => addToCart(singleProductData, quantity)} className='bg-[#F57224] py-3 flex-1 text-white text-xl font-semibold'>
+							<button
+								onClick={() =>
+									addToCart(singleProductData)
+								}
+								className='bg-[#F57224] py-3 flex-1 text-white text-xl font-semibold'
+							>
 								Add to Cart
 							</button>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			{loaddingForCart && (
+				<div className=' bg-white absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[90%] h-[80%] md:w-[50%] md:h-[40%] rounded-lg shadow-[0px_0px_40px_rgba(0,0,0,.2)] flex items-center justify-center'>
+					<SyncLoader color='#2ABBE8' />
+				</div>
+			)}
 		</div>
 	);
 };
