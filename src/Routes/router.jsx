@@ -390,7 +390,7 @@ const router = createBrowserRouter([
 			// user wishlist starts
 			{
 
-				path: "dashboard/userwhichlist",
+				path: "dashboard/userwishlist",
 				element: <UserWhichlist></UserWhichlist>
 
 

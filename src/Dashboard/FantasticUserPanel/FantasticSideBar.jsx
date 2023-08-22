@@ -30,29 +30,38 @@ const FantasticSideBar = () => {
 			<div className='text-left flex flex-col gap-1 mt-8 mx-3 font-normal'>
 				{/* nav items */}
 				{/* Home */}
-				<div className='flex items-center py-2 gap-4 hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg hover:text-green-600'>
+				<Link to="dashboard/userhome"><div className='flex items-center py-2 gap-4 hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg hover:text-green-600'>
 					<HiHome className='w-4 h-4'></HiHome>
 					<h4> Home</h4>
-				</div>
+				</div></Link>
 				{/* User Order */}
+				<Link to="dashboard/userorder">
 				<div className='flex items-center py-2 gap-4 hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg hover:text-green-600'>
 						<FaListUl className='w-4 h-4'></FaListUl>
 						<h4>My Order</h4>
 				</div>
+				</Link>
 				{/* Order progress */}
+				<Link to="dashboard/userprogress">
 				<div className='flex items-center py-2 gap-4 hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg hover:text-green-600'>
 						<FaBusinessTime className='w-4 h-4'></FaBusinessTime>
 						<h4>Order Progress</h4>
 				</div>
+				</Link>
 				{/* Payment History */}
+				<Link to="dashboard/userpaymenthistory">
 				<div className='flex items-center py-2 gap-4 hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg hover:text-green-600'>
 					<MdOutlinePayments className='w-4 h-4'></MdOutlinePayments>
 					<h4>Payment History</h4>
+					
 				</div>
+				</Link>
+				<Link to="dashboard/userwishlist">
 				<div className='flex items-center py-2 gap-4 hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg hover:text-green-600'>
 					<MdOutlinePayments className='w-4 h-4'></MdOutlinePayments>
 					<h4>Wish List</h4>
 				</div>
+				</Link>
 			</div>
 			
 			<button className='border-stone-300

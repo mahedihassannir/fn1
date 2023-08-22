@@ -1,6 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import useProducts from '../../Hooks/Fantastic/useProducts';
+import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 
 const Below = () => {
     {/*
@@ -41,16 +42,8 @@ const Below = () => {
             </Swiper>
             <div className="grid grid-cols-6 gap-5 my-10">
                 {
-                    below499?.map((x, index) =>
-                        <div key={index} className=" grid gap-5 p-5 hover:shadow">
-                            <img src={x.image} />
-                            <h1 className=" font-semibold">{x.name}</h1>
-                            <div>
-                                <p className=" font-bold">{x.price}</p>
-                                <p className=" text-sm line-through">100</p>
-                            </div>
-                            <button className=" text-green-700 font-bold uppercase rounded bg-gray-200 py-1 hover:bg-gray-100">Add To Cart</button>
-                        </div>)
+                    below499?.map(x =>
+                       <CardsOfProducts singleProduct={x}/>)
                 }
             </div>
         </div>
