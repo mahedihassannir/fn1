@@ -1,11 +1,13 @@
-//
+//AVENGERS
+//TOMA
+//Customer pages all section
 
 import Avengers from "../../../../../Components/Avengers/DashboardRelatedComp/CustomerComp/Avengers";
 
 const Customer = () => {
     return (
-        <div>
-            Customer file
+        <div className="px-12">
+           
             <Avengers></Avengers>
 
 
