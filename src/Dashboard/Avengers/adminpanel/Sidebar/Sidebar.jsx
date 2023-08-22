@@ -104,6 +104,7 @@ const Sidebar = () => {
 					</div>
 				</Link>
 				{/* Members */}
+				<Link to={'seller_profile'}>
 				<div
 					onClick={() => setActiveRoute("Members")}
 					className={`flex hover:bg-[#19D895] duration-700 items-center p-2  cursor-pointer  ${
@@ -113,8 +114,8 @@ const Sidebar = () => {
 					} gap-4`}
 				>
 					<HiMiniAdjustmentsHorizontal className='w-4 h-4'></HiMiniAdjustmentsHorizontal>
-					<h4>Members</h4>
-				</div>
+					<h4>Seller Profile</h4>
+				</div></Link>
 				{/* Investment */}
 				<div
 					onClick={() => setActiveRoute("Investment")}

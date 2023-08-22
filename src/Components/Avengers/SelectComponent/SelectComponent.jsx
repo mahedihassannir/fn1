@@ -15,7 +15,7 @@ const SelectComponent = ({ items, stateValue, setStateValue , ...rest}) => {
 				setStateValue(!stateValue);
 				rest.anotehrStateSate(false);
 			}}
-			className=' border py-1 px-3 bg-white rounded hover:border hover:border-blue-500 duration-500 cursor-pointer w-[180px] flex items-center justify-between relative'
+			className=' border py-1 px-3 bg-white rounded hover:border hover:border-blue-500 duration-500 cursor-pointer w-full  md:w-[180px] flex items-center justify-between relative'
 		>
 			<small>{rest.valueDisplay}</small>
 

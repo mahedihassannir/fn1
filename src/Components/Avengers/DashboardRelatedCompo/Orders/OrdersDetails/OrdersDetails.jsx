@@ -32,7 +32,7 @@ const OrdersDetails = () => {
 		setSorting,
 	} = useContext(ContexM);
 
-	console.log(category, " this is category", sorting);
+	
 	
 	const allCategory = [
 		"All Products",
@@ -53,12 +53,12 @@ const OrdersDetails = () => {
 			<p>Sales period:</p>
 
 			{/* sorting  */}
-			<div className='mt-1 flex justify-between items-center'>
+		<div className='mt-1 flex flex-col md:flex-row justify-between items-center'>
 				<div className='py-1 px-3 border bg-white rounded'>Date</div>
 
 				{/* sort by category and name or price  */}
-				<div className='flex justify-between items-center gap-5'>
-					{/* sort by category */}
+				<div className='flex flex-col md:flex-row justify-between items-center gap-5'>
+			{/* sort by category */}
 					<SelectComponent
 						items={allCategory}
 						stateValue={showCategory}
@@ -69,48 +69,6 @@ const OrdersDetails = () => {
 					/>
 
 					{/* sort by name or price  */}
-					{/* <div
-						onClick={event => {
-							event.stopPropagation();
-							setShowSorting(!showSorting);
-							setShowCategory(false);
-						}}
-						className=' border py-1 px-3 bg-white rounded hover:border hover:border-blue-500 duration-500 cursor-pointer w-[180px] flex items-center justify-between relative'
-					>
-						<small>Default Sorting</small>
-
-						<small>
-							<AiOutlineCaretDown
-								className={`${
-									showSorting && "rotate-180 "
-								} duration-300`}
-							/>
-						</small>
-
-						<div
-							className={`px-3  bg-white shadow absolute w-full left-0 top-[115%] overflow-hidden rounded duration-500 ${
-								!showSorting
-									? "max-h-0 opacity-0"
-									: "max-h-[200px] opacity-100  py-1"
-							}`}
-						>
-							<div className='py-[4px] text-[10px] font-semibold '>
-								Default Sorting
-							</div>
-							<div className='py-[4px]  text-[10px] font-semibold '>
-								By Name: A-Z
-							</div>
-							<div className='py-[4px]  text-[10px] font-semibold '>
-								By Name: Z-A
-							</div>
-							<div className='py-[4px]  text-[10px] font-semibold '>
-								Ratting: High to Low
-							</div>
-							<div className='py-[4px]  text-[10px] font-semibold '>
-								Ratting: Low to High
-							</div>
-						</div>
-					</div> */}
 					<SelectComponent
 						items={sortingDate}
 						stateValue={showSorting}
