@@ -18,11 +18,7 @@
     "react-icons": "^4.10.1",
     "react-rating": "^2.0.5",
     "react-router-dom": "^6.11.2",
-<<<<<<< HEAD
-    "recharts": "^2.7.3",
-=======
     "react-spinners": "^0.13.8",
->>>>>>> 1e20fdaf0c5181da7f596614ee52e7c7faa9ed4d
     "sweetalert2": "^11.7.26",
     "swiper": "^10.1.0"
   },
