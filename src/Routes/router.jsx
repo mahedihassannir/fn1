@@ -62,6 +62,12 @@ import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgr
 import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
 import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
 import UserCustomerSupport from "../Dashboard/FantasticUserPanel/UserCustomerSupport/UserCustomerSupport";
+import Customer from "../Components/Avengers/DashboardRelatedComp/CustomerComp/Customer/Customer";
+import SellerHome from "../Dashboard/CodeWorms/SellerHome";
+import AddItems from "../Dashboard/CodeWorms/AddItems";
+
+import Chat from "../Dashboard/DashboardCommonPage/Avengers/Chat/Chat";
+import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/SellerProfile";
 
 const router = createBrowserRouter([
 	{
@@ -77,248 +83,177 @@ const router = createBrowserRouter([
 				element: <Contact></Contact>,
 			},
 			{
-				// avengers 
+				// avengers
 				path: "products/:id",
 				element: <SingleProduct></SingleProduct>,
 			},
 			{
-				// avengers 
+				// avengers
 				path: "proceed_to_checkout",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
 			{
-				// avengers 
+				// avengers
 				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
 			{
 				// 	// avengers Toma PAYMENT SUCCESS ROUTE
 				path: "payment/success/:tranId",
-				element: <PaymentSuccess></PaymentSuccess>
+				element: <PaymentSuccess></PaymentSuccess>,
 			},
 			{
 				// avengers Toma PAYMENT Fail ROUTE
 				path: "payment/fail/:tranId",
-				element: <PaymentFailed></PaymentFailed>
+				element: <PaymentFailed></PaymentFailed>,
 			},
-
 
 			{
 				// Team Arrow
 				path: "login",
-				element: <Login></Login>
+				element: <Login></Login>,
 			},
 
 			{
-				// Team Arrow 
+				// Team Arrow
 				path: "register",
 				element: <Register></Register>,
 			},
 			// CodeWorms
 			{
-				path: 'drone',
-				element: <Drone></Drone>
+				path: "drone",
+				element: <Drone></Drone>,
 			},
 			{
-				path: 'mobile',
-				element: <Mobile></Mobile>
+				path: "mobile",
+				element: <Mobile></Mobile>,
 			},
 			{
-				path: 'iphone',
-				element: <Iphone></Iphone>
+				path: "iphone",
+				element: <Iphone></Iphone>,
 			},
 			{
-				path: 'computer',
-				element: <Computer></Computer>
+				path: "computer",
+				element: <Computer></Computer>,
 			},
 			{
-				path: 'wireless',
-				element: <Wireless></Wireless>
+				path: "wireless",
+				element: <Wireless></Wireless>,
 			},
 			{
-				path: 'charger',
-				element: <Charger></Charger>
+				path: "charger",
+				element: <Charger></Charger>,
 			},
 			{
-				path: 'cable',
-				element: <Cable></Cable>
+				path: "cable",
+				element: <Cable></Cable>,
 			},
 			{
-				path: 'electronics',
-				element: <Electronics></Electronics>
+				path: "electronics",
+				element: <Electronics></Electronics>,
 			},
 			{
-				path: 'wifi',
-				element: <Wifi></Wifi>
+				path: "wifi",
+				element: <Wifi></Wifi>,
 			},
 			{
-				path: 'headphones',
-				element: <HeadPhones></HeadPhones>
+				path: "headphones",
+				element: <HeadPhones></HeadPhones>,
 			},
 			{
-				path: 'toys',
-				element: <ElectricalToy></ElectricalToy>
+				path: "toys",
+				element: <ElectricalToy></ElectricalToy>,
 			},
 			{
-				path: 'tablet',
-				element: <Tablet></Tablet>
+				path: "tablet",
+				element: <Tablet></Tablet>,
 			},
 			{
-				path: 'keyboard',
-				element: <Keyboard></Keyboard>
+				path: "keyboard",
+				element: <Keyboard></Keyboard>,
 			},
 			{
-				path: 'mouse',
-				element: <Mouse></Mouse>
+				path: "mouse",
+				element: <Mouse></Mouse>,
 			},
 			{
-				path: 'laptop',
-				element: <Laptop></Laptop>
+				path: "laptop",
+				element: <Laptop></Laptop>,
 			},
 			{
-				path: 'socket',
-				element: <Socket></Socket>
+				path: "socket",
+				element: <Socket></Socket>,
 			},
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 			// starts
 			// Fantastic people work starts
 
 			{
-
 				path: "food",
-				element: <Food></Food>
-
+				element: <Food></Food>,
 			},
 			{
-
 				path: "fashion",
-				element: <Fashion></Fashion>
-
+				element: <Fashion></Fashion>,
 			},
 			{
-
 				path: "beauty",
-				element: <Beauty></Beauty>
-
+				element: <Beauty></Beauty>,
 			},
 			{
-
 				path: "homeacc",
-				element: <HomeAcc></HomeAcc>
-
+				element: <HomeAcc></HomeAcc>,
 			},
 			{
-
 				path: "below499",
-				element: <Below></Below>
-
+				element: <Below></Below>,
 			},
 			{
-
 				path: "kids",
-				element: <Kids></Kids>
-
+				element: <Kids></Kids>,
 			},
 
 			{
-
 				path: "lips",
-				element: <Lips></Lips>
-
+				element: <Lips></Lips>,
 			},
 			{
-
 				path: "face",
-				element: <Face></Face>
-
+				element: <Face></Face>,
 			},
 			{
-
 				path: "eyes",
-				element: <Eyes></Eyes>
-
+				element: <Eyes></Eyes>,
 			},
 			{
-
 				path: "nails",
-				element: <Nails></Nails>
-
+				element: <Nails></Nails>,
 			},
 			{
-
 				path: "mensCare",
-				element: <MensCare></MensCare>
-
+				element: <MensCare></MensCare>,
 			},
 
 			// Fantastic people work ends
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		],
-
-
 	},
-// this area for dashboard work
+	// this area for dashboard work
 	{
 		path: "dashboard",
-		element:
-			<DashBoardManage>
-			</DashBoardManage>,
+		element: <DashBoardManage></DashBoardManage>,
 		children: [
-
-
 			{
 				path: "analytics",
-				element: <Analytics></Analytics>
+				element: <Analytics></Analytics>,
 			},
 			{
 				path: "orders",
-				element: <Orders></Orders>
+				element: <Orders></Orders>,
+			},
+
+			{
+				path: "customer",
+				element: <Customer></Customer>
 			},
 
 
@@ -353,59 +288,57 @@ const router = createBrowserRouter([
 
 
 
+{
+				path: "orders",
+				element: <Orders></Orders>,
+			},
+			{
+				path: "seller_profile",
+				element: <SellerProfile></SellerProfile>,
+			},
+			{
+				path: "message",
+				element: <Chat></Chat>,
+			},
 
+			// ends
 
 			// this area for the user panel work
-
 
 			// fantastic people routes
 
 			{
-
 				path: "dashboard/userhome",
-				element: <UserHome></UserHome>
-
+				element: <UserHome></UserHome>,
 			},
 			// this is for user order
 			{
-
 				path: "dashboard/userorder",
-				element: <UserOrder></UserOrder>
-
+				element: <UserOrder></UserOrder>,
 			},
 
 			// this is for user order ends
 
-			// user progress 
+			// user progress
 			{
-
 				path: "dashboard/userprogress",
-				element: <UserProgress></UserProgress>
-
-
+				element: <UserProgress></UserProgress>,
 			},
 
-			// user progress ends 
-
+			// user progress ends
 
 			// user wishlist starts
 			{
-
 				path: "dashboard/userwishlist",
-				element: <UserWhichlist></UserWhichlist>
-
-
+				element: <UserWhichlist></UserWhichlist>,
 			},
 			// user wishlist ends
 
 			// user userpayment starts
 
 			{
-
 				path: "dashboard/userpaymenthistory",
-				element: <UserpaymentHistory></UserpaymentHistory>
-
-
+				element: <UserpaymentHistory></UserpaymentHistory>,
 			},
 			// user userpayment ends
 
@@ -417,7 +350,7 @@ const router = createBrowserRouter([
 				element: <UserCustomerSupport></UserCustomerSupport>
 
 				
-			}
+			},
 
 
 
@@ -425,208 +358,26 @@ const router = createBrowserRouter([
 
 
 			// this area for the user panel work ends
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-			//TODO 
+			// CodeWorms
+
+			{
+				path: "dashboard/sellerhome",
+				element: <SellerHome></SellerHome>,
+			},
+			{
+				path: "dashboard/additems",
+				element: <AddItems></AddItems>,
+			},
+
+			//TODO
 
 			// this side is for user
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 			// TODO
 
 			// this side is for seller
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		]
-
-
-	}
-
-
+		],
+	},
 ]);
 
 export default router
