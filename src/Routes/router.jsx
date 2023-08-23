@@ -61,13 +61,14 @@ import UserOrder from "../Dashboard/FantasticUserPanel/UserOrder/UserOrder";
 import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgress";
 import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
 import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
-import Customer from "../Components/Avengers/DashboardRelatedComp/CustomerComp/Customer/Customer";
+
 import SellerHome from "../Dashboard/CodeWorms/SellerHome";
 import AddItems from "../Dashboard/CodeWorms/AddItems";
 
 import Chat from "../Dashboard/DashboardCommonPage/Avengers/Chat/Chat";
 import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/SellerProfile";
 import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
+
 
 const router = createBrowserRouter([
 	{
@@ -251,38 +252,9 @@ const router = createBrowserRouter([
 				element: <Customer></Customer>,
 			},
 		
-			{
-				path: "customer",
-				element: <Customer></Customer>
-			},
 
 
 			// ends
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -300,6 +272,19 @@ const router = createBrowserRouter([
 				path: "message",
 				element: <Chat></Chat>,
 			},
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			// ends
 
