@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+// this import for the test avenger 
 // import Sidebar from "../Avengers/adminpanel/Sidebar/Sidebar";
 import './DashBoardManage.css'
 import { useContext, useState } from "react";
@@ -12,8 +13,7 @@ import { FaLeaf } from "react-icons/fa";
 
 const DashBoardManage = () => {
 	// state import from authcontext for show or not select
-	const { showCategory, setShowCategory, showSorting, setShowSorting } =
-		useContext(ContexM);
+	const { showCategory, setShowCategory, showSorting, setShowSorting } = useContext(ContexM);
 
 	const [values, setValue] = useState(true);
 
@@ -32,6 +32,7 @@ const DashBoardManage = () => {
 			>
 				<AdminSidebar />
 				{/* <FantasticSideBar/> */}
+
 				{/* <SellerDashboard></SellerDashboard> */}
 			</div>
 
