@@ -7,6 +7,8 @@
  * 
  */
 
+import { CountUp } from "use-count-up";
+
 import { useState } from "react";
 import { AiOutlineCaretDown } from "react-icons/ai";
 import { IoCloudDoneSharp } from "react-icons/io5";
@@ -103,8 +105,13 @@ const OrdersDetails = () => {
 							<p className='font-semibold'>Orders Completed</p>
 						</small>
 
-						<div>
-							<p className='text-2xl font-bold leading-4'>2345</p>
+						<div className='text-2xl font-bold leading-4'>
+							<CountUp
+								isCounting
+								start={1000}
+								end={2345}
+								duration={2}
+							/>
 						</div>
 					</div>
 
@@ -124,8 +131,13 @@ const OrdersDetails = () => {
 							<p className='font-semibold'>Orders Confirmed</p>
 						</small>
 
-						<div>
-							<p className='text-2xl font-bold leading-4'>2345</p>
+						<div className='text-2xl font-bold leading-4'>
+							<CountUp
+								isCounting
+								start={1000}
+								end={1457}
+								duration={2}
+							/>
 						</div>
 					</div>
 
@@ -145,8 +157,13 @@ const OrdersDetails = () => {
 							<p className='font-semibold'>Orders Canceled</p>
 						</small>
 
-						<div>
-							<p className='text-2xl font-bold leading-4'>2345</p>
+						<div className='text-2xl font-bold leading-4'>
+							<CountUp
+								isCounting
+								start={200}
+								end={302}
+								duration={2}
+							/>
 						</div>
 					</div>
 
@@ -166,8 +183,13 @@ const OrdersDetails = () => {
 							<p className='font-semibold'>Orders Refunded</p>
 						</small>
 
-						<div>
-							<p className='text-2xl font-bold leading-4'>2345</p>
+						<div className='text-2xl font-bold leading-4'>
+							<CountUp
+								isCounting
+								start={50}
+								end={98}
+								duration={2}
+							/>
 						</div>
 					</div>
 				</div>

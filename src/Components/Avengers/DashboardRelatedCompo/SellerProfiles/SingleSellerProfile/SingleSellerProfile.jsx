@@ -1,5 +1,6 @@
 /** @format */
-
+import "./SingleSellerProfile.css";
+import { CountUp } from "use-count-up";
 import { BiBarcodeReader } from "react-icons/bi";
 
 import sellerImge from "../../../../../assets/download.webp";
@@ -45,7 +46,6 @@ const SingleSellerProfile = () => {
 							src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4334.9025072286695!2d90.37971047621357!3d23.98857308390675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1692740160736!5m2!1sen!2sbd'
 							width='100%'
 							height='100%'
-							
 							allowfullscreen=''
 							loading='lazy'
 							referrerpolicy='no-referrer-when-downgrade'
@@ -66,7 +66,12 @@ const SingleSellerProfile = () => {
 							</div>
 							<div>
 								<h4 className='font-bold text-lg leading-4'>
-									224
+									<CountUp
+										isCounting
+										start={0}
+										end={214}
+										duration={2}
+									/>
 								</h4>
 								<p className='font-semibold text-xs text-gray-600'>
 									Orders
@@ -80,7 +85,13 @@ const SingleSellerProfile = () => {
 							</div>
 							<div>
 								<h4 className='font-bold text-lg leading-4'>
-									$<span>224</span>
+									$
+									<CountUp
+										isCounting
+										start={0}
+										end={214}
+										duration={2}
+									/>
 								</h4>
 								<p className='font-semibold text-xs text-gray-600'>
 									Orders
@@ -122,11 +133,25 @@ const SingleSellerProfile = () => {
 							<div className='text-[11px] font-bold flex justify-between text-gray-600 '>
 								<p>Electronics</p>
 								<p>
-									$<span>6.3</span>k
+									$
+									<span>
+										<CountUp
+											isCounting
+											start={0}
+											end={6.3}
+											duration={2}
+										/>
+									</span>
+									k
 								</p>
 							</div>
 							<div className='w-full h-[8px] bg-gray-200 rounded overflow-hidden'>
-								<div className='h-full w-[50%] bg-[#035ECF] rounded'></div>
+								<div
+									style={{
+										"--final-width": `${60}%`,
+									}}
+									className='h-full w-[50%] animation-width  bg-[#035ECF] rounded'
+								></div>
 							</div>
 						</div>
 						{/* Fashion */}
@@ -138,7 +163,12 @@ const SingleSellerProfile = () => {
 								</p>
 							</div>
 							<div className='w-full h-[8px] bg-gray-200 rounded overflow-hidden'>
-								<div className='h-full w-[20%] bg-[#FF5470] rounded'></div>
+								<div
+									style={{
+										"--final-width": `${20}%`,
+									}}
+									className='h-full w-[20%] bg-[#FF5470] rounded animation-width'
+								></div>
 							</div>
 						</div>
 						{/* Food & Drink */}
@@ -146,11 +176,23 @@ const SingleSellerProfile = () => {
 							<div className='text-[11px] font-bold flex justify-between text-gray-600 '>
 								<p>Food & Drink</p>
 								<p>
-									$<span>8.3</span>k
+									$
+									<span>
+										<CountUp
+											isCounting
+											start={0}
+											end={8.3}
+											duration={2}
+										/>
+									</span>
+									k
 								</p>
 							</div>
 							<div className='w-full h-[8px] bg-gray-200 rounded overflow-hidden'>
-								<div className='h-full w-[60%] bg-[#00193B] rounded'></div>
+								<div
+									style={{ "--final-width": `${80}%` }}
+									className='h-full  bg-[#00193B] rounded animation-width'
+								></div>
 							</div>
 						</div>
 						{/* Service */}
@@ -158,11 +200,23 @@ const SingleSellerProfile = () => {
 							<div className='text-[11px] font-bold flex justify-between text-gray-600 '>
 								<p>Service</p>
 								<p>
-									$<span>4.3</span>k
+									$
+									<span>
+										<CountUp
+											isCounting
+											start={0}
+											end={4.3}
+											duration={2}
+										/>
+									</span>
+									k
 								</p>
 							</div>
 							<div className='w-full h-[8px] bg-gray-200 rounded overflow-hidden'>
-								<div className='h-full w-[30%] bg-[#F8D518] rounded'></div>
+								<div
+									style={{ "--final-width": `${80}%` }}
+									className='h-full  bg-[#F8D518] rounded animation-width'
+								></div>
 							</div>
 						</div>
 						{/* Service */}
@@ -170,11 +224,23 @@ const SingleSellerProfile = () => {
 							<div className='text-[11px] font-bold flex justify-between text-gray-600 '>
 								<p>Service</p>
 								<p>
-									$<span>4.3</span>k
+									$
+									<span>
+										<CountUp
+											isCounting
+											start={0}
+											end={4.3}
+											duration={2}
+										/>
+									</span>
+									k
 								</p>
 							</div>
 							<div className='w-full h-[8px] bg-gray-200 rounded overflow-hidden'>
-								<div className='h-full w-[30%] bg-[#F8D518] rounded'></div>
+								<div
+									style={{ "--final-width": `${80}%` }}
+									className='h-full  bg-[#F8D518] rounded animation-width'
+								></div>
 							</div>
 						</div>
 					</div>
