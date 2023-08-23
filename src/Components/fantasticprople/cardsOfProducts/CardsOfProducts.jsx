@@ -6,7 +6,7 @@ const CardsOfProducts = ({singleProduct}) => {
     return <div key={singleProduct._id}>
     <div className='hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg '>
        <div className='relative'>
-      <Link to={`/products/${singleProduct._id}`}> <img className='rounded-t-lg' src={singleProduct.image} alt="" /></Link>
+       <img className='rounded-t-lg' src={singleProduct.image} alt="" />
         <p className='absolute top-0 rounded-t-lg right-0 bg-orange-500  rounded-l-full text-white font-bold px-1'>-10%</p>
         {singleProduct.sold && <p className='absolute top-0  left-2 bg-orange-100 opacity-100 rounded-full text-orange-500 font-semibold px-1'>0 Sold</p>}
         {
@@ -20,7 +20,9 @@ const CardsOfProducts = ({singleProduct}) => {
        <p className='font-bold mt-8 text-orange-500'><span className='font-extrabold'>৳</span>{singleProduct.price}</p>
        </div>
        <div className='text-center'>
+       <Link to={`/products/${singleProduct._id}`}>
        <button className=" mt-4 bg-orange-500 w-full py-1 rounded  text-white font-extrabold">Shop Now</button>
+       </Link>
        </div>
     </div>
 </div>

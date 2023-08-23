@@ -61,6 +61,7 @@ import UserOrder from "../Dashboard/FantasticUserPanel/UserOrder/UserOrder";
 import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgress";
 import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
 import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
+import UserCustomerSupport from "../Dashboard/FantasticUserPanel/UserCustomerSupport/UserCustomerSupport";
 
 const router = createBrowserRouter([
 	{
@@ -408,6 +409,15 @@ const router = createBrowserRouter([
 			},
 			// user userpayment ends
 
+			// user Customer Support
+
+			{
+
+				path: "dashboard/customersupport",
+				element: <UserCustomerSupport></UserCustomerSupport>
+
+				
+			}
 
 
 
