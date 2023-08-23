@@ -20,7 +20,8 @@
     "react-router-dom": "^6.11.2",
     "react-spinners": "^0.13.8",
     "sweetalert2": "^11.7.26",
-    "swiper": "^10.1.0"
+    "swiper": "^10.1.0",
+    "use-count-up": "^3.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",

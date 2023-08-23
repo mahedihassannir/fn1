@@ -11,9 +11,6 @@ const ConversionRate = () => {
             <ConversionRateLeftSide></ConversionRateLeftSide>
             <ConversionRateRightSide></ConversionRateRightSide>
 
-
-
-
         </div>
     );
 };
