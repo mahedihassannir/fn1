@@ -184,7 +184,7 @@ const ChatSidBar = () => {
 					{/* image and active status light  */}
 					<div className='w-[25px] h-[25px] rounded-full relative '>
 						<img
-							src='https://i.ibb.co/YQ82xGG/337519328-163802459882027-941029112104608582-n.jpg'
+							src='https://i.ibb.co/2sH5pZh/282599.webp'
 							alt=''
 							className='w-[25px] h-[25px] rounded-full'
 						/>
@@ -192,7 +192,7 @@ const ChatSidBar = () => {
 					</div>
 					{/* name and message  */}
 					<div>
-						<p className='leading-3'>Aniqa Chowdhury</p>
+						<p className='leading-3'>Nabila Niar Suma</p>
 						<p className='text-gray-500 text-[10px]'>
 							History, will hurt you
 						</p>
