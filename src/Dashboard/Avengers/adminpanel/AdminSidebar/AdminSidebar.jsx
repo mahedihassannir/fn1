@@ -4,6 +4,7 @@ import { HiArchiveBoxXMark, HiMiniAdjustmentsHorizontal, HiMiniCalculator, HiMin
 import { HiAcademicCap, HiChartBar, HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
 import AuthorOfDashboard from '../../../../Components/Avengers/DashboardRelatedCompo/SidBarCompo/AuthorOfDashboard/AuthorOfDashboard';
 import { useState } from 'react';
+import { BsChatRightDotsFill } from 'react-icons/bs';
 
 
 
@@ -11,7 +12,7 @@ const isAdmin = true
 // const user = true
 // const seller = true
 
-const Sidebar = () => {
+const AdminSidebar = () => {
 	const [activeRoute, setActiveRoute] = useState("Home")
     return (
 		<div className=' text-white px-5 py-8'>
@@ -104,30 +105,33 @@ const Sidebar = () => {
 					</div>
 				</Link>
 				{/* Members */}
-				<Link to={'seller_profile'}>
-				<div
-					onClick={() => setActiveRoute("Members")}
-					className={`flex hover:bg-[#19D895] duration-700 items-center p-2  cursor-pointer  ${
-						activeRoute === "Members"
-							? "bg-[#19D895] text-[#0A1727]"
-							: ""
-					} gap-4`}
-				>
-					<HiMiniAdjustmentsHorizontal className='w-4 h-4'></HiMiniAdjustmentsHorizontal>
-					<h4>Seller Profile</h4>
-				</div></Link>
-				{/* Investment */}
-				<div
-					onClick={() => setActiveRoute("Investment")}
-					className={`flex hover:bg-[#19D895] duration-700 items-center p-2  cursor-pointer  ${
-						activeRoute === "Investment"
-							? "bg-[#19D895] text-[#0A1727]"
-							: ""
-					} gap-4`}
-				>
-					<HiMiniShoppingCart className='w-4 h-4'></HiMiniShoppingCart>
-					<h4>Investment</h4>
-				</div>
+				<Link to={"seller_profile"}>
+					<div
+						onClick={() => setActiveRoute("Members")}
+						className={`flex hover:bg-[#19D895] duration-700 items-center p-2  cursor-pointer  ${
+							activeRoute === "Members"
+								? "bg-[#19D895] text-[#0A1727]"
+								: ""
+						} gap-4`}
+					>
+						<HiMiniAdjustmentsHorizontal className='w-4 h-4'></HiMiniAdjustmentsHorizontal>
+						<h4>Seller Profile</h4>
+					</div>
+				</Link>
+				{/* Chat */}
+				<Link to={'message'}>
+					<div
+						onClick={() => setActiveRoute("Investment")}
+						className={`flex hover:bg-[#19D895] duration-700 items-center p-2  cursor-pointer  ${
+							activeRoute === "Investment"
+								? "bg-[#19D895] text-[#0A1727]"
+								: ""
+						} gap-4`}
+					>
+						<BsChatRightDotsFill className='w-4 h-4'></BsChatRightDotsFill>
+						<h4>Chat</h4>
+					</div>
+				</Link>
 				{/* Analytics */}
 				<div
 					onClick={() => setActiveRoute("Analytics")}
@@ -188,4 +192,4 @@ const Sidebar = () => {
 	);
 };
 
-export default Sidebar;
+export default AdminSidebar;

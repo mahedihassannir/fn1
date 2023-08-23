@@ -24,13 +24,15 @@ const Avengers = () => {
 					<p>Sales period:</p>
 
 					{/* sorting  */}
-					<div className='mt-1 flex flex-col md:flex-row justify-between items-center'>
-						<div className='py-1 px-3 border bg-white rounded'>
-							Date
+					<div className='mt-1 flex flex-col md:flex-row justify-between items-center gap-2 '>
+						<div className='  w-full md:flex-1  '>
+							<div className='py-1 px-3 rounded border  w-full  md:w-[180px] bg-white'>
+								Date Picker
+							</div>
 						</div>
 
 						{/* sort by category and name or price  */}
-						<div className='flex flex-col md:flex-row justify-between items-center gap-5'>
+						<div className='flex flex-col md:flex-row justify-end items-center gap-5 w-full md:flex-1 '>
 							{/* sort by category */}
 							<SelectComponent
 								items={sellerCategoryData}
@@ -43,7 +45,8 @@ const Avengers = () => {
 					</div>
 				</div>
 
-				<div className='mt-4 flex flex-col gap-4'>
+				<div className='mt-4 flex flex-col gap-5'>
+					<SingleSellerProfile />
 					<SingleSellerProfile />
 					<SingleSellerProfile />
 				</div>

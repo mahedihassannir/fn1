@@ -9,9 +9,9 @@ import Rating from "react-rating";
 const SingleSellerProfile = () => {
 	return (
 		<div className='px-3 py-4 bg-white'>
-			<div className='flex gap-3'>
+			<div className='flex flex-col md:flex-row gap-3'>
 				{/*seller image  */}
-				<div className='w-[15%]'>
+				<div className='md:w-[15%]'>
 					<div
 						className='w-[full] h-[100px] flex items-center justify-center
                      border'
@@ -27,7 +27,7 @@ const SingleSellerProfile = () => {
 					</button>
 				</div>
 				{/*seller Details  */}
-				<div className='w-[15%]'>
+				<div className='md:w-[15%]'>
 					<h4 className='font-bold text-xl leading-3 mb-3'>
 						Data Foundry
 					</h4>
@@ -39,8 +39,8 @@ const SingleSellerProfile = () => {
 					</div>
 				</div>
 				{/*seller statistics  */}
-				<div className='w-[15%]'>
-					<div className='w-[100%] h-[140px] bg-red-400'>
+				<div className='md:w-[15%]'>
+					<div className='md:w-[100%] h-[140px] '>
 						<iframe
 							src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4334.9025072286695!2d90.37971047621357!3d23.98857308390675!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1692740160736!5m2!1sen!2sbd'
 							width='100%'
@@ -53,7 +53,7 @@ const SingleSellerProfile = () => {
 					</div>
 				</div>
 				{/*seller statistics  */}
-				<div className='w-[15%]'>
+				<div className='md:w-[15%]'>
 					<div>
 						<h4 className='font-bold text-base leading-3'>
 							Statistics:

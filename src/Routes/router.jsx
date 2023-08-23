@@ -62,6 +62,7 @@ import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgr
 import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
 import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
 import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/SellerProfile";
+import Chat from "../Dashboard/DashboardCommonPage/Avengers/Chat/Chat";
 
 const router = createBrowserRouter([
 	{
@@ -247,6 +248,10 @@ const router = createBrowserRouter([
 			{
 				path: "seller_profile",
 				element: <SellerProfile></SellerProfile>,
+			},
+			{
+				path: "message",
+				element: <Chat></Chat>,
 			},
 
 			// ends
