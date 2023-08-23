@@ -118,7 +118,7 @@ const AuthProvider = ({ children }) => {
 		setTimeout(function () {
 			setLoaddingForCart(false);
 			setTotalCart(totalCart + 1);
-		}, 1000);
+		}, 200);
 		// to set reale time cart
 	};
 
@@ -144,6 +144,11 @@ const AuthProvider = ({ children }) => {
 	const [category, setCategory] = useState("All Products");
 	const [sorting, setSorting] = useState("Default Sorting");
 
+	// state for show seller category
+	
+	const [sellerCategory, setSellerCategory] = useState("All Products");
+
+
 	// all values to work with contex
 	const userInfos = {
 		user,
@@ -167,6 +172,8 @@ const AuthProvider = ({ children }) => {
 		setCategory,
 		sorting,
 		setSorting,
+		sellerCategory,
+		setSellerCategory,
 	};
 
 	return <ContexM.Provider value={userInfos}>{children}</ContexM.Provider>;

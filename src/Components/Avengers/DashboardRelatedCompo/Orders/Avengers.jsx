@@ -11,7 +11,9 @@ const Avengers = () => {
 
 			<div className='my-4'>
 				{/* orders OrdersDetails */}
-				<OrdersDetails />
+				<div className='mt-4  rounded overflow-x-auto '>
+					<OrdersDetails />
+				</div>
 
 				{/* Order table  */}
 				<div className='mt-4 bg-white rounded px-3 overflow-x-auto'>
