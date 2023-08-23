@@ -55,21 +55,17 @@ import Mouse from "../Components/CodeWorms/LargeCategroy/Mouse";
 import Laptop from "../Components/CodeWorms/LargeCategroy/Laptop";
 import Socket from "../Components/CodeWorms/LargeCategroy/Socket";
 import Analytics from "../Dashboard/Avengers/adminpanel/Pages/Analytics";
-// <<<<<<< HEAD
-import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
-// =======
 import Orders from "../Dashboard/Avengers/adminpanel/Pages/Orders/Orders";
 import UserHome from "../Dashboard/FantasticUserPanel/UserHome/UserHome";
 import UserOrder from "../Dashboard/FantasticUserPanel/UserOrder/UserOrder";
 import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgress";
 import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
 import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
-// <<<<<<< HEAD
-import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/SellerProfile";
+import SellerHome from "../Dashboard/CodeWorms/SellerHome";
+import AddItems from "../Dashboard/CodeWorms/AddItems";
+
 import Chat from "../Dashboard/DashboardCommonPage/Avengers/Chat/Chat";
-// =======
-// >>>>>>> 1e20fdaf0c5181da7f596614ee52e7c7faa9ed4d
-// >>>>>>> 88623547c05d90e0d964d77e663047e96420e8ec
+import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/SellerProfile";
 
 const router = createBrowserRouter([
 	{
@@ -249,9 +245,8 @@ const router = createBrowserRouter([
 				element: <Analytics></Analytics>,
 			},
 			{
-
-				path: "customer",
-				element: <Customer></Customer>
+				path: "orders",
+				element: <Orders></Orders>,
 			},
 
 			{
@@ -268,13 +263,6 @@ const router = createBrowserRouter([
 			},
 
 			// ends
-// >>>>>>> 1e20fdaf0c5181da7f596614ee52e7c7faa9ed4d
-
-
-
-
-
-
 
 			// this area for the user panel work
 
@@ -316,6 +304,16 @@ const router = createBrowserRouter([
 			// user userpayment ends
 
 			// this area for the user panel work ends
+			// CodeWorms
+
+			{
+				path: "dashboard/sellerhome",
+				element: <SellerHome></SellerHome>,
+			},
+			{
+				path: "dashboard/additems",
+				element: <AddItems></AddItems>,
+			},
 
 			//TODO
 
