@@ -70,7 +70,7 @@ const Beauty = () => {
             {/* display Beauty products */}
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 lg:mx-20 my-10'>
                 {
-                    beautyProducts.map(beauty => <CardsOfProducts singleProduct={beauty}/>)
+                    beautyProducts.map(beauty => <CardsOfPzroducts singleProduct={beauty}/>)
                 }
             </div>
 
