@@ -66,6 +66,7 @@ import AddItems from "../Dashboard/CodeWorms/AddItems";
 
 import Chat from "../Dashboard/DashboardCommonPage/Avengers/Chat/Chat";
 import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/SellerProfile";
+import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
 
 const router = createBrowserRouter([
 	{
@@ -245,10 +246,10 @@ const router = createBrowserRouter([
 				element: <Analytics></Analytics>,
 			},
 			{
-				path: "orders",
-				element: <Orders></Orders>,
+				path: "customer",
+				element: <Customer></Customer>,
 			},
-
+		
 			{
 				path: "orders",
 				element: <Orders></Orders>,
