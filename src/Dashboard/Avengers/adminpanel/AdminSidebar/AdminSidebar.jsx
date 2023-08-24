@@ -26,9 +26,11 @@ const AdminSidebar = () => {
 			<div className='text-center'>
 				<h3 className='mt-3 font-semibold'>Toma Akter Hashi</h3>
 				<h4>toma@gmail.com</h4>
-				<button className='bg-[#19D895] w-[90%] mt-4 font-normal px-12 py-2 rounded-sm'>
-					Upgrade
-				</button>
+				<Link to='/'>
+					<button className='bg-[#19D895] w-[90%] mt-4 font-normal px-12 py-2 rounded-sm'>
+						Upgrade
+					</button>
+				</Link>
 			</div>
 			<div className='text-left flex flex-col gap-1 mt-8 mx-3 font-normal'>
 				{/* nav items */}
@@ -66,30 +68,7 @@ const AdminSidebar = () => {
 						<small>45</small>
 					</div>
 				</div>
-				{/* Sales */}
-				<div
-					onClick={() => setActiveRoute("Sales")}
-					className={`flex hover:bg-[#19D895] duration-700 justify-between p-2 relative cursor-pointer  ${
-						activeRoute === "Sales"
-							? "bg-[#19D895] text-[#0A1727]"
-							: ""
-					} gap-4`}
-				>
-					<div className='flex items-center gap-4 '>
-						<HiUsers className='w-4 h-4'></HiUsers>
-						<h4>Sales</h4>
-					</div>
 
-					<div
-						className={`flex hover:bg-[#19D895] duration-700 items-center ${
-							activeRoute === "Sales"
-								? "bg-[#0A1727] text-white"
-								: "bg-[#19D895] text-[#0A1727]"
-						} justify-center py-2 px-3  cursor-pointer w-[20px] h-[20px] mt-3 rounded-lg absolute -top-[2px] right-2`}
-					>
-						<small>45</small>
-					</div>
-				</div>
 				{/* Orders */}
 				<Link to={"orders"}>
 					<div
@@ -104,6 +83,34 @@ const AdminSidebar = () => {
 						<h4>Orders</h4>
 					</div>
 				</Link>
+
+				{/* Sales */}
+				<Link to={"seller_request"}>
+					<div
+						onClick={() => setActiveRoute("Sales")}
+						className={`flex hover:bg-[#19D895] duration-700 justify-between p-2 relative cursor-pointer  ${
+							activeRoute === "Sales"
+								? "bg-[#19D895] text-[#0A1727]"
+								: ""
+						} gap-4`}
+					>
+						<div className='flex items-center gap-4 '>
+							<HiUsers className='w-4 h-4'></HiUsers>
+							<h4>Seller Request</h4>
+						</div>
+
+						<div
+							className={`flex hover:bg-[#19D895] duration-700 items-center ${
+								activeRoute === "Sales"
+									? "bg-[#0A1727] text-white"
+									: "bg-[#19D895] text-[#0A1727]"
+							} justify-center py-2 px-3  cursor-pointer w-[20px] h-[20px] mt-3 rounded-lg absolute -top-[2px] right-2`}
+						>
+							<small>0</small>
+						</div>
+					</div>
+				</Link>
+
 				{/* Members */}
 				<Link to={"seller_profile"}>
 					<div
@@ -119,7 +126,7 @@ const AdminSidebar = () => {
 					</div>
 				</Link>
 				{/* Chat */}
-				<Link to={'message'}>
+				<Link to={"message"}>
 					<div
 						onClick={() => setActiveRoute("Investment")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center p-2  cursor-pointer  ${
@@ -132,18 +139,21 @@ const AdminSidebar = () => {
 						<h4>Chat</h4>
 					</div>
 				</Link>
-				{/* Analytics */}
-				<div
-					onClick={() => setActiveRoute("Analytics")}
-					className={`flex hover:bg-[#19D895] duration-700 items-center p-2  cursor-pointer  ${
-						activeRoute === "Analytics"
-							? "bg-[#19D895] text-[#0A1727]"
-							: ""
-					} gap-4`}
-				>
-					<HiMiniCalculator className='w-4 h-4'></HiMiniCalculator>
-					<h4>Analytics</h4>
-				</div>
+				{/* customer */}
+				<Link to={"customer"}>
+					<div
+						onClick={() => setActiveRoute("Analytics")}
+						className={`flex hover:bg-[#19D895] duration-700 items-center p-2  cursor-pointer  ${
+							activeRoute === "Analytics"
+								? "bg-[#19D895] text-[#0A1727]"
+								: ""
+						} gap-4`}
+					>
+						<HiMiniCalculator className='w-4 h-4'></HiMiniCalculator>
+						<h4>Customer</h4>
+					</div>
+				</Link>
+
 				{/* Reporting */}
 				<div
 					onClick={() => setActiveRoute("Reporting")}
