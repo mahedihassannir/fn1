@@ -2,7 +2,9 @@
 //TOMA
 //Customer pages all section
 
-import Avengers from "../../../../../Components/Avengers/DashboardRelatedComp/CustomerComp/Avengers";
+import Avengers from "../../../../../Components/Avengers/DashboardRelatedCompo/Customers/Avengers";
+
+
 
 const Customer = () => {
     return (

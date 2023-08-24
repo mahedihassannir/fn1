@@ -61,12 +61,17 @@ import UserOrder from "../Dashboard/FantasticUserPanel/UserOrder/UserOrder";
 import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgress";
 import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
 import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
-import Customer from "../Components/Avengers/DashboardRelatedComp/CustomerComp/Customer/Customer";
+import UserCustomerSupport from "../Dashboard/FantasticUserPanel/UserCustomerSupport/UserCustomerSupport";
+
 import SellerHome from "../Dashboard/CodeWorms/SellerHome";
 import AddItems from "../Dashboard/CodeWorms/AddItems";
 
 import Chat from "../Dashboard/DashboardCommonPage/Avengers/Chat/Chat";
 import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/SellerProfile";
+import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
+import SellerRequest from "../Dashboard/Avengers/adminpanel/Pages/SellerRequest/SellerRequest";
+import SellerRegister from "../Pages/SellerRegister/SellerRegister";
+
 
 const router = createBrowserRouter([
 	{
@@ -105,6 +110,11 @@ const router = createBrowserRouter([
 				// avengers Toma PAYMENT Fail ROUTE
 				path: "payment/fail/:tranId",
 				element: <PaymentFailed></PaymentFailed>,
+			},
+			{
+				// avengers Toma PAYMENT Fail ROUTE
+				path: "seller_register",
+				element: <SellerRegister></SellerRegister>,
 			},
 
 			{
@@ -242,60 +252,35 @@ const router = createBrowserRouter([
 		element: <DashBoardManage></DashBoardManage>,
 		children: [
 			{
+				// AVENGERS TOMU
 				path: "analytics",
 				element: <Analytics></Analytics>,
 			},
 			{
-				path: "orders",
-				element: <Orders></Orders>,
-			},
-
-			{
+				// AVENGERS TOMU
 				path: "customer",
-				element: <Customer></Customer>
+				element: <Customer></Customer>,
 			},
-
 
 			// ends
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{
+			{
+				// AVENGERS MGR
 				path: "orders",
 				element: <Orders></Orders>,
 			},
 			{
+				// AVENGERS MGR
 				path: "seller_profile",
 				element: <SellerProfile></SellerProfile>,
 			},
 			{
+				// AVENGERS MGR
+				path: "seller_request",
+				element: <SellerRequest></SellerRequest>,
+			},
+			{
+				// AVENGERS MGR
 				path: "message",
 				element: <Chat></Chat>,
 			},
@@ -340,6 +325,21 @@ const router = createBrowserRouter([
 				element: <UserpaymentHistory></UserpaymentHistory>,
 			},
 			// user userpayment ends
+
+			// user Customer Support
+
+			{
+
+				path: "dashboard/customersupport",
+				element: <UserCustomerSupport></UserCustomerSupport>
+
+				
+			},
+
+
+
+
+
 
 			// this area for the user panel work ends
 			// CodeWorms

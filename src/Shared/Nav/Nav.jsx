@@ -145,38 +145,40 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 	const topNavItems = (
 		<>
-			<Link className="hover:underline hover:text-orange-600 duration-300">
+			<Link className='hover:underline hover:text-orange-600 duration-300'>
 				<li>Home</li>
 			</Link>
 
-			<Link className="hover:underline hover:text-orange-600 duration-300">
+			<Link className='hover:underline hover:text-orange-600 duration-300'>
 				<li>Home</li>
 			</Link>
 
-			<Link className="hover:underline hover:text-orange-600 duration-300">
+			<Link className='hover:underline hover:text-orange-600 duration-300'>
 				<li>Home</li>
 			</Link>
 
-			<Link className="hover:underline hover:text-orange-600 duration-300">
+			<Link className='hover:underline hover:text-orange-600 duration-300'>
 				<li>Home</li>
 			</Link>
 
-			<Link className="hover:underline hover:text-orange-600 duration-300">
+			<Link className='hover:underline hover:text-orange-600 duration-300'>
 				<li>TRACK MY ORDER</li>
 			</Link>
 
-			<Link className="hover:underline text-orange-800 duration-300">
+			<Link className='hover:underline text-orange-800 duration-300'>
 				<li>SELL ON E-COM</li>
 			</Link>
 
-			<Link className="hover:underline hover:text-orange-600 duration-300">
-				<li className="uppercase">Register as a Seller</li>
+			<Link
+				to='seller_register'
+				className='hover:underline hover:text-orange-600 duration-300'
+			>
+				<li className='uppercase'>Register as a Seller</li>
 			</Link>
 
-			<Link className="hover:underline hover:text-orange-600 duration-300">
-				<li className="uppercase">affiliate Program </li>
+			<Link className='hover:underline hover:text-orange-600 duration-300'>
+				<li className='uppercase'>affiliate Program </li>
 			</Link>
-
 		</>
 	);
 
