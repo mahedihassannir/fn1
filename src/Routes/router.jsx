@@ -63,6 +63,7 @@ import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhi
 import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
 import SellerHome from "../Dashboard/CodeWorms/SellerHome";
 import AddItems from "../Dashboard/CodeWorms/AddItems";
+import ManageProduct from "../Dashboard/CodeWorms/ManageProduct";
 
 const router = createBrowserRouter([
 	{
@@ -417,6 +418,7 @@ const router = createBrowserRouter([
 
 
 			// this area for the user panel work ends
+			
 			// CodeWorms
 			
 				{
@@ -426,6 +428,10 @@ const router = createBrowserRouter([
 			{
 				path: "dashboard/additems",
 				element: <AddItems></AddItems>
+			},
+			{
+				path: "dashboard/manageproduct",
+				element: <ManageProduct></ManageProduct>
 			},
 
 
