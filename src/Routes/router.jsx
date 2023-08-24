@@ -61,6 +61,7 @@ import UserOrder from "../Dashboard/FantasticUserPanel/UserOrder/UserOrder";
 import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgress";
 import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
 import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
+import UserCustomerSupport from "../Dashboard/FantasticUserPanel/UserCustomerSupport/UserCustomerSupport";
 import Customer from "../Components/Avengers/DashboardRelatedComp/CustomerComp/Customer/Customer";
 import SellerHome from "../Dashboard/CodeWorms/SellerHome";
 import AddItems from "../Dashboard/CodeWorms/AddItems";
@@ -340,6 +341,21 @@ const router = createBrowserRouter([
 				element: <UserpaymentHistory></UserpaymentHistory>,
 			},
 			// user userpayment ends
+
+			// user Customer Support
+
+			{
+
+				path: "dashboard/customersupport",
+				element: <UserCustomerSupport></UserCustomerSupport>
+
+				
+			},
+
+
+
+
+
 
 			// this area for the user panel work ends
 			// CodeWorms
