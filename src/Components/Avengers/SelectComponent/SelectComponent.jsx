@@ -1,7 +1,5 @@
-import { useContext } from "react";
+
 import { AiOutlineCaretDown } from "react-icons/ai";
-import { ContexM } from "../../../Authentication/AuthProvider/AuthProvider";
-import { useState } from "react";
 
 
 const SelectComponent = ({ items, stateValue, setStateValue , ...rest}) => {
