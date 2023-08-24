@@ -145,8 +145,10 @@ const AuthProvider = ({ children }) => {
 	const [sorting, setSorting] = useState("Default Sorting");
 
 	// state for show seller category
-	
 	const [sellerCategory, setSellerCategory] = useState("All Products");
+
+	// anything is open or not 
+	const [modalIsOpen, setModalIsOpen] = useState(false)
 
 
 	// all values to work with contex
@@ -174,6 +176,8 @@ const AuthProvider = ({ children }) => {
 		setSorting,
 		sellerCategory,
 		setSellerCategory,
+		modalIsOpen,
+		setModalIsOpen,
 	};
 
 	return <ContexM.Provider value={userInfos}>{children}</ContexM.Provider>;

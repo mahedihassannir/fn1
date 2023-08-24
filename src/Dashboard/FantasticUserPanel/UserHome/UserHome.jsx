@@ -1,4 +1,4 @@
-import video1 from '../../../assets/videos/leaves_-_74233 (1080p).mp4'
+
 import './UserHome.css'
 import { BsArrowRightShort, BsChatDots } from 'react-icons/bs'
 import { IoMdNotificationsOutline } from 'react-icons/io'
