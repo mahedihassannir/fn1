@@ -65,6 +65,7 @@ import UserCustomerSupport from "../Dashboard/FantasticUserPanel/UserCustomerSup
 
 import SellerHome from "../Dashboard/CodeWorms/SellerHome";
 import AddItems from "../Dashboard/CodeWorms/AddItems";
+import ManageProduct from "../Dashboard/CodeWorms/ManageProduct";
 
 import Chat from "../Dashboard/DashboardCommonPage/Avengers/Chat/Chat";
 import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/SellerProfile";
@@ -366,6 +367,7 @@ const router = createBrowserRouter([
 
 
 			// this area for the user panel work ends
+			
 			// CodeWorms
 
 			{
@@ -375,6 +377,10 @@ const router = createBrowserRouter([
 			{
 				path: "dashboard/additems",
 				element: <AddItems></AddItems>,
+			},
+			{
+				path: "dashboard/manageproduct",
+				element: <ManageProduct></ManageProduct>
 			},
 
 			//TODO
