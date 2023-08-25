@@ -21,9 +21,7 @@ const ProceedToCheckout = () => {
 	
 
 
-	console.log(cartProducts)
 	
-
 	const demo = products.forEach(product => {
 		for (let key in storedCartProducts) {
 			if (key === product._id) {

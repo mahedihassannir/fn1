@@ -114,9 +114,19 @@ const router = createBrowserRouter([
 				element: <PaymentFailed></PaymentFailed>,
 			},
 			{
-				// avengers Toma PAYMENT Fail ROUTE
+				// avengers MGR Seller Register
 				path: "seller_register",
 				element: <SellerRegister></SellerRegister>,
+			},
+			{
+				// avengers MGR Seller RegisterForm
+				path: "seller_register/form",
+				element: <SellerRegisterForm></SellerRegisterForm>,
+			},
+			{
+				// avengers MGR Seller RegisterForm
+				path: "seller_register/personal_details",
+				element: <SellerPersonalInfoForm></SellerPersonalInfoForm>,
 			},
 
 			{
