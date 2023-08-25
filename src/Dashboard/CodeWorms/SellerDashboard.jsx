@@ -35,10 +35,10 @@ const SellerDashboard = () => {
             </div>
             </Link>
             {/* Order progress */}
-            <Link to="dashboard/">
+            <Link to="dashboard/manageproduct">
             <div className='flex items-center py-2 gap-4 cursor-pointer rounded-lg hover:text-green-600'>
                     <FaBusinessTime className='w-4 h-4'></FaBusinessTime>
-                    <h4>Order Progress</h4>
+                    <h4>Manage Product</h4>
             </div>
             </Link>
             {/* Payment History */}
