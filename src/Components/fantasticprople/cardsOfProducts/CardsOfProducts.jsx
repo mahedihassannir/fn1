@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const CardsOfProducts = ({singleProduct}) => {
     return <div key={singleProduct._id}>
-    <div className='hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg '>
+    <div className=' hover:shadow-md hover:border-2 hover:border-gray-300 hover:ease-in-out cursor-pointer rounded-lg '>
        <div className='relative'>
        <img className='rounded-t-lg' src={singleProduct.image} alt="" />
         <p className='absolute top-0 rounded-t-lg right-0 bg-orange-500  rounded-l-full text-white font-bold px-1'>-10%</p>

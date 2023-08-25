@@ -25,7 +25,7 @@ const ProductPurchase = ({ singleProductData }) => {
 	const { addToCart, loaddingForCart } = useContext(ContexM);
 
 	return (
-		<div className='relative'>
+		<div className='relative '>
 			<div className='flex flex-col md:flex-row gap-10'>
 				{/* product Image  */}
 				<div className='w-full md:w-1/3 '>

@@ -20,7 +20,7 @@ const useProducts = () => {
         setLoading(false);
       })
       .catch(error => {
-        console.error('Error fetching data:', error);
+        console.error('Error to fetching data:', error);
         setLoading(false);
       });
   }, []);
