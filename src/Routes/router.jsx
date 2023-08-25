@@ -72,6 +72,9 @@ import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/
 import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
 import SellerRequest from "../Dashboard/Avengers/adminpanel/Pages/SellerRequest/SellerRequest";
 import SellerRegister from "../Pages/SellerRegister/SellerRegister";
+import MyListing from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/MyListing/MyListing";
+import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
+import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/SellerRegisterForm";
 
 
 const router = createBrowserRouter([
@@ -113,9 +116,19 @@ const router = createBrowserRouter([
 				element: <PaymentFailed></PaymentFailed>,
 			},
 			{
-				// avengers Toma PAYMENT Fail ROUTE
+				// avengers MGR Seller Register
 				path: "seller_register",
 				element: <SellerRegister></SellerRegister>,
+			},
+			{
+				// avengers MGR Seller RegisterForm
+				path: "seller_register/form",
+				element: <SellerRegisterForm></SellerRegisterForm>,
+			},
+			{
+				// avengers MGR Seller RegisterForm
+				path: "seller_register/personal_details",
+				element: <SellerPersonalInfoForm></SellerPersonalInfoForm>,
 			},
 
 			{
@@ -296,6 +309,24 @@ const router = createBrowserRouter([
 				path: "dashboard/userhome",
 				element: <UserHome></UserHome>,
 			},
+			// Home Components Routes
+			{
+				path:"dashboard/userhome/mylisting",
+				element:<MyListing></MyListing>
+			},
+
+
+
+
+
+
+
+
+
+
+
+
+
 			// this is for user order
 			{
 				path: "dashboard/userorder",

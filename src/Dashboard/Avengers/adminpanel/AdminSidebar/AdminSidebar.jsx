@@ -106,7 +106,7 @@ const AdminSidebar = () => {
 									: "bg-[#19D895] text-[#0A1727]"
 							} justify-center py-2 px-3  cursor-pointer w-[20px] h-[20px] mt-3 rounded-lg absolute -top-[2px] right-2`}
 						>
-							<small>0</small>
+							<small>2</small>
 						</div>
 					</div>
 				</Link>
