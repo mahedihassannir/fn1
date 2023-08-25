@@ -2,24 +2,36 @@
  * Author: MG Rakib
  * description: ProductPurchase
  * date: 17aug,2023
+ *
+ * @format
  */
 
-import Rating from 'react-rating';
+import Rating from "react-rating";
 import { FaStar, FaRegStar, FaRegHeart } from "react-icons/fa";
 import { HiShare } from "react-icons/hi";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
-import takaIcon from '../../../../assets/taka.png'
-import takaIconGray from '../../../../assets/taka_gray.png'
-import { Link } from 'react-router-dom';
-const ProductPurchase = () => {
-    return (
-		<div>
+import takaIcon from "../../../../assets/taka.png";
+import takaIconGray from "../../../../assets/taka_gray.png";
+import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
+import { SyncLoader } from "react-spinners";
+
+const ProductPurchase = ({ singleProductData }) => {
+	//default quantity value
+	const [quantity, setQuantity] = useState(1);
+
+	//add to cart function import from auth
+	const { addToCart, loaddingForCart } = useContext(ContexM);
+
+	return (
+		<div className='relative'>
 			<div className='flex flex-col md:flex-row gap-10'>
 				{/* product Image  */}
 				<div className='w-full md:w-1/3 '>
 					<div>
 						<img
-							src='https://i.ibb.co/PgdpJzh/img2.jpg'
+							src={singleProductData?.image}
 							alt=''
 							className='w-full'
 						/>
@@ -32,21 +44,21 @@ const ProductPurchase = () => {
 							<div className='flex items-center gap-3'>
 								<div className='w-[70px] p-1 border border-[#F57224]'>
 									<img
-										src='https://i.ibb.co/PgdpJzh/img2.jpg'
+										src={singleProductData?.image}
 										alt=''
 									/>
 								</div>
 
 								<div className='w-[70px] p-1 '>
 									<img
-										src='https://i.ibb.co/PgdpJzh/img2.jpg'
+										src={singleProductData?.image}
 										alt=''
 									/>
 								</div>
 
 								<div className='w-[70px] p-1 '>
 									<img
-										src='https://i.ibb.co/PgdpJzh/img2.jpg'
+										src={singleProductData?.image}
 										alt=''
 									/>
 								</div>
@@ -61,10 +73,7 @@ const ProductPurchase = () => {
 				<div className='w-full md:w-2/3  font-normal'>
 					{/* name  */}
 					<h4 className='text-xl md:text-2xl font-bold'>
-						Cross body Bag for Men Official Messenger Bag Bike Rider
-						Crossbody Bag Pu Leather Bag Sholder Bag Diagonal
-						Package Handbag Bag For Men Corss Body Shoulder Bag For
-						Men
+						{singleProductData?.name}
 					</h4>
 
 					{/* rating and share  */}
@@ -121,7 +130,7 @@ const ProductPurchase = () => {
 									className='w-[25px]'
 								/>
 							</div>
-							<span>555</span>
+							<span>{singleProductData?.price}</span>
 						</div>
 
 						<div className='mt-2'>
@@ -187,13 +196,24 @@ const ProductPurchase = () => {
 							</p>
 
 							<div className='flex gap-2'>
-								<div className='w-[30px] h-[30px] bg-[#EFF0F5] cursor-pointer font-bold flex items-center justify-center rounded-md'>
+								<button
+									onClick={() => setQuantity(quantity - 1)}
+									className={`w-[30px] h-[30px] bg-[#EFF0F5] font-bold flex items-center justify-center rounded-md ${
+										quantity <= 1
+											? "bg-gray-300"
+											: "cursor-pointer"
+									}`}
+									disabled={quantity <= 1}
+								>
 									-
-								</div>
+								</button>
 								<h1 className='w-[30px] h-[30px] border flex items-center justify-center rounded-md text-lg'>
-									1
+									{quantity}
 								</h1>
-								<div className='w-[30px] h-[30px] bg-[#EFF0F5] cursor-pointer font-bold flex items-center justify-center rounded-md'>
+								<div
+									onClick={() => setQuantity(quantity + 1)}
+									className=' w-[30px] h-[30px] bg-[#EFF0F5] cursor-pointer font-bold flex items-center justify-center rounded-md'
+								>
 									+
 								</div>
 							</div>
@@ -201,20 +221,31 @@ const ProductPurchase = () => {
 
 						<div className='flex items-center gap-5 mt-4'>
 							<Link
-								to='/proceed_to_checkout'
+								to={`/proceed_to_checkout/${singleProductData?._id}`}
 								className='flex-1'
 							>
 								<button className='bg-[#2ABBE8] py-3  text-white text-xl font-semibold w-full'>
 									Bye Now
 								</button>
 							</Link>
-							<button className='bg-[#F57224] py-3 flex-1 text-white text-xl font-semibold'>
+							<button
+								onClick={() =>
+									addToCart(singleProductData)
+								}
+								className='bg-[#F57224] py-3 flex-1 text-white text-xl font-semibold'
+							>
 								Add to Cart
 							</button>
 						</div>
 					</div>
 				</div>
 			</div>
+
+			{loaddingForCart && (
+				<div className=' bg-white absolute top-1/2 -translate-y-1/2 left-1/2 -translate-x-1/2 w-[90%] h-[80%] md:w-[50%] md:h-[40%] rounded-lg shadow-[0px_0px_40px_rgba(0,0,0,.2)] flex items-center justify-center'>
+					<SyncLoader color='#2ABBE8' />
+				</div>
+			)}
 		</div>
 	);
 };
