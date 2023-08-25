@@ -65,14 +65,14 @@ import UserCustomerSupport from "../Dashboard/FantasticUserPanel/UserCustomerSup
 
 import SellerHome from "../Dashboard/CodeWorms/SellerHome";
 import AddItems from "../Dashboard/CodeWorms/AddItems";
+import ManageProduct from "../Dashboard/CodeWorms/ManageProduct";
 
 import Chat from "../Dashboard/DashboardCommonPage/Avengers/Chat/Chat";
 import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/SellerProfile";
 import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
 import SellerRequest from "../Dashboard/Avengers/adminpanel/Pages/SellerRequest/SellerRequest";
 import SellerRegister from "../Pages/SellerRegister/SellerRegister";
-import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/SellerRegisterForm";
-import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
+import MyListing from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/MyListing/MyListing";
 
 
 const router = createBrowserRouter([
@@ -307,6 +307,24 @@ const router = createBrowserRouter([
 				path: "dashboard/userhome",
 				element: <UserHome></UserHome>,
 			},
+			// Home Components Routes
+			{
+				path:"dashboard/userhome/mylisting",
+				element:<MyListing></MyListing>
+			},
+
+
+
+
+
+
+
+
+
+
+
+
+
 			// this is for user order
 			{
 				path: "dashboard/userorder",
@@ -354,6 +372,7 @@ const router = createBrowserRouter([
 
 
 			// this area for the user panel work ends
+			
 			// CodeWorms
 
 			{
@@ -363,6 +382,10 @@ const router = createBrowserRouter([
 			{
 				path: "dashboard/additems",
 				element: <AddItems></AddItems>,
+			},
+			{
+				path: "dashboard/manageproduct",
+				element: <ManageProduct></ManageProduct>
 			},
 
 			//TODO
