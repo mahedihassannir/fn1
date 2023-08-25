@@ -1,8 +1,30 @@
+import { useContext } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { ContexM } from "../Authentication/AuthProvider/AuthProvider";
 
 const Login = () => {
 
+
+
+    const { loginwithpopup, singinUser } = useContext(ContexM)
+
+    const navigate = useNavigate()
+
+    const loginwitgoogle = () => {
+
+        loginwithpopup()
+            .then(res => {
+
+                console.log(res.user);
+
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+            navigate("/")
+
+    }
 
 
     const handleReg = (e) => {
@@ -17,6 +39,17 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         // temp image
+
+        singinUser(email, password)
+            .then(res => {
+                console.log(res.user);
+
+            })
+            .catch(err => {
+                console.log(err.message);
+            })
+
+        navigate("/")
 
 
 
@@ -114,9 +147,9 @@ const Login = () => {
                         {/* Google login starts */}
                         <div className="mt-4 text-center md:text-left">
 
-                            <button className="  w-11/12 md:w-3/5 mx-auto bg-red-600 py-3 rounded-sm text-white font-semibold  ">
+                            <button onClick={loginwitgoogle} className="  w-11/12 md:w-3/5 mx-auto bg-red-600 py-3 rounded-sm text-white font-semibold  ">
                                 <span className="flex justify-center items-center">
-                                    <span><FaGoogle className="text-3xl text-white mr-4"></FaGoogle></span> <span>Fackbook</span>
+                                    <span><FaGoogle className="text-3xl text-white mr-4"></FaGoogle></span> <span>Google</span>
 
                                 </span>
                             </button>
