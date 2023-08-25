@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { HiArchiveBoxXMark, HiMiniAdjustmentsHorizontal, HiMiniCalculator, HiMiniShoppingCart, HiMiniUsers } from "react-icons/hi2";
-import { HiAcademicCap, HiChartBar, HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
-import { FaBusinessTime, FaDropbox, FaListUl } from 'react-icons/fa';
+import {  HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
+import { FaBusinessTime,  FaListUl, FaQuestionCircle } from 'react-icons/fa';
 import { MdOutlinePayments } from 'react-icons/md';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 // import AuthorOfDashboard from '../../../../Components/Avengers/DashboardRelatedCompo/SidBarCompo/AuthorOfDashboard/AuthorOfDashboard';
@@ -94,19 +93,7 @@ const FantasticSideBar = () => {
 					<h4>Wish List</h4>
 				</div>
 				</Link>
-				<Link to="dashboard/customersupport">
-				<div onClick={() => setActiveRoute("Customer Support")}
-					className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${
-						activeRoute === "Customer Support"
-							? "bg-[#19D895] text-[#0A1727]"
-							: ""
-					} cursor-pointer gap-4`}
-				>
-					<MdOutlinePayments className='w-4 h-4'></MdOutlinePayments>
-					<h4>Customer Support</h4>
-				</div>
-				</Link>
-				<hr  className='my-6'/>
+				<hr  className='my-2'/>
 				<Link to="/">
 				<div onClick={() => setActiveRoute("Home Page")}
 					className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${
@@ -116,9 +103,25 @@ const FantasticSideBar = () => {
 					} cursor-pointer gap-4`}
 				>
 					<AiOutlineArrowLeft className='w-4 h-4'></AiOutlineArrowLeft>
-					<h4>Home Page</h4>
+					<h4 className=''>Home Page</h4>
 				</div>
 				</Link>
+				<div className='text-center text-black relative mt-6'>
+					<div className='absolute -top-5 left-20 flex justify-center rounded-full' style={{color:"#bdf094",border:"6px solid #0A1727",backgroundColor:"#0A1727"}} >
+					<FaQuestionCircle className='text-2xl'/>
+					</div>
+					<div className='rounded-lg py-4' style={{backgroundColor:"#bdf094"}}>
+					<h1 className='font-bold'>Help Center</h1>
+					<p>Having Trouble in Product</p>
+					<p>Please Contact Use for</p>
+					<p>More Information</p>
+					<div>
+						<Link to="dashboard/customersupport">
+						<button className='px-2 py-1 rounded-lg' style={{color:"#bdf094",backgroundColor:"#0A1727"}}>Go To Help Center</button>
+						</Link>
+					</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
