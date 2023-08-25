@@ -6,6 +6,7 @@ import { BiSearchAlt } from 'react-icons/bi'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import { AiFillStar } from 'react-icons/ai'
 import UserDateAndTime from '../UserDateAndTime/UserDateAndTime'
+import { Link } from 'react-router-dom';
 
 const UserHome = () => {
     return (
@@ -77,7 +78,9 @@ const UserHome = () => {
             <div className=''>
                 <div className='flex justify-between px-2 my-7'>
                     <p className='font-bold'>My Listings</p>
+                    <Link to="mylisting">
                     <p className='flex items-center gap-x-2'>See All <BsArrowRightShort/></p>
+                    </Link>
                 </div>
                 <div className='grid grid-cols-2 md:grid-cols-4 gap-4 my-2'>
                     <div className='relative'>

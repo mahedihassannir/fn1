@@ -72,6 +72,7 @@ import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/
 import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
 import SellerRequest from "../Dashboard/Avengers/adminpanel/Pages/SellerRequest/SellerRequest";
 import SellerRegister from "../Pages/SellerRegister/SellerRegister";
+import MyListing from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/MyListing/MyListing";
 
 
 const router = createBrowserRouter([
@@ -296,6 +297,24 @@ const router = createBrowserRouter([
 				path: "dashboard/userhome",
 				element: <UserHome></UserHome>,
 			},
+			// Home Components Routes
+			{
+				path:"dashboard/userhome/mylisting",
+				element:<MyListing></MyListing>
+			},
+
+
+
+
+
+
+
+
+
+
+
+
+
 			// this is for user order
 			{
 				path: "dashboard/userorder",
