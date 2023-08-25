@@ -54,6 +54,7 @@ const PaymentDetails = ({ singleProductData }) => {
 			.then(res => res.json())
 			.then(result => {
 				console.log(result);
+				
 				window.location.replace(result.url);
 			});
 	};

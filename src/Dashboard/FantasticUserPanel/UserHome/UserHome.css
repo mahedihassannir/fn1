@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
  @keyframes gradientAnimation {
     0% {
       background-position: 0% 50%;
@@ -16,3 +18,4 @@
     animation: gradientAnimation 5s ease infinite;
     border-radius: 10px;
   }
+>>>>>>> 5d5d4690cdc59bb2a893ae68f91a91dd3f0884a5
