@@ -1,5 +1,5 @@
 import SellerSingupBanner from "./SellerSingupBanner/SellerSingupBanner";
-
+import sellerImage from "../../../assets/seller.png";
 
 
 const Avengers = () => {
@@ -8,7 +8,14 @@ const Avengers = () => {
 			<div className='flex-1'>
 				<SellerSingupBanner />
 			</div>
-			<div className='flex-1'></div>
+			<div>
+				<div>
+					<img
+						src={sellerImage}
+						alt=''
+					/>
+				</div>
+			</div>
 		</div>
 	);
 };
