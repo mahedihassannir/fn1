@@ -1,4 +1,8 @@
+import useProducts from "../../../Hooks/Fantastic/useProducts";
+
 const UserOrder = () => {
+    const {products, loading}=useProducts();
+    console.log(products);
     return (
         <div className="w-1/2 mx-auto">
             <h1 className="text-center uppercase font-bold">My Orders</h1>
