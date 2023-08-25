@@ -1,9 +1,9 @@
 import React from 'react';
-import { MdPendingActions } from 'react-icons/MD';
+import { MdPendingActions } from 'react-icons/md';
 import { FaShippingFast, FaListOl, FaCartArrowDown, FaFirstOrderAlt } from 'react-icons/fa';
-import { BsArrowReturnLeft, BsChatRight } from 'react-icons/Bs';
-import { GoCodeReview } from 'react-icons/Go';
-import { MdDashboardCustomize } from 'react-icons/Md';
+import { BsArrowReturnLeft, BsChatRight } from 'react-icons/bs';
+import { GoCodeReview } from 'react-icons/go';
+import { MdDashboardCustomize } from 'react-icons/md';
 
 
 const SellerHome = () => {
