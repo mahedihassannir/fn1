@@ -9,6 +9,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import useProducts from "../../Hooks/Fantastic/useProducts";
 import { Link } from 'react-router-dom';
 import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
+import CartProductDetails from '../Avengers/CheckOutComponents/CartProductDetails/CartProductDetails';
 
 
 const Beauty = () => {
@@ -70,7 +71,7 @@ const Beauty = () => {
             {/* display Beauty products */}
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 lg:mx-20 my-10'>
                 {
-                    beautyProducts.map(beauty => <CardsOfPzroducts singleProduct={beauty}/>)
+                    beautyProducts.map(beauty => <CardsOfProducts singleProduct={beauty}/>)
                 }
             </div>
 

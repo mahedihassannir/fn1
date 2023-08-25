@@ -117,7 +117,7 @@ const FantasticSideBar = () => {
 					<p>More Information</p>
 					<div>
 						<Link to="dashboard/customersupport">
-						<button className='px-2 py-1 rounded-lg' style={{color:"#bdf094",backgroundColor:"#0A1727"}}>Go To Help Center</button>
+						<button className='px-2 py-1 rounded-lg font-bold' style={{color:"#ffffff",backgroundColor:"#0A1727"}}>Go To Help Center</button>
 						</Link>
 					</div>
 					</div>

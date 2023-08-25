@@ -73,8 +73,12 @@ import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
 import SellerRequest from "../Dashboard/Avengers/adminpanel/Pages/SellerRequest/SellerRequest";
 import SellerRegister from "../Pages/SellerRegister/SellerRegister";
 import MyListing from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/MyListing/MyListing";
-import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
+import UserOrderedProducts from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/UserOrderedProducts/UserOrderedProducts";
+import { element } from "prop-types";
+import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
+import Female from "../Components/fantasticprople/FashaionmaleFemail/Female/Female";
 import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/SellerRegisterForm";
+import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
 
 
 const router = createBrowserRouter([
@@ -219,6 +223,15 @@ const router = createBrowserRouter([
 				path: "fashion",
 				element: <Fashion></Fashion>,
 			},
+			// fashion route
+			{
+				path:"male",
+				element:<Male/>
+			},
+			{
+				path:"female",
+				element:<Female/>
+			},
 			{
 				path: "beauty",
 				element: <Beauty></Beauty>,
@@ -313,6 +326,10 @@ const router = createBrowserRouter([
 			{
 				path:"dashboard/userhome/mylisting",
 				element:<MyListing></MyListing>
+			},
+			{
+				path:"dashboard/userhome/userorderedproducts",
+				element:<UserOrderedProducts></UserOrderedProducts>
 			},
 
 
