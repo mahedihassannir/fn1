@@ -79,6 +79,8 @@ import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
 import Female from "../Components/fantasticprople/FashaionmaleFemail/Female/Female";
 import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/SellerRegisterForm";
 import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
+import Wishlist from "../Dashboard/CodeWorms/Wishlist/Wishlist";
+import PaymentHistory from "../Dashboard/CodeWorms/Payhistory/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -225,12 +227,12 @@ const router = createBrowserRouter([
 			},
 			// fashion route
 			{
-				path:"male",
-				element:<Male/>
+				path: "male",
+				element: <Male />
 			},
 			{
-				path:"female",
-				element:<Female/>
+				path: "female",
+				element: <Female />
 			},
 			{
 				path: "beauty",
@@ -269,6 +271,9 @@ const router = createBrowserRouter([
 				path: "mensCare",
 				element: <MensCare></MensCare>,
 			},
+
+
+
 
 			// Fantastic people work ends
 		],
@@ -324,12 +329,12 @@ const router = createBrowserRouter([
 			},
 			// Home Components Routes
 			{
-				path:"dashboard/userhome/mylisting",
-				element:<MyListing></MyListing>
+				path: "dashboard/userhome/mylisting",
+				element: <MyListing></MyListing>
 			},
 			{
-				path:"dashboard/userhome/userorderedproducts",
-				element:<UserOrderedProducts></UserOrderedProducts>
+				path: "dashboard/userhome/userorderedproducts",
+				element: <UserOrderedProducts></UserOrderedProducts>
 			},
 
 
@@ -382,7 +387,22 @@ const router = createBrowserRouter([
 				path: "dashboard/customersupport",
 				element: <UserCustomerSupport></UserCustomerSupport>
 
-				
+
+			},
+
+			{
+
+				path: "dashboard/wishlist",
+				element: <Wishlist></Wishlist>
+
+
+			},
+			{
+
+				path: "dashboard/payhistory",
+				element: <PaymentHistory></PaymentHistory>
+
+
 			},
 
 
@@ -391,7 +411,7 @@ const router = createBrowserRouter([
 
 
 			// this area for the user panel work ends
-			
+
 			// CodeWorms
 
 			{
