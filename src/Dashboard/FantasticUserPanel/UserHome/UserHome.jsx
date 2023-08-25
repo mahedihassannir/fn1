@@ -57,13 +57,15 @@ const UserHome = () => {
                 </div>
                 {/* ends video */}
 
-                <div className='flex gap-20 lg:gap-6 flex-col md:flex-row'>
+                <div className='flex gap-20 lg:gap-6'>
                     <div className='p-4 font-bold bg-gray-100' style={{ backgroundImage: "url(https://img.tukuppt.com/png_preview/00/04/81/Brh8sRTRlE.jpg!/fw/780)", backgroundSize: "contain", backgroundPosition: "right bottom", backgroundRepeat: "no-repeat", height: "160px", width: "260px" }}>
                         <h1 className='text-2xl mb-3'>My Stat</h1>
                         <p className=''>Today &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This Month</p>
                         <p className='my-2 text-green-500'>4 Ordered&nbsp; &nbsp; 17 ordered</p>
-                        <p className='flex items-center gap-1'>Go to my orders <BsArrowRightShort className='mt-1' /></p>
+
+                        <Link to="userorderedproducts"><p className='flex items-center gap-1'>Go to my orders <BsArrowRightShort className='mt-1' /></p></Link>
                     </div>
+
                     {/* date and time */}
                     <div className='clock-back h-40 flex justify-center items-center' >
                         <UserDateAndTime/>
