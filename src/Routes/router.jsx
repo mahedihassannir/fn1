@@ -72,6 +72,15 @@ import SellerProfile from "../Dashboard/Avengers/adminpanel/Pages/SellerProfile/
 import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
 import SellerRequest from "../Dashboard/Avengers/adminpanel/Pages/SellerRequest/SellerRequest";
 import SellerRegister from "../Pages/SellerRegister/SellerRegister";
+import MyListing from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/MyListing/MyListing";
+import UserOrderedProducts from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/UserOrderedProducts/UserOrderedProducts";
+import { element } from "prop-types";
+import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
+import Female from "../Components/fantasticprople/FashaionmaleFemail/Female/Female";
+import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/SellerRegisterForm";
+import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
+import Wishlist from "../Dashboard/CodeWorms/Wishlist/Wishlist";
+import PaymentHistory from "../Dashboard/CodeWorms/Payhistory/PaymentHistory";
 
 
 const router = createBrowserRouter([
@@ -113,9 +122,19 @@ const router = createBrowserRouter([
 				element: <PaymentFailed></PaymentFailed>,
 			},
 			{
-				// avengers Toma PAYMENT Fail ROUTE
+				// avengers MGR Seller Register
 				path: "seller_register",
 				element: <SellerRegister></SellerRegister>,
+			},
+			{
+				// avengers MGR Seller RegisterForm
+				path: "seller_register/form",
+				element: <SellerRegisterForm></SellerRegisterForm>,
+			},
+			{
+				// avengers MGR Seller RegisterForm
+				path: "seller_register/personal_details",
+				element: <SellerPersonalInfoForm></SellerPersonalInfoForm>,
 			},
 
 			{
@@ -206,6 +225,15 @@ const router = createBrowserRouter([
 				path: "fashion",
 				element: <Fashion></Fashion>,
 			},
+			// fashion route
+			{
+				path: "male",
+				element: <Male />
+			},
+			{
+				path: "female",
+				element: <Female />
+			},
 			{
 				path: "beauty",
 				element: <Beauty></Beauty>,
@@ -243,6 +271,9 @@ const router = createBrowserRouter([
 				path: "mensCare",
 				element: <MensCare></MensCare>,
 			},
+
+
+
 
 			// Fantastic people work ends
 		],
@@ -296,6 +327,28 @@ const router = createBrowserRouter([
 				path: "dashboard/userhome",
 				element: <UserHome></UserHome>,
 			},
+			// Home Components Routes
+			{
+				path: "dashboard/userhome/mylisting",
+				element: <MyListing></MyListing>
+			},
+			{
+				path: "dashboard/userhome/userorderedproducts",
+				element: <UserOrderedProducts></UserOrderedProducts>
+			},
+
+
+
+
+
+
+
+
+
+
+
+
+
 			// this is for user order
 			{
 				path: "dashboard/userorder",
@@ -334,7 +387,22 @@ const router = createBrowserRouter([
 				path: "dashboard/customersupport",
 				element: <UserCustomerSupport></UserCustomerSupport>
 
-				
+
+			},
+
+			{
+
+				path: "dashboard/wishlist",
+				element: <Wishlist></Wishlist>
+
+
+			},
+			{
+
+				path: "dashboard/payhistory",
+				element: <PaymentHistory></PaymentHistory>
+
+
 			},
 
 
@@ -343,7 +411,7 @@ const router = createBrowserRouter([
 
 
 			// this area for the user panel work ends
-			
+
 			// CodeWorms
 
 			{

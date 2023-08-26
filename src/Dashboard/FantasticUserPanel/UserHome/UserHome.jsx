@@ -1,10 +1,12 @@
-
+import video1 from '../../../assets/videos/Leaves - 74233 (1080P)(2).mp4'
 import './UserHome.css'
 import { BsArrowRightShort, BsChatDots } from 'react-icons/bs'
 import { IoMdNotificationsOutline } from 'react-icons/io'
 import { BiSearchAlt } from 'react-icons/bi'
 import { FaHeart, FaRegHeart } from 'react-icons/fa'
 import { AiFillStar } from 'react-icons/ai'
+import UserDateAndTime from '../UserDateAndTime/UserDateAndTime'
+import { Link } from 'react-router-dom';
 
 const UserHome = () => {
     return (
@@ -39,12 +41,12 @@ const UserHome = () => {
             {/* userHome top section Ends*/}
 
             {/* second  section Video and State */}
-            <div className='w-full my-6 relative flex flex-col md:flex-row gap-8'>
+            <div className='w-full my-6 relative flex flex-col lg:flex-row gap-8'>
                 <div className=''>
-                <iframe title="vimeo-player" src="https://player.vimeo.com/video/857257208?controls=0&autoplay=1&loop=1" width="640" height="360" frameborder="0" allowfullscreen></iframe>
+                <video style={{width: "40rem"}} className='h-40 object-cover' src={video1} autoPlay loop muted></video>
 
                     <div className='absolute top-2 md:top-10 left-10 '>
-                        <p className='lg:text-2xl font-bold text-white'>Bye and get your extraordinary products</p>
+                        <p className='lg:text-2xl font-bold text-white overflow-hidden'>Bye and get your extraordinary products</p>
                         <p className='text-white'>World fastest growing market</p>
                         <div className='hidden md:block'>
                             <button className='bg-white py-2 px-3 rounded text-green-400 font-semibold'>Explore More</button>
@@ -55,12 +57,18 @@ const UserHome = () => {
                 </div>
                 {/* ends video */}
 
-                <div className=''>
-                    <div className='p-4 font-bold bg-gray-100' style={{ backgroundImage: "url(https://img.tukuppt.com/png_preview/00/04/81/Brh8sRTRlE.jpg!/fw/780)", backgroundSize: "contain", backgroundPosition: "right bottom", backgroundRepeat: "no-repeat", height: "160px", width: "300px" }}>
+                <div className='flex gap-20 lg:gap-6'>
+                    <div className='p-4 font-bold bg-gray-100' style={{ backgroundImage: "url(https://img.tukuppt.com/png_preview/00/04/81/Brh8sRTRlE.jpg!/fw/780)", backgroundSize: "contain", backgroundPosition: "right bottom", backgroundRepeat: "no-repeat", height: "160px", width: "260px" }}>
                         <h1 className='text-2xl mb-3'>My Stat</h1>
-                        <p className=''>Today &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This Month</p>
-                        <p className='my-2 text-green-500'>4 Purchased  &nbsp; &nbsp; 175 Purchased</p>
-                        <p className='flex items-center gap-1'>Go to my orders <BsArrowRightShort className='mt-1' /></p>
+                        <p className=''>Today &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This Month</p>
+                        <p className='my-2 text-green-500'>4 Ordered&nbsp; &nbsp; 17 ordered</p>
+
+                        <Link to="userorderedproducts"><p className='flex items-center gap-1'>Go to my orders <BsArrowRightShort className='mt-1' /></p></Link>
+                    </div>
+
+                    {/* date and time */}
+                    <div className='clock-back h-40 flex justify-center items-center' >
+                        <UserDateAndTime/>
                     </div>
                 </div>
 
@@ -72,7 +80,9 @@ const UserHome = () => {
             <div className=''>
                 <div className='flex justify-between px-2 my-7'>
                     <p className='font-bold'>My Listings</p>
+                    <Link to="mylisting">
                     <p className='flex items-center gap-x-2'>See All <BsArrowRightShort/></p>
+                    </Link>
                 </div>
                 <div className='grid grid-cols-2 md:grid-cols-4 gap-4 my-2'>
                     <div className='relative'>
