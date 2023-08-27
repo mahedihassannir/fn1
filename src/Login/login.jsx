@@ -16,13 +16,33 @@ const Login = () => {
         loginwithpopup()
             .then(res => {
 
-                console.log(res.user);
+                const userdata = res.user;
+
+                const userinfo = { name: userdata.displayName, email: userdata.email, image: userdata.photoURL, verifed: userdata.emailVerified, phone: userdata.phoneNumber }
+
+                console.log({ userinfo });
+
+
+
+                fetch("http://localhost:5000/userdata", {
+                    method: "POST",
+                    headers: {
+                        "content-type": "application/json"
+                    },
+                    body: JSON.stringify(userinfo)
+                })
+
+                    .then(res => res.json())
+                    .catch(data => {
+                        console.log(data);
+                    })
+
+                navigate("/");
 
             })
             .catch(err => {
                 console.log(err.message);
-            })
-            navigate("/")
+            });
 
     }
 
@@ -35,7 +55,6 @@ const Login = () => {
 
         // from iput values
         const form = e.target;
-        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
         // temp image

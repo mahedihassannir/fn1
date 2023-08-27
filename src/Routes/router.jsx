@@ -73,6 +73,7 @@ import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
 import SellerRequest from "../Dashboard/Avengers/adminpanel/Pages/SellerRequest/SellerRequest";
 import SellerRegister from "../Pages/SellerRegister/SellerRegister";
 import MyListing from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/MyListing/MyListing";
+import Habibvaiwork from "../Components/Habibvaiwork/Habibvaiwork";
 
 
 const router = createBrowserRouter([
@@ -124,7 +125,11 @@ const router = createBrowserRouter([
 				path: "login",
 				element: <Login></Login>,
 			},
-
+			{
+				// Team Arrow
+				path: "habibvaiwork",
+				element: <Habibvaiwork></Habibvaiwork>,
+			},
 			{
 				// Team Arrow
 				path: "register",
@@ -299,8 +304,8 @@ const router = createBrowserRouter([
 			},
 			// Home Components Routes
 			{
-				path:"dashboard/userhome/mylisting",
-				element:<MyListing></MyListing>
+				path: "dashboard/userhome/mylisting",
+				element: <MyListing></MyListing>
 			},
 
 
@@ -353,7 +358,7 @@ const router = createBrowserRouter([
 				path: "dashboard/customersupport",
 				element: <UserCustomerSupport></UserCustomerSupport>
 
-				
+
 			},
 
 
@@ -362,7 +367,7 @@ const router = createBrowserRouter([
 
 
 			// this area for the user panel work ends
-			
+
 			// CodeWorms
 
 			{
