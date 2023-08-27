@@ -18,6 +18,8 @@ const Login = () => {
 
                 const userdata = res.user;
 
+
+
                 const userinfo = { name: userdata.displayName, email: userdata.email, image: userdata.photoURL, verifed: userdata.emailVerified, phone: userdata.phoneNumber }
 
                 console.log({ userinfo });
@@ -33,11 +35,13 @@ const Login = () => {
                 })
 
                     .then(res => res.json())
-                    .catch(data => {
+                    .then(data => {
                         console.log(data);
+
+                        navigate("/");
+                        
                     })
 
-                navigate("/");
 
             })
             .catch(err => {
