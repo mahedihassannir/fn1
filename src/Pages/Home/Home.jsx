@@ -15,7 +15,7 @@ const Home = () => {
 
             <section>
 
-           <Avengers></Avengers>
+                <Avengers></Avengers>
 
             </section>
 
@@ -29,8 +29,7 @@ const Home = () => {
             <section>
 
                 <TeamArrow></TeamArrow>
-
-
+              
             </section>
             {/* 2nd banner section ends */}
 
@@ -44,7 +43,7 @@ const Home = () => {
             </section>
 
             {/* team cidewoms ends */}
-        
+
 
         </div>
     );

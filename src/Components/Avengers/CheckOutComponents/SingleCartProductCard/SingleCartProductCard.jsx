@@ -7,7 +7,7 @@ const SingleCartProductCard = ({ singleProductData }) => {
 	
 	
 	return (
-		<div className='text-xs p-5 border rounded font-semibold'>
+		<div className='text-xs p-5 border rounded font-semibold my-10'>
 			{/* product image quantity */}
 			<div className='flex items-center gap-3'>
 				{/* product image  */}

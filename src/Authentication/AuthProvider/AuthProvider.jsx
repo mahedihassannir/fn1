@@ -11,6 +11,7 @@ import {
 	createUserWithEmailAndPassword,
 	getAuth,
 	onAuthStateChanged,
+	signInWithEmailAndPassword,
 	signInWithPopup,
 	signOut,
 	updateProfile,
@@ -67,7 +68,7 @@ const AuthProvider = ({ children }) => {
 	// this useeffect is watching the user
 	useEffect(() => {
 		const off = onAuthStateChanged(auth, watch => {
-			Setuser(watch);
+			Setuser(watch)
 
 			SetLoader(false);
 		});
