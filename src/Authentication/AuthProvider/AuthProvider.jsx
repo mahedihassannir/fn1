@@ -119,7 +119,7 @@ const AuthProvider = ({ children }) => {
 		setTimeout(function () {
 			setLoaddingForCart(false);
 			setTotalCart(totalCart + 1);
-		}, 200);
+		}, 200);``
 		// to set reale time cart
 	};
 
