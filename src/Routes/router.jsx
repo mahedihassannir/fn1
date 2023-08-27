@@ -333,7 +333,7 @@ const router = createBrowserRouter([
 				element: <MyListing></MyListing>
 			},
 			{
-				path: "dashboard/userhome/userorderedproducts",
+				path: "dashboard/userorderedproducts",
 				element: <UserOrderedProducts></UserOrderedProducts>
 			},
 
