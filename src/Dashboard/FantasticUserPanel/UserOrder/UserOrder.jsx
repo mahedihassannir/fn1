@@ -9,7 +9,7 @@ const UserOrder = () => {
             <h1 className="text-center uppercase font-bold">My Orders</h1>
             <div className="my-10 ">
                 <h1 className=" font-bold pb-5">Active Orders</h1>
-                <div className="grid gap-5">
+                <div className="grid gap-5 overflow-y-auto max-h-80">
                     <div className=" text-gray-700 bg-white text-sm font-semibold p-5 shadow grid grid-cols-2" >
                         <div>
                             <p className="">Order Number #30030</p>
@@ -25,7 +25,7 @@ const UserOrder = () => {
                 </div>
                 
                 <h1 className=" font-bold py-5">Previous Orders</h1>
-                <div className="grid gap-5">
+                <div className="grid gap-5 overflow-y-auto max-h-80">
                     <div className=" text-gray-700  bg-white text-sm font-semibold p-5 shadow grid grid-cols-2" >
                         <div>
                             <p className="">Order Number #30029</p>

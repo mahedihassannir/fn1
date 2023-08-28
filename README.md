@@ -1,10 +1,5 @@
 # mainE-commerce
 
-<<<<<<< HEAD
-
-
---------------------------
-=======
 Beauty category image link
 
 https://i.ibb.co/thK2xcp/ca4c73f4-3876-4d2d-b54e-a5b2dff1e48b-BD-185-250.png
@@ -51,7 +46,6 @@ beauty category image ends
 
 
 
->>>>>>> b401a313ae4aa943c4c21f0d8b4f49a9898c614f
 
 Top Category link
 
@@ -70,11 +64,6 @@ https://i.ibb.co/qNNNSkV/773d0210-eda1-4fd6-8b8d-a92dafbe23bd.png
 https://i.ibb.co/7jwt6sH/6b396809-87e7-435d-ba7b-5d69699371ba.png
 
 
-<<<<<<< HEAD
---------------------------
-
-=======
->>>>>>> b401a313ae4aa943c4c21f0d8b4f49a9898c614f
 
 
 

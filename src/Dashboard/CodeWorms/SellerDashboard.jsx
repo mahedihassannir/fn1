@@ -42,14 +42,14 @@ const SellerDashboard = () => {
             </div>
             </Link>
             {/* Payment History */}
-            <Link to="dashboard/">
+            <Link to="dashboard/payhistory">
             <div className='flex items-center py-2 gap-4 cursor-pointer rounded-lg hover:text-green-600'>
                 <MdOutlinePayments className='w-4 h-4'></MdOutlinePayments>
                 <h4>Payment History</h4>
                 
             </div>
             </Link>
-            <Link to="dashboard/">
+            <Link to="dashboard/wishlist">
             <div className='flex items-center py-2 gap-4 cursor-pointer rounded-lg hover:text-green-600'>
                 <MdOutlinePayments className='w-4 h-4'></MdOutlinePayments>
                 <h4>Wish List</h4>
