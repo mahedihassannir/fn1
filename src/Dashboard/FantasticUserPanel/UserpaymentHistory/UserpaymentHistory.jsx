@@ -5,7 +5,7 @@ const UserpaymentHistory = () => {
     const paymentHistory = useOrders()
 
     const myHistory = paymentHistory.filter(x => x.email === 'aanika.chowdhury04@gmail.com' && x.paidStatus === true)
-    console.log(myHistory);
+    //console.log(myHistory);
 
     return (
         <div className="mx-auto">
