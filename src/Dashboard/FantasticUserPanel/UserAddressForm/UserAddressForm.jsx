@@ -1,10 +1,14 @@
+// Author:Masum
+// Date:08/28/2023
 import React, { useContext, useEffect, useState } from 'react';
-import useDivisions from '../../../../../Hooks/Fantastic/useDivisions';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { ContexM } from '../../../../../Authentication/AuthProvider/AuthProvider';
+import { ContexM } from '../../../Authentication/AuthProvider/AuthProvider';
+import useDivisions from '../../../Hooks/Fantastic/useDivisions';
 
-const UserOrderedProducts = () => {
+
+
+const UserAddressForm = () => {
     const { divisions, loading } = useDivisions()
     const [selectDivision, setSelectDivision] = useState("")
     const [selectCity, setSelectCity] = useState("")
@@ -212,4 +216,4 @@ const UserOrderedProducts = () => {
     );
 };
 
-export default UserOrderedProducts;
+export default UserAddressForm;

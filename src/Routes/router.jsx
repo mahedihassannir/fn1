@@ -82,6 +82,7 @@ import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/Selle
 import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
 import Wishlist from "../Dashboard/CodeWorms/Wishlist/Wishlist";
 import PaymentHistory from "../Dashboard/CodeWorms/Payhistory/PaymentHistory";
+import UserAddressForm from "../Dashboard/FantasticUserPanel/UserAddressForm/UserAddressForm";
 
 
 const router = createBrowserRouter([
@@ -338,8 +339,8 @@ const router = createBrowserRouter([
 				element: <MyListing></MyListing>
 			},
 			{
-				path: "dashboard/userorderedproducts",
-				element: <UserOrderedProducts></UserOrderedProducts>
+				path: "dashboard/useraddressform",
+				element: <UserAddressForm></UserAddressForm>
 			},
 
 
