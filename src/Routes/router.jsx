@@ -82,6 +82,10 @@ import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/Selle
 import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
 import Wishlist from "../Dashboard/CodeWorms/Wishlist/Wishlist";
 import PaymentHistory from "../Dashboard/CodeWorms/Payhistory/PaymentHistory";
+import CustomerFeedback from "../Dashboard/CodeWorms/CustomerFeedback/CustomerFeedback";
+import OrderResuns from "../Dashboard/CodeWorms/OrderResuns/OrderResuns";
+import OrderManage from "../Dashboard/CodeWorms/OrderManage.jsx/OrderManage";
+import CustommerReview from "../Dashboard/CodeWorms/CustommerReview/CustommerReview";
 
 
 const router = createBrowserRouter([
@@ -353,7 +357,6 @@ const router = createBrowserRouter([
 
 
 
-
 			// this is for user order
 			{
 				path: "dashboard/userorder",
@@ -417,8 +420,13 @@ const router = createBrowserRouter([
 
 			// this area for the user panel work ends
 
-			// CodeWorms
+			// TeamArrow
+			// TeamArrow
 
+			{
+				path: "dashboard/customerfeedback",
+				element: <CustomerFeedback></CustomerFeedback>,
+			},
 			{
 				path: "dashboard/sellerhome",
 				element: <SellerHome></SellerHome>,
@@ -432,11 +440,44 @@ const router = createBrowserRouter([
 				element: <ManageProduct></ManageProduct>
 			},
 
-			//TODO
+			// TeamArrow ends
 
-			// this side is for user
+			// this side is for seller
 
-			// TODO
+
+			// this block is for the seller 
+			// this is for the teamarrow 
+			{
+
+				path: "/dashboard/orderresuns",
+				element: <OrderResuns></OrderResuns>
+
+
+			},
+			// this is for the teamarrow ends
+			// this is for the teamarrow 
+			{
+
+				path: "/dashboard/custommerreview",
+				element: <CustommerReview></CustommerReview>
+
+
+			},
+			// this is for the teamarrow ends
+			// this is for the teamarrow 
+			{
+
+				path: "/dashboard/ordermanage",
+				element: <OrderManage></OrderManage>
+
+
+			},
+			// this is for the teamarrow ends
+
+			// this block is for the seller ends
+
+
+
 
 			// this side is for seller
 		],
