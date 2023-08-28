@@ -1,32 +1,32 @@
-/* Date: 8/19/23
+/* Date: 8/27/23
  * Author: MASUM
- * Description: Get all the products
+ * Description: Get all the Divisions
 */
 
 import { useEffect, useState } from "react";
 
-const useProducts = () => {
+const useDivisions = () => {
  // store all products
-  const [products, setProducts] = useState([]);
+  const [divisions, setDivisions] = useState([]);
 
 // can use this loading to set any conditions based on data loading
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/allcategory')
+    fetch('https://bdapis.com/api/v1.1/divisions')
       .then(response => response.json())
       .then(data => {
-        setProducts(data);
+        setDivisions(data);
         setLoading(false);
       })
       .catch(error => {
-        console.error('Error to fetching data:', error);
+        console.error('Error fetching data:', error);
         setLoading(false);
       });
   }, []);
 
-  return { products, loading };
+  return { divisions, loading };
 };
 
-export default useProducts;
+export default useDivisions;
 

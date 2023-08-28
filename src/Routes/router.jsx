@@ -73,6 +73,7 @@ import Customer from "../Dashboard/Avengers/adminpanel/Pages/Customer/Customer";
 import SellerRequest from "../Dashboard/Avengers/adminpanel/Pages/SellerRequest/SellerRequest";
 import SellerRegister from "../Pages/SellerRegister/SellerRegister";
 import MyListing from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/MyListing/MyListing";
+import Habibvaiwork from "../Components/Habibvaiwork/Habibvaiwork";
 import UserOrderedProducts from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/UserOrderedProducts/UserOrderedProducts";
 import { element } from "prop-types";
 import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
@@ -142,7 +143,11 @@ const router = createBrowserRouter([
 				path: "login",
 				element: <Login></Login>,
 			},
-
+			{
+				// Team Arrow
+				path: "habibvaiwork",
+				element: <Habibvaiwork></Habibvaiwork>,
+			},
 			{
 				// Team Arrow
 				path: "register",
@@ -285,7 +290,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				// AVENGERS TOMU
-				path: "analytics",
+				path: "/dashboard",
 				element: <Analytics></Analytics>,
 			},
 			{
@@ -333,7 +338,7 @@ const router = createBrowserRouter([
 				element: <MyListing></MyListing>
 			},
 			{
-				path: "dashboard/userhome/userorderedproducts",
+				path: "dashboard/userorderedproducts",
 				element: <UserOrderedProducts></UserOrderedProducts>
 			},
 
