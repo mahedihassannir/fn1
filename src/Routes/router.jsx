@@ -290,7 +290,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				// AVENGERS TOMU
-				path: "analytics",
+				path: "/dashboard",
 				element: <Analytics></Analytics>,
 			},
 			{
