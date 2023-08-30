@@ -86,6 +86,7 @@ import CustomerFeedback from "../Dashboard/CodeWorms/CustomerFeedback/CustomerFe
 import OrderResuns from "../Dashboard/CodeWorms/OrderResuns/OrderResuns";
 import OrderManage from "../Dashboard/CodeWorms/OrderManage.jsx/OrderManage";
 import CustommerReview from "../Dashboard/CodeWorms/CustommerReview/CustommerReview";
+import UserAddressForm from "../Dashboard/FantasticUserPanel/UserAddressForm/UserAddressForm";
 
 
 const router = createBrowserRouter([
@@ -342,8 +343,8 @@ const router = createBrowserRouter([
 				element: <MyListing></MyListing>
 			},
 			{
-				path: "dashboard/userorderedproducts",
-				element: <UserOrderedProducts></UserOrderedProducts>
+				path: "dashboard/useraddressform",
+				element: <UserAddressForm></UserAddressForm>
 			},
 
 

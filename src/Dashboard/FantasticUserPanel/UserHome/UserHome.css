@@ -17,3 +17,26 @@
 .user-scroll::-webkit-scrollbar-track {
   background-color: #939a93; /* Change to your desired track color */
 }
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.userFormBg{
+  background: linear-gradient(45deg, #4e3980, #581a2d, #cf6d6d, #581c1c);
+  animation: gradientAnimation 10s ease infinite;
+  background-size: 200% 200%;
+}
+.userForm {
+  background: linear-gradient(45deg, #3a713b, #c86583, #246720, #7f841a);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
