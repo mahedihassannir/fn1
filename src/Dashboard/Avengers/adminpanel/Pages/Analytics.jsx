@@ -1,8 +1,9 @@
+import SalesAnalyticsMain from "../../../../Components/Avengers/DashboardRelatedCompo/AnalyticsCompo/SalesAnalyticsMain/SalesAnalyticsMain";
 
 const Analytics = () => {
     return (
-        <div className="bg-red-400"> 
-Analytics
+        <div className="ml-4">
+            <SalesAnalyticsMain/>
         </div>
     );
 };
