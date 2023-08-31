@@ -86,6 +86,7 @@ import CustomerFeedback from "../Dashboard/CodeWorms/CustomerFeedback/CustomerFe
 import OrderResuns from "../Dashboard/CodeWorms/OrderResuns/OrderResuns";
 import OrderManage from "../Dashboard/CodeWorms/OrderManage.jsx/OrderManage";
 import CustommerReview from "../Dashboard/CodeWorms/CustommerReview/CustommerReview";
+import AddProduct from "../Dashboard/CodeWorms/AddProduct.jsx/AddProduct";
 
 
 const router = createBrowserRouter([
@@ -469,6 +470,15 @@ const router = createBrowserRouter([
 
 				path: "/dashboard/ordermanage",
 				element: <OrderManage></OrderManage>
+
+
+			},
+			// this is for the teamarrow ends
+			// this is for the teamarrow 
+			{
+
+				path: "/dashboard/addproduct",
+				element: <AddProduct></AddProduct>
 
 
 			},

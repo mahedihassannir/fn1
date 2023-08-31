@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiArchiveBoxXMark, HiMiniAdjustmentsHorizontal, HiMiniCalculator, HiMiniShoppingCart, HiMiniUsers } from "react-icons/hi2";
 import { HiAcademicCap, HiChartBar, HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
-import { FaBusinessTime, FaDropbox, FaListUl, FaQuestionCircle } from 'react-icons/fa';
+import { FaBusinessTime, FaDropbox, FaListUl, FaProductHunt, FaQuestionCircle } from 'react-icons/fa';
 import { MdOutlinePayments } from 'react-icons/md';
 
 const SellerDashboard = () => {
@@ -61,7 +61,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <FaListUl className='w-4 h-4'></FaListUl>
-                    <h4> Product Section</h4>
+                    <h4> E-com review</h4>
                 </div></Link>
                 {/* Seller Add Product ends */}
 
@@ -74,8 +74,8 @@ const SellerDashboard = () => {
                         : ""
                         } cursor-pointer  gap-4`}
                 >
-                    <FaBusinessTime className='w-4 h-4'></FaBusinessTime>
-                    <h4> Manage Product</h4>
+                    <FaProductHunt className='w-4 h-4'></FaProductHunt>
+                    <h4>Product Manager</h4>
                 </div></Link>
                 {/* Order progress and orders */}
 
