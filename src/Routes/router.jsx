@@ -87,6 +87,8 @@ import OrderResuns from "../Dashboard/CodeWorms/OrderResuns/OrderResuns";
 import OrderManage from "../Dashboard/CodeWorms/OrderManage.jsx/OrderManage";
 import CustommerReview from "../Dashboard/CodeWorms/CustommerReview/CustommerReview";
 import AddProduct from "../Dashboard/CodeWorms/AddProduct.jsx/AddProduct";
+import MarkatingSolution from "../Dashboard/CodeWorms/MarkatingSolution/MarkatingSolution";
+import Markatingpage from "../Dashboard/CodeWorms/Markatingpage/Markatingpage";
 
 
 const router = createBrowserRouter([
@@ -474,6 +476,7 @@ const router = createBrowserRouter([
 
 			},
 			// this is for the teamarrow ends
+
 			// this is for the teamarrow 
 			{
 
@@ -483,6 +486,25 @@ const router = createBrowserRouter([
 
 			},
 			// this is for the teamarrow ends
+
+			// this is for the teamarrow seller markatingsolution 
+			{
+
+				path: "/dashboard/markatingpage",
+				element: <Markatingpage></Markatingpage>
+
+
+			},
+			{
+
+				path: "/dashboard/markatingsolution",
+				element: <MarkatingSolution></MarkatingSolution>
+
+
+			},
+			// this is for the teamarrow ends
+
+
 
 			// this block is for the seller ends
 
