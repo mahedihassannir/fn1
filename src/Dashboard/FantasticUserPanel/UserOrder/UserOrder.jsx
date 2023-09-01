@@ -26,7 +26,7 @@ const UserOrder = () => {
                                     <p>Estimate Delivery Time: 22nd Aug 2023 - 30 Aug 2023</p>
                                 </div>
                                 <div className=" flex justify-end items-center">
-                                    <button className=" border border-black shadow px-3 py-1 text-green-800 hover:bg-gray-200 rounded">View details</button  >
+                                    <button className=" border border-black shadow px-3 py-1 text-green-800 hover:bg-gray-200">View details</button  >
                                 </div>
                             </div>)
                     }
@@ -43,7 +43,7 @@ const UserOrder = () => {
                             <p>Delivery Time: 22nd Aug 2023</p>
                         </div>
                         <div className=" flex justify-end items-center">
-                            <button className=" border border-black shadow px-3 py-1 text-green-800 hover:bg-gray-200 rounded">View details</button  >
+                            <button className=" border border-black shadow px-3 py-1 text-green-800 hover:bg-gray-200">View details</button  >
                         </div>
                     </div>
                 </div>
