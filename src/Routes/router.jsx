@@ -334,16 +334,16 @@ const router = createBrowserRouter([
 			// fantastic people routes
 
 			{
-				path: "dashboard/userhome",
+				path: "userhome",
 				element: <UserHome></UserHome>,
 			},
 			// Home Components Routes
 			{
-				path: "dashboard/userhome/mylisting",
+				path: "userhome/mylisting",
 				element: <MyListing></MyListing>
 			},
 			{
-				path: "dashboard/useraddressform",
+				path: "useraddressform",
 				element: <UserAddressForm></UserAddressForm>
 			},
 
@@ -360,7 +360,7 @@ const router = createBrowserRouter([
 
 			// this is for user order
 			{
-				path: "dashboard/userorder",
+				path: "userorder",
 				element: <UserOrder></UserOrder>,
 			},
 
@@ -368,7 +368,7 @@ const router = createBrowserRouter([
 
 			// user progress
 			{
-				path: "dashboard/userprogress",
+				path: "userprogress",
 				element: <UserProgress></UserProgress>,
 			},
 
@@ -376,7 +376,7 @@ const router = createBrowserRouter([
 
 			// user wishlist starts
 			{
-				path: "dashboard/userwishlist",
+				path: "userwishlist",
 				element: <UserWhichlist></UserWhichlist>,
 			},
 			// user wishlist ends
@@ -384,7 +384,7 @@ const router = createBrowserRouter([
 			// user userpayment starts
 
 			{
-				path: "dashboard/userpaymenthistory",
+				path: "userpaymenthistory",
 				element: <UserpaymentHistory></UserpaymentHistory>,
 			},
 			// user userpayment ends
@@ -393,7 +393,7 @@ const router = createBrowserRouter([
 
 			{
 
-				path: "dashboard/customersupport",
+				path: "customersupport",
 				element: <UserCustomerSupport></UserCustomerSupport>
 
 
@@ -401,14 +401,14 @@ const router = createBrowserRouter([
 
 			{
 
-				path: "dashboard/wishlist",
+				path: "wishlist",
 				element: <Wishlist></Wishlist>
 
 
 			},
 			{
 
-				path: "dashboard/payhistory",
+				path: "payhistory",
 				element: <PaymentHistory></PaymentHistory>
 
 

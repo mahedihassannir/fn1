@@ -5,16 +5,26 @@
  *
  * @format
  */
+import { useContext } from "react";
+import useCustomers from "../../../../Hooks/Fantastic/useCustomers";
 import SingleCartProductCard from "../SingleCartProductCard/SingleCartProductCard";
+import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 
 const CartProductDetails = ({ productsData }) => {
+	const { user } = useContext(ContexM)
+	const { customers } = useCustomers()
+	const filterCustomer = user && user.email && customers.some(customer => customer.email === user.email)
+  ? customers.filter(customer => customer.email === user.email)
+  : [];
+console.log(filterCustomer);
+
 	return (
 		<div className='flex flex-col gap-5'>
 			{/* user address  */}
 			<div className='text-xs p-5 border rounded font-semibold'>
 				<div>
 					<h2>
-						Deliver to: <span>MG</span>
+						Deliver to: {filterCustomer.length > 0 ? filterCustomer[0].name : "Name Unknown"}
 					</h2>
 
 					<div className='mt-3 flex items-center gap-3'>
@@ -27,10 +37,9 @@ const CartProductDetails = ({ productsData }) => {
 
 						{/* number and address  */}
 						<div className='flex items-center gap-3 divide-x'>
-							<p>01811115794</p>
+							<p>{filterCustomer.length > 0 ? filterCustomer[0].mobile : "Number Unknown"}</p>
 							<p className='pl-3'>
-								Kashimpur Central jail, Kona Bari, Gazipur,
-								Dhaka
+							{filterCustomer.length > 0 ? filterCustomer[0].selectdivision +',' +filterCustomer[0].selectcity + ', ' + filterCustomer[0].area : "Number Unknown"}
 							</p>
 						</div>
 						<div>
@@ -41,9 +50,9 @@ const CartProductDetails = ({ productsData }) => {
 
 					{/* email  */}
 					<div className='mt-3 flex items-center gap-5'>
-						<p>Email to:</p>
+						<p>Email to: {filterCustomer.length > 0 ? filterCustomer[0].contactEmail : "Email Unknown"}</p>
 						<div className='flex items-center gap-2'>
-							<p>mgrakibbd@gmail.com</p>
+							<p></p>
 							{/* TODO: emplement change funtionality */}
 							<button className='text-[#2ABBE8]'>Edit</button>
 						</div>
