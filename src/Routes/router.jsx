@@ -82,6 +82,11 @@ import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/Selle
 import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
 import Wishlist from "../Dashboard/CodeWorms/Wishlist/Wishlist";
 import PaymentHistory from "../Dashboard/CodeWorms/Payhistory/PaymentHistory";
+import UserAddressForm from "../Dashboard/FantasticUserPanel/UserAddressForm/UserAddressForm";
+import CustomerFeedback from "../Dashboard/CodeWorms/CustomerFeedback/CustomerFeedback";
+import OrderResuns from "../Dashboard/CodeWorms/OrderResuns/OrderResuns";
+import CustommerReview from "../Dashboard/CodeWorms/CustommerReview/CustommerReview";
+import OrderManage from "../Dashboard/CodeWorms/OrderManage.jsx/OrderManage";
 
 
 const router = createBrowserRouter([
