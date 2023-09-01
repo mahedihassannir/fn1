@@ -31,7 +31,7 @@ const FantasticSideBar = () => {
 			<div className='text-left flex flex-col gap-1 mt-8 mx-3 font-normal'>
 				{/* nav items */}
 				{/* Home */}
-				<Link to="dashboard/userhome"><div onClick={() => setActiveRoute("Home")}
+				<Link to="userhome"><div onClick={() => setActiveRoute("Home")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${
 							activeRoute === "Home"
 								? "bg-[#19D895] text-[#0A1727]"
@@ -42,7 +42,7 @@ const FantasticSideBar = () => {
 					<h4> Home</h4>
 				</div></Link>
 				{/* User Order */}
-				<Link to="dashboard/userorder">
+				<Link to="userorder">
 				<div onClick={() => setActiveRoute("My Order")}
 					className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${
 						activeRoute === "My Order"
@@ -55,7 +55,7 @@ const FantasticSideBar = () => {
 				</div>
 				</Link>
 				{/* Order progress */}
-				<Link to="dashboard/userprogress">
+				<Link to="userprogress">
 				<div  onClick={() => setActiveRoute("Order Progress")}
 					className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${
 						activeRoute === "Order Progress"
@@ -68,7 +68,7 @@ const FantasticSideBar = () => {
 				</div>
 				</Link>
 				{/* Payment History */}
-				<Link to="dashboard/userpaymenthistory">
+				<Link to="userpaymenthistory">
 				<div onClick={() => setActiveRoute("Payment History")}
 					className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${
 						activeRoute === "Payment History"
@@ -81,7 +81,7 @@ const FantasticSideBar = () => {
 					
 				</div>
 				</Link>
-				<Link to="dashboard/useraddressform">
+				<Link to="useraddressform">
 				<div onClick={() => setActiveRoute("Address Book")}
 					className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${
 						activeRoute === "Address Book"
@@ -96,7 +96,7 @@ const FantasticSideBar = () => {
 				</Link>
 
 					{/* user wish list */}
-				<Link to="dashboard/userwishlist">
+				<Link to="userwishlist">
 				<div onClick={() => setActiveRoute("Wish List")}
 					className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${
 						activeRoute === "Wish List"
