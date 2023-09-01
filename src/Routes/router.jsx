@@ -89,6 +89,7 @@ import CustommerReview from "../Dashboard/CodeWorms/CustommerReview/CustommerRev
 import AddProduct from "../Dashboard/CodeWorms/AddProduct.jsx/AddProduct";
 import MarkatingSolution from "../Dashboard/CodeWorms/MarkatingSolution/MarkatingSolution";
 import Markatingpage from "../Dashboard/CodeWorms/Markatingpage/Markatingpage";
+import UserAddressForm from "../Dashboard/FantasticUserPanel/UserAddressForm/UserAddressForm";
 
 
 const router = createBrowserRouter([
@@ -297,7 +298,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				// AVENGERS TOMU
-				path: "analytics",
+				path: "/dashboard",
 				element: <Analytics></Analytics>,
 			},
 			{
@@ -345,8 +346,8 @@ const router = createBrowserRouter([
 				element: <MyListing></MyListing>
 			},
 			{
-				path: "dashboard/userhome/userorderedproducts",
-				element: <UserOrderedProducts></UserOrderedProducts>
+				path: "dashboard/useraddressform",
+				element: <UserAddressForm></UserAddressForm>
 			},
 
 

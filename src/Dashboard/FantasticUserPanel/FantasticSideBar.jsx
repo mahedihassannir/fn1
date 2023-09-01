@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {  HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
-import { FaBusinessTime,  FaListUl, FaQuestionCircle } from 'react-icons/fa';
+import { FaAddressCard, FaBusinessTime,  FaListUl, FaQuestionCircle } from 'react-icons/fa';
 import { MdOutlinePayments } from 'react-icons/md';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 // import AuthorOfDashboard from '../../../../Components/Avengers/DashboardRelatedCompo/SidBarCompo/AuthorOfDashboard/AuthorOfDashboard';
@@ -81,6 +81,21 @@ const FantasticSideBar = () => {
 					
 				</div>
 				</Link>
+				<Link to="dashboard/useraddressform">
+				<div onClick={() => setActiveRoute("Address Book")}
+					className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${
+						activeRoute === "Address Book"
+							? "bg-[#19D895] text-[#0A1727]"
+							: ""
+					} cursor-pointer gap-4`}
+				>
+					<FaAddressCard className='w-4 h-4'></FaAddressCard>
+					<h4>Address Book</h4>
+					
+				</div>
+				</Link>
+
+					{/* user wish list */}
 				<Link to="dashboard/userwishlist">
 				<div onClick={() => setActiveRoute("Wish List")}
 					className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${
@@ -93,6 +108,20 @@ const FantasticSideBar = () => {
 					<h4>Wish List</h4>
 				</div>
 				</Link>
+
+				<Link to="">
+				<div onClick={() => setActiveRoute("Returns and Refunds")}
+					className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${
+						activeRoute === "Returns and Refunds"
+							? "bg-[#19D895] text-[#0A1727]"
+							: ""
+					} cursor-pointer gap-4`}
+				>
+					<MdOutlinePayments className='w-4 h-4'></MdOutlinePayments>
+					<h4>Returns and Refunds</h4>
+				</div>
+				</Link>
+
 				<hr  className='my-2'/>
 				<Link to="/">
 				<div onClick={() => setActiveRoute("Home Page")}
@@ -110,7 +139,7 @@ const FantasticSideBar = () => {
 					<div className='absolute -top-5 left-20 flex justify-center rounded-full' style={{color:"#bdf094",border:"6px solid #0A1727",backgroundColor:"#0A1727"}} >
 					<FaQuestionCircle className='text-2xl'/>
 					</div>
-					<div className='rounded-lg py-4' style={{backgroundColor:"#bdf094"}}>
+					<div className='rounded-lg py-4' style={{backgroundColor:"#19D895"}}>
 					<h1 className='font-bold'>Help Center</h1>
 					<p>Having Trouble in Product</p>
 					<p>Please Contact Use for</p>

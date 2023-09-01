@@ -30,9 +30,9 @@ const DashBoardManage = () => {
 					values ? "-left-[500px]" : "left-[0px]"
 				} md:left-0`}
 			>
-				{/* <AdminSidebar /> */}
-				{/* <FantasticSideBar/> */}
 				<SellerDashboard></SellerDashboard>
+				{/* <FantasticSideBar/> */}
+				{/* <AdminSidebar /> */}
 
 			</div>
 
