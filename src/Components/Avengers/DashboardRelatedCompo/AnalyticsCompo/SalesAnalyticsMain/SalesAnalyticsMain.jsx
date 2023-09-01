@@ -7,12 +7,12 @@ import EarningMain from '../EarningMain/EarningMain';
 
 const SalesAnalyticsMain = () => {
     return (
-        <div className="mt-6 ml-5">
-            <div className="flex justify-center gap-10 ">
-                <div className="w-[65%] rounded-sm bg-[#FFFFFF] h-[600px] shadow-md">
+        <div className="mt-6 md:ml-5">
+            <div className="w-full md:flex justify-center gap-10 ">
+                <div className="w-full md:w-[65%] rounded-sm bg-[#FFFFFF] h-[600px] shadow-md">
                     <SalesAnalyticsDiv/>
                 </div>
-                <div className="w-[30%] rounded-sm">
+                <div className="w-full md:w-[30%] rounded-sm">
                     <div className="mb-12 h-[270px] bg-[#FFFFFF]">
                         <TopFiveProducts></TopFiveProducts>
                     </div>
@@ -24,7 +24,7 @@ const SalesAnalyticsMain = () => {
                 </div>
 
             </div>
-            <div className='ml-5'>
+            <div className='md:ml-5'>
                 <EarningMain />
             </div>
         </div>

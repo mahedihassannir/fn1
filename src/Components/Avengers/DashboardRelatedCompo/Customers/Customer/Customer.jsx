@@ -5,11 +5,11 @@ import { HiRefresh } from "react-icons/hi";
 
 const Customer = () => {
     return (
-        <div className="flex items-center justify-between shadow-md px-6 py-6">
+        <div className="mt-5 md:mt-0 md:flex items-center justify-between shadow-md px-6 py-6">
             <div>
-                <h3 className="text-5xl font-semibold">Customers</h3>
+                <h3 className="text-3xl md:text-5xl font-semibold">Customers</h3>
             </div>
-            <div className="flex gap-2">
+            <div className="flex  mt-5 md:mt-0 gap-2">
                 <p className="text-lg font-semibold">Data refresh</p>
                 <HiRefresh className="w-7 h-7 text-[#035ECF]"></HiRefresh>
                 <div className="ml-2">

@@ -2,16 +2,20 @@
 //TOMA 
 //ConversionRateSide right section
 import { BsFillCaretUpFill} from "react-icons/bs";
+import useCustomersInfo from "../../../../../Hooks/Avengers/useCustomersInfo/useCustomersInfo";
 
 const ConversionRateRightSide = () => {
+    const { customerInfo } = useCustomersInfo();
+    const {  newUsers, regularUsers } = customerInfo;
+
     return (
-        <div className=" w-[48%]  h-[200px] shadow-md rounded-md p-5">
+        <div className=" md:w-[48%]  md:h-[200px] shadow-md rounded-md p-5">
             <h4 className="font-semibold text-2xl mb-4">Conversion Rate</h4>
 
-                <div className="flex justify-between ">
+                <div className="w-full md:flex justify-between ">
 
                     <div >
-                        <div className="flex font-semibold gap-8 ">
+                        <div className=" md:flex font-semibold gap-8 ">
                             <div>
                                 <small className="text-[#8D8D99]">YEAR</small>
                                 <p>2023</p>
@@ -37,9 +41,9 @@ const ConversionRateRightSide = () => {
                             <p className="ml-3 ">$32k</p>
                         </div>
                     </div>
-                    <div className="flex gap-6">
+                    <div className="md:flex gap-6">
                         <div>
-                            <h3 className="mb-3 text-4xl font-semibold">32,987</h3>
+                            <h3 className="mb-3 text-4xl font-semibold">{regularUsers}</h3>
                             <p className="text-[#8195AC] font-semibold">Regular Customers</p>
                             <div className="mt-1 flex gap-2 items-center text-[#00BA9D]">
                             <BsFillCaretUpFill></BsFillCaretUpFill>
@@ -47,7 +51,7 @@ const ConversionRateRightSide = () => {
                             </div>
                         </div>
                         <div>
-                            <h3 className="mb-3 text-4xl font-semibold">+12,345</h3>
+                            <h3 className="mb-3 text-4xl font-semibold">{newUsers}</h3>
                             <p className="text-[#8195AC] font-semibold">New Customers</p>
                             <div className="mt-1 flex gap-2 items-center text-[#00BA9D]">
                             <BsFillCaretUpFill></BsFillCaretUpFill>

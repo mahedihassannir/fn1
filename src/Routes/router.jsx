@@ -82,6 +82,7 @@ import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/Selle
 import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
 import Wishlist from "../Dashboard/CodeWorms/Wishlist/Wishlist";
 import PaymentHistory from "../Dashboard/CodeWorms/Payhistory/PaymentHistory";
+import PaymentDetails from "../Components/Avengers/CheckOutComponents/PaymentDetails/PaymentDetails";
 
 
 const router = createBrowserRouter([
@@ -107,10 +108,16 @@ const router = createBrowserRouter([
 				path: "proceed_to_checkout",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
+
 			{
 				// avengers
 				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
+			},
+			{
+				path: "/detailes/:id",
+				element: <PaymentDetails></PaymentDetails>,
+				loader: ({ params }) => fetch(`https://server-nine-ecru.vercel.app/courseA/${params.id}`)
 			},
 			{
 				// 	// avengers Toma PAYMENT SUCCESS ROUTE

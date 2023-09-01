@@ -5,7 +5,7 @@ import RecentReviewsMain from '../RecentReviewsMain/RecentReviewsMain';
 
 const EarningMain = () => {
     return (
-        <div className='grid grid-cols-3 gap-8  rounded-sm  h-[300px] "'>
+        <div className='grid md:grid-cols-3 gap-8  rounded-sm  md:h-[300px] "'>
             <EarningByItemMain/>
             <VisitsMain/>
             <RecentReviewsMain/>

@@ -1,0 +1,68 @@
+[
+  {
+    "name": "Rakib",
+    "email": "mgr@gmail.com",
+    "image": "",
+    "phone": "017400000",
+    "verified": true,
+    "registrationDate": "1/1/2023",
+    "lastVisitDate": "4/1/2023",
+    "birthDate": "1/17/2002",
+    "gender": "male"
+  },
+  {
+    "name": "Toma",
+    "email": "tomu@gmail.com",
+    "image": "",
+    "phone": "017400000",
+    "verified": true,
+    "registrationDate": "8/1/2023",
+    "lastVisitDate": "8/26/2023",
+    "birthDate": "11/12/2002",
+    "gender": "female"
+  },
+  {
+    "name": "Adiba",
+    "email": "mgrb@gmail.com",
+    "image": "",
+    "phone": "017400000",
+    "verified": true,
+    "registrationDate": "4/1/2023",
+    "lastVisitDate": "5/1/2023",
+    "birthDate": "1/1/2002",
+    "gender": "female"
+  },
+  {
+    "name": "Arobi",
+    "email": "arobi@gmail.com",
+    "image": "",
+    "phone": "017400000",
+    "verified": true,
+    "registrationDate": "5/1/2023",
+    "lastVisitDate": "8/31/2023",
+    "birthDate": "12/1/2002",
+    "gender": "female"
+  },
+  {
+    "name": "akash",
+    "email": "akash@gmail.com",
+    "image": "",
+    "phone": "017400000",
+    "verified": true,
+    "registrationDate": "5/1/2023",
+    "lastVisitDate": "8/25/2023",
+    "birthDate": "8/11/2002",
+    "gender": "male"
+  },
+  {
+    "name": "shohisnu",
+    "email": "shohisnu@gmail.com",
+    "image": "",
+    "phone": "017400000",
+    "verified": true,
+    "registrationDate": "4/26/2023",
+    "lastVisitDate": "8/18/2023",
+    "birthDate": "1/17/1998",
+    "gender": "male"
+  }
+]

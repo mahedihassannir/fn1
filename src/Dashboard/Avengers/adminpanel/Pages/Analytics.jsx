@@ -2,7 +2,7 @@ import SalesAnalyticsMain from "../../../../Components/Avengers/DashboardRelated
 
 const Analytics = () => {
     return (
-        <div className="ml-4">
+        <div className="m-5 md:m-0 md:ml-4">
             <SalesAnalyticsMain/>
         </div>
     );
