@@ -1,10 +1,14 @@
+// Author:Masum
+// Date:08/28/2023
 import React, { useContext, useEffect, useState } from 'react';
-import useDivisions from '../../../../../Hooks/Fantastic/useDivisions';
 import axios from 'axios';
 import Swal from 'sweetalert2';
-import { ContexM } from '../../../../../Authentication/AuthProvider/AuthProvider';
+import { ContexM } from '../../../Authentication/AuthProvider/AuthProvider';
+import useDivisions from '../../../Hooks/Fantastic/useDivisions';
 
-const UserOrderedProducts = () => {
+
+
+const UserAddressForm = () => {
     const { divisions, loading } = useDivisions()
     const [selectDivision, setSelectDivision] = useState("")
     const [selectCity, setSelectCity] = useState("")
@@ -123,24 +127,24 @@ const UserOrderedProducts = () => {
     }, [selectDivision])
 
     return (
-        <section className=' userFormBg'>
+        <section className=' '>
          <div className='flex justify-center'>
-         <form onSubmit={HandleUserSubmit} className='w-[70%] userForm font-bold text-white flex flex-col gap-y-6 p-10'>
+         <form onSubmit={HandleUserSubmit} className='w-[70%]  flex flex-col gap-y-6 p-10'>
                 <div>
                     <p>Full Name</p>
-                    <input  className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='Write full name' name='fullname' />
+                    <input  className='outline-none border w-full py-2 pl-3 rounded' type="text" placeholder='Write full name' name='fullname' />
                     <p className="text-yellow-300">{errors.fullname}</p>
                 </div>
 
                 <div>
                     <p>Address</p>
-                    <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='House no./building/street/area' name='address' />
+                    <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder='House no./building/street/area' name='address' />
                     <p className="text-yellow-300">{errors.address}</p>
                 </div>
 
                 <div>
                     <p>Mobile Number</p>
-                    <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='Write mobile number' name='mobile' onInput={(e) => {
+                    <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder='Write mobile number' name='mobile' onInput={(e) => {
                         e.target.value = e.target.value.replace(/[^0-9]/g, '');
                     }} />
                     <p className="text-yellow-300">{errors.mobile}</p>
@@ -150,7 +154,7 @@ const UserOrderedProducts = () => {
                     <p>Division</p>
                     <select
                         name="selectdivision"
-                        className='w-full outline-none border text-black py-2'
+                        className='w-full outline-none border  py-2'
                         value={selectDivision}
                         onChange={(e) => setSelectDivision(e.target.value)}
                     >
@@ -170,7 +174,7 @@ const UserOrderedProducts = () => {
                     <p>City</p>
                     <select
                         name="selectcity"
-                        className='w-full outline-none border text-black py-2'
+                        className='w-full outline-none border  py-2'
                         value={cities}
                         onChange={(e) => setCities(e.target.value)}
                         disabled={!selectCity || !selectCity.data || selectCity.data.length === 0}
@@ -197,13 +201,13 @@ const UserOrderedProducts = () => {
 
                 <div>
                     <p>Area</p>
-                    <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='Please choose your area' name='area' />
+                    <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder='Please choose your area' name='area' />
                     <p className="text-yellow-300">{errors.area}</p>
                 </div>
                 {/*  */}
                 <div>
                     <p>Landmark(Optional)</p>
-                    <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='E.G. beside train station' name='landmark' />
+                    <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder='E.G. beside train station' name='landmark' />
                 </div>
                 <input style={{ backgroundColor: "#19D895" }} className=' w-full py-2 pl-3 rounded' type="submit" value="Save" />
             </form>
@@ -212,4 +216,4 @@ const UserOrderedProducts = () => {
     );
 };
 
-export default UserOrderedProducts;
+export default UserAddressForm;

@@ -82,7 +82,6 @@ import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/Selle
 import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
 import Wishlist from "../Dashboard/CodeWorms/Wishlist/Wishlist";
 import PaymentHistory from "../Dashboard/CodeWorms/Payhistory/PaymentHistory";
-import PaymentDetails from "../Components/Avengers/CheckOutComponents/PaymentDetails/PaymentDetails";
 
 
 const router = createBrowserRouter([
@@ -114,11 +113,7 @@ const router = createBrowserRouter([
 				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
-			{
-				path: "/detailes/:id",
-				element: <PaymentDetails></PaymentDetails>,
-				loader: ({ params }) => fetch(`https://server-nine-ecru.vercel.app/courseA/${params.id}`)
-			},
+			
 			{
 				// 	// avengers Toma PAYMENT SUCCESS ROUTE
 				path: "payment/success/:tranId",
@@ -345,10 +340,9 @@ const router = createBrowserRouter([
 				element: <MyListing></MyListing>
 			},
 			{
-				path: "dashboard/userorderedproducts",
-				element: <UserOrderedProducts></UserOrderedProducts>
+				path: "dashboard/useraddressform",
+				element: <UserAddressForm></UserAddressForm>
 			},
-
 
 
 
@@ -424,8 +418,13 @@ const router = createBrowserRouter([
 
 			// this area for the user panel work ends
 
-			// CodeWorms
+			// TeamArrow
+			// TeamArrow
 
+			{
+				path: "dashboard/customerfeedback",
+				element: <CustomerFeedback></CustomerFeedback>,
+			},
 			{
 				path: "dashboard/sellerhome",
 				element: <SellerHome></SellerHome>,
@@ -439,11 +438,44 @@ const router = createBrowserRouter([
 				element: <ManageProduct></ManageProduct>
 			},
 
-			//TODO
+			// TeamArrow ends
 
-			// this side is for user
+			// this side is for seller
 
-			// TODO
+
+			// this block is for the seller 
+			// this is for the teamarrow 
+			{
+
+				path: "/dashboard/orderresuns",
+				element: <OrderResuns></OrderResuns>
+
+
+			},
+			// this is for the teamarrow ends
+			// this is for the teamarrow 
+			{
+
+				path: "/dashboard/custommerreview",
+				element: <CustommerReview></CustommerReview>
+
+
+			},
+			// this is for the teamarrow ends
+			// this is for the teamarrow 
+			{
+
+				path: "/dashboard/ordermanage",
+				element: <OrderManage></OrderManage>
+
+
+			},
+			// this is for the teamarrow ends
+
+			// this block is for the seller ends
+
+
+
 
 			// this side is for seller
 		],

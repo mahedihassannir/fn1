@@ -27,7 +27,7 @@ const UserHomeSecondSection = () => {
                 <p className=''>Today &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; This Month</p>
                 <p className='my-2 text-green-500'>4 Ordered&nbsp; &nbsp; 17 ordered</p>
 
-                <Link to="userorderedproducts"><p className='flex items-center gap-1'>Go to my orders <BsArrowRightShort className='mt-1' /></p></Link>
+                <Link to="/dashboard/dashboard/userprogress"><p className='flex items-center gap-1'>Go to my orders <BsArrowRightShort className='mt-1' /></p></Link>
             </div>
 
             {/* date and time */}
