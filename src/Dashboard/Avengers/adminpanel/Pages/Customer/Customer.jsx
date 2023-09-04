@@ -7,9 +7,13 @@ import Avengers from "../../../../../Components/Avengers/DashboardRelatedCompo/C
 
 
 const Customer = () => {
+
+
+
     return (
-        <div className="px-12">
+        <div className="px-5 md:px-12">
            
+
             <Avengers></Avengers>
 
 
