@@ -298,7 +298,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				// AVENGERS TOMU
-				path: "/dashboard",
+				path: "/dashboardana",
 				element: <Analytics></Analytics>,
 			},
 			{

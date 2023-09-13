@@ -27,7 +27,7 @@ const Habib = () => {
                         <div className='flex justify-center gap-6 items-center'>
                             <img className=' h-full p-1 w-10' src="https://i.ibb.co/7jwt6sH/6b396809-87e7-435d-ba7b-5d69699371ba.png" alt="" />
 
-                            <h1 className='text-lg font-semibold'> Food</h1>
+                            <h1 className='text-lg font-semibold'> খা</h1>
 
                         </div>
                     </Link>

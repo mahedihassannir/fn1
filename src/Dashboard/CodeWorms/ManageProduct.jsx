@@ -11,7 +11,7 @@ const ManageProduct = () => {
                 <div className="bg-red-500 w-40 h-20 ">
 
 
-                    go to add product
+                    go to add product   
                 </div>
 
 
