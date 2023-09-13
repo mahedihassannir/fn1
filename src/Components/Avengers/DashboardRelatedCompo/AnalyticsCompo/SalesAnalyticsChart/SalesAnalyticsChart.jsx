@@ -106,7 +106,8 @@ const SalesAnalyticsChart = () => {
 
 
     return (
-        <div className=' mt-8'>
+        <div className='overflow-x-auto mt-8'>
+           {/* <ResponsiveContainer width="100%" height="100%"></ResponsiveContainer>  */}
         <BarChart
             width={900}
             height={300}

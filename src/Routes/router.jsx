@@ -28,11 +28,13 @@ import Kids from "../Components/fantasticprople/Kids";
 
 
 import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
+// thi is some categories 
 import Lips from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Lips";
 import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Eyes";
 import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
 import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/MensCare";
 import Face from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Face";
+// thi is some categories 
 import DashBoardManage from "../Dashboard/DashBoardManage/DashBoardManage";
 import PaymentSuccess from "../Components/Avengers/PaymentSuccess/PaymentSuccess";
 import PaymentFailed from "../Components/PaymentFailed/PaymentFailed";
@@ -82,14 +84,15 @@ import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/Selle
 import SellerPersonalInfoForm from "../Pages/SellerRegister/SellerPersonalInfoForm/SellerPersonalInfoForm";
 import Wishlist from "../Dashboard/CodeWorms/Wishlist/Wishlist";
 import PaymentHistory from "../Dashboard/CodeWorms/Payhistory/PaymentHistory";
+import UserAddressForm from "../Dashboard/FantasticUserPanel/UserAddressForm/UserAddressForm";
 import CustomerFeedback from "../Dashboard/CodeWorms/CustomerFeedback/CustomerFeedback";
 import OrderResuns from "../Dashboard/CodeWorms/OrderResuns/OrderResuns";
-import OrderManage from "../Dashboard/CodeWorms/OrderManage.jsx/OrderManage";
 import CustommerReview from "../Dashboard/CodeWorms/CustommerReview/CustommerReview";
 import AddProduct from "../Dashboard/CodeWorms/AddProduct.jsx/AddProduct";
 import MarkatingSolution from "../Dashboard/CodeWorms/MarkatingSolution/MarkatingSolution";
 import Markatingpage from "../Dashboard/CodeWorms/Markatingpage/Markatingpage";
-import UserAddressForm from "../Dashboard/FantasticUserPanel/UserAddressForm/UserAddressForm";
+// import UserAddressForm from "../Dashboard/FantasticUserPanel/UserAddressForm/UserAddressForm";
+import OrderManage from "../Dashboard/CodeWorms/OrderManage.jsx/OrderManage";
 
 
 const router = createBrowserRouter([
@@ -115,11 +118,13 @@ const router = createBrowserRouter([
 				path: "proceed_to_checkout",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
+
 			{
 				// avengers
 				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
+
 			{
 				// 	// avengers Toma PAYMENT SUCCESS ROUTE
 				path: "payment/success/:tranId",
@@ -337,16 +342,16 @@ const router = createBrowserRouter([
 			// fantastic people routes
 
 			{
-				path: "dashboard/userhome",
+				path: "userhome",
 				element: <UserHome></UserHome>,
 			},
 			// Home Components Routes
 			{
-				path: "dashboard/userhome/mylisting",
+				path: "userhome/mylisting",
 				element: <MyListing></MyListing>
 			},
 			{
-				path: "dashboard/useraddressform",
+				path: "useraddressform",
 				element: <UserAddressForm></UserAddressForm>
 			},
 
@@ -363,7 +368,7 @@ const router = createBrowserRouter([
 
 			// this is for user order
 			{
-				path: "dashboard/userorder",
+				path: "userorder",
 				element: <UserOrder></UserOrder>,
 			},
 
@@ -371,7 +376,7 @@ const router = createBrowserRouter([
 
 			// user progress
 			{
-				path: "dashboard/userprogress",
+				path: "userprogress",
 				element: <UserProgress></UserProgress>,
 			},
 
@@ -379,7 +384,7 @@ const router = createBrowserRouter([
 
 			// user wishlist starts
 			{
-				path: "dashboard/userwishlist",
+				path: "userwishlist",
 				element: <UserWhichlist></UserWhichlist>,
 			},
 			// user wishlist ends
@@ -387,7 +392,7 @@ const router = createBrowserRouter([
 			// user userpayment starts
 
 			{
-				path: "dashboard/userpaymenthistory",
+				path: "userpaymenthistory",
 				element: <UserpaymentHistory></UserpaymentHistory>,
 			},
 			// user userpayment ends
@@ -396,7 +401,7 @@ const router = createBrowserRouter([
 
 			{
 
-				path: "dashboard/customersupport",
+				path: "customersupport",
 				element: <UserCustomerSupport></UserCustomerSupport>
 
 
@@ -404,14 +409,14 @@ const router = createBrowserRouter([
 
 			{
 
-				path: "dashboard/wishlist",
+				path: "wishlist",
 				element: <Wishlist></Wishlist>
 
 
 			},
 			{
 
-				path: "dashboard/payhistory",
+				path: "payhistory",
 				element: <PaymentHistory></PaymentHistory>
 
 
