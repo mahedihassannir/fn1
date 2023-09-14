@@ -12,7 +12,7 @@ const Main = () => {
 
 
             <Footer></Footer>
-        </div>
+ </div>
     );
 };
 

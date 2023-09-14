@@ -1,5 +1,6 @@
 import CodeWorms from "../../Components/CodeWorms/CodeWorms";
 import TeamArrow from "../../Components/TeamArrow/TeamArrow";
+import Banner from "../Banner/Banner";
 
 
 const Home = () => {
@@ -10,7 +11,7 @@ const Home = () => {
 
             <section>
 
-
+<Banner></Banner>
 
             </section>
 
