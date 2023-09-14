@@ -119,7 +119,7 @@ const UserAddressForm = () => {
             });
     }
 
-    // get cities based on divisions
+    // get cities based on divisions h1
     useEffect(() => {
         axios.get(`https://bdapis.com/api/v1.1/division/${selectDivision}`)
             .then((response) => {
