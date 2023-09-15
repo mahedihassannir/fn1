@@ -35,7 +35,7 @@ const AdminSidebar = () => {
 			<div className='text-left flex flex-col gap-1 mt-8 mx-3 font-normal'>
 				{/* nav items */}
 				{/* Home */}
-				<Link to={"/dashboard"}>
+				<Link to={"/dashboardana"}>
 					<div
 						onClick={() => setActiveRoute("Home")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${

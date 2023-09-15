@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiArchiveBoxXMark, HiMiniAdjustmentsHorizontal, HiMiniCalculator, HiMiniShoppingCart, HiMiniUsers } from "react-icons/hi2";
 import { HiAcademicCap, HiChartBar, HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
-import { FaBusinessTime, FaDropbox, FaListUl, FaQuestionCircle } from 'react-icons/fa';
+import { FaBusinessTime, FaDropbox, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle } from 'react-icons/fa';
 import { MdOutlinePayments } from 'react-icons/md';
 
 const SellerDashboard = () => {
@@ -61,7 +61,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <FaListUl className='w-4 h-4'></FaListUl>
-                    <h4> Product Section</h4>
+                    <h4> E-com review</h4>
                 </div></Link>
                 {/* Seller Add Product ends */}
 
@@ -74,8 +74,8 @@ const SellerDashboard = () => {
                         : ""
                         } cursor-pointer  gap-4`}
                 >
-                    <FaBusinessTime className='w-4 h-4'></FaBusinessTime>
-                    <h4> Manage Product</h4>
+                    <FaProductHunt className='w-4 h-4'></FaProductHunt>
+                    <h4>Product Manager</h4>
                 </div></Link>
                 {/* Order progress and orders */}
 
@@ -97,8 +97,6 @@ const SellerDashboard = () => {
 
 
                 {/* custommer feedback on my product */}
-
-
                 <Link to="dashboard/customerfeedback"><div onClick={() => setActiveRoute("CustomerFeedback")}
                     className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "CustomerFeedback"
                         ? "bg-[#19D895] text-[#0A1727]"
@@ -110,10 +108,25 @@ const SellerDashboard = () => {
                 </div></Link>
                 {/* custommer feedback on my product ends */}
 
+
+
+                {/* Markating solution for seller starts */}
+                <Link to="/dashboard/markatingpage"><div onClick={() => setActiveRoute("Markating Solution")}
+                    className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "Markating Solution"
+                        ? "bg-[#19D895] text-[#0A1727]"
+                        : ""
+                        } cursor-pointer  gap-4`}
+                >
+                    <FaLightbulb className='w-4 h-4'></FaLightbulb>
+                    <h4>Markating Solution</h4>
+                </div></Link>
+
+                {/* Markating solution for seller ends */}
+
             </div>
 
 
-            <hr  className='my-10'/>
+            <hr className='my-10' />
 
             <div className='text-center text-black relative mt-6'>
                 <div className='absolute -top-5 left-20 flex justify-center rounded-full' style={{ color: "#bdf094", border: "6px solid #0A1727", backgroundColor: "#0A1727" }} >

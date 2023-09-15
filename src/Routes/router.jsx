@@ -28,11 +28,13 @@ import Kids from "../Components/fantasticprople/Kids";
 
 
 import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
+// thi is some categories 
 import Lips from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Lips";
 import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Eyes";
 import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
 import MensCare from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/MensCare";
 import Face from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Face";
+// thi is some categories 
 import DashBoardManage from "../Dashboard/DashBoardManage/DashBoardManage";
 import PaymentSuccess from "../Components/Avengers/PaymentSuccess/PaymentSuccess";
 import PaymentFailed from "../Components/PaymentFailed/PaymentFailed";
@@ -86,6 +88,10 @@ import UserAddressForm from "../Dashboard/FantasticUserPanel/UserAddressForm/Use
 import CustomerFeedback from "../Dashboard/CodeWorms/CustomerFeedback/CustomerFeedback";
 import OrderResuns from "../Dashboard/CodeWorms/OrderResuns/OrderResuns";
 import CustommerReview from "../Dashboard/CodeWorms/CustommerReview/CustommerReview";
+import AddProduct from "../Dashboard/CodeWorms/AddProduct.jsx/AddProduct";
+import MarkatingSolution from "../Dashboard/CodeWorms/MarkatingSolution/MarkatingSolution";
+import Markatingpage from "../Dashboard/CodeWorms/Markatingpage/Markatingpage";
+// import UserAddressForm from "../Dashboard/FantasticUserPanel/UserAddressForm/UserAddressForm";
 import OrderManage from "../Dashboard/CodeWorms/OrderManage.jsx/OrderManage";
 
 
@@ -118,7 +124,7 @@ const router = createBrowserRouter([
 				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
-			
+
 			{
 				// 	// avengers Toma PAYMENT SUCCESS ROUTE
 				path: "payment/success/:tranId",
@@ -297,7 +303,7 @@ const router = createBrowserRouter([
 		children: [
 			{
 				// AVENGERS TOMU
-				path: "/dashboard",
+				path: "/dashboardana",
 				element: <Analytics></Analytics>,
 			},
 			{
@@ -476,6 +482,35 @@ const router = createBrowserRouter([
 
 			},
 			// this is for the teamarrow ends
+
+			// this is for the teamarrow 
+			{
+
+				path: "/dashboard/addproduct",
+				element: <AddProduct></AddProduct>
+
+
+			},
+			// this is for the teamarrow ends
+
+			// this is for the teamarrow seller markatingsolution 
+			{
+
+				path: "/dashboard/markatingpage",
+				element: <Markatingpage></Markatingpage>
+
+
+			},
+			{
+
+				path: "/dashboard/markatingsolution",
+				element: <MarkatingSolution></MarkatingSolution>
+
+
+			},
+			// this is for the teamarrow ends
+
+
 
 			// this block is for the seller ends
 
