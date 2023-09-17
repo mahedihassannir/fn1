@@ -1,3 +1,4 @@
+import Habib from "./Habib";
 import Mahedi from "./Mahedi";
 
 const TeamArrow = () => {
@@ -9,8 +10,7 @@ const TeamArrow = () => {
             {/* this part for you habib vai starts*/}
             <section>
 
-                {/* habib vai */}
-                <h3 className="text-4xl font-bold">i am ready to work</h3>
+              <Habib></Habib>
 
             </section>
             {/* this part for you habib vai ends */}

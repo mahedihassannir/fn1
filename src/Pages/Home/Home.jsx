@@ -1,17 +1,21 @@
+
+import Avengers from "../../Components/Avengers/HomeComponents/Avengers";
 import CodeWorms from "../../Components/CodeWorms/CodeWorms";
 import TeamArrow from "../../Components/TeamArrow/TeamArrow";
-import Banner from "../Banner/Banner";
+
+
 
 
 const Home = () => {
     return (
         <div>
 
+
             {/* banner section starts  team codehubs */}
 
             <section>
 
-<Banner></Banner>
+                <Avengers></Avengers>
 
             </section>
 
@@ -25,8 +29,7 @@ const Home = () => {
             <section>
 
                 <TeamArrow></TeamArrow>
-
-
+              
             </section>
             {/* 2nd banner section ends */}
 
@@ -40,8 +43,6 @@ const Home = () => {
             </section>
 
             {/* team cidewoms ends */}
-
-
 
 
         </div>
