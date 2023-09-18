@@ -93,6 +93,10 @@ import MarkatingSolution from "../Dashboard/CodeWorms/MarkatingSolution/Markatin
 import Markatingpage from "../Dashboard/CodeWorms/Markatingpage/Markatingpage";
 // import UserAddressForm from "../Dashboard/FantasticUserPanel/UserAddressForm/UserAddressForm";
 import OrderManage from "../Dashboard/CodeWorms/OrderManage.jsx/OrderManage";
+import Productad from "../Dashboard/CodeWorms/Markatingpage/Productad/Productad";
+import Addperformence from "../Dashboard/CodeWorms/Markatingpage/addperformence/Addperformence";
+import AccStatement from "../Dashboard/CodeWorms/Markatingpage/AccStatement/AccStatement";
+import SellerAccountCreatedDone from "../Components/SellerAcc/SellerAccountCreatedDone";
 
 
 const router = createBrowserRouter([
@@ -136,7 +140,7 @@ const router = createBrowserRouter([
 				element: <PaymentFailed></PaymentFailed>,
 			},
 			{
-				// avengers MGR Seller Register
+				// avengers mahedi Seller Register
 				path: "seller_register",
 				element: <SellerRegister></SellerRegister>,
 			},
@@ -150,7 +154,12 @@ const router = createBrowserRouter([
 				path: "seller_register/personal_details",
 				element: <SellerPersonalInfoForm></SellerPersonalInfoForm>,
 			},
+			// team arrow
+			{
 
+				path: "seller_account_created_dome",
+				element: <SellerAccountCreatedDone></SellerAccountCreatedDone>
+			},
 			{
 				// Team Arrow
 				path: "login",
@@ -168,7 +177,7 @@ const router = createBrowserRouter([
 			},
 			// CodeWorms
 			{
-				path: "drone",
+				path: "dronee",
 				element: <Drone></Drone>,
 			},
 			{
@@ -501,6 +510,35 @@ const router = createBrowserRouter([
 
 
 			},
+
+			// this is markating page for product ad
+			{
+
+				path: "/dashboard/productad",
+				element: <Productad></Productad>
+
+
+			},
+
+			// this is markating page for product ad ends
+			// this is markating page for product performence
+			{
+
+				path: "/dashboard/addperformence",
+				element: <Addperformence></Addperformence>
+
+
+			},
+
+			// this is markating page for performence ad ends
+			// this is for acc state ment
+			{
+				path: "/dashboard/accStatementseller",
+				element: <AccStatement></AccStatement>
+
+			}
+			// this is for acc state ment ends
+			,
 			{
 
 				path: "/dashboard/markatingsolution",

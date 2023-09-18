@@ -1,14 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Avengers = () => {
-    return (
+	return (
 		<div>
 			<div>
-				<p className='text-base font-bold text-[#F9731B]'>
-					Just One Step More!
-				</p>
-				<p className='text-2xl font-bold'>Update Your Info</p>
-				
+
+
+
+				<Link to="/seller_account_created_dome">
+
+					<button className='btn'>
+
+						submit
+
+					</button>
+
+
+				</Link>
+
+
+
 			</div>
 		</div>
 	);

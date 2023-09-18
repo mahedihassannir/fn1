@@ -1,9 +1,9 @@
 /**
- * Author: MG Rakib
+ * Author: mahedi
  * description: CartProductDetails
  * date: 17aug,2023
  *
- * @format
+ * @format`
  */
 import { useContext } from "react";
 import useCustomers from "../../../../Hooks/Fantastic/useCustomers";
@@ -14,9 +14,9 @@ const CartProductDetails = ({ productsData }) => {
 	const { user } = useContext(ContexM)
 	const { customers } = useCustomers()
 	const filterCustomer = user && user.email && customers.some(customer => customer.email === user.email)
-  ? customers.filter(customer => customer.email === user.email)
-  : [];
-console.log(filterCustomer);
+		? customers.filter(customer => customer.email === user.email)
+		: [];
+	console.log(filterCustomer);
 
 	return (
 		<div className='flex flex-col gap-5'>
@@ -39,7 +39,7 @@ console.log(filterCustomer);
 						<div className='flex items-center gap-3 divide-x'>
 							<p>{filterCustomer.length > 0 ? filterCustomer[0].mobile : "Number Unknown"}</p>
 							<p className='pl-3'>
-							{filterCustomer.length > 0 ? filterCustomer[0].selectdivision +',' +filterCustomer[0].selectcity + ', ' + filterCustomer[0].area : "Number Unknown"}
+								{filterCustomer.length > 0 ? filterCustomer[0].selectdivision + ',' + filterCustomer[0].selectcity + ', ' + filterCustomer[0].area : "Number Unknown"}
 							</p>
 						</div>
 						<div>
