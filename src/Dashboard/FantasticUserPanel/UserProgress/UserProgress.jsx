@@ -19,14 +19,14 @@ const UserProgress = () => {
                 <div className='font-bold'>
                     <p className=' text-3xl mt-2'>Blade High Heels Sandals</p>
                     <div className='text-gray-500'>
-                    <p className=''>Qt: 1 Pair</p>
-                    <p className='my-2 text-2xl text-black'>$1,500</p>
-                    <p>Tracking Status On: 11:30pm, Today</p>
+                        <p className=''>Qt: 5 Pair</p>
+                        <p className='my-2 text-2xl text-black'>$1,900</p>
+                        <p>Tracking Status On: 11:30pm, Today</p>
                     </div>
                     <p className='text-red-500 p-2 rounded my-2 border border-red-500 w-[50%]'>Reached, Cumilla</p>
                 </div>
                 <div className='flex justify-center '>
-                    <img className="w-[100%] h-40 object-cover mt-3" src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHByb2R1Y3R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="" />
+                    <img className="w-[100%] h-40 object-cover mt-3" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBqvZ_SoPlVM0REGEjcjVcLMiOwCz9XT4k1A&usqp=CAU" alt="" />
                 </div>
             </div>
 
@@ -49,20 +49,20 @@ const UserProgress = () => {
                         <span className="progress-label">Delivered</span>
                     </li>
                     <div className="invisible">
-                    <li className={`step-wizard-item hhhh ${progressValue === 'pp' && 'current-item'}`}>
-                        <span className="progress-count">4</span>
-                        <span className="progress-label">pp</span>
-                    </li>
+                        <li className={`step-wizard-item hhhh ${progressValue === 'pp' && 'current-item'}`}>
+                            <span className="progress-count">4</span>
+                            <span className="progress-label">pp</span>
+                        </li>
                     </div>
                 </ul>
             </div>
             <hr />
             <div className='flex justify-evenly items-center font-bold text-red-500 mt-2'>
                 <button>Track</button>
-                
+
                 <button>Cancel</button>
                 <button>Pre-Pay</button>
-                <CiMenuKebab className='text-2xl text-gray-500'/>
+                <CiMenuKebab className='text-2xl text-gray-500' />
             </div>
         </section>
     );
