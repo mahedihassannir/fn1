@@ -10,12 +10,15 @@ import { BsChevronRight } from "react-icons/bs";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { useContext, useState } from "react";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
+import { Link } from "react-router-dom";
 
 //import { result } from "lodash";
 
+
+
 const PaymentDetails = ({ singleProductData }) => {
-  
-	
+
+
   const { user } = useContext(ContexM);
 
   // for delivery info
@@ -142,7 +145,7 @@ const PaymentDetails = ({ singleProductData }) => {
           </div>
         </div>
 
-        <div className="pt-5">
+        <Link  className="pt-5">
           {/* payment btn  */}
           <button
             onClick={onSubmit}
@@ -150,7 +153,7 @@ const PaymentDetails = ({ singleProductData }) => {
           >
             Place Order
           </button>
-        </div>
+        </Link>
       </div>
     </div>
   );

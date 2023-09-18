@@ -7,7 +7,7 @@
 
 import {
 	HiOutlineInformationCircle,
-	
+
 } from "react-icons/hi";
 import { IoLocationOutline } from "react-icons/io5";
 import { GiCash } from "react-icons/gi";
@@ -15,9 +15,10 @@ import { GoShieldSlash } from "react-icons/go";
 import { RiRefund2Fill } from "react-icons/ri";
 import { HiMiniChatBubbleLeftRight } from "react-icons/hi2";
 import { TbTruckDelivery, TbCurrencyTaka } from "react-icons/tb";
+import { Link } from "react-router-dom";
 const ProductDelivery = () => {
-    return (
-		<div className='mt-10'>
+	return (
+		<div className='mt-10 mb-10'>
 			<h1 className='text-3xl font-semibold'>About The Delivery</h1>
 
 			{/* delivery location and delivery date  */}
@@ -42,11 +43,11 @@ const ProductDelivery = () => {
 								</p>
 							</div>
 
-							<div>
+							<Link to="/dashboard/useraddressform">
 								<button className='text-[#2ABBE8]'>
 									CHANGE
 								</button>
-							</div>
+							</Link>
 						</div>
 					</div>
 				</div>

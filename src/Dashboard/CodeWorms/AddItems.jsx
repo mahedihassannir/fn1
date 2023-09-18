@@ -23,9 +23,9 @@ const AddItems = () => {
 
         <Link to="/dashboard/orderresuns">
 
-          <div className="w-60 border-2 py-10 bg-red-400">
+          <div className=" btn w-60 border-2 py-10 bg-red-400">
 
-           mahedis astana
+           Customer return 
 
           </div>
 
@@ -40,7 +40,7 @@ const AddItems = () => {
 
         <Link to="/dashboard/custommerreview">
 
-          <div className="w-60 border-2 py-10 bg-red-400">
+          <div className="w-60 btn border-2 py-10 bg-red-400">
 
           custommerreview
 
@@ -57,7 +57,7 @@ const AddItems = () => {
 
         <Link to="/dashboard/ordermanage">
 
-          <div className="w-60 border-2 py-10 bg-red-400">
+          <div className="w-60 btn border-2 py-10 bg-red-400">
 
           ordermanage
 
