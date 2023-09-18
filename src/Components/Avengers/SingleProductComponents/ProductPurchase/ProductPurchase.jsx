@@ -13,9 +13,10 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import takaIcon from "../../../../assets/taka.png";
 import takaIconGray from "../../../../assets/taka_gray.png";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 import { SyncLoader } from "react-spinners";
+import useProducts from "../../../../Hooks/Fantastic/useProducts";
 
 const ProductPurchase = ({ singleProductData }) => {
 	//default quantity value
@@ -24,8 +25,14 @@ const ProductPurchase = ({ singleProductData }) => {
 	//add to cart function import from auth
 	const { addToCart, loaddingForCart } = useContext(ContexM);
 
+	// here we use mongo db to save the data 
+
+
+	// here we use mongo db to save the data  ends
+
+	const { products,loading} = useProducts()
 	return (
-		<div className='relative '>
+		<div className='relative my-10 '>
 			<div className='flex flex-col md:flex-row gap-10'>
 				{/* product Image  */}
 				<div className='w-full md:w-1/3 '>
@@ -198,11 +205,10 @@ const ProductPurchase = ({ singleProductData }) => {
 							<div className='flex gap-2'>
 								<button
 									onClick={() => setQuantity(quantity - 1)}
-									className={`w-[30px] h-[30px] bg-[#EFF0F5] font-bold flex items-center justify-center rounded-md ${
-										quantity <= 1
-											? "bg-gray-300"
-											: "cursor-pointer"
-									}`}
+									className={`w-[30px] h-[30px] bg-[#EFF0F5] font-bold flex items-center justify-center rounded-md ${quantity <= 1
+										? "bg-gray-300"
+										: "cursor-pointer"
+										}`}
 									disabled={quantity <= 1}
 								>
 									-
@@ -228,7 +234,10 @@ const ProductPurchase = ({ singleProductData }) => {
 									Bye Now
 								</button>
 							</Link>
+							{/* this is my product add btn  */}
 							<button
+								//TODO add to cart
+
 								onClick={() =>
 									addToCart(singleProductData)
 								}
@@ -236,6 +245,7 @@ const ProductPurchase = ({ singleProductData }) => {
 							>
 								Add to Cart
 							</button>
+							{/* this is my product add btn ends */}
 						</div>
 					</div>
 				</div>

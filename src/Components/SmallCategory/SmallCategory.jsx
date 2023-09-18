@@ -14,7 +14,7 @@ const SmallCategory = () => {
                 <h2 className="text-3xl font-bold mb-4">Categories</h2>
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-8 gap-x-4 sm:gap-x-2 md:gap-x-2">
 
-                    <Link to='/drone'>
+                    <Link to='/dronee'>
                         <div className="w-[140px] mb-2 hover:shadow-2xl ">
                             <div className="flex justify-center items-center ">
                                 <img className="pt-2" src="https://i.ibb.co/9pkQGZ7/img17.png" alt="" />

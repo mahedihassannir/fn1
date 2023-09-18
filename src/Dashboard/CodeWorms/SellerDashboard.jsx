@@ -48,7 +48,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <HiHome className='w-4 h-4'></HiHome>
-                    <h4> Home</h4>
+                    <h4>হউম</h4>
                 </div></Link>
                 {/* Seller Home ends */}
 
@@ -61,7 +61,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <FaListUl className='w-4 h-4'></FaListUl>
-                    <h4> E-com review</h4>
+                    <h4>অরডার & রেভিও  </h4>
                 </div></Link>
                 {/* Seller Add Product ends */}
 
@@ -74,8 +74,8 @@ const SellerDashboard = () => {
                         : ""
                         } cursor-pointer  gap-4`}
                 >
-                    <FaProductHunt className='w-4 h-4'></FaProductHunt>
-                    <h4>Product Manager</h4>
+                    <FaProductHunt className='w-4 h-4 '></FaProductHunt>
+                    <h4>এড & প্রোডাক্ট ম্যানেজমেন্ট </h4>
                 </div></Link>
                 {/* Order progress and orders */}
 
@@ -118,7 +118,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <FaLightbulb className='w-4 h-4'></FaLightbulb>
-                    <h4>Markating Solution</h4>
+                    <h4>মার্কাটি সমাধান</h4>
                 </div></Link>
 
                 {/* Markating solution for seller ends */}
@@ -133,13 +133,12 @@ const SellerDashboard = () => {
                     <FaQuestionCircle className='text-2xl' />
                 </div>
                 <div className='rounded-lg py-4' style={{ backgroundColor: "#bdf094" }}>
-                    <h1 className='font-bold'>Help Center</h1>
-                    <p>Having Trouble in Product</p>
-                    <p>Please Contact Use for</p>
-                    <p>More Information</p>
+                    <h1 className='font-bold'>সাহায্য কেন্দ্র</h1>
+                    <p>যোগাযোগ করুন</p>
+                    <p>আরও তথ্যের জন্য</p>
                     <div>
                         <Link to="dashboard/customersupport">
-                            <button className='px-2 py-1 rounded-lg font-bold' style={{ color: "#ffffff", backgroundColor: "#0A1727" }}>Go To Help Center</button>
+                            <button className='px-2 py-1 rounded-lg font-bold' style={{ color: "#ffffff", backgroundColor: "#0A1727" }}>সাহায্য কেন্দ্রে যান</button>
                         </Link>
                     </div>
                 </div>
