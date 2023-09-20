@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiArchiveBoxXMark, HiMiniAdjustmentsHorizontal, HiMiniCalculator, HiMiniShoppingCart, HiMiniUsers } from "react-icons/hi2";
 import { HiAcademicCap, HiChartBar, HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
-import { FaBusinessTime, FaDropbox, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle } from 'react-icons/fa';
+import { FaBroadcastTower, FaBusinessTime, FaDropbox, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle, FaTools } from 'react-icons/fa';
 import { MdOutlinePayments } from 'react-icons/md';
 
 const SellerDashboard = () => {
@@ -79,23 +79,23 @@ const SellerDashboard = () => {
                 </div></Link>
                 {/* Order progress and orders */}
 
+                {/* Order progress and orders */}
+
+
 
 
                 {/*  Seller Payment History */}
 
-                <Link to="dashboard/payhistory"><div onClick={() => setActiveRoute("Payment History")}
-                    className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "Payment History"
+                {/* seller tools */}
+                <Link to="/dashboard/sellertools"><div onClick={() => setActiveRoute("sellertools")}
+                    className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "sellertools"
                         ? "bg-[#19D895] text-[#0A1727]"
                         : ""
                         } cursor-pointer  gap-4`}
                 >
-                    <MdOutlinePayments className='w-4 h-4'></MdOutlinePayments>
-                    <h4> Manage Product</h4>
+                    <FaTools className='w-4 h-4'></FaTools>
+                    <h4>Seller Setting</h4>
                 </div></Link>
-
-                {/*  Seller Payment History ends */}
-
-
                 {/* custommer feedback on my product */}
                 <Link to="dashboard/customerfeedback"><div onClick={() => setActiveRoute("CustomerFeedback")}
                     className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "CustomerFeedback"
@@ -118,8 +118,22 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <FaLightbulb className='w-4 h-4'></FaLightbulb>
-                    <h4>মার্কাটি সমাধান</h4>
+                    <h4>মার্কাটি সমাধান </h4>
                 </div></Link>
+
+                {/* Markating solution for seller ends */}
+                {/* Markating solution for seller starts */}
+                <Link to="/dashboard/sellerSeeting"><div onClick={() => setActiveRoute("sellerSeeting")}
+                    className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "sellerSeeting"
+                        ? "bg-[#19D895] text-[#0A1727]"
+                        : ""
+                        } cursor-pointer  gap-4`}
+                >
+                    <FaBroadcastTower className='w-4 h-4'></FaBroadcastTower>
+                    <h4>Seller Setting</h4>
+                </div></Link>
+
+
 
                 {/* Markating solution for seller ends */}
 

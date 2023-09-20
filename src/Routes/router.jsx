@@ -97,6 +97,8 @@ import Productad from "../Dashboard/CodeWorms/Markatingpage/Productad/Productad"
 import Addperformence from "../Dashboard/CodeWorms/Markatingpage/addperformence/Addperformence";
 import AccStatement from "../Dashboard/CodeWorms/Markatingpage/AccStatement/AccStatement";
 import SellerAccountCreatedDone from "../Components/SellerAcc/SellerAccountCreatedDone";
+import SellerSeeting from "../Dashboard/CodeWorms/SellerSeeting/SellerSeeting";
+import SellerTool from "../Dashboard/CodeWorms/SellerTool/SellerTool";
 
 
 const router = createBrowserRouter([
@@ -553,8 +555,22 @@ const router = createBrowserRouter([
 			// this block is for the seller ends
 
 
+			{
+
+				path: "/dashboard/sellerSeeting",
+				element: <SellerSeeting></SellerSeeting>
 
 
+			},
+
+			
+			{
+
+				path: "/dashboard/sellertools",
+				element: <SellerTool></SellerTool>
+
+
+			},
 			// this side is for seller
 		],
 	},
