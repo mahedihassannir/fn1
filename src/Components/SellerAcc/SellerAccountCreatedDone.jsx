@@ -1,15 +1,32 @@
 import { Link } from "react-router-dom";
 
 const SellerAccountCreatedDone = () => {
+
+    const isSellerVeryfied = false;
+
     return (
         <div className="w-full h-screen">
 
 
-            <h1 className="text-4xl">
+            {
+                isSellerVeryfied ? <div className="">
 
-                congratulation
 
-            </h1>
+
+                </div>
+                    :
+                    <div className="">
+
+
+                        <h1 className="text-4xl text-red-700">
+
+                            congratulation
+
+                        </h1>
+
+                    </div>
+            }
+
 
             <Link to="/dashboard/dashboard/sellerhome">
                 <button className="btn">

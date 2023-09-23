@@ -2,6 +2,16 @@ import { data } from 'autoprefixer';
 import React, { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+// this is the sweet aler
+import Swal from 'sweetalert2'
+// this is the sweet aler ends
+
+
+
+
+
+
+
 const Avengers = () => {
 
 
@@ -79,6 +89,8 @@ const Avengers = () => {
 		const businesstype = e.target.businesstype.value;
 		const area = e.target.area.value;
 		const address = e.target.address.value;
+		const VerifyStatus = false;
+		const accountCreatedFirstStep = true;
 
 		const allData = {
 			firstname,
@@ -88,19 +100,49 @@ const Avengers = () => {
 			businesstype,
 			area,
 			address,
-			image
+			image,
+			VerifyStatus,
+			accountCreatedFirstStep
 		};
 
 
 
-		console.log("this data is come from the 85 num line", allData);
+		// console.log("this data is come from the 85 num line", allData);
 
-		if (allData) {
-			navigate('/seller_account_created_dome')
-		}
-		else {
-			return
-		}
+		fetch(`http://localhost:5000/teamarrow/seller_register`, {
+			method: "POST",
+			headers: {
+				"content-type": "application/json"
+			},
+			body: JSON.stringify(allData)
+		})
+			.then(res => res.json())
+			.then(data => {
+				console.log("this is checking the data is it ok ot not", data);
+				// this blog is for the is insertedId is successful then go to the another page else any problem stay in this page 
+				if (data.insertedId) {
+
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'Seller Register 1St Has Been complete you request is now pending ',
+						showConfirmButton: false,
+						timer: 5000
+					})
+
+					navigate('/seller_account_created_dome')
+				}
+				else {
+					return
+				}
+			})
+
+
+		// if (allData) {
+		// }
+		// else {
+		// 	return
+		// }
 
 
 	}
