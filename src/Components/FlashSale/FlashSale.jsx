@@ -10,8 +10,10 @@ import CardsOfProducts from '../fantasticprople/CardsOfProducts/CardsOfProducts'
 
 
 const FlashSale = () => {
-
     const [data, SetData] = useState([])
+
+    const [displaycount, SetdisplayCount] = useState(10)
+
     const { products, loading } = useProducts()
     // const singleProductData = products.find((product)=>product?._id === id)
 
@@ -43,7 +45,7 @@ const FlashSale = () => {
 
 
                     {
-                        products.slice(0, 10).map(allcategory => <CardsOfProducts singleProduct={allcategory} />)
+                        products.slice(0, displaycount).map(allcategory => <CardsOfProducts singleProduct={allcategory} />)
                     }
 
 
@@ -53,7 +55,7 @@ const FlashSale = () => {
             </section>
             {/* this is the  flesh sell card section ends */}
             <div className='mx-auto text-center mb-12 mt-6'>
-                <button className='py-3 px-32 rounded-lg bg-[#FC9E66] text-white font-bold text-lg text-center'>Load More</button>
+                <button className='py-3 px-32 rounded-lg bg-[#FC9E66] text-white font-bold text-lg text-center' onClick={() => SetdisplayCount(displaycount + 10)}>Load More</button>
             </div>
 
         </div>

@@ -4,11 +4,9 @@ import CodeWorms from "../../Components/CodeWorms/CodeWorms";
 import TeamArrow from "../../Components/TeamArrow/TeamArrow";
 
 
-
-
 const Home = () => {
     return (
-        <div>
+        <div className="">
 
 
             {/* banner section starts  team codehubs */}
@@ -29,7 +27,7 @@ const Home = () => {
             <section>
 
                 <TeamArrow></TeamArrow>
-              
+
             </section>
             {/* 2nd banner section ends */}
 

@@ -42,9 +42,9 @@ const Food = () => {
             </div>
 
             {/* display Foods */}
-            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 lg:mx-20 my-10'>
+            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-30 gap-y-5 lg:mx-20 my-10'>
                 {
-                    foodProducts.map(foods => <CardsOfProducts singleProduct={foods}/>)
+                    foodProducts.map(foods => <CardsOfProducts singleProduct={foods} />)
                 }
             </div>
 
