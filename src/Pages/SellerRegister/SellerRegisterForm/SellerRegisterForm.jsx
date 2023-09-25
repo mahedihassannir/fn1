@@ -3,10 +3,33 @@ import { Link, useNavigate } from "react-router-dom";
 
 
 
-
+import ReCAPTCHA from "react-google-recaptcha";
+import { useState } from "react";
 
 
 const SellerRegisterForm = () => {
+
+	const [captchaValue, SetCaptchaValue] = useState(null);
+
+	function onChange(value) {
+		console.log("Captcha value:", value);
+
+		SetCaptchaValue(value)
+	}
+
+
+	// this is for the prevent on the load functionality 
+	window.addEventListener("beforeunload", (e) => {
+		if (window.location.pathname.startsWith("/seller_register/form")) {
+
+			e.preventDefault();
+			e.returnValue = "";
+
+			return "Are you sure want to leave ?"
+		};
+	});
+	// prevent ends
+
 
 	return (
 		<>
@@ -96,6 +119,14 @@ const SellerRegisterForm = () => {
 								/>
 							</div>
 						</div>
+						{/* google recaptcha */}
+						<div className='mt-3'>
+							<ReCAPTCHA
+								sitekey="6Lf68lAoAAAAAMILQYi3JdLblDkyIYKQ_nXk-kGd"
+								onChange={onChange}
+							/>
+
+						</div>
 
 
 
@@ -103,9 +134,15 @@ const SellerRegisterForm = () => {
 						{/* submit btn  */}
 						<div>
 							<Link to={"/seller_register/personal_details"}>
-								<button className='py-2 w-full mt-4 bg-[#F97316] rounded  font-bold'>
-									Next
-								</button>
+
+								<abbr title={captchaValue === null ? "click and verify" : "verified done"}>
+
+									<button disabled={!captchaValue} className={`py-2 w-full mt-4  rounded  font-bold ${captchaValue === null ? "bg-gray-500" : "bg-[#F97316]"}`}>
+										Next
+									</button>
+								</abbr>
+
+
 							</Link>
 						</div>
 					</div>

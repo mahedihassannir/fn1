@@ -15,6 +15,18 @@ import Swal from 'sweetalert2'
 const Avengers = () => {
 
 
+	// this is for the prevent on the load functionality 
+	window.addEventListener("beforeunload", (e) => {
+		if (window.location.pathname.startsWith("/seller_register/personal_details")) {
+
+			e.preventDefault();
+			e.returnValue = "";
+
+			return "Are you sure want to leave ?"
+		};
+	});
+	// prevent ends
+
 	const navigate = useNavigate()
 
 	// const api = `https://api.imgbb.com/1/upload?expiration=600&key=890b5ec0923fcc8472f7e690406adc40`

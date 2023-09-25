@@ -8,6 +8,18 @@ import ReactQuill from 'react-quill';
 
 const AddProduct = () => {
 
+    // this is for the prevent on the load functionality 
+    window.addEventListener("beforeunload", (e) => {
+        if (window.location.pathname.startsWith("/dashboard/addproduct")) {
+
+            e.preventDefault();
+            e.returnValue = "";
+
+            return "Are you sure want to leave ?"
+        };
+    });
+    // prevent ends
+
     const [editorHtml, setEditorHtml] = useState('');
 
     const handleChange = (html) => {
