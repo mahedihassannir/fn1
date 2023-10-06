@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiArchiveBoxXMark, HiMiniAdjustmentsHorizontal, HiMiniCalculator, HiMiniShoppingCart, HiMiniUsers } from "react-icons/hi2";
 import { HiAcademicCap, HiChartBar, HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
-import { FaBroadcastTower, FaBusinessTime, FaDropbox, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle, FaTools } from 'react-icons/fa';
+import { FaBackspace, FaBroadcastTower, FaBusinessTime, FaDropbox, FaHome, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle, FaTools } from 'react-icons/fa';
 import { MdOutlinePayments } from 'react-icons/md';
 
 const SellerDashboard = () => {
@@ -140,7 +140,18 @@ const SellerDashboard = () => {
             </div>
 
 
+
             <hr className='my-10' />
+
+            <Link to="/"><div onClick={() => setActiveRoute("realhome")}
+                className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "realhome"
+                    ? "bg-[#19D895] text-[#0A1727]"
+                    : ""
+                    } cursor-pointer  gap-4`}
+            >
+                <FaHome className='w-4 h-4'></FaHome>
+                <h4>Back To Home</h4>
+            </div></Link>
 
             <div className='text-center text-black relative mt-6'>
                 <div className='absolute -top-5 left-20 flex justify-center rounded-full' style={{ color: "#bdf094", border: "6px solid #0A1727", backgroundColor: "#0A1727" }} >

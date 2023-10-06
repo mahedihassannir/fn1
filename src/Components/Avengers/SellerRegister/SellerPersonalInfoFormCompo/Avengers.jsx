@@ -1,6 +1,6 @@
 import { data } from 'autoprefixer';
 import React, { useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 // this is the sweet aler
 import Swal from 'sweetalert2'
@@ -14,12 +14,17 @@ import Swal from 'sweetalert2'
 
 const Avengers = () => {
 
+	const location = useLocation();
+	const SellerRegisterdataFromPriviousStep = location.state && location.state.fromDataobj;
+	console.log("this data is from the previous object where the seller create his account", SellerRegisterdataFromPriviousStep);
 
 	// this is for the prevent on the load functionality 
+
 	window.addEventListener("beforeunload", (e) => {
 		if (window.location.pathname.startsWith("/seller_register/personal_details")) {
 
 			e.preventDefault();
+
 			e.returnValue = "";
 
 			return "Are you sure want to leave ?"
@@ -114,9 +119,11 @@ const Avengers = () => {
 			address,
 			image,
 			VerifyStatus,
-			accountCreatedFirstStep
+			accountCreatedFirstStep,
+			SellerRegisterdataFromPriviousStep,
 		};
 
+		console.log(allData);
 
 
 		// console.log("this data is come from the 85 num line", allData);

@@ -1,15 +1,26 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, unstable_HistoryRouter, useNavigate } from "react-router-dom";
 
 
 
 
 import ReCAPTCHA from "react-google-recaptcha";
 import { useState } from "react";
+import UseSellerRegister from "../../../Hooks/SellerRegister/useSellerRegister";
 
 
 const SellerRegisterForm = () => {
 
+
+
 	const [captchaValue, SetCaptchaValue] = useState(null);
+
+	const [passworderr, Setpassworderr] = useState("")
+
+
+	const [fromdata, setdata] = useState(null);
+	console.log(fromdata);
+
+	const navigate = useNavigate();
 
 	function onChange(value) {
 		console.log("Captcha value:", value);
@@ -31,6 +42,57 @@ const SellerRegisterForm = () => {
 	// prevent ends
 
 
+	// getting value 
+
+	const handleFromData = (e) => {
+
+		e.preventDefault();
+		const from = e.target;
+
+		const name = from.name.value;
+		const email = from.email.value;
+
+		const password = from.password.value;
+
+		const password2 = from.password2.value;
+
+		if (password !== password2) {
+
+			Setpassworderr("password not match")
+
+			return
+		}
+
+		const fromDataobj = {
+			name,
+			email,
+			password,
+			password2,
+			responseStatus: 200
+		};
+
+		setdata(fromDataobj)
+
+
+		if (fromDataobj.responseStatus === 200) {
+
+			navigate("/seller_register/personal_details", { state: { fromDataobj } })
+
+		}
+		else {
+
+			return
+		}
+
+
+
+	};
+
+	// getting value  ends
+
+
+
+
 	return (
 		<>
 			< div className=' my-3 md:my-10 md:px-20 '>
@@ -39,7 +101,8 @@ const SellerRegisterForm = () => {
 						E-Com Seller{" "}
 					</h1>
 
-					<div className='w-full p-4 rounded border border-gray-500 mt-4'>
+					<form onSubmit={handleFromData} className='w-full p-4 rounded border border-gray-500 mt-4'>
+
 						<p className='text-2xl font-semibold'>Create account</p>
 
 						{/* first and last name  */}
@@ -53,7 +116,7 @@ const SellerRegisterForm = () => {
 							<div>
 								<input
 									type='text'
-									name=''
+									name='name'
 									id='name'
 									className='w-full py-1 px-2 outline-none mt-1 border border-gray-400 rounded focus:shadow-[0px_0px_0px_2px_rgba(249,115,22,.5)] duration-200'
 									placeholder='First and Last Name'
@@ -71,7 +134,7 @@ const SellerRegisterForm = () => {
 							<div>
 								<input
 									type='email'
-									name=''
+									name='email'
 									id='email'
 									className='w-full py-1 px-2 outline-none mt-1 border border-gray-400 rounded focus:shadow-[0px_0px_0px_2px_rgba(249,115,22,.5)] duration-200'
 								/>
@@ -89,7 +152,7 @@ const SellerRegisterForm = () => {
 							<div>
 								<input
 									type='password'
-									name=''
+									name='password'
 									id='password'
 									className='w-full py-1 px-2 outline-none mt-1 border border-gray-400 rounded focus:shadow-[0px_0px_0px_2px_rgba(249,115,22,.5)] duration-200'
 									placeholder='At least 6 characters'
@@ -112,13 +175,19 @@ const SellerRegisterForm = () => {
 							<div>
 								<input
 									type='password'
-									name=''
+									name='password2'
 									id='Re-enter-password'
 									className='w-full py-1 px-2 outline-none mt-1 border border-gray-400 rounded focus:shadow-[0px_0px_0px_2px_rgba(249,115,22,.5)] duration-200'
 									placeholder='At least 6 characters'
 								/>
 							</div>
 						</div>
+						<span className="text-red-500">
+							{
+								passworderr
+							}
+						</span>
+
 						{/* google recaptcha */}
 						<div className='mt-3'>
 							<ReCAPTCHA
@@ -133,19 +202,18 @@ const SellerRegisterForm = () => {
 
 						{/* submit btn  */}
 						<div>
-							<Link to={"/seller_register/personal_details"}>
 
-								<abbr title={captchaValue === null ? "click and verify" : "verified done"}>
+							<abbr title={captchaValue === null ? "click and verify" : "verified done"}>
 
-									<button disabled={!captchaValue} className={`py-2 w-full mt-4  rounded  font-bold ${captchaValue === null ? "bg-gray-500" : "bg-[#F97316]"}`}>
-										Next
-									</button>
-								</abbr>
+								<button type="submit" disabled={!captchaValue} className={`py-2 w-full mt-4  rounded  font-bold ${captchaValue === null ? "bg-gray-500" : "bg-[#F97316]"}`}>
+									Next
+								</button>
+							</abbr>
 
 
-							</Link>
+
 						</div>
-					</div>
+					</form>
 				</div>
 			</ div >
 
