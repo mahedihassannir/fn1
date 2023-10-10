@@ -11,6 +11,7 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import { useContext, useState } from "react";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 import { Link } from "react-router-dom";
+import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
 
 //import { result } from "lodash";
 
@@ -19,13 +20,27 @@ import { Link } from "react-router-dom";
 const PaymentDetails = ({ singleProductData }) => {
 
 
+  const [cart] = UseCartHook();
+
+  let totalPrice = 0;
+
+  for (let item of cart) {
+
+
+    totalPrice += item.singleProductData.price;
+
+  }
+  console.log({ totalPrice });
+
   const { user } = useContext(ContexM);
 
   // for delivery info
   const [deliveryInfo, setDeliveryInfo] = useState({
-    deliveryFee: 60,
+    deliveryFee: 5,
     deliveryDiscount: 30,
   });
+
+
 
   // calculate total taka
   const totalTaka = singleProductData.reduce(
@@ -66,6 +81,9 @@ const PaymentDetails = ({ singleProductData }) => {
         //	window.location.replace(result.url);
       });
   };
+
+
+
 
   return (
     <div>
@@ -109,7 +127,7 @@ const PaymentDetails = ({ singleProductData }) => {
               <p className="">Items Total</p>
               <div className="flex items-center gap-1">
                 <TbCurrencyTaka />
-                <span>{totalTaka}</span>
+                <span>{totalPrice}</span>
               </div>
             </div>
             {/* Delivery Fee */}
@@ -145,7 +163,7 @@ const PaymentDetails = ({ singleProductData }) => {
           </div>
         </div>
 
-        <Link  className="pt-5">
+        <Link className="pt-5">
           {/* payment btn  */}
           <button
             onClick={onSubmit}

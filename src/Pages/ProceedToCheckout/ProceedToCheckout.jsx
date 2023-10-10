@@ -9,19 +9,23 @@
 import { useParams } from "react-router-dom";
 import Avengers from "../../Components/Avengers/CheckOutComponents/Avengers";
 import useProducts from "../../Hooks/Fantastic/useProducts";
+import UseCartHook from "../../Hooks/UseCartHook/UseCartHook";
 
 const ProceedToCheckout = () => {
 	const { id } = useParams();
+
+	const [cart] = UseCartHook();
+
 	const { products, loading } = useProducts();
 	const singleProductData = products.filter(product => product?._id === id);
 
-	const storedCartProducts = JSON.parse(localStorage.getItem('cartProduct'))
+	const storedCartProducts = cart
 
 	const cartProducts = []
-	
 
 
-	
+
+
 	const demo = products.forEach(product => {
 		for (let key in storedCartProducts) {
 			if (key === product._id) {
@@ -32,7 +36,7 @@ const ProceedToCheckout = () => {
 			}
 		}
 
-		
+
 	});
 	return (
 		<div className='my-3 md:px-20'>

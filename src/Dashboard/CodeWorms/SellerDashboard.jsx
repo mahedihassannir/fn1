@@ -15,10 +15,14 @@ import { HiArchiveBoxXMark, HiMiniAdjustmentsHorizontal, HiMiniCalculator, HiMin
 import { HiAcademicCap, HiChartBar, HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
 import { FaBackspace, FaBroadcastTower, FaBusinessTime, FaDropbox, FaHome, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle, FaTools } from 'react-icons/fa';
 import { MdOutlinePayments } from 'react-icons/md';
+import USeemailCheck from '../../Hooks/USeemailCheck/USeemailCheck';
 
 const SellerDashboard = () => {
 
-    const [activeRoute, setActiveRoute] = useState("Seller Home")
+    const [activeRoute, setActiveRoute] = useState("Seller Home");
+
+    const [cart] = USeemailCheck();
+    console.log({ cart });
 
     return (
         <div className=' text-white px-5 py-8'>

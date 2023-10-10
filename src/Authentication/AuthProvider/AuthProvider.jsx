@@ -23,6 +23,8 @@ import { createContext } from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
 import SingleProduct from "../../Pages/SingleProduct/SingleProduct";
+import axios from "axios";
+import { data } from "autoprefixer";
 
 const auth = getAuth(app);
 
@@ -70,6 +72,23 @@ const AuthProvider = ({ children }) => {
 		const off = onAuthStateChanged(auth, watch => {
 			Setuser(watch)
 
+			console.log(watch.email);
+			// first we see the use if the use is true then save on local storage is false then remove item 
+
+			if (watch) { // if condition 
+
+				axios.post("http://localhost:5000/jwt", { email: watch.email })
+					.then(data => {
+						console.log(data.data.token);
+						localStorage.setItem("token", data.data.token)
+
+					})
+
+			}
+			else {
+				localStorage.removeItem("token")
+			}
+
 			SetLoader(false);
 		});
 
@@ -94,36 +113,60 @@ const AuthProvider = ({ children }) => {
 	const addToCart = singleProductData => {
 		setLoaddingForCart(true);
 
-		const addedCart = JSON.parse(localStorage.getItem("cartProduct"));
+		// here is the main data for send in the database; 
+		console.log({ singleProductData });
+		const addToCartData = { singleProductData, email: user.email }
+		// here is the main data for send in the database this is the the product data;
 
-		if (!addedCart) {
-			localStorage.setItem(
-				"cartProduct",
-				JSON.stringify({ [singleProductData._id]: 1 })
-			);
-		} else if (addedCart.hasOwnProperty([singleProductData._id])) {
-			addedCart[singleProductData._id] =
-				addedCart[singleProductData._id] + 1;
-			localStorage.setItem(
-				"cartProduct",
-				JSON.stringify({ ...addedCart })
-			);
-		} else {
-			addedCart[singleProductData._id] = 1;
-			localStorage.setItem(
-				"cartProduct",
-				JSON.stringify({ ...addedCart })
-			);
-		}
+		fetch("http://localhost:5000/addto_cart", {
+			method: "POST",
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(addToCartData)
+
+		})
+			.then(res => res.json())
+			.then(resdata => {
+				console.log(resdata);
+			})
+
+
+
+			// const addedCart = JSON.parse(localStorage.getItem("cartProduct"));
+			;
+
+		// if (!addedCart) {
+		// 	localStorage.setItem(
+		// 		"cartProduct",
+		// 		JSON.stringify({ [singleProductData._id]: 1 })
+		// 	);
+		// } else if (addedCart.hasOwnProperty([singleProductData._id])) {
+		// 	addedCart[singleProductData._id] =
+		// 		addedCart[singleProductData._id] + 1;
+		// 	localStorage.setItem(
+		// 		"cartProduct",
+		// 		JSON.stringify({ ...addedCart })
+		// 	);
+		// } else {
+		// 	addedCart[singleProductData._id] = 1;
+		// 	localStorage.setItem(
+		// 		"cartProduct",
+		// 		JSON.stringify({ ...addedCart })
+		// 	);
+		// }
+
+
 
 		setTimeout(function () {
 			setLoaddingForCart(false);
 			setTotalCart(totalCart + 1);
-		}, 200);``
+		}, 200); ``
 		// to set reale time cart
 	};
 
 	const [totalCart, setTotalCart] = useState(0);
+	console.log({ totalCart });
 	useEffect(() => {
 		const cartValue = JSON.parse(localStorage.getItem("cartProduct"));
 		let totalCart = 0;

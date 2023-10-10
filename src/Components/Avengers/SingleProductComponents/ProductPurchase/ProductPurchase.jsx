@@ -1,5 +1,5 @@
 /**
- * Author: MG Rakib
+ * Author: MG Rakib / Mahedi
  * description: ProductPurchase
  * date: 17aug,2023
  *
@@ -30,7 +30,8 @@ const ProductPurchase = ({ singleProductData }) => {
 
 	// here we use mongo db to save the data  ends
 
-	const { products,loading} = useProducts()
+	const { products, loading } = useProducts()
+
 	return (
 		<div className='relative my-10 '>
 			<div className='flex flex-col md:flex-row gap-10'>

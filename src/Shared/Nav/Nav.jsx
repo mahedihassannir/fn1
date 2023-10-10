@@ -11,13 +11,14 @@ import { IoClose } from "react-icons/io5";
 import { useContext, useState } from "react";
 import { FaArrowRight, FaChevronCircleRight, FaClone, FaCut, FaUser } from "react-icons/fa";
 import { ContexM } from "../../Authentication/AuthProvider/AuthProvider";
+import UseCartHook from "../../Hooks/UseCartHook/UseCartHook";
 
 
 
 const Nav = ({ isNavOpen, setIsNavOpen }) => {
 	//get added quantity from auth provider
 
-
+	const [cart, refetch] = UseCartHook();
 	const { user, Logout, totalCart } = useContext(ContexM)
 
 
@@ -34,7 +35,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 		window.location.reload();
 
 	};
-
+	refetch()
 	const navItem = (
 		<>
 			{/* latest offers  */}
@@ -55,7 +56,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 					<div >
 						<div className="relative">
 							<div className="flex justify-center items-center h-[20px] w-[20px] bg-white p-1 rounded-full absolute -left-3 -top-2">
-								<span className="text-black rounded-full text-[10px] font-semibold "> <small>+</small>{totalCart}</span>
+								<span className="text-black rounded-full text-[10px] font-semibold "> <small>+</small>{cart.length}</span>
 							</div>
 							<AiOutlineGift className="text-[#FC9E66] text-3xl" />
 						</div>
@@ -94,10 +95,21 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 							</label>
 							<ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
 								<li>
+									<p className="justify-between">
+										{
+											user.email
+										}
+
+									</p>
+
+								</li>
+
+								<li>
 									<Link to="/dashboard" className="justify-between">
 										dashboard
 									</Link>
 								</li>
+
 								<li><a>Settings</a></li>
 								<li><a onClick={handleLogout}>Logout</a></li>
 							</ul>
@@ -206,7 +218,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 			<div className='bg-[#000000]  md:px-20 flex justify-between items-center p-3 gap-4 md:gap-12 relative'>
 				{/* logo */}
-				<Link to="/"  className='text-white '>
+				<Link to="/" className='text-white '>
 					<img
 						src='https://i.ibb.co/P9tbKgZ/logo.jpg'
 						alt=''
