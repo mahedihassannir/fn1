@@ -99,6 +99,8 @@ import AccStatement from "../Dashboard/CodeWorms/Markatingpage/AccStatement/AccS
 import SellerAccountCreatedDone from "../Components/SellerAcc/SellerAccountCreatedDone";
 import SellerSeeting from "../Dashboard/CodeWorms/SellerSeeting/SellerSeeting";
 import SellerTool from "../Dashboard/CodeWorms/SellerTool/SellerTool";
+import DirectPurches from "../Components/Avengers/SingleProductComponents/DirectPurches/DirectPurches";
+import Privateroute from "../Private/Privateroute";
 
 
 const router = createBrowserRouter([
@@ -129,6 +131,11 @@ const router = createBrowserRouter([
 				// avengers
 				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
+			},
+			{
+				// Mahedi
+				path: "direct_buy",
+				element: <DirectPurches></DirectPurches>
 			},
 
 			{
@@ -563,7 +570,7 @@ const router = createBrowserRouter([
 
 			},
 
-			
+
 			{
 
 				path: "/dashboard/sellertools",

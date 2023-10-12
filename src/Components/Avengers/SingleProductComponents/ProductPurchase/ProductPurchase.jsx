@@ -12,13 +12,26 @@ import { HiShare } from "react-icons/hi";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import takaIcon from "../../../../assets/taka.png";
 import takaIconGray from "../../../../assets/taka_gray.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 import { SyncLoader } from "react-spinners";
 import useProducts from "../../../../Hooks/Fantastic/useProducts";
 
 const ProductPurchase = ({ singleProductData }) => {
+
+	console.log({ singleProductData });
+
+	const navigate = useNavigate();
+
+
+	const handlepayment = (id) => {
+
+		console.log(id);
+
+		// navigate(`/direct_buy`, { state: {singleProductData} })
+	}
+
 	//default quantity value
 	const [quantity, setQuantity] = useState(1);
 
@@ -31,6 +44,7 @@ const ProductPurchase = ({ singleProductData }) => {
 	// here we use mongo db to save the data  ends
 
 	const { products, loading } = useProducts()
+
 
 	return (
 		<div className='relative my-10 '>
@@ -228,11 +242,14 @@ const ProductPurchase = ({ singleProductData }) => {
 
 						<div className='flex items-center gap-5 mt-4'>
 							<Link
-								to={`/proceed_to_checkout/${singleProductData?._id}`}
+								// to={`/proceed_to_checkout/${singleProductData?._id}`}
+								to={`/direct_buy`}
+								state={singleProductData}
 								className='flex-1'
+								onClick={() => handlepayment(singleProductData)}
 							>
 								<button className='bg-[#2ABBE8] py-3  text-white text-xl font-semibold w-full'>
-									Bye Now
+									Buy Now
 								</button>
 							</Link>
 							{/* this is my product add btn  */}

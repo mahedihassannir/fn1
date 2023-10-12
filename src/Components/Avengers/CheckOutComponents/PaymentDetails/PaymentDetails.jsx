@@ -1,5 +1,5 @@
 /**
- * Author: MG Rakib
+ * Author: MG Rakib / Mahedi
  * description: PaymentDetails
  * date: 17aug,2023
  *
@@ -57,6 +57,7 @@ const PaymentDetails = ({ singleProductData }) => {
   );
 
   console.log("42line", singleProductData);
+  
   // for sslcommerze payment
   const onSubmit = () => {
     const data = {

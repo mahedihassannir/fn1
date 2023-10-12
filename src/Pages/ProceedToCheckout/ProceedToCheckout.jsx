@@ -6,7 +6,7 @@
  * @format
  */
 
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Avengers from "../../Components/Avengers/CheckOutComponents/Avengers";
 import useProducts from "../../Hooks/Fantastic/useProducts";
 import UseCartHook from "../../Hooks/UseCartHook/UseCartHook";
@@ -14,35 +14,31 @@ import UseCartHook from "../../Hooks/UseCartHook/UseCartHook";
 const ProceedToCheckout = () => {
 	const { id } = useParams();
 
+
+	const location = useLocation();
+
+	const thesingleProduct = location.state && location.state.singleProductData;
+
+	console.log(thesingleProduct);
+
+	console.log({ id });
+
 	const [cart] = UseCartHook();
+
 
 	const { products, loading } = useProducts();
 	const singleProductData = products.filter(product => product?._id === id);
 
-	const storedCartProducts = cart
+	console.log(products);
 
-	const cartProducts = []
-
-
+	console.log(singleProductData);
 
 
-	const demo = products.forEach(product => {
-		for (let key in storedCartProducts) {
-			if (key === product._id) {
-				const newObj = {
-					...product, quantity: storedCartProducts[key]
-				}
-				cartProducts.push(newObj)
-			}
-		}
-
-
-	});
 	return (
 		<div className='my-3 md:px-20'>
 			{/* this page for Avengers */}
 			<section>
-				<Avengers productsData={!id ? cartProducts : singleProductData} />
+				<Avengers productsData={singleProductData} />
 			</section>
 		</div>
 	);
