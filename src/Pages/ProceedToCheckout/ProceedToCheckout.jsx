@@ -29,10 +29,8 @@ const ProceedToCheckout = () => {
 	const { products, loading } = useProducts();
 	const singleProductData = products.filter(product => product?._id === id);
 
-	console.log(products);
 
 	console.log(singleProductData);
-
 
 	return (
 		<div className='my-3 md:px-20'>

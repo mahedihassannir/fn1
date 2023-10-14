@@ -10,7 +10,9 @@ const DirectPurches = () => {
     // const data = location.state && location.state.singleProductData
 
     const productdata = location.state;
+
     console.log({ productdata });
+    
     const [inputValue, SetinputValue] = useState(null)
 
     const [open, Setopen] = useState(false)
@@ -27,7 +29,7 @@ const DirectPurches = () => {
 
     const deleveryFee = parseFloat(productdata?.deleveryFee)
 
-    const [offerPrice, SetofferPrice] = useState(productdata.price)
+    const [offerPrice, SetofferPrice] = useState(productdata?.price)
 
 
 
@@ -40,7 +42,7 @@ const DirectPurches = () => {
 
         if (inputValue?.target?.value === offerCode) {
 
-            const totaloffer = productdata.price - offerTaka
+            const totaloffer = productdata?.price - offerTaka
 
             console.log({ totaloffer });
 
@@ -107,12 +109,12 @@ const DirectPurches = () => {
 
                                     <div className="">
 
-                                        <img className="w-[60px] h-[60px]" src={productdata.image} alt="" />
+                                        <img className="w-[60px] h-[60px]" src={productdata?.image} alt="" />
 
                                     </div>
 
                                     <div className="pl-5">
-                                        <p>{productdata.name}</p>
+                                        <p>{productdata?.name}</p>
                                     </div>
                                     <div className="pl-10">
                                         qty
@@ -120,7 +122,7 @@ const DirectPurches = () => {
                                     <div className="pl-5 flex items-center">
                                         <TbCurrencyTaka />
                                         <span className="pl-1">
-                                            {productdata.price}
+                                            {productdata?.price}
 
                                         </span>
                                     </div>
@@ -148,7 +150,7 @@ const DirectPurches = () => {
 
 
                                     <div className="">
-                                        <p>1 Item(s). Subtotal: ৳  {productdata.price + deleveryFee}
+                                        <p>1 Item(s). Subtotal: ৳  {productdata?.price + deleveryFee}
                                             <br />
                                             Saved ৳ 31</p>
                                     </div>
@@ -238,7 +240,7 @@ const DirectPurches = () => {
 
                                     <span>Items Total </span>
                                     <span className="flex items-center gap-2">
-                                        {productdata.price}
+                                        {productdata?.price}
                                         <TbCurrencyTaka />
 
                                     </span>

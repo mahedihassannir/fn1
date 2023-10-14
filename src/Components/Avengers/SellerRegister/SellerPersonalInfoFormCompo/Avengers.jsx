@@ -16,11 +16,13 @@ const Avengers = () => {
 
 	const location = useLocation();
 	const SellerRegisterdataFromPriviousStep = location.state && location.state.fromDataobj;
-	const email = SellerRegisterdataFromPriviousStep.email
-	console.log({ email });
 	console.log("this data is from the previous object where the seller create his account", SellerRegisterdataFromPriviousStep);
 
 	// this is for the prevent on the load functionality 
+	const name = SellerRegisterdataFromPriviousStep.name
+	const email = SellerRegisterdataFromPriviousStep.email
+	const password = SellerRegisterdataFromPriviousStep.password
+	const responseStatus = SellerRegisterdataFromPriviousStep.responseStatus
 
 	window.addEventListener("beforeunload", (e) => {
 		if (window.location.pathname.startsWith("/seller_register/personal_details")) {
@@ -126,7 +128,10 @@ const Avengers = () => {
 			VerifyStatus,
 			accountCreatedFirstStep,
 			SellerRegisterdataFromPriviousStep,
+			name,
 			email,
+			password,
+			responseStatus,
 
 		};
 
@@ -156,7 +161,8 @@ const Avengers = () => {
 						timer: 5000
 					});
 
-					navigate('/seller_account_created_dome');
+					// navigate('/seller_account_created_dome');
+					navigate('/seller_login');
 				}
 				else {
 					return

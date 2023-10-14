@@ -21,6 +21,9 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 	const [cart, refetch] = UseCartHook();
 	const { user, Logout, totalCart } = useContext(ContexM)
 
+	const seller = true;
+	// const seller = false;
+
 
 	const handleLogout = () => {
 
@@ -105,7 +108,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 								</li>
 
 								<li>
-									<Link to="/dashboard" className="justify-between">
+									<Link to={seller == true ? "/seller_login" : "/dashboard"} className="justify-between">
 										dashboard
 									</Link>
 								</li>

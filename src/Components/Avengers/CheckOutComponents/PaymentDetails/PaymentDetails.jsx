@@ -19,6 +19,7 @@ import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
 
 const PaymentDetails = ({ singleProductData }) => {
 
+  console.log({ singleProductData });
 
   const [cart] = UseCartHook();
 
@@ -56,21 +57,20 @@ const PaymentDetails = ({ singleProductData }) => {
     totalTaka + (deliveryInfo?.deliveryFee - deliveryInfo?.deliveryDiscount)
   );
 
-  console.log("42line", singleProductData);
-  
+  console.log("42line", cart);
+
   // for sslcommerze payment
   const onSubmit = () => {
     const data = {
       name: user?.displayName,
       email: user?.email,
-      productID: singleProductData?._id,
-      TotalPayment: singleProductData?.price,
-      productName: singleProductData?.name,
-      category: singleProductData?.category2,
+      cart
     };
 
-    console.log("data fom paymentDetails", data);
-    fetch("http://localhost:5000/payment", {
+    console.log("data fom paymentDetails", { data });
+
+
+    fetch("http://localhost:5000/order", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(data),
@@ -79,7 +79,7 @@ const PaymentDetails = ({ singleProductData }) => {
       .then((result) => {
         console.log(result);
 
-        //	window.location.replace(result.url);
+        // window.location.replace(result.url);
       });
   };
 

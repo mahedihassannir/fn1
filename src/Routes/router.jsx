@@ -101,6 +101,7 @@ import SellerSeeting from "../Dashboard/CodeWorms/SellerSeeting/SellerSeeting";
 import SellerTool from "../Dashboard/CodeWorms/SellerTool/SellerTool";
 import DirectPurches from "../Components/Avengers/SingleProductComponents/DirectPurches/DirectPurches";
 import Privateroute from "../Private/Privateroute";
+import SellerLogin from "../Dashboard/SellerLogin/SellerLogin";
 
 
 const router = createBrowserRouter([
@@ -111,6 +112,10 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <Home></Home>,
+			},
+			{
+				path: "/seller_login",
+				element: <SellerLogin></SellerLogin>,
 			},
 			{
 				path: "contact",
