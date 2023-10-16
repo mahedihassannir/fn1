@@ -45,6 +45,8 @@ const ProductPurchase = ({ singleProductData }) => {
 
 	const { products, loading } = useProducts()
 
+	console.log({ addToCart });
+
 
 	return (
 		<div className='relative my-10 '>

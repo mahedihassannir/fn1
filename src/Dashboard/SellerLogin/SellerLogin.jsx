@@ -66,10 +66,15 @@ const SellerLogin = () => {
 
                 // successfully login
                 const successfullCode = response.data.userId;
-                
+
                 console.log(response.data);
 
                 console.log({ successfullCode });
+
+                const save = localStorage.setItem("userID", successfullCode)
+
+                const saveitem = localStorage.getItem("userId")
+                console.log(saveitem);
 
                 navigate("/dashboard/dashboard/sellerhome")
 

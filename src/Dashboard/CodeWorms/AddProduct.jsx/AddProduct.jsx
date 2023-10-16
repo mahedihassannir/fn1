@@ -1,12 +1,18 @@
 import Test from "../../../Components/Test";
 // import ReactRichEditor from 'react-rich-text-editor'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 
 const AddProduct = () => {
+
+    const [chaked, SetChack] = useState(false)
+
+    const handleCheckboxChange = () => {
+        SetChack(!chaked);
+    };
 
     // this is for the prevent on the load functionality 
     window.addEventListener("beforeunload", (e) => {
@@ -20,20 +26,121 @@ const AddProduct = () => {
     });
     // prevent ends
 
-    const [editorHtml, setEditorHtml] = useState('');
-
+    const [description, setEditorHtml] = useState('');
+    console.log(description);
     const handleChange = (html) => {
         setEditorHtml(html);
     };
-    const [editorHtml2, setEditorHtml2] = useState('');
+    const [description2, setEditorHtml2] = useState('');
+    console.log(description2);
 
     const handleChangetext = (html) => {
         setEditorHtml2(html);
     };
 
+    const [seller, Setseller] = useState(null);
+
+
+    // here we fetch the seller Details
+    useEffect(() => {
+
+        fetch("http://localhost:5000/seller_data")
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                Setseller(data)
+            })
+
+    }, [])
+
+    console.log(seller);
+
+    const [imageUrls, setImageUrls] = useState(Array(6).fill('')); // Initialize with empty strings
+
+    const key = `890b5ec0923fcc8472f7e690406adc40`
+
+    // const uploadUrl = `https://api.imgbb.com/1/upload?key=${key}`
+    const uploadUrl = `https://api.imgbb.com/1/upload?key=${key}`
+
+
+
+    const handleImageUpload = (e, index) => {
+
+        const file = e.target.files[0];
+
+        const imageData = new FormData();
+
+        imageData.append('image', file);
+
+        fetch(uploadUrl, {
+            method: "POST",
+            body: imageData
+        })
+            .then(res => res.json())
+            .then(data => {
+                const image = data.data.display_url;
+                setImageUrls(prevUrls => {
+                    const updatedUrls = [...prevUrls];
+                    updatedUrls[index] = image;
+                    return updatedUrls;
+                });
+            });
+    }
+
+    console.log({ imageUrls });
+
+    const handleSellerAddProduct = () => {
+
+        fetch()
+
+
+    }
+
+    handleSellerAddProduct();
+
+
+
+    const handleData = (e) => {
+
+        e.preventDefault();
+
+        const from = e.target;
+
+        const price = from.price.value;
+        const sellerNumber = from.sellerNumber.value;
+        const offer = from.PromoPrice.value;
+        const stock = from.stock.value;
+        const video = from.video.value;
+
+
+        const TotalData = {
+            seller,
+            price,
+            sellerNumber,
+            offer,
+            stock,
+            description,
+            description2,
+            video,
+            imageUrls,
+
+        };
+
+        console.log(TotalData);
+
+
+
+
+
+
+
+    }
+
+
 
     return (
-        <div className="w-[98%] border-4 border-[#e1e8f0] rounded-md bg-white py-5">
+        <form onSubmit={handleData} className="w-[98%] border-4 border-[#e1e8f0] rounded-md bg-white py-5">
+
             <div className="h-14 w-full bg-[#f7f8fa]">
                 <h3 className="font-semibold text-lg p-2 text-orange-600">Basic information</h3>
             </div>
@@ -49,10 +156,36 @@ const AddProduct = () => {
                     <p className="text-black">Product Images*</p>
                     <p className="text-black">Upload between 3 to 8 images   </p>
                 </div>
+
                 {/* this is image section */}
+
                 <div className="pt-10 ">
 
-                    <Test></Test>
+                    {/* <Test></Test> */}
+                    <div className="grid   grid-cols-4 gap-2 lg:gap-0 lg:grid-cols-10">
+
+                        {/* this is the image section  */}
+
+                        {imageUrls.map((url, index) => (
+                            <div key={index} className="flex justify-center items-center border border-dashed border-orange-600 w-24 h-32">
+                                <img className="w-full object-cover h-32 " src={url} alt="" />
+                                <input type="file" onChange={(e) => handleImageUpload(e, index)} />
+                            </div>
+                        ))}
+
+
+                        {/* <div className=" cursor-pointer flex justify-center items-center border border-dashed border-orange-600 w-24  h-32"> */}
+
+                        {/* <input onChange={(e) => handleImageUpload(e, index)} type="file" /> */}
+
+                        {/* <img  className="w-9" src="https://gw.alicdn.com/imgextra/i1/O1CN01SAaWLk21Ez1J3tryB_!!6000000006954-2-tps-55-55.png" alt="" /> */}
+
+                        {/* </div> */}
+                        {/* this is the image section ends */}
+
+                        {/* this is the image section  */}
+
+                    </div>
 
                 </div>
                 {/* this is image section ends */}
@@ -64,7 +197,7 @@ const AddProduct = () => {
                     <span>video</span>
 
                     <div className="pt-2 flex items-center gap-1">
-                        <input className="bg-orange-500 rounded-full cursor-pointer" type="radio" />
+                        <input onClick={handleCheckboxChange} className="bg-orange-500 rounded-full cursor-pointer" type="radio" />
                         <span>
                             Product Video URL
                         </span>
@@ -73,7 +206,7 @@ const AddProduct = () => {
 
                     {/* this is the main input for the seller */}
                     <div className="">
-                        <input className="w-[99%] py-2 mt-2 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="text" placeholder="input youtube video link  " />
+                        <input name="video" disabled={!chaked} className="w-[99%] py-2 mt-2 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="url" placeholder="input youtube video link  " />
 
                         <br />
                         <span className="mt-3 text-red-700">Should be youtube url</span>
@@ -90,22 +223,22 @@ const AddProduct = () => {
             <section className="w-[99%] mx-auto  border-2 p-3 mb-2 rounded-md">
 
                 <h3 className="text-lg text-[#f85f14] font-semibold">
-                    Product Information
+                    পণ্যের তথ্য
                 </h3>
-                <p className="pt-1">Having accurate product information raises discoverability.</p>
+                <p className="pt-1">সঠিক পণ্য তথ্য থাকা আবিষ্কারযোগ্যতা বাড়ায়।</p>
 
 
 
                 {/* ends of title  */}
                 <div className="">
                     <label htmlFor="">
-                        <span>Product Name <span className="text-orange-600 text-lg">*</span></span>
+                        <span>পণ্যের নাম লিখুন <span className="text-orange-600 text-lg">*</span></span>
                     </label>
 
                     {/* this is the input */}
                     <div className="relative">
 
-                        <input className="w-[99%] py-2 mt-2 pl-32  border-2 rounded-lg focus:outline-none focus:border-blue-500 border-gray-300" type="text" placeholder=" type Product name  " />
+                        <input name="name" className="w-[99%] py-2 mt-2 pl-32  border-2 rounded-lg focus:outline-none focus:border-blue-500 border-gray-300" type="text" placeholder=" পণ্যের নাম লিখুন  " />
 
                         <div className="absolute -mt-[41.7px] ml-[2px]">
                             <button className=" rounded-lg py-2 px-4 bg-[#fafafa] text-black ">
@@ -157,7 +290,7 @@ const AddProduct = () => {
                     <div className=" flex mb-10 ">
                         <div className="lg:w-3/4 w-full p-6   ">
                             <ReactQuill
-                                value={editorHtml2}
+                                value={description2}
                                 onChange={handleChangetext}
                                 className="h-64"
                                 modules={{
@@ -198,7 +331,7 @@ const AddProduct = () => {
                 <div className=" flex ">
                     <div className="lg:w-3/4 w-full p-6   ">
                         <ReactQuill
-                            value={editorHtml}
+                            value={description}
                             onChange={handleChange}
                             className="h-64"
                             modules={{
@@ -236,7 +369,7 @@ const AddProduct = () => {
 
                     <div className="relative mt-2 ml-4">
 
-                        <input className="  w-40 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-14 hover:shadow-md" placeholder="Price" type="text" />
+                        <input name="price" className="  w-40 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-14 hover:shadow-md" placeholder="Price" type="text" />
 
                         <div className="absolute top-0">
                             <button className="py-[10px] px-3 bg-[#f2f3f7] ">BDT</button>
@@ -248,7 +381,7 @@ const AddProduct = () => {
 
                     <div className="relative mt-2 ml-4">
 
-                        <input className="  w-60 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-14 hover:shadow-md" placeholder="Promo Price" type="text" />
+                        <input name="PromoPrice" className="  w-60 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-14 hover:shadow-md" placeholder="Promo Price" type="text" />
 
                         <div className="absolute top-0">
                             <button className="py-[10px] px-3 bg-[#f2f3f7] ">BDT</button>
@@ -262,7 +395,7 @@ const AddProduct = () => {
                     {/* this field is for the product pice related  */}
                     <div className="relative mt-2 ml-4">
 
-                        <input className="  w-40 border-2 py-2 focus:outline-none pl-2 rounded-md hover:shadow-md focus:border-orange-500 border-gray-300" placeholder="Promo Price" type="number" />
+                        <input name="stock" className="  w-40 border-2 py-2 focus:outline-none pl-2 rounded-md hover:shadow-md focus:border-orange-500 border-gray-300" placeholder="product stock" type="number" />
 
 
 
@@ -274,13 +407,13 @@ const AddProduct = () => {
 
                     <div className="mt-2 ml-4">
 
-                        <input className="  w-60 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-2 hover:shadow-md" placeholder="Seller Sku" type="text" />
+                        <input name="sellerNumber" className="  w-60 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-2 hover:shadow-md" placeholder="Seller phone number" type="text" />
 
 
 
 
                     </div>
-
+                    {/* 
                     <div className="mt-2 ml-4">
 
                         <button className="py-[10px] px-5 rounded-md bg-orange-500 text-white ">
@@ -289,7 +422,7 @@ const AddProduct = () => {
                         </button>
 
 
-                    </div>
+                    </div> */}
 
 
                 </div>
@@ -299,12 +432,14 @@ const AddProduct = () => {
 
 
 
+                <button type="submit">Add Product</button>
+
 
             </section>
 
             {/* this is price related work ends */}
 
-        </div>
+        </form>
     );
 };
 

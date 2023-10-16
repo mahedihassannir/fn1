@@ -39,7 +39,7 @@ const Login = () => {
                         console.log(data);
 
                         navigate("/");
-                        
+
                     })
 
 

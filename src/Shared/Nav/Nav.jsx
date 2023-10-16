@@ -19,6 +19,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 	//get added quantity from auth provider
 
 	const [cart, refetch] = UseCartHook();
+	console.log(cart);
 	const { user, Logout, totalCart } = useContext(ContexM)
 
 	const seller = true;

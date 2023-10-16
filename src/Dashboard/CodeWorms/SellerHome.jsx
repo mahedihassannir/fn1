@@ -47,7 +47,6 @@ const SellerHome = () => {
         <MdDashboardCustomize></MdDashboardCustomize>
         <h2 className='text-2xl font-bold flex gap-2'> Dashboard <br /> <span className='text-red-500'> welcome back {seller?.firstname + " " + seller?.lastname}</span></h2>
       </div>
-
       <hr className='mt-6 shadow border border-green-900' />
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6'>
         <div className='w-25 bg-slate-50 shadow-2xl p-8'><span className=''><MdPendingActions className='text-3xl border-2 rounded-full'></MdPendingActions></span><br /><p className='font-bold text-lg'>Pending Orders<br /><u>20</u></p></div>

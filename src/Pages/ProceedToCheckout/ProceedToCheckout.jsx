@@ -19,7 +19,7 @@ const ProceedToCheckout = () => {
 
 	const thesingleProduct = location.state && location.state.singleProductData;
 
-	console.log(thesingleProduct);
+	console.log({ thesingleProduct });
 
 	console.log({ id });
 

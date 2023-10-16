@@ -7,33 +7,34 @@ const UseCartHook = () => {
 
     const { user, loader } = useContext(ContexM);
 
-    // const token = localStorage.getItem('token');
-
     const { refetch, data: cart = [] } = useQuery({
 
         queryKey: ['cart', user?.email],
 
-
         queryFn: async () => {
 
-            // sometime use need to chek the value it is true or false
-            const res = await fetch(`http://localhost:5000/carts?email=${user && user.email}`)
-            // sometime use need to chek the value it is true or false bigest learning 
+            const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`)
 
             return res.json();
-        },
+        }
 
-        // queryFn: async () => {
-        //     const res = await axiosSecure(`/carts?email=${user?.email}`)
-
-
-        //     return res.data;
-
-        // }
 
     });
+
+    console.log(cart.length);
 
     return [cart, refetch];
 
 };
 export default UseCartHook;
+
+
+
+
+// queryFn: async () => {
+//     const res = await axiosSecure(`/carts?email=${user?.email}`)
+
+
+//     return res.data;
+
+// }

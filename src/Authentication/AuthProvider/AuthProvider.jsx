@@ -114,7 +114,6 @@ const AuthProvider = ({ children }) => {
 		setLoaddingForCart(true);
 
 		// here is the main data for send in the database; 
-		console.log({ singleProductData });
 		const addToCartData = { singleProductData, email: user.email }
 		// here is the main data for send in the database this is the the product data;
 

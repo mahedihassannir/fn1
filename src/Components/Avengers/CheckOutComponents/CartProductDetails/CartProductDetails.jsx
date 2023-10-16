@@ -24,11 +24,13 @@ const CartProductDetails = ({ productsData }) => {
 
 	const [cart, refetch] = UseCartHook();
 
-	// const [data, SetData] = useState([]);
+	console.log({ cart });
+
+	// const [cart, SetData] = useState([]);
 
 	// useEffect(() => {
 
-	// 	fetch(`http://localhost:5000/carts`)
+	// 	fetch(`http://localhost:5000/carts?${user?.email}`)
 	// 		.then(res => res.json())
 	// 		.then(data => {
 	// 			SetData(data)
@@ -36,7 +38,7 @@ const CartProductDetails = ({ productsData }) => {
 
 	// }, [])
 
-	// console.log(data);
+
 	refetch();
 	return (
 		<div className='flex flex-col gap-5'>
