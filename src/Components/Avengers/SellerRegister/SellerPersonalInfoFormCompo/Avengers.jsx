@@ -14,6 +14,8 @@ import Swal from 'sweetalert2'
 
 const Avengers = () => {
 
+	const sellerID = localStorage.getItem("userID");
+
 	const location = useLocation();
 	const SellerRegisterdataFromPriviousStep = location.state && location.state.fromDataobj;
 	console.log("this data is from the previous object where the seller create his account", SellerRegisterdataFromPriviousStep);
@@ -162,7 +164,7 @@ const Avengers = () => {
 					});
 
 					// navigate('/seller_account_created_dome');
-					navigate('/seller_login');
+					navigate(`${sellerID ? "/dashboard/dashboard/sellerhome" : " / seller_login"} `);
 				}
 				else {
 					return

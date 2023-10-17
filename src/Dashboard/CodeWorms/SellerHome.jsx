@@ -18,9 +18,11 @@ const SellerHome = () => {
 
     const fetchData = async () => {
 
+      const id = localStorage.getItem("userID")
+      console.log(id);
 
       try {
-        const response = await axios.get("http://localhost:5000/seller_data");
+        const response = await axios.get(`http://localhost:5000/seller_data/${id}`);
         const sellerData = response.data;
 
         Setseller(sellerData)

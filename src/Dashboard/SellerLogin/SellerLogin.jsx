@@ -58,23 +58,29 @@ const SellerLogin = () => {
 
         // here is the fetching for the seller login detail
 
+
         try {
 
+
             const response = await axios.post("http://localhost:5000/login", { email, password });
+
 
             if (response.data.success) {
 
                 // successfully login
                 const successfullCode = response.data.userId;
 
+                
+
                 console.log(response.data);
 
                 console.log({ successfullCode });
 
-                const save = localStorage.setItem("userID", successfullCode)
 
-                const saveitem = localStorage.getItem("userId")
-                console.log(saveitem);
+
+                //  local storage work
+                localStorage.setItem("userID", successfullCode)
+                // ///
 
                 navigate("/dashboard/dashboard/sellerhome")
 

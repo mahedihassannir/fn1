@@ -148,13 +148,14 @@ const AddProduct = () => {
             {/* this section is for product and image adding starts*/}
             <div className="w-[99%] mx-auto  border-2 p-3 mb-2 rounded-md">
 
-                <h3 className="text-2xl font-semibold">Product Images & Video</h3>
-                <p>Your product images is the first thing your customer sees on the product page.</p>
+                <h3 className="text-2xl font-semibold">পণ্যের ছবি ও ভিডিও</h3>
+                {/* <p>Your product images is the first thing your customer sees on the product page.</p> */}
+                <p>আপনার পণ্যের চিত্রগুলি হল প্রথম জিনিস যা আপনার গ্রাহক পণ্য পৃষ্ঠায় দেখেন।</p>
 
 
                 <div className="pt-3">
-                    <p className="text-black">Product Images*</p>
-                    <p className="text-black">Upload between 3 to 8 images   </p>
+                    <p className="text-black">পণ্যের ছবি*</p>
+                    <p className="text-black">3 থেকে 8টি ছবি আপলোড করুন   </p>
                 </div>
 
                 {/* this is image section */}
@@ -194,12 +195,12 @@ const AddProduct = () => {
 
                 <div className="pt-4 ">
 
-                    <span>video</span>
+                    <span>ভিডিও</span>
 
                     <div className="pt-2 flex items-center gap-1">
                         <input onClick={handleCheckboxChange} className="bg-orange-500 rounded-full cursor-pointer" type="radio" />
                         <span>
-                            Product Video URL
+                        পণ্য ভিডিও URL
                         </span>
 
                     </div>
@@ -209,7 +210,7 @@ const AddProduct = () => {
                         <input name="video" disabled={!chaked} className="w-[99%] py-2 mt-2 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="url" placeholder="input youtube video link  " />
 
                         <br />
-                        <span className="mt-3 text-red-700">Should be youtube url</span>
+                        <span className="mt-3 text-red-700">ইউটিউব ইউআরএল হওয়া উচিত</span>
                     </div>
                     {/* this is the main input for the seller ends */}
                 </div>
@@ -232,7 +233,7 @@ const AddProduct = () => {
                 {/* ends of title  */}
                 <div className="">
                     <label htmlFor="">
-                        <span>পণ্যের নাম লিখুন <span className="text-orange-600 text-lg">*</span></span>
+                        <span>পণ্যের নাম লিখুন ইংরেজীতে <span className="text-orange-600 text-lg">*</span></span>
                     </label>
 
                     {/* this is the input */}

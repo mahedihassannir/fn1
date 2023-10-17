@@ -22,7 +22,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 	console.log(cart);
 	const { user, Logout, totalCart } = useContext(ContexM)
 
-	const seller = true;
+	const seller = localStorage.getItem("userID")
 	// const seller = false;
 
 
@@ -109,7 +109,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 								</li>
 
 								<li>
-									<Link to={seller == true ? "/seller_login" : "/dashboard"} className="justify-between">
+									<Link to={seller ? "/dashboard/dashboard/sellerhome" : "/seller_login"} className="justify-between">
 										dashboard
 									</Link>
 								</li>

@@ -10,7 +10,7 @@
 
 
 import React, { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { HiArchiveBoxXMark, HiMiniAdjustmentsHorizontal, HiMiniCalculator, HiMiniShoppingCart, HiMiniUsers } from "react-icons/hi2";
 import { HiAcademicCap, HiChartBar, HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
 import { FaBackspace, FaBroadcastTower, FaBusinessTime, FaDropbox, FaHome, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle, FaSignOutAlt, FaTools } from 'react-icons/fa';
@@ -23,8 +23,27 @@ const SellerDashboard = () => {
 
     const [activeRoute, setActiveRoute] = useState("Seller Home");
 
+    const navigate = useNavigate();
+
     const [cart] = USeemailCheck();
-    console.log({ cart });
+
+
+    const handleLogOut = () => {
+
+        localStorage.removeItem("userID")
+
+        try {
+
+            if (localStorage.getItem("userID") === null) {
+                navigate("/seller_register")
+            }
+        }
+        catch (error) {
+            console.log(error);
+        }
+
+
+    }
 
 
     const [seller, Setseller] = useState(null);
@@ -34,9 +53,11 @@ const SellerDashboard = () => {
 
         const fetchData = async () => {
 
+            const id = localStorage.getItem("userID")
+            console.log(id);
 
             try {
-                const response = await axios.get("http://localhost:5000/seller_data");
+                const response = await axios.get(`http://localhost:5000/seller_data/${id}`);
                 const sellerData = response.data;
 
                 Setseller(sellerData)
@@ -55,9 +76,7 @@ const SellerDashboard = () => {
         fetchData();
 
     }, [])
-
-    console.log({ seller });
-
+    console.log(seller);
 
 
 
@@ -194,15 +213,13 @@ const SellerDashboard = () => {
                 <h4>Back To Home</h4>
             </div></Link>
 
-            <Link to="/"><div onClick={() => setActiveRoute("Logout")}
-                className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "Logout"
-                    ? "bg-[#19D895] text-[#0A1727]"
-                    : ""
+            <div onClick={handleLogOut}
+                className={`flex hover:bg-[#19D895] duration-700 items-center p-2 
                     } cursor-pointer  gap-4`}
             >
                 <FaSignOutAlt className='w-4 h-4'></FaSignOutAlt>
                 <h4>Logout</h4>
-            </div></Link>
+            </div>
 
 
             <div className='text-center text-black relative mt-6'>
