@@ -36,7 +36,7 @@ const Fashion = () => {
 
 
             {/* display all fashion product */}
-            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 lg:mx-20 my-10'>
+            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-1 gap-y-10 lg:mx-20 my-10'>
                 {
                     allFashionProducts.map(fashionProducts => <CardsOfProducts singleProduct={fashionProducts}/>)
                 }

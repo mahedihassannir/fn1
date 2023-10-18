@@ -38,19 +38,20 @@ const Avengers = () => {
 	});
 	// prevent ends
 
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	// const api = `https://api.imgbb.com/1/upload?expiration=600&key=890b5ec0923fcc8472f7e690406adc40`
 
-	const imageRef = useRef(null)
+	const imageRef = useRef(null);
 
+	const [mobile, Setmobile] = useState(null);
 
 
 	// imgbb api
-	const key = `890b5ec0923fcc8472f7e690406adc40`
+	const key = `890b5ec0923fcc8472f7e690406adc40`;
 
 	// const uploadUrl = `https://api.imgbb.com/1/upload?key=${key}`
-	const uploadUrl = `https://api.imgbb.com/1/upload?key=${key}`
+	const uploadUrl = `https://api.imgbb.com/1/upload?key=${key}`;
 
 
 	const [image, SetImage] = useState("");
@@ -118,6 +119,18 @@ const Avengers = () => {
 		const VerifyStatus = false;
 		const accountCreatedFirstStep = true;
 
+		if (phonenumber.length !== 11) {
+			return Swal.fire({
+				position: 'top-start',
+				icon: 'unsuccess',
+				title: `mobile number error not 11 degit `,
+				showConfirmButton: false,
+				timer: 1000
+			});
+
+		}
+
+
 		const allData = {
 			firstname,
 			lastname,
@@ -158,13 +171,13 @@ const Avengers = () => {
 					Swal.fire({
 						position: 'top-end',
 						icon: 'success',
-						title: 'Seller Register 1St Has Been complete you request is now pending ',
+						title: 'Seller Register  Has Been complete congratulation  ',
 						showConfirmButton: false,
 						timer: 5000
 					});
 
 					// navigate('/seller_account_created_dome');
-					navigate(`${sellerID ? "/dashboard/dashboard/sellerhome" : " / seller_login"} `);
+					navigate("/seller_login");
 				}
 				else {
 					return
