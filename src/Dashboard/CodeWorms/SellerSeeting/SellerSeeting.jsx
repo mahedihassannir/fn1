@@ -6,11 +6,11 @@ const SellerSeeting = () => {
         <div>
 
 
-            <Link>
+            <Link to={'/dashboard/sellertools'}>
                 <button className="btn">
-
+                    go
                 </button>
-                
+
             </Link>
 
 

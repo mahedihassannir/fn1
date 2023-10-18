@@ -33,6 +33,22 @@ const PaymentDetails = ({ singleProductData }) => {
   }
   console.log({ totalPrice });
 
+  let totaldeleveryPrice = 0;
+
+
+  for (let item of cart) {
+
+    const Items = item.singleProductData.deleveryFee
+    const finalValue = parseFloat(Items)
+
+
+    totaldeleveryPrice += finalValue
+
+  }
+  console.log("total delivery", { totaldeleveryPrice });
+
+
+
   const { user } = useContext(ContexM);
 
   // for delivery info
@@ -51,36 +67,57 @@ const PaymentDetails = ({ singleProductData }) => {
         : product?.price + vlaue,
     0
   );
+  // calculate total taka
+
+
 
   // calculate final amount widn delivery charge
   const [totalAmount, setTotalAmount] = useState(
     totalTaka + (deliveryInfo?.deliveryFee - deliveryInfo?.deliveryDiscount)
   );
 
+
+  const offer = 10
+  const totalMoney = totalPrice + totaldeleveryPrice - offer
+
+
   console.log("42line", cart);
 
   // for sslcommerze payment
   const onSubmit = () => {
+
+
+
     const data = {
       name: user?.displayName,
       email: user?.email,
-      cart
+      cart,
+      totalMoney
     };
 
     console.log("data fom paymentDetails", { data });
 
 
-    fetch("http://localhost:5000/order", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
+    try {
 
-        // window.location.replace(result.url);
-      });
+
+      fetch("http://localhost:5000/order", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(data),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+
+          console.log(data.url);
+
+          window.location.replace(data.url);
+        });
+
+    } catch (error) {
+      console.log(error);
+
+    }
   };
 
 
@@ -136,7 +173,7 @@ const PaymentDetails = ({ singleProductData }) => {
               <p>Delivery Fee</p>
               <div className="flex items-center gap-1">
                 <TbCurrencyTaka />
-                <span>{deliveryInfo?.deliveryFee}</span>
+                <span>{totaldeleveryPrice}</span>
               </div>
             </div>
             {/* Delivery Discount */}
@@ -144,7 +181,7 @@ const PaymentDetails = ({ singleProductData }) => {
               <p>Delivery Discount</p>
               <div className="flex items-center gap-1">
                 <TbCurrencyTaka />
-                <span>{deliveryInfo?.deliveryDiscount}</span>
+                <span>00</span>
               </div>
             </div>
             {/*Total Payment */}
@@ -152,7 +189,7 @@ const PaymentDetails = ({ singleProductData }) => {
               <p>Total Payment</p>
               <div className="flex items-center gap-1">
                 <TbCurrencyTaka />
-                <span>{totalAmount}</span>
+                <span>{totalMoney}</span>
               </div>
             </div>
 

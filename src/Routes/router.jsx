@@ -150,7 +150,7 @@ const router = createBrowserRouter([
 			},
 			{
 				// avengers Toma PAYMENT Fail ROUTE
-				path: "payment/fail/:tranId",
+				path: "payment/failed/:tranId",
 				element: <PaymentFailed></PaymentFailed>,
 			},
 			{
@@ -574,8 +574,6 @@ const router = createBrowserRouter([
 
 
 			},
-
-
 			{
 
 				path: "/dashboard/sellertools",
