@@ -35,6 +35,7 @@ const DashBoardManage = () => {
 
 			</div>
 
+
 			<div
 				onClick={() => setValue(!values)}
 				className='md:hidden absolute right-0 top-2 text-lg cursor-pointer bg-red-200'

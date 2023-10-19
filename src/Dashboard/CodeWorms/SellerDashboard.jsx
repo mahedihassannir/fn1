@@ -60,7 +60,7 @@ const SellerDashboard = () => {
                 const response = await axios.get(`http://localhost:5000/seller_data/${id}`);
                 const sellerData = response.data;
 
-                Setseller(sellerData)
+                Setseller(sellerData);
 
                 console.log({ sellerData });
                 console.log(sellerData);

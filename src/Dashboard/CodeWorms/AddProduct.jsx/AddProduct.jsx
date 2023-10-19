@@ -41,10 +41,12 @@ const AddProduct = () => {
     const [seller, Setseller] = useState(null);
 
 
+    const sellerid = localStorage.getItem("userID")
+
     // here we fetch the seller Details
     useEffect(() => {
 
-        fetch("http://localhost:5000/seller_data")
+        fetch(`http://localhost:5000/seller_data/${sellerid}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -89,15 +91,6 @@ const AddProduct = () => {
 
     console.log({ imageUrls });
 
-    const handleSellerAddProduct = () => {
-
-        fetch()
-
-
-    }
-
-    handleSellerAddProduct();
-
 
 
     const handleData = (e) => {
@@ -112,8 +105,12 @@ const AddProduct = () => {
         const stock = from.stock.value;
         const video = from.video.value;
 
+        const sellerEmail = seller.email;
 
+        const category = "male"
+        const category2 = "fashion"
         const TotalData = {
+
             seller,
             price,
             sellerNumber,
@@ -123,15 +120,37 @@ const AddProduct = () => {
             description2,
             video,
             imageUrls,
+            sellerEmail,
+            category2,
+            category
+
+
+
+
 
         };
 
         console.log(TotalData);
 
+        fetch("http://localhost:5000/add_product", {
+            method: "POST",
 
+            headers: {
+                "content-type": "application/json"
 
+            },
 
+            body: JSON.stringify(TotalData)
 
+        })
+
+            .then(res => res.json())
+
+            .then(data => {
+                console.log(data);
+            });
+
+        console.log(seller);
 
 
     }
@@ -200,7 +219,7 @@ const AddProduct = () => {
                     <div className="pt-2 flex items-center gap-1">
                         <input onClick={handleCheckboxChange} className="bg-orange-500 rounded-full cursor-pointer" type="radio" />
                         <span>
-                        পণ্য ভিডিও URL
+                            পণ্য ভিডিও URL
                         </span>
 
                     </div>

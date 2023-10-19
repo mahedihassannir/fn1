@@ -4,9 +4,32 @@ import { DatePicker } from "antd";
 import OrdersTable from "../../../Components/Avengers/DashboardRelatedCompo/Orders/OrdersTable/OrdersTable";
 import Rating from "react-rating";
 import { FaBeer, FaStar, FaStarHalfAlt } from "react-icons/fa";
+import UseSellerOrders from "../../../Hooks/UseSellerOrders/UseSellerOrders";
+import { ContexM } from "../../../Authentication/AuthProvider/AuthProvider";
+import { useContext, useState } from "react";
+import { PiDotsThreeVerticalBold } from "react-icons/pi";
 
 const { RangePicker } = DatePicker;
 const OrderManage = () => {
+
+  const [order, refetch] = UseSellerOrders(null)
+
+  // const { modalIsOpen, setModalIsOpen } = useState(false);
+  const [modalStates, setModalStates] = useState(Array(order.length).fill(false));
+
+  const toggleModal = (index) => {
+    const newModalStates = [...modalStates];
+    newModalStates[index] = !newModalStates[index];
+    setModalStates(newModalStates);
+  };
+
+
+  console.log(order);
+
+  refetch();
+
+
+
   return (
     <div>
       <h1 className="text-xl font-semibold">Order Overview</h1>
@@ -248,102 +271,135 @@ const OrderManage = () => {
             </thead>
 
             {/* order tabel body  */}
-            <tbody className="font-bold">
-              <tr className=" ">
-                {/* id col  */}
-                <td className="text-blue-600 w-[6%] ">
-                  #<span>1254</span>
-                </td>
 
-                {/* product and product image  */}
-                <td className=" w-[12%]">
-                  <div className="flex items-center">
-                    <div>
-                      <img src="" alt="" />
-                    </div>
-                    <div>
-                      <p>Oculus Quest 2 VR Headset 64GB</p>
-                      <div className="text-[10px] text-gray-400">
-                        <p>Regular Price: 870</p>
-                        <p>Sale Price: 600</p>
+            {
+              order.map((order, index) => <tbody key={order._id} className="font-bold flex ">
+
+                {/* {
+                  order.cart.forEach(item => (console.log(item)))
+                } */}
+                <tr className=" ">
+                  {/* id col  */}
+                  <td className="text-blue-600 w-[6%] ">
+                    #<span>1254</span>
+                  </td>
+
+                  {/* product and product image  */}
+                  <td className=" w-[12%]">
+                    <div className="flex items-center">
+                      <div>
+                        <img src="" alt="" />
+                      </div>
+                      <div>
+                        <p>${
+                          order.order.totalMoney
+
+                        }</p>
+                        <div className="text-[10px] text-gray-400">
+                          <p>Regular Price: 870</p>
+                          <p>Sale Price: 600</p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </td>
+                  </td>
 
-                {/* category  */}
-                <td className=" w-[11%]">
-                  <div className="flex items-center gap-4">
-                    <p>Electronics</p>
-                  </div>
-                </td>
+                  {/* category  */}
+                  <td className=" w-[11%]">
+                    <div className="flex items-center gap-4">
+                      <p>Electronics</p>
+                    </div>
+                  </td>
 
-                {/* payment */}
-                <td className=" w-[9%] flex-col items-start">
-                  <p className="">
-                    $<span>600</span>
-                  </p>
-                  <small>
-                    <p className="text-gray-500">Fully Paid</p>
-                  </small>
-                </td>
-                <td className=" w-[10%] flex-col items-start">
-                  <p className="">
-                    $<span>600</span>
-                  </p>
-                  <small>
-                    <p className="text-gray-500">Fully Paid</p>
-                  </small>
-                </td>
-                <td className=" w-[9%] flex-col items-start">
-                  <p className="">
-                    $<span>600</span>
-                  </p>
-                  <small>
-                    <p className="text-gray-500">Fully Paid</p>
-                  </small>
-                </td>
-                <td className=" w-[6%] flex-col items-start">
-                  <p className="">
-                    $<span>600</span>
-                  </p>
-                  <small>
-                    <p className="text-gray-500">Fully Paid</p>
-                  </small>
-                </td>
-                <td className=" w-[8%] flex-col items-start">
-                  <p className="">
-                    $<span>600</span>
-                  </p>
-                  <small>
-                    <p className="text-gray-500">Fully Paid</p>
-                  </small>
-                </td>
+                  {/* payment */}
+                  <td className=" w-[9%] flex-col items-start">
+                    <p className="">
+                      $<span>
+                        {/* TODO */}
+                      </span>
+                    </p>
+                    <small>
+                      <p className="text-gray-500">Fully Paid</p>
+                    </small>
+                  </td>
+                  <td className=" w-[10%] flex-col items-start">
+                    <p className="">
+                      $<span>${order?.cart?.singleProductData?.price}</span>
+                    </p>
+                    <small>
+                      <p className="text-gray-500">COD</p>
+                    </small>
+                  </td>
+                  <td className=" w-[9%] flex-col items-start">
+                    <p className="">
+                      $<span>600</span>
+                    </p>
+                    <small>
+                      <p className="text-gray-500">Fully Paid</p>
+                    </small>
+                  </td>
+                  <td className=" w-[6%] flex-col items-start">
+                    <p className="">
+                      $<span>600</span>
+                    </p>
+                    <small>
+                      <p className="text-gray-500">Fully Paid</p>
+                    </small>
+                  </td>
+                  <td className=" w-[8%] flex-col items-start">
+                    <p className="">
+                      $<span>600</span>
+                    </p>
+                    <small>
+                      <p className="text-gray-500">Fully Paid</p>
+                    </small>
+                  </td>
 
-                {/* order status  */}
-                <td className=" w-[10%]">
-                  <div className="uppercase ">Completed</div>
-                </td>
-                {/* rating  */}
-                <td className=" w-[10%]">
-                  <Rating
-                    readonly
-                    placeholderRating={3.5}
-                    emptySymbol={<FaStarHalfAlt className="text-yellow-500" />}
-                    placeholderSymbol={<FaStar className="text-yellow-500" />}
-                  />
-                </td>
-                <td className=" w-[9%]">
-                  <Rating
-                    readonly
-                    placeholderRating={3.5}
-                    emptySymbol={<FaStarHalfAlt className="text-yellow-500" />}
-                    placeholderSymbol={<FaStar className="text-yellow-500" />}
-                  />
-                </td>
-              </tr>
-             
-            </tbody>
+                  {/* order status  */}
+                  <td className=" w-[10%]">
+                    <div className="uppercase ">Completed</div>
+                  </td>
+                  {/* rating  */}
+                  <td className=" w-[10%]">
+                    <Rating
+                      readonly
+                      placeholderRating={3.5}
+                      emptySymbol={<FaStarHalfAlt className="text-yellow-500" />}
+                      placeholderSymbol={<FaStar className="text-yellow-500" />}
+                    />
+                  </td>
+
+                  {/* ends */}
+
+                  <td className='w-[5%] flex items-start' key={order.id}>
+                    <div className='p-[6px] hover:bg-[#F5F5F5] rounded flex items-center justify-center text-sm cursor-pointer mx-auto relative'>
+                      <PiDotsThreeVerticalBold onClick={() => toggleModal(index)} />
+
+                      <div
+                        className={`bg-white absolute top-[100%] text-[11px] right-0 overflow-hidden duration-300 shadow-md ${modalStates[index] ? "max-h-[500px]" : "max-h-[0px]"}`}
+                      >
+                        <ul className='w-[100px]'>
+                          <li className='py-1 px-3 hover:bg-gray-200 text-green-600'>
+                            prossing
+                          </li>
+                          <li className='py-1 px-3 hover:bg-gray-200 text-green-600'>
+                            placed
+                          </li>
+                          <li className='py-1 px-3 hover:bg-gray-200 text-lime-600'>
+                            Shipe
+                          </li>
+                          <li className='py-1 px-3 hover:bg-gray-200 text-red-600'>
+                            Delivered
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+              </tbody>
+
+              )
+            }
           </table>
         </div>
       </div>

@@ -13,6 +13,7 @@ const SellerLogin = () => {
     const [captchaValue, SetCaptchaValue] = useState(null);
 
 
+
     const [fromdata, setdata] = useState(null);
 
     const navigate = useNavigate();
@@ -70,7 +71,7 @@ const SellerLogin = () => {
                 // successfully login
                 const successfullCode = response.data.userId;
 
-                
+
 
                 console.log(response.data);
 
