@@ -10,6 +10,19 @@ const AddProduct = () => {
 
     const [chaked, SetChack] = useState(false)
 
+    const [selectedCategory, setSelectedCategory] = useState('');
+
+    const handleCategoryChange = (e) => {
+        setSelectedCategory(e.target.value);
+    };
+    const [selectedCategory2, setSelectedCategory2] = useState('');
+
+    const handleCategoryChange2 = (e) => {
+        setSelectedCategory2(e.target.value);
+    };
+
+    console.log(selectedCategory, selectedCategory2);
+
     const handleCheckboxChange = () => {
         SetChack(!chaked);
     };
@@ -99,30 +112,43 @@ const AddProduct = () => {
 
         const from = e.target;
 
-        const price = from.price.value;
+        const name = from.name.value;
+        const price2 = from.price.value;
         const sellerNumber = from.sellerNumber.value;
         const offer = from.PromoPrice.value;
         const stock = from.stock.value;
         const video = from.video.value;
 
-        const sellerEmail = seller.email;
+        const price = parseFloat(price2)
 
-        const category = "male"
-        const category2 = "fashion"
+
         const TotalData = {
+            name: name,
+            sellerid: seller?._id,
+            sellerEmail: seller?.email,
+            sellerfirstname: seller?.firstname,
+            sellerlastname: seller?.lastname,
+            sellerstoreimage: seller?.image,
+            sellerstorename: seller?.storename,
+            price: price,
+            sellernumber: sellerNumber,
+            offer: offer,
+            stock: stock,
+            description: description,
+            description2: description2,
+            productvideo: video,
+            imageurls: imageUrls,
+            category: selectedCategory2,
+            category2: selectedCategory,
+            deleveryFee: "5",
+            rating: "0",
+            totalSell: "0",
+            vouchercode: "mmm",
+            toppruduct: false,
+            selleraddress: seller?.address,
 
-            seller,
-            price,
-            sellerNumber,
-            offer,
-            stock,
-            description,
-            description2,
-            video,
-            imageUrls,
-            sellerEmail,
-            category2,
-            category
+
+
 
 
 
@@ -149,8 +175,6 @@ const AddProduct = () => {
             .then(data => {
                 console.log(data);
             });
-
-        console.log(seller);
 
 
     }
@@ -271,13 +295,53 @@ const AddProduct = () => {
                     {/* this is the input ends */}
 
                     <div className="mt-2">
+
                         <div className="">
-                            <p>Category*</p>
+
+                            {/* <input className="w-[99%] py-2 mt-1 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="text" placeholder="select your category  " />
+                            <div> */}
+                            <label htmlFor="category" className="text-red-500 font-bold ">Select Main Category:</label>
+
+                            <select
+                                id="category"
+                                value={selectedCategory}
+                                onChange={handleCategoryChange}
+                                className="block w-full mt-1 p-2 border rounded-md bg-white"
+                            >
+                                <option value="">Select...</option>
+                                <option value="fashion">fashion</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="books">Books</option>
+                                {/* Add more options as needed */}
+                            </select>
+
+                            <p>Selected Category: {selectedCategory}</p>
+
                         </div>
+                    </div>
+                    {/* this is for the labeling category like male or female  */}
+                    <div className="mt-2">
 
                         <div className="">
 
-                            <input className="w-[99%] py-2 mt-1 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="text" placeholder="select your category  " />
+                            {/* <input className="w-[99%] py-2 mt-1 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="text" placeholder="select your category  " />
+                            <div> */}
+                            <label htmlFor="category" className="text-red-500 font-bold ">Select sub Main Category:</label>
+
+                            <select
+                                id="category"
+                                value={selectedCategory2}
+                                onChange={handleCategoryChange2}
+                                className="block w-full mt-1 p-2 border rounded-md bg-white"
+                            >
+                                <option value="">Select...</option>
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                                <option value="books">Books</option>
+                                {/* Add more options as needed */}
+                            </select>
+
+                            <p>Selected Category: <span className="text-red-600 font-bold ">{selectedCategory2}</span></p>
 
                         </div>
                     </div>

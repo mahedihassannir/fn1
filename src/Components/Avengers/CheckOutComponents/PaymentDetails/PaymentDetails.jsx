@@ -57,7 +57,7 @@ const PaymentDetails = ({ singleProductData }) => {
   for (let item of cart) {
 
 
-    totalPrice += item.singleProductData.price;
+    totalPrice += item.singleProductData?.price;
 
   }
   console.log({ totalPrice });
@@ -67,7 +67,7 @@ const PaymentDetails = ({ singleProductData }) => {
 
   for (let item of cart) {
 
-    const Items = item.singleProductData.deleveryFee
+    const Items = item.singleProductData?.deleveryFee
     const finalValue = parseFloat(Items)
 
 

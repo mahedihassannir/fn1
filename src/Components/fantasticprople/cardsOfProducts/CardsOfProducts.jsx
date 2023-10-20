@@ -4,6 +4,9 @@ import { Link } from 'react-router-dom';
 
 const CardsOfProducts = ({ singleProduct, handle }) => {
 
+
+
+
   // const name = singleProduct.name.length < 10
 
   return <div onClick={handle} key={singleProduct._id}>
@@ -12,7 +15,7 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
         <img className='w-full h-56' src={singleProduct.image} alt="bag" />
         <div className='p-4 bg-white'>
           {/* name */}
-          <p className='font-bold pb-2'>{singleProduct.name.slice(0, 30)}</p>
+          <p className='font-bold pb-2'>{singleProduct.name?.slice(0, 30)}</p>
           {/* name ends */}
 
           {/* price sec */}

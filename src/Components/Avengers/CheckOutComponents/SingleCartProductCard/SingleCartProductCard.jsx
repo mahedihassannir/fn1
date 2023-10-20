@@ -45,7 +45,7 @@ const SingleCartProductCard = ({ singleProductData }) => {
 				{/* product image  */}
 				<div className='w-[60px]'>
 					<img
-						src={singleProductData?.singleProductData.image}
+						src={singleProductData?.singleProductData?.image}
 						alt=''
 						className='w-full'
 					/>
@@ -54,7 +54,7 @@ const SingleCartProductCard = ({ singleProductData }) => {
 				<div className='flex items-center justify-between flex-1 gap-2'>
 					{/* product name  */}
 					<div>
-						<h3>{singleProductData?.singleProductData.name}</h3>
+						<h3>{singleProductData?.singleProductData?.name}</h3>
 						<p>
 							<small className='text-gray-500'>
 								No Brand,Color Family:Black
@@ -65,10 +65,10 @@ const SingleCartProductCard = ({ singleProductData }) => {
 					{/* quantity  */}
 					<div className='flex items-center gap-5 md:gap-10'>
 						<p>
-							Qty: <span>{singleProductData?.singleProductData.quantity}</span>
+							Qty: <span>{singleProductData?.singleProductData?.quantity}</span>
 						</p>
 
-						<FaRegTrashAlt onClick={() => handleDeleteProduct(singleProductData._id)} className='text-gray-500 cursor-pointer hover:text-red-500' />
+						<FaRegTrashAlt onClick={() => handleDeleteProduct(singleProductData?._id)} className='text-gray-500 cursor-pointer hover:text-red-500' />
 					</div>
 
 					{/* price  */}
@@ -92,7 +92,7 @@ const SingleCartProductCard = ({ singleProductData }) => {
 
 						<div className='flex items-center '>
 							<TbCurrencyTaka />
-							<p>{singleProductData?.singleProductData.price}</p>
+							<p>{singleProductData?.singleProductData?.price}</p>
 						</div>
 					</div>
 				</div>
@@ -106,10 +106,10 @@ const SingleCartProductCard = ({ singleProductData }) => {
 						<span className='flex items-center text-red-500'>
 							<TbCurrencyTaka />{" "}
 							<p>
-								{singleProductData?.singleProductData.quantity
-									? singleProductData?.singleProductData.price *
-									singleProductData?.singleProductData.quantity
-									: singleProductData?.singleProductData.price}
+								{singleProductData?.singleProductData?.quantity
+									? singleProductData?.singleProductData?.price *
+									singleProductData?.singleProductData?.quantity
+									: singleProductData?.singleProductData?.price}
 							</p>
 						</span>
 					</p>

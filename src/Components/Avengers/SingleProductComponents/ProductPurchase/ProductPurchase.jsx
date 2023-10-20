@@ -22,6 +22,26 @@ const ProductPurchase = ({ singleProductData }) => {
 
 	console.log({ singleProductData });
 
+	const images = singleProductData?.imageurls
+	console.log("111111", images);
+
+
+
+	let imageData = {}
+
+	for (let i = 0; i < images?.length; i++) {
+
+		const url = images[i];
+
+
+		imageData[`image${i}`] = url;
+
+
+	}
+
+
+	console.log("he he he hklh lkjhlkjhljkh lkjhl hjklh 12123", imageData)
+
 	const navigate = useNavigate();
 
 
@@ -56,6 +76,7 @@ const ProductPurchase = ({ singleProductData }) => {
 					<div>
 						<img
 							src={singleProductData?.image}
+							// src={imageData?.image0}
 							alt=''
 							className='w-full'
 						/>
@@ -69,6 +90,8 @@ const ProductPurchase = ({ singleProductData }) => {
 								<div className='w-[70px] p-1 border border-[#F57224]'>
 									<img
 										src={singleProductData?.image}
+
+										// src={imageData?.image0}
 										alt=''
 									/>
 								</div>
@@ -76,6 +99,8 @@ const ProductPurchase = ({ singleProductData }) => {
 								<div className='w-[70px] p-1 '>
 									<img
 										src={singleProductData?.image}
+
+										// src={imageData?.image0}
 										alt=''
 									/>
 								</div>
@@ -83,6 +108,8 @@ const ProductPurchase = ({ singleProductData }) => {
 								<div className='w-[70px] p-1 '>
 									<img
 										src={singleProductData?.image}
+										// src={imageData?.image0}
+
 										alt=''
 									/>
 								</div>
@@ -190,10 +217,10 @@ const ProductPurchase = ({ singleProductData }) => {
 
 								<div className='mt-2 flex items-center gap-3'>
 									<div className='w-[60px] p-1 border border-[#F57224]'>
-										<img
-											src='https://i.ibb.co/PgdpJzh/img2.jpg'
+										{/* <img
+											src={imageData?.image0}
 											alt=''
-										/>
+										/> */}
 									</div>
 									<div className='w-[60px] p-1 '>
 										<img
