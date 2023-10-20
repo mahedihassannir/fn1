@@ -99,6 +99,13 @@ import AccStatement from "../Dashboard/CodeWorms/Markatingpage/AccStatement/AccS
 import SellerAccountCreatedDone from "../Components/SellerAcc/SellerAccountCreatedDone";
 import SellerSeeting from "../Dashboard/CodeWorms/SellerSeeting/SellerSeeting";
 import SellerTool from "../Dashboard/CodeWorms/SellerTool/SellerTool";
+import SellerAccount from "../Dashboard/CodeWorms/SellerSeeting/SellerAccount/SellerAccount";
+import SellerLogo from "../Dashboard/CodeWorms/SellerSeeting/SellerLogo/SellerLogo";
+import BankAccount from "../Dashboard/CodeWorms/SellerSeeting/BankAccount/BankAccount";
+import BusinessInformation from "../Dashboard/CodeWorms/SellerSeeting/BusinessInformation/BusinessInformation";
+import Commissions from "../Dashboard/CodeWorms/SellerSeeting/Commissions/Commissions";
+import AdditionalDetails from "../Dashboard/CodeWorms/SellerTool/AdditionalDetails/AdditionalDetails";
+import VoucherDetails from "../Dashboard/CodeWorms/SellerTool/VoucherDetails/VoucherDetails";
 
 
 const router = createBrowserRouter([
@@ -563,17 +570,51 @@ const router = createBrowserRouter([
 
 			},
 
-			
+
 			{
 
 				path: "/dashboard/sellertools",
 				element: <SellerTool></SellerTool>
-
-
 			},
 			// this side is for seller
+
+			// Seller Setting Route
+
+			// seller Account
+			{
+				path: '/dashboard/sellerSetting/sellerAccount',
+				element: <SellerAccount></SellerAccount>
+			},
+			{
+				path: '/dashboard/sellersetting/sellerLogo',
+				element: <SellerLogo></SellerLogo>
+			},
+
+			{
+				path: '/dashboard/sellersetting/bankaccount',
+				element: <BankAccount></BankAccount>
+			},
+			{
+				path: '/dashboard/sellersetting/businessInformation',
+				element: <BusinessInformation></BusinessInformation>
+			},
+			{
+				path: '/dashboard/sellersetting/commissions',
+				element: <Commissions></Commissions>
+			},
+			{
+				path: '/dashboard/sellertools/additional',
+				element: <AdditionalDetails></AdditionalDetails>
+			},
+			{
+				path: '/dashboard/sellertools/voucherDetails',
+				element: <VoucherDetails></VoucherDetails>
+			}
 		],
 	},
+
+
+
 ]);
 
 export default router
