@@ -25,18 +25,39 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 	const seller = localStorage.getItem("userID")
 	// const seller = false;
-
-	const [searchTerm, setSearchTerm] = useState('');
-	const [results, setResults] = useState([]);
-
-	const location = useLocation();
-
 	const navigate = useNavigate();
 
-	const handleSearch = async () => {
+	const [searchTerm, setSearchTerm] = useState('');
+
+	const [results, setResults] = useState([]);
+	const [suggestions, setSuggestions] = useState([]);
+
+	const handleInputChange = async (input) => {
+		setSearchTerm(input);
+
 		try {
+			const response = await axios.get(`http://localhost:5000/suggestions?search=${input}`);
+			setSuggestions(response.data);
+			console.log("41", response.data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const handleSearch = async (e) => {
+
+		e.preventDefault();
+
+
+		try {
+
+
+
+
 			const response = await axios.get(`http://localhost:5000/products?search=${searchTerm}`);
 			setResults(response.data);
+
+
 
 			if (response.data) {
 
@@ -51,6 +72,19 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 			console.error(error);
 		}
 	};
+
+
+	const handleKeyDown = (e) => {
+		if (e.key === 'Enter') {
+			handleSearch(e);
+		}
+
+		else if (e.key === 'Tab') {
+			handleSearch(e);
+		}
+
+	};
+
 
 	console.log("this is the serch result", results);
 
@@ -68,6 +102,9 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 		window.location.reload();
 
 	};
+
+
+
 	refetch()
 	const navItem = (
 		<>
@@ -269,7 +306,8 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 							placeholder='Search'
 							className='w-full pl-3 pr-10 py-2 outline-none'
 							value={searchTerm}
-							onChange={(e) => setSearchTerm(e.target.value)}
+							onChange={(e) => handleInputChange(e.target.value)}
+							onKeyDown={handleKeyDown}
 						/>
 
 						<div className='absolute top-1/2 -translate-y-1/2 right-4 hover:cursor-pointer' onClick={handleSearch}>

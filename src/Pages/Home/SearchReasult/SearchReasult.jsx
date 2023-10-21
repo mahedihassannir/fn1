@@ -15,10 +15,10 @@ const SearchReasult = () => {
     return (
         <div className="w-full py-5">
 
-            <div className="flex">
+            <div className="lg:flex">
 
                 {/* this is left side function like pricing and sorting and fintaring and griding  */}
-                <div className="w-[20%]">
+                <div className="lg:w-[20%]">
 
                 </div>
                 {/* this is left side function like pricing and sorting and fintaring and griding  */}
@@ -27,7 +27,7 @@ const SearchReasult = () => {
                 {/* //-----------------------// */}
 
                 {/* this is right side */}
-                <div className=" w-[70%] grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className=" lg:w-[70%] px-2 grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {
                         searchData.map(allcategory => <CardsOfProducts singleProduct={allcategory} />)
                     }
