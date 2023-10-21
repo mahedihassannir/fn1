@@ -6,7 +6,7 @@ import Rating from "react-rating";
 import { FaBeer, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import UseSellerOrders from "../../../Hooks/UseSellerOrders/UseSellerOrders";
 import { ContexM } from "../../../Authentication/AuthProvider/AuthProvider";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 
 const { RangePicker } = DatePicker;
@@ -26,6 +26,28 @@ const OrderManage = () => {
 
   console.log(order);
 
+
+  const [orderData, SetOrderData] = useState(null)
+  useEffect(() => {
+
+    order.forEach(order => {
+      console.log(`Order ID: ${order._id}`);
+      console.log(`Total Money: ${order.totalMoney}`);
+      console.log(`Paid Status: ${order.paidStatus}`);
+      console.log(`Transaction ID: ${order.tranjectionId}`);
+
+      // Iterate through the cart items in this order
+      Object.values(order.order.cart).forEach(cartItem => {
+
+        SetOrderData(cartItem)
+
+      });
+    });
+
+  })
+
+
+  console.log(orderData);
   refetch();
 
 

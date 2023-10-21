@@ -4,7 +4,7 @@
  * Date: 16-08-2023
 */
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineGift } from "react-icons/ai";
 import { HiOutlineSearch, HiMenu, HiOutlineMinusSm } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
@@ -12,6 +12,7 @@ import { useContext, useState } from "react";
 import { FaArrowRight, FaChevronCircleRight, FaClone, FaCut, FaUser } from "react-icons/fa";
 import { ContexM } from "../../Authentication/AuthProvider/AuthProvider";
 import UseCartHook from "../../Hooks/UseCartHook/UseCartHook";
+import axios from "axios";
 
 
 
@@ -24,6 +25,34 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 	const seller = localStorage.getItem("userID")
 	// const seller = false;
+
+	const [searchTerm, setSearchTerm] = useState('');
+	const [results, setResults] = useState([]);
+
+	const location = useLocation();
+
+	const navigate = useNavigate();
+
+	const handleSearch = async () => {
+		try {
+			const response = await axios.get(`http://localhost:5000/products?search=${searchTerm}`);
+			setResults(response.data);
+
+			if (response.data) {
+
+				// navigate("/search_result",)
+
+				navigate("/search_result", { state: { result: response.data } })
+
+
+			}
+
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	console.log("this is the serch result", results);
 
 
 	const handleLogout = () => {
@@ -239,9 +268,11 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 							id=''
 							placeholder='Search'
 							className='w-full pl-3 pr-10 py-2 outline-none'
+							value={searchTerm}
+							onChange={(e) => setSearchTerm(e.target.value)}
 						/>
 
-						<div className='absolute top-1/2 -translate-y-1/2 right-2'>
+						<div className='absolute top-1/2 -translate-y-1/2 right-4 hover:cursor-pointer' onClick={handleSearch}>
 							<HiOutlineSearch className='text-[#FC9E66] text-2xl' />
 						</div>
 					</div>

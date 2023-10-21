@@ -102,6 +102,7 @@ import SellerTool from "../Dashboard/CodeWorms/SellerTool/SellerTool";
 import DirectPurches from "../Components/Avengers/SingleProductComponents/DirectPurches/DirectPurches";
 import Privateroute from "../Private/Privateroute";
 import SellerLogin from "../Dashboard/SellerLogin/SellerLogin";
+import SearchReasult from "../Pages/Home/SearchReasult/SearchReasult";
 
 
 
@@ -144,6 +145,11 @@ const router = createBrowserRouter([
 				// Mahedi
 				path: "direct_buy",
 				element: <DirectPurches></DirectPurches>
+			},
+			{
+				// Mahedi
+				path: "search_result",
+				element: <SearchReasult></SearchReasult>
 			},
 
 			{
