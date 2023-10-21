@@ -110,7 +110,19 @@ const PaymentDetails = ({ singleProductData }) => {
   const totalMoney = totalPrice + totaldeleveryPrice - offer
 
 
-  console.log("42line", cart);
+  let cartData = {}
+
+  for (let i = 0; i < cart?.length; i++) {
+
+    const url = cart[i];
+
+
+    cartData[`cart${i}`] = url;
+
+
+  }
+
+  console.log("42line", cartData);
 
   // for sslcommerze payment
   const onSubmit = () => {
@@ -121,8 +133,10 @@ const PaymentDetails = ({ singleProductData }) => {
     const data = {
       name: user?.displayName,
       Useremail: user?.email,
-      cart,
-      totalMoney,
+
+      cart: cartData,
+
+      totalMoney: totalMoney,
 
     };
 
@@ -155,12 +169,13 @@ const PaymentDetails = ({ singleProductData }) => {
 
 
     // this is from the useeffect seller detailes
-
     const data = {
       name: user?.displayName,
       Useremail: user?.email,
-      cart,
-      totalMoney,
+
+      cart: cartData,
+
+      totalMoney: totalMoney,
 
     };
 

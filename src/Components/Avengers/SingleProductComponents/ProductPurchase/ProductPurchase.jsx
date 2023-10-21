@@ -46,8 +46,8 @@ const ProductPurchase = ({ singleProductData }) => {
 
 
 	const handlepayment = (id) => {
-
 		console.log(id);
+
 
 		// navigate(`/direct_buy`, { state: {singleProductData} })
 	}
