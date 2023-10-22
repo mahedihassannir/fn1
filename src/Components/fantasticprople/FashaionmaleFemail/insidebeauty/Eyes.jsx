@@ -49,7 +49,6 @@ const Eyes = () => {
                     eyesProducts.map(eyes => <CardsOfProducts singleProduct={eyes}/>)
                 }
             </div>
-
         </section>
     );
 };
