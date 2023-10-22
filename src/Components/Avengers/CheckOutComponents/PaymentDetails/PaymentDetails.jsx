@@ -10,10 +10,11 @@ import { BsChevronRight } from "react-icons/bs";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { useContext, useEffect, useState } from "react";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
+import Swal from "sweetalert2";
 
 //import { result } from "lodash";
 
@@ -22,6 +23,8 @@ import { Modal } from 'react-responsive-modal';
 const PaymentDetails = ({ singleProductData }) => {
 
   console.log({ singleProductData });
+
+  const navigate = useNavigate();
 
   const [cart] = UseCartHook();
   const [open, setOpen] = useState(false);
@@ -131,7 +134,7 @@ const PaymentDetails = ({ singleProductData }) => {
     // this is from the useeffect seller detailes
 
     const data = {
-      name: user?.displayName,
+      Username: user?.displayName,
       Useremail: user?.email,
 
       cart: cartData,
@@ -170,14 +173,15 @@ const PaymentDetails = ({ singleProductData }) => {
 
     // this is from the useeffect seller detailes
     const data = {
-      name: user?.displayName,
+      Username: user?.displayName,
       Useremail: user?.email,
 
       cart: cartData,
 
       totalMoney: totalMoney,
-
+      cod: "cod"// cash on delivery .
     };
+
 
     console.log("data fom paymentDetails", { data });
 
@@ -185,7 +189,7 @@ const PaymentDetails = ({ singleProductData }) => {
     try {
 
 
-      fetch("http://localhost:5000/order_extra", {
+      fetch("http://localhost:5000/order", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(data),
@@ -195,6 +199,19 @@ const PaymentDetails = ({ singleProductData }) => {
 
           console.log(data);
 
+          if (data.insertedId) {
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'order successfully',
+              showConfirmButton: false,
+              timer: 5000
+            });
+
+            navigate("/cod_success")
+
+
+          }
 
 
 

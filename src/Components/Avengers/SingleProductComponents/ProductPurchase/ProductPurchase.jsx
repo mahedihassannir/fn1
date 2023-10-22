@@ -78,21 +78,30 @@ const ProductPurchase = ({ singleProductData }) => {
 							src={singleProductData?.image}
 							// src={imageData?.image0}
 							alt=''
-							className='w-full'
+							className='w-full  hover:cursor-pointer '
 						/>
 					</div>
+					{/* <div class="relative w-64 h-64">
+						<img src={singleProductData?.image} alt="Product Image" class="w-full h-full object-cover" />
+						<div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+							<img src={singleProductData?.image} alt="Zoomed Image" class="w-full h-96 object-cover" />
+						</div>
+					</div> */}
 
 					<div className='mt-5'>
 						<div className='flex items-center'>
 							<BsChevronLeft className='text-5xl' />
 
 							<div className='flex items-center gap-3'>
-								<div className='w-[70px] p-1 border border-[#F57224]'>
+								<div className='w-[70px] p-1 border hover:border-[#F57224] cursor-pointer'>
+
+
 									<img
 										src={singleProductData?.image}
 
 										// src={imageData?.image0}
 										alt=''
+										className="transition-transform transform hover:scale-105"
 									/>
 								</div>
 

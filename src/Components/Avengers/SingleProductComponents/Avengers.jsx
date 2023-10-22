@@ -18,6 +18,9 @@ const Avengers = ({ singleProductData }) => {
 
 	const { products } = useProducts();
 
+
+	console.log("091", singleProductData)
+
 	const handletop = () => {
 
 		window.scrollTo({
@@ -56,29 +59,25 @@ const Avengers = ({ singleProductData }) => {
 						<span className="text-black font-semibold text-lg ">Product details of Exclusive AY-49 Phone Vlog Tripod Vlogging Kits Live Selfie Fill Light Integration with Remote Control Microphon</span>
 					</div>
 					{/* ends fo teh leble */}
-
+					{/* description1  */}
 					<div className="flex justify-center px-10 py-5 gap-5">
 						<div className="w-1/2">
-							<p>Brand new, high-quality product
-								Lamp bead voltage: 2.9V-3.0V
-								Lumens: 22-24LM
-								Color temperature: 6500-7000K
-								Power: 0.2W (Maximum power: 2W)
-								Number of lamp beads: LED 36 lights
-								Complete Smartphone Video Kit with Shotgun Microphone and ultra-bright LED 36 light</p>
-						</div>
+							{/* <p>{singleProductData.description}</p> */}
 
+							{singleProductData?.description}
+
+						</div>
+						{/* description1  ends */}
+
+
+
+						{/* description1  starts */}
 						<div className="w-1/2">
-							<p>Brand new, high-quality product
-								Lamp bead voltage: 2.9V-3.0V
-								Lumens: 22-24LM
-								Color temperature: 6500-7000K
-								Power: 0.2W (Maximum power: 2W)
-								Number of lamp beads: LED 36 lights
-								Complete Smartphone Video Kit with Shotgun Microphone and ultra-bright LED 36 light</p>
+							<p>{singleProductData?.description2}</p>
 						</div>
 
 					</div>
+					{/* description1  ends  */}
 
 					{/* this div is for the dyscription section */}
 					<div className="w-full h-screen ">

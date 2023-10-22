@@ -103,6 +103,7 @@ import DirectPurches from "../Components/Avengers/SingleProductComponents/Direct
 import Privateroute from "../Private/Privateroute";
 import SellerLogin from "../Dashboard/SellerLogin/SellerLogin";
 import SearchReasult from "../Pages/Home/SearchReasult/SearchReasult";
+import CodSuccessOrder from "../Components/CodSuccessOrder/CodSuccessOrder";
 
 
 
@@ -140,6 +141,11 @@ const router = createBrowserRouter([
 				// avengers
 				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
+			},
+			{
+				// Mahedi
+				path: "cod_success",
+				element: <CodSuccessOrder></CodSuccessOrder>,
 			},
 			{
 				// Mahedi

@@ -13,6 +13,7 @@ const UseCartHook = () => {
     const { refetch, data: cart = [] } = useQuery({
 
         queryKey: ['cart', user?.email],
+        enabled: !loader,
 
         queryFn: async () => {
 
