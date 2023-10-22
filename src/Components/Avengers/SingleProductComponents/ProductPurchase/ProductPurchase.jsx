@@ -1,5 +1,5 @@
 /**
- * Author: MG Rakib
+ * Author: MG Rakib / Mahedi
  * description: ProductPurchase
  * date: 17aug,2023
  *
@@ -12,13 +12,46 @@ import { HiShare } from "react-icons/hi";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import takaIcon from "../../../../assets/taka.png";
 import takaIconGray from "../../../../assets/taka_gray.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 import { SyncLoader } from "react-spinners";
 import useProducts from "../../../../Hooks/Fantastic/useProducts";
 
 const ProductPurchase = ({ singleProductData }) => {
+
+	console.log({ singleProductData });
+
+	const images = singleProductData?.imageurls
+	console.log("111111", images);
+
+
+
+	let imageData = {}
+
+	for (let i = 0; i < images?.length; i++) {
+
+		const url = images[i];
+
+
+		imageData[`image${i}`] = url;
+
+
+	}
+
+
+	console.log("he he he hklh lkjhlkjhljkh lkjhl hjklh 12123", imageData)
+
+	const navigate = useNavigate();
+
+
+	const handlepayment = (id) => {
+		console.log(id);
+
+
+		// navigate(`/direct_buy`, { state: {singleProductData} })
+	}
+
 	//default quantity value
 	const [quantity, setQuantity] = useState(1);
 
@@ -30,7 +63,11 @@ const ProductPurchase = ({ singleProductData }) => {
 
 	// here we use mongo db to save the data  ends
 
-	const { products,loading} = useProducts()
+	const { products, loading } = useProducts()
+
+	console.log({ addToCart });
+
+
 	return (
 		<div className='relative my-10 '>
 			<div className='flex flex-col md:flex-row gap-10'>
@@ -39,19 +76,40 @@ const ProductPurchase = ({ singleProductData }) => {
 					<div>
 						<img
 							src={singleProductData?.image}
+							// src={imageData?.image0}
 							alt=''
-							className='w-full'
+							className='w-full  hover:cursor-pointer '
 						/>
 					</div>
+					{/* <div class="relative w-64 h-64">
+						<img src={singleProductData?.image} alt="Product Image" class="w-full h-full object-cover" />
+						<div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
+							<img src={singleProductData?.image} alt="Zoomed Image" class="w-full h-96 object-cover" />
+						</div>
+					</div> */}
 
 					<div className='mt-5'>
 						<div className='flex items-center'>
 							<BsChevronLeft className='text-5xl' />
 
 							<div className='flex items-center gap-3'>
-								<div className='w-[70px] p-1 border border-[#F57224]'>
+								<div className='w-[70px] p-1 border hover:border-[#F57224] cursor-pointer'>
+
+
 									<img
 										src={singleProductData?.image}
+
+										// src={imageData?.image0}
+										alt=''
+										className="transition-transform transform hover:scale-105"
+									/>
+								</div>
+
+								<div className='w-[70px] p-1 '>
+									<img
+										src={singleProductData?.image}
+
+										// src={imageData?.image0}
 										alt=''
 									/>
 								</div>
@@ -59,13 +117,8 @@ const ProductPurchase = ({ singleProductData }) => {
 								<div className='w-[70px] p-1 '>
 									<img
 										src={singleProductData?.image}
-										alt=''
-									/>
-								</div>
+										// src={imageData?.image0}
 
-								<div className='w-[70px] p-1 '>
-									<img
-										src={singleProductData?.image}
 										alt=''
 									/>
 								</div>
@@ -173,10 +226,10 @@ const ProductPurchase = ({ singleProductData }) => {
 
 								<div className='mt-2 flex items-center gap-3'>
 									<div className='w-[60px] p-1 border border-[#F57224]'>
-										<img
-											src='https://i.ibb.co/PgdpJzh/img2.jpg'
+										{/* <img
+											src={imageData?.image0}
 											alt=''
-										/>
+										/> */}
 									</div>
 									<div className='w-[60px] p-1 '>
 										<img
@@ -227,11 +280,14 @@ const ProductPurchase = ({ singleProductData }) => {
 
 						<div className='flex items-center gap-5 mt-4'>
 							<Link
-								to={`/proceed_to_checkout/${singleProductData?._id}`}
+								// to={`/proceed_to_checkout/${singleProductData?._id}`}
+								to={`/direct_buy`}
+								state={singleProductData}
 								className='flex-1'
+								onClick={() => handlepayment(singleProductData)}
 							>
 								<button className='bg-[#2ABBE8] py-3  text-white text-xl font-semibold w-full'>
-									Bye Now
+									Buy Now
 								</button>
 							</Link>
 							{/* this is my product add btn  */}

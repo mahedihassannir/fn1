@@ -99,6 +99,14 @@ import AccStatement from "../Dashboard/CodeWorms/Markatingpage/AccStatement/AccS
 import SellerAccountCreatedDone from "../Components/SellerAcc/SellerAccountCreatedDone";
 import SellerSeeting from "../Dashboard/CodeWorms/SellerSeeting/SellerSeeting";
 import SellerTool from "../Dashboard/CodeWorms/SellerTool/SellerTool";
+import DirectPurches from "../Components/Avengers/SingleProductComponents/DirectPurches/DirectPurches";
+import Privateroute from "../Private/Privateroute";
+import SellerLogin from "../Dashboard/SellerLogin/SellerLogin";
+import SearchReasult from "../Pages/Home/SearchReasult/SearchReasult";
+import CodSuccessOrder from "../Components/CodSuccessOrder/CodSuccessOrder";
+
+
+
 import SellerAccount from "../Dashboard/CodeWorms/SellerSeeting/SellerAccount/SellerAccount";
 import SellerLogo from "../Dashboard/CodeWorms/SellerSeeting/SellerLogo/SellerLogo";
 import BankAccount from "../Dashboard/CodeWorms/SellerSeeting/BankAccount/BankAccount";
@@ -116,6 +124,10 @@ const router = createBrowserRouter([
 			{
 				path: "/",
 				element: <Home></Home>,
+			},
+			{
+				path: "/seller_login",
+				element: <SellerLogin></SellerLogin>,
 			},
 			{
 				path: "contact",
@@ -137,6 +149,21 @@ const router = createBrowserRouter([
 				path: "proceed_to_checkout/:id",
 				element: <ProceedToCheckout></ProceedToCheckout>,
 			},
+			{
+				// Mahedi
+				path: "cod_success",
+				element: <CodSuccessOrder></CodSuccessOrder>,
+			},
+			{
+				// Mahedi
+				path: "direct_buy",
+				element: <DirectPurches></DirectPurches>
+			},
+			{
+				// Mahedi
+				path: "search_result",
+				element: <SearchReasult></SearchReasult>
+			},
 
 			{
 				// 	// avengers Toma PAYMENT SUCCESS ROUTE
@@ -145,7 +172,7 @@ const router = createBrowserRouter([
 			},
 			{
 				// avengers Toma PAYMENT Fail ROUTE
-				path: "payment/fail/:tranId",
+				path: "payment/failed/:tranId",
 				element: <PaymentFailed></PaymentFailed>,
 			},
 			{

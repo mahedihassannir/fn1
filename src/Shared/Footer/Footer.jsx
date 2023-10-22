@@ -1,6 +1,17 @@
 import { FaCompressArrowsAlt, FaFacebook, FaFacebookMessenger, FaInstagram, FaLinkedin, FaLocationArrow, FaPhoneAlt, FaTiktok, FaYoutube } from 'react-icons/fa';
+import ChatBot from './ChatBot/ChatBot';
 
 const Footer = () => {
+
+    const handleTop = () => {
+
+        window.scrollTo({
+            top: 0,
+            behavior:"smooth"
+        })
+
+    }
+
     return (
         <div className='h-full relative '>
             <div className='grid px-10 w-full  mx-auto gap-10 py-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-gray-900'>
@@ -73,13 +84,10 @@ const Footer = () => {
                 </div>
             </div>
             <div className=' md:w-60 lg:w-60 w-56 absolute md:bottom-20 lg:bottom-20 bottom-24 md:right-5 lg:right-5 right-0 space-y-4 '>
-                <div className='bg-white hover:text-gray-700 md:w-52 lg:w-52 w-48 p-2 lg:p-3 relative  border rounded-3xl ml-6 text-black text-lg font-bold'>Please let us know how can help you</div>
                 <div className='space-y-3'>
-                    <p className='md:ml-48 lg:ml-48 ml-40'><FaFacebookMessenger className='text-blue-500 hover:text-blue-700 w-10 h-10'></FaFacebookMessenger></p>
-                    <div className='border-4 ml-28 md:ml-36 lg:ml-36 border-orange-600 p-1  w-24 text-center'>
-                        <p className=''><FaCompressArrowsAlt className='text-orange-600 mx-auto w-6 h-6'></FaCompressArrowsAlt></p>
-                        <p className=' text-orange-600 text-center font-semibold text-lg'>Compare</p>
-                    </div>
+                    <p className='md:ml-48 lg:ml-48 ml-40'><ChatBot></ChatBot></p>
+
+                    <button onClick={handleTop} className='btn'>go top</button>
                 </div>
             </div>
 

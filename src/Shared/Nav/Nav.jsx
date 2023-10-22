@@ -4,21 +4,89 @@
  * Date: 16-08-2023
 */
 
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineGift } from "react-icons/ai";
 import { HiOutlineSearch, HiMenu, HiOutlineMinusSm } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import { useContext, useState } from "react";
 import { FaArrowRight, FaChevronCircleRight, FaClone, FaCut, FaUser } from "react-icons/fa";
 import { ContexM } from "../../Authentication/AuthProvider/AuthProvider";
+import UseCartHook from "../../Hooks/UseCartHook/UseCartHook";
+import axios from "axios";
 
 
 
 const Nav = ({ isNavOpen, setIsNavOpen }) => {
 	//get added quantity from auth provider
 
-
+	const [cart, refetch] = UseCartHook();
+	console.log(cart);
 	const { user, Logout, totalCart } = useContext(ContexM)
+
+	const seller = localStorage.getItem("userID")
+	// const seller = false;
+	const navigate = useNavigate();
+
+	const [searchTerm, setSearchTerm] = useState('');
+
+	const [results, setResults] = useState([]);
+	const [suggestions, setSuggestions] = useState([]);
+
+	const handleInputChange = async (input) => {
+		setSearchTerm(input);
+
+		try {
+			const response = await axios.get(`http://localhost:5000/suggestions?search=${input}`);
+			setSuggestions(response.data);
+			console.log("41", response.data);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const handleSearch = async (e) => {
+
+		e.preventDefault();
+
+
+		try {
+
+
+
+
+			const response = await axios.get(`http://localhost:5000/products?search=${searchTerm}`);
+			setResults(response.data);
+
+
+
+			if (response.data) {
+
+				// navigate("/search_result",)
+
+				navigate("/search_result", { state: { result: response.data } })
+
+
+			}
+
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+
+	const handleKeyDown = (e) => {
+		if (e.key === 'Enter') {
+			handleSearch(e);
+		}
+
+		else if (e.key === 'Tab') {
+			handleSearch(e);
+		}
+
+	};
+
+
+	console.log("this is the serch result", results);
 
 
 	const handleLogout = () => {
@@ -29,8 +97,15 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 	}
 
+	function handleReload() {
+
+		window.location.reload();
+
+	};
 
 
+
+	refetch()
 	const navItem = (
 		<>
 			{/* latest offers  */}
@@ -51,7 +126,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 					<div >
 						<div className="relative">
 							<div className="flex justify-center items-center h-[20px] w-[20px] bg-white p-1 rounded-full absolute -left-3 -top-2">
-								<span className="text-black rounded-full text-[10px] font-semibold "> <small>+</small>{totalCart}</span>
+								<span className="text-black rounded-full text-[10px] font-semibold "> <small>+</small>{cart.length}</span>
 							</div>
 							<AiOutlineGift className="text-[#FC9E66] text-3xl" />
 						</div>
@@ -90,10 +165,21 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 							</label>
 							<ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
 								<li>
-									<Link to="/dashboard" className="justify-between">
+									<p className="justify-between">
+										{
+											user.email
+										}
+
+									</p>
+
+								</li>
+
+								<li>
+									<Link to={seller ? "/dashboard/dashboard/sellerhome" : "/seller_login"} className="justify-between">
 										dashboard
 									</Link>
 								</li>
+
 								<li><a>Settings</a></li>
 								<li><a onClick={handleLogout}>Logout</a></li>
 							</ul>
@@ -202,7 +288,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 			<div className='bg-[#000000]  md:px-20 flex justify-between items-center p-3 gap-4 md:gap-12 relative'>
 				{/* logo */}
-				<Link to="/" className='text-white'>
+				<Link to="/" className='text-white '>
 					<img
 						src='https://i.ibb.co/P9tbKgZ/logo.jpg'
 						alt=''
@@ -219,9 +305,12 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 							id=''
 							placeholder='Search'
 							className='w-full pl-3 pr-10 py-2 outline-none'
+							value={searchTerm}
+							onChange={(e) => handleInputChange(e.target.value)}
+							onKeyDown={handleKeyDown}
 						/>
 
-						<div className='absolute top-1/2 -translate-y-1/2 right-2'>
+						<div className='absolute top-1/2 -translate-y-1/2 right-4 hover:cursor-pointer' onClick={handleSearch}>
 							<HiOutlineSearch className='text-[#FC9E66] text-2xl' />
 						</div>
 					</div>

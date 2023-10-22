@@ -3,7 +3,7 @@ import sellerImage from "../../../assets/seller.png";
 
 
 const Avengers = () => {
-    return (
+	return (
 		<div className='flex'>
 			<div className='flex-1'>
 				<SellerSingupBanner />

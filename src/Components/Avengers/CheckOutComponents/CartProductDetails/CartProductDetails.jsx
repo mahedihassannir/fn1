@@ -5,26 +5,48 @@
  *
  * @format`
  */
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import useCustomers from "../../../../Hooks/Fantastic/useCustomers";
 import SingleCartProductCard from "../SingleCartProductCard/SingleCartProductCard";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
+import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
+
 
 const CartProductDetails = ({ productsData }) => {
 	const { user } = useContext(ContexM)
-	const { customers } = useCustomers()
-	const filterCustomer = user && user.email && customers.some(customer => customer.email === user.email)
-		? customers.filter(customer => customer.email === user.email)
-		: [];
-	console.log(filterCustomer);
+	// const { customers } = useCustomers()
+	// const filterCustomer = user && user.email && customers.some(customer => customer.email === user.email)
+	// 	? customers.filter(customer => customer.email === user.email)
+	// 	: [];
 
+
+
+
+	const [cart, refetch] = UseCartHook();
+
+	console.log({ cart });
+
+	// const [cart, SetData] = useState([]);
+
+	// useEffect(() => {
+
+	// 	fetch(`http://localhost:5000/carts?${user?.email}`)
+	// 		.then(res => res.json())
+	// 		.then(data => {
+	// 			SetData(data)
+	// 		})
+
+	// }, [])
+
+
+	refetch();
 	return (
 		<div className='flex flex-col gap-5'>
 			{/* user address  */}
 			<div className='text-xs p-5 border rounded font-semibold'>
 				<div>
 					<h2>
-						Deliver to: {filterCustomer.length > 0 ? filterCustomer[0].name : "Name Unknown"}
+						Deliver to:  "Name Unknown"
 					</h2>
 
 					<div className='mt-3 flex items-center gap-3'>
@@ -37,9 +59,9 @@ const CartProductDetails = ({ productsData }) => {
 
 						{/* number and address  */}
 						<div className='flex items-center gap-3 divide-x'>
-							<p>{filterCustomer.length > 0 ? filterCustomer[0].mobile : "Number Unknown"}</p>
+							<p>Number Unknown</p>
 							<p className='pl-3'>
-								{filterCustomer.length > 0 ? filterCustomer[0].selectdivision + ',' + filterCustomer[0].selectcity + ', ' + filterCustomer[0].area : "Number Unknown"}
+
 							</p>
 						</div>
 						<div>
@@ -50,7 +72,7 @@ const CartProductDetails = ({ productsData }) => {
 
 					{/* email  */}
 					<div className='mt-3 flex items-center gap-5'>
-						<p>Email to: {filterCustomer.length > 0 ? filterCustomer[0].contactEmail : "Email Unknown"}</p>
+						<p>Email to:</p>
 						<div className='flex items-center gap-2'>
 							<p></p>
 							{/* TODO: emplement change funtionality */}
@@ -60,10 +82,10 @@ const CartProductDetails = ({ productsData }) => {
 				</div>
 			</div>
 
-			{/* cart product  */}
+			{/* data product */}
 			<div className='flex flex-col gap-5'>
-				{productsData.map(singleProductData => (
-					<SingleCartProductCard singleProductData={singleProductData} />
+				{cart.map(cart => (
+					<SingleCartProductCard singleProductData={cart} />
 				))}
 			</div>
 		</div>

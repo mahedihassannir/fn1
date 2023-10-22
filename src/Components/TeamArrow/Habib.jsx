@@ -21,7 +21,7 @@ const Habib = () => {
             <section className='my-5 '>
                 {/* catagory section there are make card responsiv*/}
 
-                <div className='grid grid-cols-3 gap-3 md:grid-cols-6 '>
+                <div className='grid grid-cols-3 gap-3 md:grid-cols-4 lg:grid-cols-6 '>
                     {/* image div1 */}
                     <Link to="/food" className='flex space-x-2 justify-center items-center  duration-500 shadow-2xl hover:translate-x-5 hover:bg-slate-300 rounded-lg'>
                         <div className='flex justify-center gap-6 items-center'>

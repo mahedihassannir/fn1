@@ -1,27 +1,189 @@
 import Test from "../../../Components/Test";
 // import ReactRichEditor from 'react-rich-text-editor'
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 
 const AddProduct = () => {
 
-    const [editorHtml, setEditorHtml] = useState('');
+    const [chaked, SetChack] = useState(false)
 
+    const [selectedCategory, setSelectedCategory] = useState('');
+
+    const handleCategoryChange = (e) => {
+        setSelectedCategory(e.target.value);
+    };
+    const [selectedCategory2, setSelectedCategory2] = useState('');
+
+    const handleCategoryChange2 = (e) => {
+        setSelectedCategory2(e.target.value);
+    };
+
+    console.log(selectedCategory, selectedCategory2);
+
+    const handleCheckboxChange = () => {
+        SetChack(!chaked);
+    };
+
+    // this is for the prevent on the load functionality 
+    window.addEventListener("beforeunload", (e) => {
+        if (window.location.pathname.startsWith("/dashboard/addproduct")) {
+
+            e.preventDefault();
+            e.returnValue = "";
+
+            return "Are you sure want to leave ?"
+        };
+    });
+    // prevent ends
+
+    const [description, setEditorHtml] = useState('');
+    console.log(description);
     const handleChange = (html) => {
         setEditorHtml(html);
     };
-    const [editorHtml2, setEditorHtml2] = useState('');
+    const [description2, setEditorHtml2] = useState('');
+    console.log(description2);
 
     const handleChangetext = (html) => {
         setEditorHtml2(html);
     };
 
+    const [seller, Setseller] = useState(null);
+
+
+    const sellerid = localStorage.getItem("userID")
+
+    // here we fetch the seller Details
+    useEffect(() => {
+
+        fetch(`http://localhost:5000/seller_data/${sellerid}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                Setseller(data)
+            })
+
+    }, [])
+
+    console.log(seller);
+
+    const [imageUrls, setImageUrls] = useState(Array(6).fill('')); // Initialize with empty strings
+
+    const key = `890b5ec0923fcc8472f7e690406adc40`
+
+    // const uploadUrl = `https://api.imgbb.com/1/upload?key=${key}`
+    const uploadUrl = `https://api.imgbb.com/1/upload?key=${key}`
+
+
+
+    const handleImageUpload = (e, index) => {
+
+        const file = e.target.files[0];
+
+        const imageData = new FormData();
+
+        imageData.append('image', file);
+
+        fetch(uploadUrl, {
+            method: "POST",
+            body: imageData
+        })
+            .then(res => res.json())
+            .then(data => {
+                const image = data.data.display_url;
+                setImageUrls(prevUrls => {
+                    const updatedUrls = [...prevUrls];
+                    updatedUrls[index] = image;
+                    return updatedUrls;
+                });
+            });
+    }
+
+    console.log({ imageUrls });
+
+
+
+    const handleData = (e) => {
+
+        e.preventDefault();
+
+        const from = e.target;
+
+        const name = from.name.value;
+        const price2 = from.price.value;
+        const sellerNumber = from.sellerNumber.value;
+        const offer = from.PromoPrice.value;
+        const stock = from.stock.value;
+        const video = from.video.value;
+
+        const price = parseFloat(price2)
+
+
+        const TotalData = {
+            name: name,
+            sellerid: seller?._id,
+            sellerEmail: seller?.email,
+            sellerfirstname: seller?.firstname,
+            sellerlastname: seller?.lastname,
+            sellerstoreimage: seller?.image,
+            sellerstorename: seller?.storename,
+            price: price,
+            sellernumber: sellerNumber,
+            offer: offer,
+            stock: stock,
+            description: description,
+            description2: description2,
+            productvideo: video,
+            imageurls: imageUrls,
+            category: selectedCategory2,
+            category2: selectedCategory,
+            deleveryFee: "5",
+            rating: "0",
+            totalSell: "0",
+            vouchercode: "mmm",
+            toppruduct: false,
+            selleraddress: seller?.address,
+
+
+
+
+
+
+
+
+        };
+
+        console.log(TotalData);
+
+        fetch("http://localhost:5000/add_product", {
+            method: "POST",
+
+            headers: {
+                "content-type": "application/json"
+
+            },
+
+            body: JSON.stringify(TotalData)
+
+        })
+
+            .then(res => res.json())
+
+            .then(data => {
+                console.log(data);
+            });
+
+
+    }
+
+
 
     return (
-        <div className="w-[98%] border-4 border-[#e1e8f0] rounded-md bg-white py-5">
+        <form onSubmit={handleData} className="w-[98%] border-4 border-[#e1e8f0] rounded-md bg-white py-5">
+
             <div className="h-14 w-full bg-[#f7f8fa]">
                 <h3 className="font-semibold text-lg p-2 text-orange-600">Basic information</h3>
             </div>
@@ -29,18 +191,45 @@ const AddProduct = () => {
             {/* this section is for product and image adding starts*/}
             <div className="w-[99%] mx-auto  border-2 p-3 mb-2 rounded-md">
 
-                <h3 className="text-2xl font-semibold">Product Images & Video</h3>
-                <p>Your product images is the first thing your customer sees on the product page.</p>
+                <h3 className="text-2xl font-semibold">পণ্যের ছবি ও ভিডিও</h3>
+                {/* <p>Your product images is the first thing your customer sees on the product page.</p> */}
+                <p>আপনার পণ্যের চিত্রগুলি হল প্রথম জিনিস যা আপনার গ্রাহক পণ্য পৃষ্ঠায় দেখেন।</p>
 
 
                 <div className="pt-3">
-                    <p className="text-black">Product Images*</p>
-                    <p className="text-black">Upload between 3 to 8 images   </p>
+                    <p className="text-black">পণ্যের ছবি*</p>
+                    <p className="text-black">3 থেকে 8টি ছবি আপলোড করুন   </p>
                 </div>
+
                 {/* this is image section */}
+
                 <div className="pt-10 ">
 
-                    <Test></Test>
+                    {/* <Test></Test> */}
+                    <div className="grid   grid-cols-4 gap-2 lg:gap-0 lg:grid-cols-10">
+
+                        {/* this is the image section  */}
+
+                        {imageUrls.map((url, index) => (
+                            <div key={index} className="flex justify-center items-center border border-dashed border-orange-600 w-24 h-32">
+                                <img className="w-full object-cover h-32 " src={url} alt="" />
+                                <input type="file" onChange={(e) => handleImageUpload(e, index)} />
+                            </div>
+                        ))}
+
+
+                        {/* <div className=" cursor-pointer flex justify-center items-center border border-dashed border-orange-600 w-24  h-32"> */}
+
+                        {/* <input onChange={(e) => handleImageUpload(e, index)} type="file" /> */}
+
+                        {/* <img  className="w-9" src="https://gw.alicdn.com/imgextra/i1/O1CN01SAaWLk21Ez1J3tryB_!!6000000006954-2-tps-55-55.png" alt="" /> */}
+
+                        {/* </div> */}
+                        {/* this is the image section ends */}
+
+                        {/* this is the image section  */}
+
+                    </div>
 
                 </div>
                 {/* this is image section ends */}
@@ -49,22 +238,22 @@ const AddProduct = () => {
 
                 <div className="pt-4 ">
 
-                    <span>video</span>
+                    <span>ভিডিও</span>
 
                     <div className="pt-2 flex items-center gap-1">
-                        <input className="bg-orange-500 rounded-full cursor-pointer" type="radio" />
+                        <input onClick={handleCheckboxChange} className="bg-orange-500 rounded-full cursor-pointer" type="radio" />
                         <span>
-                            Product Video URL
+                            পণ্য ভিডিও URL
                         </span>
 
                     </div>
 
                     {/* this is the main input for the seller */}
                     <div className="">
-                        <input className="w-[99%] py-2 mt-2 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="text" placeholder="input youtube video link  " />
+                        <input name="video" disabled={!chaked} className="w-[99%] py-2 mt-2 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="url" placeholder="input youtube video link  " />
 
                         <br />
-                        <span className="mt-3 text-red-700">Should be youtube url</span>
+                        <span className="mt-3 text-red-700">ইউটিউব ইউআরএল হওয়া উচিত</span>
                     </div>
                     {/* this is the main input for the seller ends */}
                 </div>
@@ -78,22 +267,22 @@ const AddProduct = () => {
             <section className="w-[99%] mx-auto  border-2 p-3 mb-2 rounded-md">
 
                 <h3 className="text-lg text-[#f85f14] font-semibold">
-                    Product Information
+                    পণ্যের তথ্য
                 </h3>
-                <p className="pt-1">Having accurate product information raises discoverability.</p>
+                <p className="pt-1">সঠিক পণ্য তথ্য থাকা আবিষ্কারযোগ্যতা বাড়ায়।</p>
 
 
 
                 {/* ends of title  */}
                 <div className="">
                     <label htmlFor="">
-                        <span>Product Name <span className="text-orange-600 text-lg">*</span></span>
+                        <span>পণ্যের নাম লিখুন ইংরেজীতে <span className="text-orange-600 text-lg">*</span></span>
                     </label>
 
                     {/* this is the input */}
                     <div className="relative">
 
-                        <input className="w-[99%] py-2 mt-2 pl-32  border-2 rounded-lg focus:outline-none focus:border-blue-500 border-gray-300" type="text" placeholder=" type Product name  " />
+                        <input name="name" className="w-[99%] py-2 mt-2 pl-32  border-2 rounded-lg focus:outline-none focus:border-blue-500 border-gray-300" type="text" placeholder=" পণ্যের নাম লিখুন  " />
 
                         <div className="absolute -mt-[41.7px] ml-[2px]">
                             <button className=" rounded-lg py-2 px-4 bg-[#fafafa] text-black ">
@@ -106,13 +295,53 @@ const AddProduct = () => {
                     {/* this is the input ends */}
 
                     <div className="mt-2">
+
                         <div className="">
-                            <p>Category*</p>
+
+                            {/* <input className="w-[99%] py-2 mt-1 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="text" placeholder="select your category  " />
+                            <div> */}
+                            <label htmlFor="category" className="text-red-500 font-bold ">Select Main Category:</label>
+
+                            <select
+                                id="category"
+                                value={selectedCategory}
+                                onChange={handleCategoryChange}
+                                className="block w-full mt-1 p-2 border rounded-md bg-white"
+                            >
+                                <option value="">Select...</option>
+                                <option value="fashion">fashion</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="books">Books</option>
+                                {/* Add more options as needed */}
+                            </select>
+
+                            <p>Selected Category: {selectedCategory}</p>
+
                         </div>
+                    </div>
+                    {/* this is for the labeling category like male or female  */}
+                    <div className="mt-2">
 
                         <div className="">
 
-                            <input className="w-[99%] py-2 mt-1 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="text" placeholder="select your category  " />
+                            {/* <input className="w-[99%] py-2 mt-1 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="text" placeholder="select your category  " />
+                            <div> */}
+                            <label htmlFor="category" className="text-red-500 font-bold ">Select sub Main Category:</label>
+
+                            <select
+                                id="category"
+                                value={selectedCategory2}
+                                onChange={handleCategoryChange2}
+                                className="block w-full mt-1 p-2 border rounded-md bg-white"
+                            >
+                                <option value="">Select...</option>
+                                <option value="male">male</option>
+                                <option value="female">female</option>
+                                <option value="books">Books</option>
+                                {/* Add more options as needed */}
+                            </select>
+
+                            <p>Selected Category: <span className="text-red-600 font-bold ">{selectedCategory2}</span></p>
 
                         </div>
                     </div>
@@ -145,7 +374,7 @@ const AddProduct = () => {
                     <div className=" flex mb-10 ">
                         <div className="lg:w-3/4 w-full p-6   ">
                             <ReactQuill
-                                value={editorHtml2}
+                                value={description2}
                                 onChange={handleChangetext}
                                 className="h-64"
                                 modules={{
@@ -186,7 +415,7 @@ const AddProduct = () => {
                 <div className=" flex ">
                     <div className="lg:w-3/4 w-full p-6   ">
                         <ReactQuill
-                            value={editorHtml}
+                            value={description}
                             onChange={handleChange}
                             className="h-64"
                             modules={{
@@ -224,7 +453,7 @@ const AddProduct = () => {
 
                     <div className="relative mt-2 ml-4">
 
-                        <input className="  w-40 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-14 hover:shadow-md" placeholder="Price" type="text" />
+                        <input name="price" className="  w-40 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-14 hover:shadow-md" placeholder="Price" type="text" />
 
                         <div className="absolute top-0">
                             <button className="py-[10px] px-3 bg-[#f2f3f7] ">BDT</button>
@@ -236,7 +465,7 @@ const AddProduct = () => {
 
                     <div className="relative mt-2 ml-4">
 
-                        <input className="  w-60 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-14 hover:shadow-md" placeholder="Promo Price" type="text" />
+                        <input name="PromoPrice" className="  w-60 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-14 hover:shadow-md" placeholder="Promo Price" type="text" />
 
                         <div className="absolute top-0">
                             <button className="py-[10px] px-3 bg-[#f2f3f7] ">BDT</button>
@@ -250,7 +479,7 @@ const AddProduct = () => {
                     {/* this field is for the product pice related  */}
                     <div className="relative mt-2 ml-4">
 
-                        <input className="  w-40 border-2 py-2 focus:outline-none pl-2 rounded-md hover:shadow-md focus:border-orange-500 border-gray-300" placeholder="Promo Price" type="number" />
+                        <input name="stock" className="  w-40 border-2 py-2 focus:outline-none pl-2 rounded-md hover:shadow-md focus:border-orange-500 border-gray-300" placeholder="product stock" type="number" />
 
 
 
@@ -262,13 +491,13 @@ const AddProduct = () => {
 
                     <div className="mt-2 ml-4">
 
-                        <input className="  w-60 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-2 hover:shadow-md" placeholder="Seller Sku" type="text" />
+                        <input name="sellerNumber" className="  w-60 border-2 py-2 focus:outline-none focus:border-orange-500 border-gray-300 pl-2 hover:shadow-md" placeholder="Seller phone number" type="text" />
 
 
 
 
                     </div>
-
+                    {/* 
                     <div className="mt-2 ml-4">
 
                         <button className="py-[10px] px-5 rounded-md bg-orange-500 text-white ">
@@ -277,7 +506,7 @@ const AddProduct = () => {
                         </button>
 
 
-                    </div>
+                    </div> */}
 
 
                 </div>
@@ -287,12 +516,14 @@ const AddProduct = () => {
 
 
 
+                <button type="submit">Add Product</button>
+
 
             </section>
 
             {/* this is price related work ends */}
 
-        </div>
+        </form>
     );
 };
 

@@ -6,10 +6,10 @@
 import { useEffect, useState } from "react";
 
 const useProducts = () => {
- // store all products
+  // store all products
   const [products, setProducts] = useState([]);
 
-// can use this loading to set any conditions based on data loading
+  // can use this loading to set any conditions based on data loading
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -29,4 +29,3 @@ const useProducts = () => {
 };
 
 export default useProducts;
-
