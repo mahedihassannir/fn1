@@ -1,7 +1,7 @@
 import './UserProgress.css';
 import { CiMenuKebab } from 'react-icons/ci'
 const UserProgress = () => {
-    const progressValue = 'delivered'; // it can be processed, shipped, or delivered
+    const progressValue = 'delivered'; // it can be processing, placed, shipped, or delivered pp
 
     return (
         <section className="bg-white p-6">

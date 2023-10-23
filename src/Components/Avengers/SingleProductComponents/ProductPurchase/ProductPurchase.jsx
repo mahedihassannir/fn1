@@ -22,7 +22,7 @@ const ProductPurchase = ({ singleProductData }) => {
 
 	console.log({ singleProductData });
 
-	const images = singleProductData?.imageurls
+	const images = singleProductData?.imageurls;
 	console.log("111111", images);
 
 

@@ -1,4 +1,4 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TbCurrencyTaka } from "react-icons/tb";
 import { FaArrowCircleRight, FaArrowRight } from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
@@ -6,11 +6,33 @@ import Swal from "sweetalert2";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
 import Modal from "react-responsive-modal";
+import Useaddress from "../../../../Hooks/Useaddress/Useaddress";
 
 const DirectPurches = () => {
 
+    // hooks
     const { user } = useContext(ContexM);
+
     const [cart] = UseCartHook();
+
+    const [address] = Useaddress();
+    // hooks ends
+    // address related work 
+    let addressData = {}
+
+    for (let i = 0; i < address?.length; i++) {
+
+        const url = address[i];
+
+
+        addressData[`address${i}`] = url;
+
+
+    }
+
+    console.log("22223", addressData.address0);
+    // address related work ends
+
     const [open2, setOpen] = useState(false);
 
     const navigate = useNavigate();
@@ -84,7 +106,8 @@ const DirectPurches = () => {
             cart: cartData,
 
             totalMoney: totalMoney,
-            cod: "cod"// cash on delivery .
+            cod: "cod",// cash on delivery.
+            address: addressData.address0
         };
 
 
@@ -129,6 +152,8 @@ const DirectPurches = () => {
     };
 
 
+
+
     const onSubmit = () => {
 
 
@@ -140,6 +165,7 @@ const DirectPurches = () => {
             cart: cartData,
 
             totalMoney: totalMoney,
+            address: addressData.address0
 
         };
 
@@ -181,30 +207,59 @@ const DirectPurches = () => {
 
                     <div className="md:w-[60%]">
                         {/* this div is for the address  */}
-                        <div className="w-full md:h-40 shadow-sm bg-white rounded-md p-5">
+                        {
+                            address.map(addressd => <div className='text-xs p-5 border rounded font-semibold'>
+                                <div>
+                                    <h2>
+                                        Deliver to: {addressd.name}
+                                    </h2>
 
-                            <p>Deliver to: Mahedi</p>
+                                    <div className='mt-3 flex items-center gap-3'>
+                                        {/* address  */}
+                                        <p>
+                                            <span className='bg-[#EBF4F6] inline-block py-[2px] px-2 text-[10px] rounded'>
+                                                HOME {addressd.selectcity} ,{addressd.area}
+                                            </span>
+                                        </p>
 
-                            <p className="flex pt-2">
-                                <span>HOME</span>
-                                1947315745
-                                Brahmanbaria,bancharampure,Rupasdi, Banchharampur, Brahmanbaria, Chattogram
-                                <button className="ml-5 text-blue-400">Change</button></p>
+                                        {/* number and address  */}
+                                        <div className='flex items-center gap-3 divide-x'>
+                                            <p>{addressd.mobile}</p>
+                                            <p className='pl-3'>
 
-                            <div className="flex py-2">
+                                            </p>
+                                        </div>
+                                        <Link to="/dashboard/useraddressform">
+                                            {/* TODO: emplement change funtionality */}
+                                            <button className='text-[#2ABBE8]'>Change</button>
+                                        </Link>
+                                    </div>
 
-                                <p>Bill to the same address
-                                </p>
-                                <button className="pl-2 text-blue-400">Edit</button>
-                            </div>
-                            <div className="flex">
-                                <p>Email to
-                                    mh9009060@gmail.com
-                                </p>
-                                <button className="pl-2 text-blue-400">Edit</button>
-                            </div>
+                                    {/* email  */}
+                                    <div className='mt-3 flex items-center gap-5'>
 
-                        </div>
+                                        <p>Email to:{addressd.email}</p>
+
+                                        <p>
+                                            <span className='bg-[#EBF4F6] inline-block py-[2px] px-2 text-[10px] rounded'>
+                                                HOME {addressd.selectcity} ,{addressd.area} ,{addressd.landmark}
+                                            </span>
+                                        </p>
+
+                                        <div className='flex items-center gap-2'>
+                                            <p></p>
+                                            {/* TODO: emplement change funtionality */}
+
+                                            <Link to="/dashboard/useraddressform">
+
+                                                <button className='text-[#2ABBE8]'>Edit</button>
+                                            </Link>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>)
+                        }
                         {/* this div is for the address  ends */}
 
 

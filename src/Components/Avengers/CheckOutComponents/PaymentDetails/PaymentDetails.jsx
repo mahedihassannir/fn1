@@ -15,6 +15,7 @@ import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
 import 'react-responsive-modal/styles.css';
 import { Modal } from 'react-responsive-modal';
 import Swal from "sweetalert2";
+import Useaddress from "../../../../Hooks/Useaddress/Useaddress";
 
 //import { result } from "lodash";
 
@@ -26,7 +27,33 @@ const PaymentDetails = ({ singleProductData }) => {
 
   const navigate = useNavigate();
 
+  // hooks 
+
   const [cart] = UseCartHook();
+
+  const [address] = Useaddress();
+
+  // hooks ends
+
+
+
+  // address related work 
+  let addressData = {}
+
+  for (let i = 0; i < address?.length; i++) {
+
+    const url = address[i];
+
+
+    addressData[`address${i}`] = url;
+
+
+  }
+
+  console.log("22223", addressData);
+  // address related work ends
+
+
   const [open, setOpen] = useState(false);
 
   const onOpenModal = () => setOpen(true);
@@ -140,6 +167,7 @@ const PaymentDetails = ({ singleProductData }) => {
       cart: cartData,
 
       totalMoney: totalMoney,
+      address: addressData.address0
 
     };
 
@@ -179,7 +207,8 @@ const PaymentDetails = ({ singleProductData }) => {
       cart: cartData,
 
       totalMoney: totalMoney,
-      cod: "cod"// cash on delivery .
+      cod: "cod",// cash on delivery .
+      address: addressData.address0
     };
 
 

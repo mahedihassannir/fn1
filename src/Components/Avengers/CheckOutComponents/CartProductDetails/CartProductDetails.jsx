@@ -10,6 +10,8 @@ import useCustomers from "../../../../Hooks/Fantastic/useCustomers";
 import SingleCartProductCard from "../SingleCartProductCard/SingleCartProductCard";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
+import { Link } from "react-router-dom";
+import Useaddress from "../../../../Hooks/Useaddress/Useaddress";
 
 
 const CartProductDetails = ({ productsData }) => {
@@ -22,65 +24,76 @@ const CartProductDetails = ({ productsData }) => {
 
 
 
+
+
 	const [cart, refetch] = UseCartHook();
 
-	console.log({ cart });
 
-	// const [cart, SetData] = useState([]);
+	const [address] = Useaddress();
 
-	// useEffect(() => {
+	console.log("lijhg oijhg ipuuh 1212121212", address);
 
-	// 	fetch(`http://localhost:5000/carts?${user?.email}`)
-	// 		.then(res => res.json())
-	// 		.then(data => {
-	// 			SetData(data)
-	// 		})
 
-	// }, [])
+
 
 
 	refetch();
 	return (
-		<div className='flex flex-col gap-5'>
+		<div className='flex flex-col gap-1'>
 			{/* user address  */}
-			<div className='text-xs p-5 border rounded font-semibold'>
-				<div>
-					<h2>
-						Deliver to:  "Name Unknown"
-					</h2>
+			{
+				address.map(addressd => <div className='text-xs p-5 border rounded font-semibold'>
+					<div>
+						<h2>
+							Deliver to: {addressd.name}
+						</h2>
 
-					<div className='mt-3 flex items-center gap-3'>
-						{/* address  */}
-						<p>
-							<span className='bg-[#EBF4F6] inline-block py-[2px] px-2 text-[10px] rounded'>
-								HOME
-							</span>
-						</p>
-
-						{/* number and address  */}
-						<div className='flex items-center gap-3 divide-x'>
-							<p>Number Unknown</p>
-							<p className='pl-3'>
-
+						<div className='mt-3 flex items-center gap-3'>
+							{/* address  */}
+							<p>
+								<span className='bg-[#EBF4F6] inline-block py-[2px] px-2 text-[10px] rounded'>
+									HOME {addressd.selectcity} ,{addressd.area}
+								</span>
 							</p>
+
+							{/* number and address  */}
+							<div className='flex items-center gap-3 divide-x'>
+								<p>{addressd.mobile}</p>
+								<p className='pl-3'>
+
+								</p>
+							</div>
+							<Link to="/dashboard/useraddressform">
+								{/* TODO: emplement change funtionality */}
+								<button className='text-[#2ABBE8]'>Change</button>
+							</Link>
 						</div>
-						<div>
-							{/* TODO: emplement change funtionality */}
-							<button className='text-[#2ABBE8]'>Change</button>
+
+						{/* email  */}
+						<div className='mt-3 flex items-center gap-5'>
+
+							<p>Email to:{addressd.email}</p>
+
+							<p>
+								<span className='bg-[#EBF4F6] inline-block py-[2px] px-2 text-[10px] rounded'>
+									HOME {addressd.selectcity} ,{addressd.area} ,{addressd.landmark}
+								</span>
+							</p>
+
+							<div className='flex items-center gap-2'>
+								<p></p>
+								{/* TODO: emplement change funtionality */}
+
+								<Link to="/dashboard/useraddressform">
+
+									<button className='text-[#2ABBE8]'>Edit</button>
+								</Link>
+							</div>
 						</div>
 					</div>
 
-					{/* email  */}
-					<div className='mt-3 flex items-center gap-5'>
-						<p>Email to:</p>
-						<div className='flex items-center gap-2'>
-							<p></p>
-							{/* TODO: emplement change funtionality */}
-							<button className='text-[#2ABBE8]'>Edit</button>
-						</div>
-					</div>
-				</div>
-			</div>
+				</div>)
+			}
 
 			{/* data product */}
 			<div className='flex flex-col gap-5'>

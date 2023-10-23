@@ -9,6 +9,7 @@ import { ScaleLoader } from 'react-spinners';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useCustomers from '../../../Hooks/Fantastic/useCustomers';
+import Useaddress from '../../../Hooks/Useaddress/Useaddress';
 
 
 
@@ -91,9 +92,11 @@ const UserAddressForm = () => {
 
         const AllValue = { name, contactEmail, address, selectdivision, selectcity, mobile, area, email: user.email };
 
+
         if (landmark) {
             AllValue.landmark = landmark;
         }
+
         console.log(AllValue);
 
 
@@ -125,6 +128,7 @@ const UserAddressForm = () => {
             .then((response) => {
                 // Handle the API response data
                 setSelectCity(response.data);
+
             })
             .catch((error) => {
                 console.error("Error fetching data from API:", error);
@@ -141,12 +145,23 @@ const UserAddressForm = () => {
         return false; // Handle the case where user or user.email is null or undefined
     });
 
+    const [address, refetch] = Useaddress();
+    // hooks ends
+    // address related work 
+    let addressData = {}
+
+    for (let i = 0; i < address?.length; i++) {
+
+        const url = address[i];
 
 
+        addressData[`address${i}`] = url;
 
 
+    }
+    const custommerinfo = addressData.address0
 
-
+    refetch()
     return (
         <section className=''>
             <ToastContainer
@@ -165,24 +180,24 @@ const UserAddressForm = () => {
                 <form onSubmit={HandleUserSubmit} className='w-[70%]  flex flex-col gap-y-6 p-10 bg-white'>
                     <div>
                         <p>Full Name</p>
-                        <input  className='outline-none border w-full py-2 pl-3 rounded' type="text" placeholder={findCustomer.length > 0 && findCustomer[0].name || "Write your full name"} name='fullname' />
+                        <input className='outline-none border w-full py-2 pl-3 rounded' type="text" placeholder={custommerinfo?.name|| "Write your full name"} name='fullname' />
                         <p className="text-yellow-300">{errors.fullname}</p>
                     </div>
                     <div>
                         <p>Email</p>
-                        <input className='outline-none border w-full py-2 pl-3 rounded' type="email" placeholder={findCustomer.length > 0 && findCustomer[0].contactEmail || "Write your email"} name='contactEmail' />
+                        <input className='outline-none border w-full py-2 pl-3 rounded' type="email" placeholder={custommerinfo?.email|| "Write your email"} name='contactEmail' />
                         <p className="text-yellow-300">{errors.contactEmail}</p>
                     </div>
 
                     <div>
                         <p>Address</p>
-                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={findCustomer.length > 0 && findCustomer[0].address || "House no./building/street/area"} name='address' />
+                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={custommerinfo?.address || "House no./building/street/area"} name='address' />
                         <p className="text-yellow-300">{errors.address}</p>
                     </div>
 
                     <div>
                         <p>Mobile Number</p>
-                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={findCustomer.length > 0 && findCustomer[0].mobile || 'Write mobile number'} name='mobile' onInput={(e) => {
+                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={custommerinfo?.mobile || 'Write mobile number'} name='mobile' onInput={(e) => {
                             e.target.value = e.target.value.replace(/[^0-9]/g, '');
                         }} />
                         <p className="text-yellow-300">{errors.mobile}</p>
@@ -199,8 +214,8 @@ const UserAddressForm = () => {
                             {
                                 findCustomer.length > 0 ? <option value="" disabled selected>{findCustomer[0].
                                     selectdivision}</option> : <option value="" disabled selected>
-                                Choose your division
-                            </option>
+                                    Choose your division
+                                </option>
                             }
                             {
                                 divisions.data ? divisions.data.map(division => (
@@ -223,8 +238,8 @@ const UserAddressForm = () => {
                             {
                                 findCustomer.length > 0 ? <option value="" disabled selected>{findCustomer[0].
                                     selectcity}</option> : <option value="" disabled selected>
-                                Choose your City
-                            </option>
+                                    Choose your City
+                                </option>
                             }
                             {selectCity && selectCity.data && (
                                 selectCity.data.map(city => (
@@ -234,20 +249,20 @@ const UserAddressForm = () => {
                                         </option>
                                     ))
                                 ))
-                            ) }
+                            )}
                         </select>
                         <p className="text-yellow-300">{errors.selectcity}</p>
                     </div>
 
                     <div>
                         <p>Area</p>
-                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={findCustomer.length > 0 && findCustomer[0].area || 'Please choose your area'} name='area' />
+                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={custommerinfo?.area || 'Please choose your area'} name='area' />
                         <p className="text-yellow-300">{errors.area}</p>
                     </div>
                     {/*  */}
                     <div>
                         <p>Landmark(Optional)</p>
-                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={findCustomer.length > 0 && findCustomer[0].landmark || 'E.G. beside train station'}  name='landmark' />
+                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={custommerinfo?.landmark || 'E.G. beside train station'} name='landmark' />
                     </div>
                     {loader ? (
                         <ScaleLoader style={{ backgroundColor: "#fff" }} color="#36d7b7" className='flex justify-center border btn-outline' />

@@ -247,7 +247,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 				<li>Home</li>
 			</Link>
 
-			<Link className='hover:underline hover:text-orange-600 duration-300'>
+			<Link to="/dashboard/userprogress" className='hover:underline hover:text-orange-600 duration-300'>
 				<li>TRACK MY ORDER</li>
 			</Link>
 
