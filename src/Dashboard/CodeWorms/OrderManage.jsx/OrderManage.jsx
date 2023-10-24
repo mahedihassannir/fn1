@@ -47,7 +47,7 @@ const OrderManage = () => {
   })
 
 
-  console.log(orderData);
+
   refetch();
 
 
@@ -273,155 +273,125 @@ const OrderManage = () => {
       {/* Order Table */}
       <div>
         {/* <OrdersTable></OrdersTable> */}
-        <div className="min-w-[900px]">
+        <div className="min-w-full">
           <table className="text-[11px]  w-full">
             {/* order table head  */}
-            <thead>
-              <tr className="uppercase   py-5 text-blue-600">
-                <th className="w-[8%] ">Document</th>
-                <th className="w-[8%] ">Order No</th>
-                <th className="w-[9%]">Ordaer Date</th>
-                <th className="w-[11%]">Pending Since</th>
-                <th className="w-[12%]">Payment Method</th>
-                <th className="w-[9%]">Retail Price</th>
-                <th className="w-[3%]">#</th>
-                <th className="w-[8%]">Status</th>
-                <th className="w-[14%]">Ship-on-Time SLA</th>
-                <th className="w-[9%]">Printed</th>
-                <th className="w-[9%]">Actions</th>
-              </tr>
-            </thead>
+
 
             {/* order tabel body  */}
 
-            {
-              order.map((order, index) => <tbody key={order._id} className="font-bold flex ">
+            {/* here is the order manage tables */}
 
-                {/* {
-                  order.cart.forEach(item => (console.log(item)))
-                } */}
-                <tr className=" ">
-                  {/* id col  */}
-                  <td className="text-blue-600 w-[6%] ">
-                    #<span>1254</span>
-                  </td>
 
-                  {/* product and product image  */}
-                  <td className=" w-[12%]">
-                    <div className="flex items-center">
-                      <div>
-                        <img src="" alt="" />
-                      </div>
-                      <div>
-                        <p>${
-                          order.order.totalMoney
+            {order.map((item, index) => (
 
-                        }</p>
-                        <div className="text-[10px] text-gray-400">
-                          <p>Regular Price: 870</p>
-                          <p>Sale Price: 600</p>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
+              // console.log(item.order.address?.address),
 
-                  {/* category  */}
-                  <td className=" w-[11%]">
-                    <div className="flex items-center gap-4">
-                      <p>Electronics</p>
-                    </div>
-                  </td>
 
-                  {/* payment */}
-                  <td className=" w-[9%] flex-col items-start">
-                    <p className="">
-                      $<span>
-                        {/* TODO */}
-                      </span>
-                    </p>
-                    <small>
-                      <p className="text-gray-500">Fully Paid</p>
-                    </small>
-                  </td>
-                  <td className=" w-[10%] flex-col items-start">
-                    <p className="">
-                      $<span>${order?.cart?.singleProductData?.price}</span>
-                    </p>
-                    <small>
-                      <p className="text-gray-500">COD</p>
-                    </small>
-                  </td>
-                  <td className=" w-[9%] flex-col items-start">
-                    <p className="">
-                      $<span>600</span>
-                    </p>
-                    <small>
-                      <p className="text-gray-500">Fully Paid</p>
-                    </small>
-                  </td>
-                  <td className=" w-[6%] flex-col items-start">
-                    <p className="">
-                      $<span>600</span>
-                    </p>
-                    <small>
-                      <p className="text-gray-500">Fully Paid</p>
-                    </small>
-                  </td>
-                  <td className=" w-[8%] flex-col items-start">
-                    <p className="">
-                      $<span>600</span>
-                    </p>
-                    <small>
-                      <p className="text-gray-500">Fully Paid</p>
-                    </small>
-                  </td>
 
-                  {/* order status  */}
-                  <td className=" w-[10%]">
-                    <div className="uppercase ">Completed</div>
-                  </td>
-                  {/* rating  */}
-                  <td className=" w-[10%]">
-                    <Rating
-                      readonly
-                      placeholderRating={3.5}
-                      emptySymbol={<FaStarHalfAlt className="text-yellow-500" />}
-                      placeholderSymbol={<FaStar className="text-yellow-500" />}
-                    />
-                  </td>
+              <div className="w-full mt-5">
 
-                  {/* ends */}
+                {/* th is si the image work is starts */}
+                <div className="w-full h-32 ">
 
-                  <td className='w-[5%] flex items-start' key={order.id}>
-                    <div className='p-[6px] hover:bg-[#F5F5F5] rounded flex items-center justify-center text-sm cursor-pointer mx-auto relative'>
-                      <PiDotsThreeVerticalBold onClick={() => toggleModal(index)} />
+                  {/* this is for the handle the 2 die product length and the product images */}
+                  <div className="flex">
 
-                      <div
-                        className={`bg-white absolute top-[100%] text-[11px] right-0 overflow-hidden duration-300 shadow-md ${modalStates[index] ? "max-h-[500px]" : "max-h-[0px]"}`}
-                      >
-                        <ul className='w-[100px]'>
-                          <li className='py-1 px-3 hover:bg-gray-200 text-green-600'>
-                            prossing
-                          </li>
-                          <li className='py-1 px-3 hover:bg-gray-200 text-green-600'>
-                            placed
-                          </li>
-                          <li className='py-1 px-3 hover:bg-gray-200 text-lime-600'>
-                            Shipe
-                          </li>
-                          <li className='py-1 px-3 hover:bg-gray-200 text-red-600'>
-                            Delivered
-                          </li>
-                        </ul>
+                    {/* this is the product length side */}
+                    <div className=" flex justify-center items-center w-[14%] h-32 shadow-lg bg-white">
+                      <div className="text-center ">
+
+                        <p className="text-lg">Customer product</p>
+                        <h1 className="text-2xl">
+                          {/* {item.order.cart.length} */}
+                          {Object.values(item.order.cart).length}
+
+                        </h1>
+
                       </div>
                     </div>
-                  </td>
-                </tr>
+                    {/* this is the product length  side ends */}
 
-              </tbody>
+                    {/* this is the image side */}
+                    <div className="w-[86%] pl-2 h-32 shadow-sm bg-white">
 
-              )
-            }
+                      {/* images */}
+                      <div key={index} className="flex gap-4">
+
+                        {/* Display cart items */}
+                        {Object.values(item.order.cart).map((cartItem, cartIndex) => (
+                          console.log(cartItem),
+
+                          <div className="" key={cartIndex}>
+                            {/* Display images */}
+
+
+                            {/* <img className="w-40 h-32" src="https://i.ibb.co/jRDShZf/Screenshot-2023-08-19-162626.png" alt="" /> */}
+                            {Array.isArray(cartItem.imageurls) && cartItem.imageurls[0] &&
+                              <img className=" border-2  p-2 w-40 h-32" src={cartItem.imageurls[0]} alt="" />
+
+                            }
+
+                            {/* <h1>hi i am mahedi</h1> */}
+
+                          </div>
+                        ))}
+                      </div>
+
+
+
+                    </div>
+                  </div>
+                  {/* this is for the handle the 2 die product length and the product images ends */}
+
+                </div>
+                {/* th is si the image option is end  */}
+
+                {/* this is the product name and the address detail work starts */}
+                <div className="w-full h-32 bg-white shadow-md ">
+                  <div className="flex">
+                    <div className="w-[18%] h-32">
+
+                      <ul>
+                        <li className="text-[13px]">{item.order.address?.address}</li>
+                        <li className="text-[13px]">{item.order.address?.name}</li>
+                        <li className="text-[13px]">{item.order.address?.mobile}</li>
+                        <li className="text-[13px]">{item.order.address?.area}</li>
+                      </ul>
+
+                    </div>
+                    <div className="w-[80%] h-32 ">
+                      <div key={index} className="flex gap-2">
+
+                        {/* Display cart items */}
+                        {Object.values(item.order.cart).map((cartItem, cartIndex) => (
+                          // console.log(cartItem)
+
+                          <div key={cartIndex}>
+                            {/* Display images */}
+
+
+                            <h1 className="w-40 h-32 ">{cartItem.name}</h1>
+
+
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+                {/* this is the product name and the address detail work ends */}
+
+              </div>
+
+
+            ))}
+
+            {/* here is the order manage tables  ends*/}
+
+
           </table>
         </div>
       </div>
