@@ -8,6 +8,7 @@ import UseSellerOrders from "../../../Hooks/UseSellerOrders/UseSellerOrders";
 import { ContexM } from "../../../Authentication/AuthProvider/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
+import { TbCurrencyTaka } from "react-icons/tb";
 
 const { RangePicker } = DatePicker;
 const OrderManage = () => {
@@ -289,99 +290,76 @@ const OrderManage = () => {
 
 
 
-              <div className="w-full mt-5">
+              <div className="w-full mt-5 ">
 
-                {/* th is si the image work is starts */}
-                <div className="w-full h-32 ">
+                <div className=" rounded-md w-full shadow-md border-spacing-2 py-4 bg-white flex-row-reverse lg:flex">
 
-                  {/* this is for the handle the 2 die product length and the product images */}
-                  <div className="flex">
+                  {/* starts of the product sheeping address and the person who ordered */}
+                  <div className=" w-full lg:w-[20%]  flex lg:grid   ml-2 border-r-2 border-r-indigo-800">
 
-                    {/* this is the product length side */}
-                    <div className=" flex justify-center items-center w-[14%] h-32 shadow-lg bg-white">
-                      <div className="text-center ">
+                    <div className=" w-28 flex justify-center items-center h-28  rounded-full border-2 ">
 
-                        <p className="text-lg">Customer product</p>
-                        <h1 className="text-2xl">
-                          {/* {item.order.cart.length} */}
-                          {Object.values(item.order.cart).length}
-
-                        </h1>
-
-                      </div>
-                    </div>
-                    {/* this is the product length  side ends */}
-
-                    {/* this is the image side */}
-                    <div className="w-[86%] pl-2 h-32 shadow-sm bg-white">
-
-                      {/* images */}
-                      <div key={index} className="flex gap-4">
-
-                        {/* Display cart items */}
-                        {Object.values(item.order.cart).map((cartItem, cartIndex) => (
-                          console.log(cartItem),
-
-                          <div className="" key={cartIndex}>
-                            {/* Display images */}
-
-
-                            {/* <img className="w-40 h-32" src="https://i.ibb.co/jRDShZf/Screenshot-2023-08-19-162626.png" alt="" /> */}
-                            {Array.isArray(cartItem.imageurls) && cartItem.imageurls[0] &&
-                              <img className=" border-2  p-2 w-40 h-32" src={cartItem.imageurls[0]} alt="" />
-
-                            }
-
-                            {/* <h1>hi i am mahedi</h1> */}
-
-                          </div>
-                        ))}
-                      </div>
-
+                      <p className="text-lg font-semibold text-center">
+                        product <br /> <span className="text-center">{Object.values(item.order.cart).length}</span>
+                        <p className="flex items-center justify-center text-red-600">
+                          {item.order?.totalMoney}
+                          <span> <TbCurrencyTaka /></span>
+                        </p>
+                      </p>
 
 
                     </div>
-                  </div>
-                  {/* this is for the handle the 2 die product length and the product images ends */}
 
-                </div>
-                {/* th is si the image option is end  */}
-
-                {/* this is the product name and the address detail work starts */}
-                <div className="w-full h-32 bg-white shadow-md ">
-                  <div className="flex">
-                    <div className="w-[18%] h-32">
+                    {/* this is the order product shipping details */}
+                    <div className="w-full p-2 ">
 
                       <ul>
-                        <li className="text-[13px]">{item.order.address?.address}</li>
-                        <li className="text-[13px]">{item.order.address?.name}</li>
-                        <li className="text-[13px]">{item.order.address?.mobile}</li>
-                        <li className="text-[13px]">{item.order.address?.area}</li>
+                        <li className="text-[13px] font-semibold"></li>
+                        <li className="text-[13px] font-semibold">{item.order.address?.name}</li>
+                        <li className="text-[13px] font-semibold">{item.order.address?.mobile}</li>
+                        <li className="text-[13px] font-semibold">{item.order.address?.area}</li>
                       </ul>
 
+
                     </div>
-                    <div className="w-[80%] h-32 ">
-                      <div key={index} className="flex gap-2">
+                    {/* this is the order product shipping details ends */}
 
-                        {/* Display cart items */}
-                        {Object.values(item.order.cart).map((cartItem, cartIndex) => (
-                          // console.log(cartItem)
-
-                          <div key={cartIndex}>
-                            {/* Display images */}
+                  </div>
+                  <hr  className="py-2  mt-2 text-blue-800"/>
+                  {/* ends of the product sheeping detail */}
 
 
-                            <h1 className="w-40 h-32 ">{cartItem.name}</h1>
+                  <div className=" w-full  lg:w-[80%] grid grid-cols-4 lg:grid-cols-6 gap-2 ">
+                    {Object.values(item.order.cart).map((cartItem, cartIndex) => (
+                      console.log(cartItem),
+
+                      <div className="" key={cartIndex}>
+                        {/* Display images */}
 
 
-                          </div>
-                        ))}
+                        {/* <img className="w-40 h-32" src="https://i.ibb.co/jRDShZf/Screenshot-2023-08-19-162626.png" alt="" /> */}
+                        {Array.isArray(cartItem.imageurls) && cartItem.imageurls[0] &&
+                          <img className="p-2 w-24 h-20  lg:ml-2 border-2 lg:w-40 lg:h-32" src={cartItem.imageurls[0]} alt="" />
+
+                        }
+
+                        <p className="pl-2 font-semibold">{cartItem.name}</p>
+                        {/* <h1>hi i am mahedi</h1> */}
+
                       </div>
-                    </div>
+                    ))}
+
                   </div>
 
 
+
                 </div>
+
+
+
+
+
+
                 {/* this is the product name and the address detail work ends */}
 
               </div>
