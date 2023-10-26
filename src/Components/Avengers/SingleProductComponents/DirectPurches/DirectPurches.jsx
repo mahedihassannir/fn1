@@ -94,9 +94,10 @@ const DirectPurches = () => {
     const totalMoney = offerPrice + deleveryFee
 
     const cartData = { cart0: { singleProductData: productdata } }
-
+    const productID = Math.random().toString(36).substr(2, 9) + Date.now()
 
     const handleDireact_order = () => {
+
 
         // this is from the useeffect seller detailes
         const data = {
@@ -105,6 +106,8 @@ const DirectPurches = () => {
 
             cart: cartData,
 
+            productID: productID,
+            deliveryStatus: "processing",
             totalMoney: totalMoney,
             cod: "cod",// cash on delivery.
             address: addressData.address0
@@ -163,7 +166,8 @@ const DirectPurches = () => {
             Useremail: user?.email,
 
             cart: cartData,
-
+            productID: productID,
+            deliveryStatus: "processing",
             totalMoney: totalMoney,
             address: addressData.address0
 

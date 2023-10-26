@@ -24,7 +24,16 @@ const OrderManage = () => {
     setModalStates(newModalStates);
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
 
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
+  }
+
+  const toggleSelect = () => {
+    setIsOpen(!isOpen);
+  }
   console.log(order);
 
 
@@ -46,6 +55,22 @@ const OrderManage = () => {
     });
 
   })
+
+  const handleDelivered = (id) => {
+
+    // console.log("th is is the product cart id ", id);
+    console.log("th is is the product cart id ", id);
+
+    fetch(`http://localhost:5000/update_delivery_progress/${id}`, {
+      method: "PATCH",
+    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+      })
+
+  }
+
 
 
 
@@ -291,10 +316,47 @@ const OrderManage = () => {
 
 
               <div className="w-full mt-5 ">
+                {/* this dive is for change the progress of order */}
+                <div className="w-[40%] shadow-lg  h-10 bg-white rounded-t-md">
+
+                  <div className="flex items-center gap-1 pt-5 pl-4">
+
+                    {/* this div is the button for the delivered or not delivered */}
+
+                    <div>
+
+
+                      <button onClick={() => handleDelivered(item?._id)} className="py-2 px-5 border-2 border-red-300">
+
+                        PRODUCT DELIVERED
+
+                      </button>
+
+
+                    </div>
+                    {/* this div is the button for the delivered or not delivered ends */}
+
+
+
+
+
+                    {/* this dive is for the title */}
+                    <div className="">
+
+
+                      <p className="font-semibold text-[14px] uppercase">change the order progress</p>
+
+                    </div>
+                    {/* this dive is for the title ends */}
+
+                  </div>
+
+                </div>
+                {/* this dive is for change the progress of order ends */}
 
                 <div className=" rounded-md w-full shadow-md border-spacing-2 py-4 bg-white flex-row-reverse lg:flex">
-
                   {/* starts of the product sheeping address and the person who ordered */}
+
                   <div className=" w-full lg:w-[20%]  flex lg:grid   ml-2 border-r-2 border-r-indigo-800">
 
                     <div className=" w-28 flex justify-center items-center h-28  rounded-full border-2 ">
@@ -325,7 +387,7 @@ const OrderManage = () => {
                     {/* this is the order product shipping details ends */}
 
                   </div>
-                  <hr  className="py-2  mt-2 text-blue-800"/>
+                  <hr className="py-2  mt-2 text-blue-800" />
                   {/* ends of the product sheeping detail */}
 
 

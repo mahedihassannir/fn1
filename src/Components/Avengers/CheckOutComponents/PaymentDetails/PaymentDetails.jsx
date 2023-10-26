@@ -36,7 +36,7 @@ const PaymentDetails = ({ singleProductData }) => {
   // hooks ends
 
 
-
+  const productID = Math.random().toString(36).substr(2, 9) + Date.now()
   // address related work 
   let addressData = {}
 
@@ -166,6 +166,8 @@ const PaymentDetails = ({ singleProductData }) => {
 
       cart: cartData,
 
+      productID: productID,
+      deliveryStatus: "processing",
       totalMoney: totalMoney,
       address: addressData.address0
 
@@ -206,6 +208,8 @@ const PaymentDetails = ({ singleProductData }) => {
 
       cart: cartData,
 
+      productID: productID,
+      deliveryStatus: "processing",
       totalMoney: totalMoney,
       cod: "cod",// cash on delivery .
       address: addressData.address0

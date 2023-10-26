@@ -15,6 +15,7 @@ import { ContexM } from "../../../../../Authentication/AuthProvider/AuthProvider
 const SellerRequestTable = () => {
     const { modalIsOpen, setModalIsOpen } = useContext(ContexM);
     console.log(modalIsOpen)
+	
 	return (
 		<div className='min-w-[900px]'>
 			<table className='text-[11px]  w-full'>
