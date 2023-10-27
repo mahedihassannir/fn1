@@ -147,7 +147,6 @@ const AddProduct = () => {
             toppruduct: false,
             selleraddress: seller?.address,
             quantity: 0,
-            deliveryprogress: "precessing"
 
 
 

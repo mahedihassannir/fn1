@@ -9,6 +9,7 @@ import { ContexM } from "../../../Authentication/AuthProvider/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import { TbCurrencyTaka } from "react-icons/tb";
+import Swal from "sweetalert2";
 
 const { RangePicker } = DatePicker;
 const OrderManage = () => {
@@ -58,16 +59,37 @@ const OrderManage = () => {
 
   const handleDelivered = (id) => {
 
-    // console.log("th is is the product cart id ", id);
-    console.log("th is is the product cart id ", id);
 
-    fetch(`http://localhost:5000/update_delivery_progress/${id}`, {
-      method: "PATCH",
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, product delivered!'
+    }).then((result) => {
+      if (result.isConfirmed === true) {
+        console.log(result);
+
+        console.log("th is is the product cart id ", id);
+
+        fetch(`http://localhost:5000/update_delivery_progress/${id}`, {
+          method: "PATCH",
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+          })
+
+        Swal.fire(
+          'Product delivered successfully',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
     })
-      .then(res => res.json())
-      .then(data => {
-        console.log(data);
-      })
+
 
   }
 
@@ -308,7 +330,6 @@ const OrderManage = () => {
 
             {/* here is the order manage tables */}
 
-
             {order.map((item, index) => (
 
               // console.log(item.order.address?.address),
@@ -317,13 +338,13 @@ const OrderManage = () => {
 
               <div className="w-full mt-5 ">
                 {/* this dive is for change the progress of order */}
-                <div className="w-[40%] shadow-lg  h-10 bg-white rounded-t-md">
+                <div className=" w-[100%] lg:w-[40%] shadow-lg  h-10 bg-white rounded-t-md ">
 
-                  <div className="flex items-center gap-1 pt-5 pl-4">
+                  <div className="flex items-center gap-1 pt-2 pl-4  ">
+
 
                     {/* this div is the button for the delivered or not delivered */}
-
-                    <div>
+                    <div className="">
 
 
                       <button onClick={() => handleDelivered(item?._id)} className="py-2 px-5 border-2 border-red-300">
