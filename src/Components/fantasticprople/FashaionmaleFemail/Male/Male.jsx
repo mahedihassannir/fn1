@@ -5,26 +5,49 @@
 import { FaStar } from "react-icons/fa";
 import useProducts from "../../../../Hooks/Fantastic/useProducts";
 import CardsOfProducts from "../../CardsOfProducts/CardsOfProducts";
+import { Link } from "react-router-dom";
 
 const Male = () => {
-     // All Products From Hooks
-     const { products,loading} = useProducts()
+    // All Products From Hooks
+    const { products, loading } = useProducts()
 
-     // Filter Only Fashion Category
-     const maleFashion = products.filter(male=>male.category==="male")
+    // Filter Only Fashion Category
+    const maleFashion = products.filter(male => male.category === "male")
     return (
         <section>
-        {/* banner */}
-        <img className="my-10" src="https://i.ibb.co/fYkQS5K/Screenshot-2023-08-17-182335-1.png" alt="" />
+             <div className="">
+                <img className="mb-10 w-full h-36 lg:h-96" src="https://i.ibb.co/fYkQS5K/Screenshot-2023-08-17-182335-1.png" alt="" />
+
+            </div>
+            <div className='flex  justify-center'>
+                <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-16 gap-y-10 lg:mx-32 my-10 justify-center items-center text-center'>
+                    <Link ><img src="https://i.ibb.co/MkRT29B/watches.png" alt="" /></Link>
+                    <Link ><img src="https://i.ibb.co/KhXGwDc/wallet.png" alt="" /></Link>
+                    <Link ><img src="https://i.ibb.co/LhXz6wt/t-shirt.png" alt="" /></Link>
+                    <Link ><img src="https://i.ibb.co/Lgzkv3R/sunglasses.png" alt="" /></Link>
+                    <Link ><img src="https://i.ibb.co/dQjf357/shorts.png" alt="" /></Link>
+                    <img src="https://i.ibb.co/KhXGwDc/wallet.png" alt="" />
+                    <img src="https://i.ibb.co/XCLRhKN/caps.png" alt="" />
+                    <img src="https://i.ibb.co/Tw6kfqd/sandel.png" alt="" />
+                    <img src="https://i.ibb.co/kQWrTgt/seakers.png" alt="" />
+                    <img src="https://i.ibb.co/1drXrn2/polo.png" alt="" />
+                    <img src="https://i.ibb.co/qCX91xH/lofer.png" alt="" />
+                    <img src="https://i.ibb.co/p3fdYq1/fashon-jowllart.png" alt="" />
+                    <img src="https://i.ibb.co/jhkFntw/balte.png" alt="" />
+                    <img src="https://i.ibb.co/hMrj7s3/bags.png" alt="" />
+                    <img src="https://i.ibb.co/YBW8B2S/jens.png" alt="" />
 
 
-        {/* display male fashion product */}
-        <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-5 gap-y-10 lg:mx-20 my-10'>
-            {
-                maleFashion.map(male => <CardsOfProducts singleProduct={male}/>)
-            }
-        </div>
-    </section>
+                </div>
+            </div>
+
+            {/* display male fashion product */}
+            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-5 gap-y-10 lg:mx-20 my-10'>
+                {
+                    maleFashion.map(male => <CardsOfProducts singleProduct={male} />)
+                }
+            </div>
+        </section>
     );
 };
 

@@ -114,6 +114,7 @@ import BusinessInformation from "../Dashboard/CodeWorms/SellerSeeting/BusinessIn
 import Commissions from "../Dashboard/CodeWorms/SellerSeeting/Commissions/Commissions";
 import AdditionalDetails from "../Dashboard/CodeWorms/SellerTool/AdditionalDetails/AdditionalDetails";
 import VoucherDetails from "../Dashboard/CodeWorms/SellerTool/VoucherDetails/VoucherDetails";
+import Deliveredorder from "../Dashboard/CodeWorms/Deliveredorder/Deliveredorder";
 
 
 const router = createBrowserRouter([
@@ -523,6 +524,15 @@ const router = createBrowserRouter([
 
 				path: "/dashboard/ordermanage",
 				element: <OrderManage></OrderManage>
+
+
+			},
+			// this is for the teamarrow ends
+			// this is for the teamarrow 
+			{
+
+				path: "/dashboard/deliveredorders",
+				element: <Deliveredorder></Deliveredorder>
 
 
 			},

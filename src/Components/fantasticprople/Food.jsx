@@ -48,6 +48,13 @@ const Food = () => {
                 }
             </div>
 
+            <img className='w-11/12 mx-auto py-2' src="https://gcp-img.slatic.net/lazada/783778c1-b701-43cc-be1b-ce0f890539f8_BD-1188-344.jpg" alt="" />
+
+            <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-30 gap-y-5 lg:mx-20 my-10'>
+                {
+                    foodProducts.map(foods => <CardsOfProducts singleProduct={foods} />)
+                }
+            </div>
         </section>
     );
 };
