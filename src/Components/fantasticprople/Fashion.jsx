@@ -16,15 +16,19 @@ const Fashion = () => {
     const allFashionProducts = products.filter(FashionProducts => FashionProducts.category2 === "fashion")
 
     // const validImageUrls = allFashionProducts.imageurls.filter(url => url);
-   
+
 
     return (
         <section>
             {/* fashion banner */}
-            <img className="my-10" src="https://i.ibb.co/fYkQS5K/Screenshot-2023-08-17-182335-1.png" alt="" />
+            <div className="">
+                <img className="mb-10 w-full h-36 lg:h-96" src="https://i.ibb.co/fYkQS5K/Screenshot-2023-08-17-182335-1.png" alt="" />
+
+            </div>
+            {/* ends */}
 
             {/* category */}
-            <div className='bg-slate-100 mx-5'>
+            <div className=' mx-5'>
                 <div className='flex flex-col lg:flex-row justify-center items-center'>
                     <img src="https://gcp-img.slatic.net/lazada/bc40bb83-b2d0-4f30-a757-bdd7a1ba1a32_BD-388-180.png" alt="" />
                     <img src="https://gcp-img.slatic.net/lazada/676da7c0-9e8d-479f-aeab-74656f97c068_BD-388-180.png" alt="" />
@@ -37,11 +41,10 @@ const Fashion = () => {
                 </div>
             </div>
 
-
             {/* display all fashion product */}
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-1 gap-y-10 lg:mx-20 my-10'>
                 {
-                    allFashionProducts.map((fashionProducts) => <CardsOfProducts  singleProduct={fashionProducts} />)
+                    allFashionProducts.map((fashionProducts) => <CardsOfProducts singleProduct={fashionProducts} />)
                 }
 
             </div>

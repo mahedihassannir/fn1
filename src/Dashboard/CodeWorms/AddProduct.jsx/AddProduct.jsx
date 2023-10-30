@@ -146,7 +146,7 @@ const AddProduct = () => {
             vouchercode: "mmm",
             toppruduct: false,
             selleraddress: seller?.address,
-
+            quantity: 0,
 
 
 

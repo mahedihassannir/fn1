@@ -154,7 +154,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <FaTools className='w-4 h-4'></FaTools>
-                    <h4>Seller Setting</h4>
+                    <h4>Seller tools</h4>
                 </div></Link>
                 {/* custommer feedback on my product */}
                 <Link to="dashboard/customerfeedback"><div onClick={() => setActiveRoute("CustomerFeedback")}
@@ -191,6 +191,21 @@ const SellerDashboard = () => {
                 >
                     <FaBroadcastTower className='w-4 h-4'></FaBroadcastTower>
                     <h4>Seller Setting</h4>
+                </div></Link>
+
+
+
+                {/* Markating solution for seller ends */}
+
+                {/* Markating solution for seller starts */}
+                <Link to="/dashboard/accStatementseller"><div onClick={() => setActiveRoute("Payment")}
+                    className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "Payment"
+                        ? "bg-[#19D895] text-[#0A1727]"
+                        : ""
+                        } cursor-pointer  gap-4`}
+                >
+                    <FaBroadcastTower className='w-4 h-4'></FaBroadcastTower>
+                    <h4>Payment widhrow</h4>
                 </div></Link>
 
 

@@ -10,15 +10,15 @@ const UserHome = () => {
     return (
         <section className='user-home'>
             {/* userHome top section */}
-            <UserNav/>
+            <UserNav />
             {/* userHome top section Ends*/}
 
             {/* second  section Video and State */}
-            <UserHomeSecondSection/>
+            <UserHomeSecondSection />
             {/* second  section Video and State  ends*/}
 
             {/* third section Listing TopProducts,Featured Products, and recent activity */}
-            <UserHomeThirdSection/>
+            <UserHomeThirdSection />
         </section>
     );
 };

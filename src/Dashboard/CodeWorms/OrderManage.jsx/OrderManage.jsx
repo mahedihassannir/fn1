@@ -8,6 +8,8 @@ import UseSellerOrders from "../../../Hooks/UseSellerOrders/UseSellerOrders";
 import { ContexM } from "../../../Authentication/AuthProvider/AuthProvider";
 import { useContext, useEffect, useState } from "react";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
+import { TbCurrencyTaka } from "react-icons/tb";
+import Swal from "sweetalert2";
 
 const { RangePicker } = DatePicker;
 const OrderManage = () => {
@@ -23,7 +25,16 @@ const OrderManage = () => {
     setModalStates(newModalStates);
   };
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('');
 
+  const handleSelectChange = (event) => {
+    setSelectedOption(event.target.value);
+  }
+
+  const toggleSelect = () => {
+    setIsOpen(!isOpen);
+  }
   console.log(order);
 
 
@@ -46,8 +57,45 @@ const OrderManage = () => {
 
   })
 
+  const handleDelivered = (id) => {
 
-  console.log(orderData);
+
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, product delivered!'
+    }).then((result) => {
+      if (result.isConfirmed === true) {
+        console.log(result);
+
+        console.log("th is is the product cart id ", id);
+
+        fetch(`http://localhost:5000/update_delivery_progress/${id}`, {
+          method: "PATCH",
+        })
+          .then(res => res.json())
+          .then(data => {
+            console.log(data);
+          })
+
+        Swal.fire(
+          'Product delivered successfully',
+          'Your file has been deleted.',
+          'success'
+        )
+      }
+    })
+
+
+  }
+
+
+
+
   refetch();
 
 
@@ -273,155 +321,138 @@ const OrderManage = () => {
       {/* Order Table */}
       <div>
         {/* <OrdersTable></OrdersTable> */}
-        <div className="min-w-[900px]">
+        <div className="min-w-full">
           <table className="text-[11px]  w-full">
             {/* order table head  */}
-            <thead>
-              <tr className="uppercase   py-5 text-blue-600">
-                <th className="w-[8%] ">Document</th>
-                <th className="w-[8%] ">Order No</th>
-                <th className="w-[9%]">Ordaer Date</th>
-                <th className="w-[11%]">Pending Since</th>
-                <th className="w-[12%]">Payment Method</th>
-                <th className="w-[9%]">Retail Price</th>
-                <th className="w-[3%]">#</th>
-                <th className="w-[8%]">Status</th>
-                <th className="w-[14%]">Ship-on-Time SLA</th>
-                <th className="w-[9%]">Printed</th>
-                <th className="w-[9%]">Actions</th>
-              </tr>
-            </thead>
+
 
             {/* order tabel body  */}
 
-            {
-              order.map((order, index) => <tbody key={order._id} className="font-bold flex ">
+            {/* here is the order manage tables */}
 
-                {/* {
-                  order.cart.forEach(item => (console.log(item)))
-                } */}
-                <tr className=" ">
-                  {/* id col  */}
-                  <td className="text-blue-600 w-[6%] ">
-                    #<span>1254</span>
-                  </td>
+            {order.map((item, index) => (
 
-                  {/* product and product image  */}
-                  <td className=" w-[12%]">
-                    <div className="flex items-center">
-                      <div>
-                        <img src="" alt="" />
-                      </div>
-                      <div>
-                        <p>${
-                          order.order.totalMoney
+              // console.log(item.order.address?.address),
 
-                        }</p>
-                        <div className="text-[10px] text-gray-400">
-                          <p>Regular Price: 870</p>
-                          <p>Sale Price: 600</p>
-                        </div>
-                      </div>
+
+
+              <div className="w-full mt-5 ">
+                {/* this dive is for change the progress of order */}
+                <div className=" w-[100%] lg:w-[40%] shadow-lg  h-10 bg-white rounded-t-md ">
+
+                  <div className="flex items-center gap-1 pt-2 pl-4  ">
+
+
+                    {/* this div is the button for the delivered or not delivered */}
+                    <div className="">
+
+
+                      <button onClick={() => handleDelivered(item?._id)} className="py-2 px-5 border-2 border-red-300">
+
+                        PRODUCT DELIVERED
+
+                      </button>
+
+
                     </div>
-                  </td>
+                    {/* this div is the button for the delivered or not delivered ends */}
 
-                  {/* category  */}
-                  <td className=" w-[11%]">
-                    <div className="flex items-center gap-4">
-                      <p>Electronics</p>
+
+
+
+
+                    {/* this dive is for the title */}
+                    <div className="">
+
+
+                      <p className="font-semibold text-[14px] uppercase">change the order progress</p>
+
                     </div>
-                  </td>
+                    {/* this dive is for the title ends */}
 
-                  {/* payment */}
-                  <td className=" w-[9%] flex-col items-start">
-                    <p className="">
-                      $<span>
-                        {/* TODO */}
-                      </span>
-                    </p>
-                    <small>
-                      <p className="text-gray-500">Fully Paid</p>
-                    </small>
-                  </td>
-                  <td className=" w-[10%] flex-col items-start">
-                    <p className="">
-                      $<span>${order?.cart?.singleProductData?.price}</span>
-                    </p>
-                    <small>
-                      <p className="text-gray-500">COD</p>
-                    </small>
-                  </td>
-                  <td className=" w-[9%] flex-col items-start">
-                    <p className="">
-                      $<span>600</span>
-                    </p>
-                    <small>
-                      <p className="text-gray-500">Fully Paid</p>
-                    </small>
-                  </td>
-                  <td className=" w-[6%] flex-col items-start">
-                    <p className="">
-                      $<span>600</span>
-                    </p>
-                    <small>
-                      <p className="text-gray-500">Fully Paid</p>
-                    </small>
-                  </td>
-                  <td className=" w-[8%] flex-col items-start">
-                    <p className="">
-                      $<span>600</span>
-                    </p>
-                    <small>
-                      <p className="text-gray-500">Fully Paid</p>
-                    </small>
-                  </td>
+                  </div>
 
-                  {/* order status  */}
-                  <td className=" w-[10%]">
-                    <div className="uppercase ">Completed</div>
-                  </td>
-                  {/* rating  */}
-                  <td className=" w-[10%]">
-                    <Rating
-                      readonly
-                      placeholderRating={3.5}
-                      emptySymbol={<FaStarHalfAlt className="text-yellow-500" />}
-                      placeholderSymbol={<FaStar className="text-yellow-500" />}
-                    />
-                  </td>
+                </div>
+                {/* this dive is for change the progress of order ends */}
 
-                  {/* ends */}
+                <div className=" rounded-md w-full shadow-md border-spacing-2 py-4 bg-white flex-row-reverse lg:flex">
+                  {/* starts of the product sheeping address and the person who ordered */}
 
-                  <td className='w-[5%] flex items-start' key={order.id}>
-                    <div className='p-[6px] hover:bg-[#F5F5F5] rounded flex items-center justify-center text-sm cursor-pointer mx-auto relative'>
-                      <PiDotsThreeVerticalBold onClick={() => toggleModal(index)} />
+                  <div className=" w-full lg:w-[20%]  flex lg:grid   ml-2 border-r-2 border-r-indigo-800">
 
-                      <div
-                        className={`bg-white absolute top-[100%] text-[11px] right-0 overflow-hidden duration-300 shadow-md ${modalStates[index] ? "max-h-[500px]" : "max-h-[0px]"}`}
-                      >
-                        <ul className='w-[100px]'>
-                          <li className='py-1 px-3 hover:bg-gray-200 text-green-600'>
-                            prossing
-                          </li>
-                          <li className='py-1 px-3 hover:bg-gray-200 text-green-600'>
-                            placed
-                          </li>
-                          <li className='py-1 px-3 hover:bg-gray-200 text-lime-600'>
-                            Shipe
-                          </li>
-                          <li className='py-1 px-3 hover:bg-gray-200 text-red-600'>
-                            Delivered
-                          </li>
-                        </ul>
+                    <div className=" w-28 flex justify-center items-center h-28  rounded-full border-2 ">
+
+                      <p className="text-lg font-semibold text-center">
+                        product <br /> <span className="text-center">{Object.values(item.order.cart).length}</span>
+                        <p className="flex items-center justify-center text-red-600">
+                          {item.order?.totalMoney}
+                          <span> <TbCurrencyTaka /></span>
+                        </p>
+                      </p>
+
+
+                    </div>
+
+                    {/* this is the order product shipping details */}
+                    <div className="w-full p-2 ">
+
+                      <ul>
+                        <li className="text-[13px] font-semibold"></li>
+                        <li className="text-[13px] font-semibold">{item.order.address?.name}</li>
+                        <li className="text-[13px] font-semibold">{item.order.address?.mobile}</li>
+                        <li className="text-[13px] font-semibold">{item.order.address?.area}</li>
+                      </ul>
+
+
+                    </div>
+                    {/* this is the order product shipping details ends */}
+
+                  </div>
+                  <hr className="py-2  mt-2 text-blue-800" />
+                  {/* ends of the product sheeping detail */}
+
+
+                  <div className=" w-full  lg:w-[80%] grid grid-cols-4 lg:grid-cols-6 gap-2 ">
+                    {Object.values(item.order.cart).map((cartItem, cartIndex) => (
+                      console.log(cartItem),
+
+                      <div className="" key={cartIndex}>
+                        {/* Display images */}
+
+
+                        {/* <img className="w-40 h-32" src="https://i.ibb.co/jRDShZf/Screenshot-2023-08-19-162626.png" alt="" /> */}
+                        {Array.isArray(cartItem.imageurls) && cartItem.imageurls[0] &&
+                          <img className="p-2 w-24 h-20  lg:ml-2 border-2 lg:w-40 lg:h-32" src={cartItem.imageurls[0]} alt="" />
+
+                        }
+
+                        <p className="pl-2 font-semibold">{cartItem.name}</p>
+                        {/* <h1>hi i am mahedi</h1> */}
+
                       </div>
-                    </div>
-                  </td>
-                </tr>
+                    ))}
 
-              </tbody>
+                  </div>
 
-              )
-            }
+
+
+                </div>
+
+
+
+
+
+
+                {/* this is the product name and the address detail work ends */}
+
+              </div>
+
+
+            ))}
+
+            {/* here is the order manage tables  ends*/}
+
+
           </table>
         </div>
       </div>
