@@ -27,12 +27,6 @@ const Markatingpage = () => {
 
             </Link>
 
-            <Link to="/dashboard/accStatementseller " className=" btn ml-20 mt-10 text-white py-4 px-6 bg-red-900">
-
-
-                Account statement
-
-            </Link>
 
 
         </div>
