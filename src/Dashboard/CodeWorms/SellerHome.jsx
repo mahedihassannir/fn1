@@ -7,11 +7,15 @@ import { MdDashboardCustomize } from 'react-icons/md';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import axios from 'axios';
+import UseSellerOrders from '../../Hooks/UseSellerOrders/UseSellerOrders';
+import UseSellerDeliveredData from '../../Hooks/UsesellerdeliveredData/UsesellerdeliveredData';
 
 
 const SellerHome = () => {
 
   const [seller, Setseller] = useState(null);
+  const [order, refetch] = UseSellerOrders(null)
+  const [deliveredData] = UseSellerDeliveredData();
 
 
   useEffect(() => {
@@ -43,6 +47,8 @@ const SellerHome = () => {
   }, [])
   console.log(seller);
 
+  refetch()
+
   return (
     <div className=''>
       <div className='flex items-center gap-2'>
@@ -51,8 +57,11 @@ const SellerHome = () => {
       </div>
       <hr className='mt-6 shadow border border-green-900' />
       <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6'>
-        <div className='w-25 bg-slate-50 shadow-2xl p-8'><span className=''><MdPendingActions className='text-3xl border-2 rounded-full'></MdPendingActions></span><br /><p className='font-bold text-lg'>Pending Orders<br /><u>20</u></p></div>
-        <div className='w-25 bg-slate-50 shadow-2xl p-8'><span><FaShippingFast className='text-3xl border rounded-full'></FaShippingFast> </span><br /><p className='font-bold text-lg'>Ready To Ship<br /><u>35</u></p></div>
+        <div className='w-25 bg-slate-50 shadow-2xl p-8'><span className=''><MdPendingActions className='text-3xl border-2 rounded-full'></MdPendingActions></span><br /><p className='font-bold text-lg'>Pending Orders<br /><u>{order?.length}</u></p></div>
+
+        <div className='w-25 bg-slate-50 shadow-2xl p-8'><span><FaShippingFast className='text-3xl border rounded-full'></FaShippingFast> </span><br /><p className='font-bold text-lg'>Delivered Product<br /><u>{deliveredData?.length}</u></p></div>
+
+
         <div className='w-25 bg-slate-50 shadow-2xl p-8'><span><BsArrowReturnLeft className='text-3xl border rounded-full'></BsArrowReturnLeft> </span><br /><p className='font-bold text-lg'>Pending Return<br /><u>05</u></p></div>
         <div className='w-25 bg-slate-50 shadow-2xl p-8'><span><GoCodeReview className='text-3xl border rounded-full'></GoCodeReview> </span><br /><p className='font-bold text-lg'>New Reviews<br /><u>110</u></p></div>
       </div>

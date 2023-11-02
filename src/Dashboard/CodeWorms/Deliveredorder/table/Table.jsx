@@ -6,7 +6,7 @@ import { FaBeer, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 
 
-const Table = () => {
+const Table = ({ sellerdeliveredData }) => {
     return (
         <div>
 
@@ -29,259 +29,83 @@ const Table = () => {
 
                         {/* order tabel body  */}
                         <tbody className='font-bold'>
-                            <tr className=' '>
-                                {/* id col  */}
-                                <td className='text-blue-600 w-[8%] '>
-                                    #<span>1254</span>
-                                </td>
 
-                                {/* product and product image  */}
-                                <td className=' w-[20%]'>
-                                    <div className='flex items-center'>
-                                        <div>
-                                            <img
-                                                src=''
-                                                alt=''
-                                            />
-                                        </div>
-                                        <div>
-                                            <p>Oculus Quest 2 VR Headset 64GB</p>
-                                            <div className='text-[10px] text-gray-400'>
-                                                <p>Regular Price: 870</p>
-                                                <p>Sale Price: 600</p>
+                            {
+                                sellerdeliveredData.map(res =>
+
+
+                                    <tr className=' '>
+                                        {/* id col  */}
+                                        <td className='text-blue-600 w-[8%] '>
+                                            #<span>1254</span>
+                                        </td>
+
+                                        {/* product and product image  */}
+                                        <td className=' w-[20%]'>
+                                            <div className='flex items-center'>
+                                                <div>
+                                                    <img
+                                                        src=''
+                                                        alt=''
+                                                    />
+                                                </div>
+                                                <div>
+                                                    <p>Oculus Quest 2 VR Headset 64GB</p>
+                                                    <div className='text-[10px] text-gray-400'>
+                                                        <p>Regular Price: 870</p>
+                                                        <p>Sale Price: 600</p>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                        </td>
 
-                                {/* category  */}
-                                <td className=' w-[20%]'>
-                                    <div className='flex items-center gap-4'>
-                                        <div className='w-[25px] h-[25px] bg-[#035ECF] rounded'></div>
-                                        <p>Electronics</p>
-                                    </div>
-                                </td>
-
-                                {/* payment */}
-                                <td className=' w-[20%] flex-col items-start'>
-                                    <p className=''>
-                                        $<span>600</span>
-                                    </p>
-                                    <small>
-                                        <p className='text-gray-500'>Fully Paid</p>
-                                    </small>
-                                </td>
-
-                                {/* order status  */}
-                                <td className=' w-[20%]'>
-                                    <div className='uppercase py-1 px-3 bg-[#035ECF] text-white rounded-md'>
-                                        Completed
-                                    </div>
-                                </td>
-                                {/* rating  */}
-                                <td className=' w-[12%]'>
-                                    <Rating
-                                        readonly
-                                        placeholderRating={3.5}
-                                        emptySymbol={
-                                            <FaStarHalfAlt className='text-yellow-500' />
-                                        }
-                                        placeholderSymbol={
-                                            <FaStar className='text-yellow-500' />
-                                        }
-                                    />
-                                </td>
-                            </tr>
-
-                            <tr className=' '>
-                                {/* id col  */}
-                                <td className='text-blue-600 w-[8%] '>
-                                    #<span>1254</span>
-                                </td>
-
-                                {/* product and product image  */}
-                                <td className=' w-[20%]'>
-                                    <div className='flex items-center'>
-                                        <div>
-                                            <img
-                                                src=''
-                                                alt=''
-                                            />
-                                        </div>
-                                        <div>
-                                            <p>Oculus Quest 2 VR Headset 64GB</p>
-                                            <div className='text-[10px] text-gray-400'>
-                                                <p>Regular Price: 870</p>
-                                                <p>Sale Price: 600</p>
+                                        {/* category  */}
+                                        <td className=' w-[20%]'>
+                                            <div className='flex items-center gap-4'>
+                                                <div className='w-[25px] h-[25px] bg-[#035ECF] rounded'></div>
+                                                <p>Electronics</p>
                                             </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                        </td>
 
-                                {/* category  */}
-                                <td className=' w-[20%]'>
-                                    <div className='flex items-center gap-4'>
-                                        <div className='w-[25px] h-[25px] bg-[#FF5470] rounded'></div>
-                                        <p>Electronics</p>
-                                    </div>
-                                </td>
+                                        {/* payment */}
+                                        <td className=' w-[20%] flex-col items-start'>
+                                            <p className=''>
+                                                $<span>600</span>
+                                            </p>
+                                            <small>
+                                                <p className='text-gray-500'>Fully Paid</p>
+                                            </small>
+                                        </td>
 
-                                {/* payment */}
-                                <td className=' w-[20%] flex-col items-start'>
-                                    <p className=''>
-                                        $<span>600</span>
-                                    </p>
-                                    <small>
-                                        <p className='text-gray-500'>Unpaid</p>
-                                    </small>
-                                </td>
-
-                                {/* order status  */}
-                                <td className=' w-[20%]'>
-                                    <div className='uppercase py-1 px-3 bg-[#FF5470] text-white rounded-md'>
-                                        Cancelled
-                                    </div>
-                                </td>
-                                {/* rating  */}
-                                <td className=' w-[12%]'>
-                                    <Rating
-                                        readonly
-                                        placeholderRating={3.5}
-                                        emptySymbol={
-                                            <FaStarHalfAlt className='text-yellow-500' />
-                                        }
-                                        placeholderSymbol={
-                                            <FaStar className='text-yellow-500' />
-                                        }
-                                    />
-                                </td>
-                            </tr>
-                            <tr className=' '>
-                                {/* id col  */}
-                                <td className='text-blue-600 w-[8%] '>
-                                    #<span>1254</span>
-                                </td>
-
-                                {/* product and product image  */}
-                                <td className=' w-[20%]'>
-                                    <div className='flex items-center'>
-                                        <div>
-                                            <img
-                                                src=''
-                                                alt=''
-                                            />
-                                        </div>
-                                        <div>
-                                            <p>Oculus Quest 2 VR Headset 64GB</p>
-                                            <div className='text-[10px] text-gray-400'>
-                                                <p>Regular Price: 870</p>
-                                                <p>Sale Price: 600</p>
+                                        {/* order status  */}
+                                        <td className=' w-[20%]'>
+                                            <div className='uppercase py-1 px-3 bg-[#035ECF] text-white rounded-md'>
+                                                Completed
                                             </div>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                {/* category  */}
-                                <td className=' w-[20%]'>
-                                    <div className='flex items-center gap-4'>
-                                        <div className='w-[25px] h-[25px] bg-[#F8D518] rounded'></div>
-                                        <p>Services</p>
-                                    </div>
-                                </td>
-
-                                {/* payment */}
-                                <td className=' w-[20%] flex-col items-start'>
-                                    <p className=''>
-                                        $<span>600</span>
-                                    </p>
-                                    <small>
-                                        <p className='text-gray-500'>Unpaid</p>
-                                    </small>
-                                </td>
-
-                                {/* order status  */}
-                                <td className=' w-[20%]'>
-                                    <div className='uppercase py-1 px-3 bg-[#00BA9D] text-white rounded-md'>
-                                        Confirmed
-                                    </div>
-                                </td>
-                                {/* rating  */}
-                                <td className=' w-[12%]'>
-                                    <Rating
-                                        readonly
-                                        placeholderRating={3.5}
-                                        emptySymbol={
-                                            <FaStarHalfAlt className='text-yellow-500' />
-                                        }
-                                        placeholderSymbol={
-                                            <FaStar className='text-yellow-500' />
-                                        }
-                                    />
-                                </td>
-                            </tr>
-                            <tr className=' '>
-                                {/* id col  */}
-                                <td className='text-blue-600 w-[8%] '>
-                                    #<span>1254</span>
-                                </td>
-
-                                {/* product and product image  */}
-                                <td className=' w-[20%]'>
-                                    <div className='flex items-center'>
-                                        <div>
-                                            <img
-                                                src=''
-                                                alt=''
+                                        </td>
+                                        {/* rating  */}
+                                        <td className=' w-[12%]'>
+                                            <Rating
+                                                readonly
+                                                placeholderRating={3.5}
+                                                emptySymbol={
+                                                    <FaStarHalfAlt className='text-yellow-500' />
+                                                }
+                                                placeholderSymbol={
+                                                    <FaStar className='text-yellow-500' />
+                                                }
                                             />
-                                        </div>
-                                        <div>
-                                            <p>Oculus Quest 2 VR Headset 64GB</p>
-                                            <div className='text-[10px] text-gray-400'>
-                                                <p>Regular Price: 870</p>
-                                                <p>Sale Price: 600</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
+                                        </td>
+                                    </tr>
 
-                                {/* category  */}
-                                <td className=' w-[20%]'>
-                                    <div className='flex items-center gap-4'>
-                                        <div className='w-[25px] h-[25px] bg-[#00193B] rounded'></div>
-                                        <p>Groceries</p>
-                                    </div>
-                                </td>
 
-                                {/* payment */}
-                                <td className=' w-[20%] flex-col items-start'>
-                                    <p className=''>
-                                        $<span>600</span>
-                                    </p>
-                                    <small>
-                                        <p className='text-gray-500'>Unpaid</p>
-                                    </small>
-                                </td>
+                                )
+                            }
 
-                                {/* order status  */}
-                                <td className=' w-[20%]'>
-                                    <div className='uppercase py-1 px-3 bg-[#515C6B] text-white rounded-md'>
-                                        Refunded
-                                    </div>
-                                </td>
-                                {/* rating  */}
-                                <td className=' w-[12%]'>
-                                    <Rating
-                                        readonly
-                                        placeholderRating={3.5}
-                                        emptySymbol={
-                                            <FaStarHalfAlt className='text-yellow-500' />
-                                        }
-                                        placeholderSymbol={
-                                            <FaStar className='text-yellow-500' />
-                                        }
-                                    />
-                                </td>
-                            </tr>
+                            {/* ends of all table */}
+
+
+
                         </tbody>
                     </table>
                 </div>

@@ -23,6 +23,7 @@ const UseSellerOrders = () => {
     }, [])
 
     console.log(seller);
+    
     const { refetch, data: order = [] } = useQuery({
 
         queryKey: ['order', user?.email],

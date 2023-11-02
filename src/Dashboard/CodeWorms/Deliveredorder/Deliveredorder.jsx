@@ -1,7 +1,16 @@
 import { FaAngleRight } from "react-icons/fa";
 import Table from "./table/Table";
-
+import UseSellerDeliveredData from "../../../Hooks/UsesellerdeliveredData/UsesellerdeliveredData";
 const Deliveredorder = () => {
+
+    const [deliveredData, refetch] = UseSellerDeliveredData();
+
+
+    console.log("i am from seller orders", deliveredData);
+
+
+    refetch();
+
     return (
         <div className="w-full ">
 
@@ -104,7 +113,7 @@ const Deliveredorder = () => {
                     {/* here is the products tables  */}
                     <div className='my-4'>
 
-                        <Table data={"cartData"} />
+                        <Table sellerdeliveredData={deliveredData} />
                     </div>
 
 

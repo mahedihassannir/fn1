@@ -119,6 +119,7 @@ const Avengers = () => {
 		const VerifyStatus = false;
 		const accountCreatedFirstStep = true;
 
+
 		if (phonenumber.length !== 11) {
 			return Swal.fire({
 				position: 'top-start',
@@ -147,6 +148,8 @@ const Avengers = () => {
 			email,
 			password,
 			responseStatus,
+			sellerAccountBalance: 0,
+
 
 		};
 
