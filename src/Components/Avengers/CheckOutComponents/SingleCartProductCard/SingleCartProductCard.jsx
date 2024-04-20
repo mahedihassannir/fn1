@@ -15,7 +15,7 @@ import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
 
 const SingleCartProductCard = ({ singleProductData }) => {
 
-	
+
 
 
 	const [, refetch] = UseCartHook();

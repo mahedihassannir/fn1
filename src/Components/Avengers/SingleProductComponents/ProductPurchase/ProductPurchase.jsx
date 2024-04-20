@@ -17,8 +17,11 @@ import { useContext, useEffect, useState } from "react";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 import { SyncLoader } from "react-spinners";
 import useProducts from "../../../../Hooks/Fantastic/useProducts";
+import axios from "axios";
 
 const ProductPurchase = ({ singleProductData }) => {
+
+	const { user } = useContext(ContexM)
 
 	console.log({ singleProductData });
 
@@ -66,6 +69,24 @@ const ProductPurchase = ({ singleProductData }) => {
 	const { products, loading } = useProducts()
 
 	console.log({ addToCart });
+
+	const email = user?.email;
+	
+	const handleWishList = (data) => {
+		
+		const productData = data?._id
+		console.log("wish list data", data);
+		fetch("http://localhost:5000/wish_list", {
+			method: "POST",
+			headers: { "content-type": "application/json" }
+			,
+			body: JSON.stringify({ data, email, productData })
+		})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data);
+			})
+	}
 
 
 	return (
@@ -161,7 +182,13 @@ const ProductPurchase = ({ singleProductData }) => {
 							{/* share  */}
 							<div className='flex items-center gap-6 text-2xl text-gray-400 '>
 								<HiShare />
-								<FaRegHeart />
+
+
+
+								<FaRegHeart onClick={() => handleWishList(singleProductData)} className="cursor-pointer hover:text-red-500 " />
+
+
+
 							</div>
 						</div>
 					</div>

@@ -1,10 +1,12 @@
+
 const Wishlist = () => {
+
+    
+
     return (
         <div>
 
-            this is wishlist
-
-
+          
 
 
 

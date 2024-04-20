@@ -9,7 +9,7 @@ const UserOrderedProducts = () => {
     const [selectDivision, setSelectDivision] = useState("")
     const [selectCity, setSelectCity] = useState("")
     const [cities, setCities] = useState("")
-    const{user} = useContext(ContexM)
+    const { user } = useContext(ContexM)
     const [errors, setErrors] = useState({
         fullname: "",
         address: "",
@@ -18,7 +18,7 @@ const UserOrderedProducts = () => {
         selectcity: "",
         area: "",
     });
-  
+
 
     const HandleUserSubmit = (e) => {
         e.preventDefault();
@@ -74,7 +74,7 @@ const UserOrderedProducts = () => {
             return;
         }
 
-        const AllValue = {name,address,selectdivision,selectcity,mobile,area,email:user.email};
+        const AllValue = { name, address, selectdivision, selectcity, mobile, area, email: user.email };
 
         if (landmark) {
             AllValue.landmark = landmark;
@@ -90,24 +90,24 @@ const UserOrderedProducts = () => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'yes, save!'
-          }).then((result) => {
+        }).then((result) => {
             if (result.isConfirmed) {
                 axios.put('http://localhost:5000/customerInfo', AllValue)
-        .then(response => {
-            console.log('Data sent successfully:', response.data);
-        })
-        .catch(error => {
-            console.error('Error sending data:', error);
-        });
-              Swal.fire(
-                'saved!',
-                'Your Information has been saved.',
-                'success'
-              )
+                    .then(response => {
+                        console.log('Data sent successfully:', response.data);
+                    })
+                    .catch(error => {
+                        console.error('Error sending data:', error);
+                    });
+                Swal.fire(
+                    'saved!',
+                    'Your Information has been saved.',
+                    'success'
+                )
             }
-          })
+        })
 
-        
+
     }
 
     // get cities based on divisions
@@ -124,90 +124,90 @@ const UserOrderedProducts = () => {
 
     return (
         <section className=' userFormBg'>
-         <div className='flex justify-center'>
-         <form onSubmit={HandleUserSubmit} className='w-[70%] userForm font-bold text-white flex flex-col gap-y-6 p-10'>
-                <div>
-                    <p>Full Name</p>
-                    <input  className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='Write full name' name='fullname' />
-                    <p className="text-yellow-300">{errors.fullname}</p>
-                </div>
+            <div className='flex justify-center'>
+                <form onSubmit={HandleUserSubmit} className='w-[70%] userForm font-bold text-white flex flex-col gap-y-6 p-10'>
+                    <div>
+                        <p>Full Name</p>
+                        <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='Write full name' name='fullname' />
+                        <p className="text-yellow-300">{errors.fullname}</p>
+                    </div>
 
-                <div>
-                    <p>Address</p>
-                    <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='House no./building/street/area' name='address' />
-                    <p className="text-yellow-300">{errors.address}</p>
-                </div>
+                    <div>
+                        <p>Address</p>
+                        <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='House no./building/street/area' name='address' />
+                        <p className="text-yellow-300">{errors.address}</p>
+                    </div>
 
-                <div>
-                    <p>Mobile Number</p>
-                    <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='Write mobile number' name='mobile' onInput={(e) => {
-                        e.target.value = e.target.value.replace(/[^0-9]/g, '');
-                    }} />
-                    <p className="text-yellow-300">{errors.mobile}</p>
-                </div>
+                    <div>
+                        <p>Mobile Number</p>
+                        <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='Write mobile number' name='mobile' onInput={(e) => {
+                            e.target.value = e.target.value.replace(/[^0-9]/g, '');
+                        }} />
+                        <p className="text-yellow-300">{errors.mobile}</p>
+                    </div>
 
-                <div>
-                    <p>Division</p>
-                    <select
-                        name="selectdivision"
-                        className='w-full outline-none border text-black py-2'
-                        value={selectDivision}
-                        onChange={(e) => setSelectDivision(e.target.value)}
-                    >
-                        <option value="" disabled selected>
-                            Choose your division
-                        </option>
-                        {
-                            divisions.data ? divisions.data.map(division => (
-                                <option value={division.division} key={division._id}>{division.division}</option>
-                            )) : ""
-                        }
-                    </select>
-                    <p className="text-yellow-300">{errors.selectdivision}</p>
-                </div>
-
-                <div>
-                    <p>City</p>
-                    <select
-                        name="selectcity"
-                        className='w-full outline-none border text-black py-2'
-                        value={cities}
-                        onChange={(e) => setCities(e.target.value)}
-                        disabled={!selectCity || !selectCity.data || selectCity.data.length === 0}
-                    >
-                        <option value="" disabled selected>
-                            Choose your city
-                        </option>
-                        {selectCity && selectCity.data ? (
-                            selectCity.data.map(city => (
-                                city.upazilla.map(upazilla => (
-                                    <option value={`${city.district}, ${upazilla}`} key={upazilla}>
-                                        {`${city.district}, ${upazilla}`}
-                                    </option>
-                                ))
-                            ))
-                        ) : (
-                            <option value="" disabled>
-                                No cities available
+                    <div>
+                        <p>Division</p>
+                        <select
+                            name="selectdivision"
+                            className='w-full outline-none border text-black py-2'
+                            value={selectDivision}
+                            onChange={(e) => setSelectDivision(e.target.value)}
+                        >
+                            <option value="" disabled selected>
+                                Choose your division
                             </option>
-                        )}
-                    </select>
-                    <p className="text-yellow-300">{errors.selectcity}</p>
-                </div>
+                            {
+                                divisions.data ? divisions.data.map(division => (
+                                    <option value={division.division} key={division._id}>{division.division}</option>
+                                )) : ""
+                            }
+                        </select>
+                        <p className="text-yellow-300">{errors.selectdivision}</p>
+                    </div>
 
-                <div>
-                    <p>Area</p>
-                    <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='Please choose your area' name='area' />
-                    <p className="text-yellow-300">{errors.area}</p>
-                </div>
-                {/*  */}
-                <div>
-                    <p>Landmark(Optional)</p>
-                    <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='E.G. beside train station' name='landmark' />
-                </div>
-                <input style={{ backgroundColor: "#19D895" }} className=' w-full py-2 pl-3 rounded' type="submit" value="Save" />
-            </form>
-         </div>
+                    <div>
+                        <p>City</p>
+                        <select
+                            name="selectcity"
+                            className='w-full outline-none border text-black py-2'
+                            value={cities}
+                            onChange={(e) => setCities(e.target.value)}
+                            disabled={!selectCity || !selectCity.data || selectCity.data.length === 0}
+                        >
+                            <option value="" disabled selected>
+                                Choose your city
+                            </option>
+                            {selectCity && selectCity.data ? (
+                                selectCity.data.map(city => (
+                                    city.upazilla.map(upazilla => (
+                                        <option value={`${city.district}, ${upazilla}`} key={upazilla}>
+                                            {`${city.district}, ${upazilla}`}
+                                        </option>
+                                    ))
+                                ))
+                            ) : (
+                                <option value="" disabled>
+                                    No cities available
+                                </option>
+                            )}
+                        </select>
+                        <p className="text-yellow-300">{errors.selectcity}</p>
+                    </div>
+
+                    <div>
+                        <p>Area</p>
+                        <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='Please choose your area' name='area' />
+                        <p className="text-yellow-300">{errors.area}</p>
+                    </div>
+                    {/*  */}
+                    <div>
+                        <p>Landmark(Optional)</p>
+                        <input className='outline-none border text-black w-full py-2 pl-3 rounded' type="text" placeholder='E.G. beside train station' name='landmark' />
+                    </div>
+                    <input style={{ backgroundColor: "#19D895" }} className=' w-full py-2 pl-3 rounded' type="submit" value="Save" />
+                </form>
+            </div>
         </section>
     );
 };

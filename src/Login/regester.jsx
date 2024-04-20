@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 
 
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 
 import { ContexM } from "../Authentication/AuthProvider/AuthProvider";
@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom";
 // reg conpo
 const Register = () => {
 
-
+    const [response, setResponse] = useState();
 
     // for navigation 
     const navigate = useNavigate();
@@ -65,66 +65,21 @@ const Register = () => {
 
 
         console.log({ name, email, password });
-
-        creareUser(email, password)
-            // create user res
-            .then(res => {
-                const user = res.user;
-                console.log(user);
-
-
-
-                // update user name
-                UpdateUser(name, image)
-                    .then(() => {
-                        console.log("profiel update done");
-                    })
-
-                    .catch(err => {
-                        console.log({ massageFromphoto: err.message });
-                    })
-
-
-                // user info to upload in server
-                const userinfo = { name: name, email: user.email, password: password, emailVerified: user.emailVerified, anonimus: user.isAnonymous, }
-                // user info to upload in ends
-
-
-
-
-                // this section is for upload data in server 
-
-                // this section is for upload data in server  ends
-
-
-
-                fetch(`http://localhost:5000/userlogindetail`, {
-                    method: "POST",
-                    headers: {
-                        "content-type": "application/json"
-                    },
-                    body: JSON.stringify(userinfo)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-
-                        console.log(data);
-                    })
-
-
-                // if all ok navigate in home page 
-                navigate("/")
-                // if all ok navigate in home page ends 
+        fetch(`http://localhost:5000/api/v1/auth/user/register`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ name, email, password })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                setResponse(data)
+                if (data.code === 201) {
+                    navigate("/login")
+                }
             })
-            // any err 
-            .catch(err => {
-                console.log({ massagehere2: err.message });
-            })
-        // any err 
-
-
-
-
     }
 
     return (
@@ -158,7 +113,7 @@ const Register = () => {
                         </label>
                         <br />
 
-
+                        <p className="text-red-500 text-sm">{response?.email}</p>
                         <input name="email" className=" my-2 w-full md:w-3/4 py-3 border-[2px] pl-2 border-gray-400" type="email" placeholder="Please enter your Email" />
 
                         {/* email */}
@@ -168,7 +123,9 @@ const Register = () => {
                         </label>
                         <br />
 
+                        <p className="text-red-500 text-sm">{response?.password}</p>
                         <input name="password" className=" my-2 w-full md:w-3/4 py-3 border-[2px] pl-2 border-gray-400" type="password" placeholder="Please enter your Password" />
+
 
                         {/* email */}
 
@@ -207,7 +164,7 @@ const Register = () => {
                         <div className="mt-4 text-center md:text-left">
 
                             <button className=" w-11/12 md:w-3/5 mx-auto bg-orange-600 py-5 rounded-sm text-white font-semibold  ">
-                                Login
+                                Register
                             </button>
                         </div>
                         {/* login btn  ends */}

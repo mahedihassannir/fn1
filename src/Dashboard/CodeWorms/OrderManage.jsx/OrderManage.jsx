@@ -386,7 +386,8 @@ const OrderManage = () => {
                       <p className="text-lg font-semibold text-center">
                         product <br /> <span className="text-center">{Object.values(item.order.cart).length}</span>
                         <p className="flex items-center justify-center text-red-600">
-                          {item.order?.totalMoney}
+                          {/* TODO */}
+                          {/* {} */}
                           <span> <TbCurrencyTaka /></span>
                         </p>
                       </p>

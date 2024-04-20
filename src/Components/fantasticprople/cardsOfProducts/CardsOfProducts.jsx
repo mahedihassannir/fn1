@@ -1,15 +1,40 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { ContexM } from '../../../Authentication/AuthProvider/AuthProvider';
 
 const CardsOfProducts = ({ singleProduct, handle }) => {
+
+
+  const { user } = useContext(ContexM)
+
+  const email = user?.email
+
+
+  // use this arrow function we make the recent view system
+  const handleProductClick = (product) => {
+
+    console.log("productId", product);
+
+    fetch("http://localhost:5000/recent_views", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({ product, email })
+    })
+
+  }
+  // use this arrow function we make the recent view system ends
 
 
 
 
   // const name = singleProduct.name.length < 10
 
-  return <div onClick={handle} key={singleProduct._id}>
+  return <div onClick={() => handleProductClick(singleProduct)} className=""> <div onClick={handle} key={singleProduct._id}>
     <Link to={`/products/${singleProduct._id}`}>
       <div className=' relative lg:w-64 lg:h-[430px] w-56 h-[430px]  bg-white hover:shadow-md hover:border-2 hover:duration-300 cursor-pointer'>
         <img className='w-full h-56' src={singleProduct.image} alt="bag" />
@@ -64,6 +89,7 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
       </div>
     </div> */}
   </div >
+  </div>
 };
 
 export default CardsOfProducts;

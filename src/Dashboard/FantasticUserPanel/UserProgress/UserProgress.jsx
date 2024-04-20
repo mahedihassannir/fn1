@@ -1,7 +1,16 @@
+import { FaStar, FaStarHalfAlt } from 'react-icons/fa';
+import UseUserOrder from '../../../Hooks/userOrer/UserOrer';
 import './UserProgress.css';
 import { CiMenuKebab } from 'react-icons/ci'
+import Rating from 'react-rating';
 const UserProgress = () => {
-    const progressValue = 'delivered'; // it can be processing, placed, shipped, or delivered pp
+    const progressValue = 'processing'; // it can be processing, placed, shipped, or delivered pp
+
+
+    const [userOrderData] = UseUserOrder();
+
+
+
 
     return (
         <section className="bg-white p-6">
@@ -64,6 +73,118 @@ const UserProgress = () => {
                 <button>Pre-Pay</button>
                 <CiMenuKebab className='text-2xl text-gray-500' />
             </div>
+
+            {/* this is the order product section */}
+
+
+            <section>
+
+
+                <table className='text-[11px]  w-full'>
+                    {/* order table head  */}
+                    <thead>
+                        <tr className='uppercase   py-5 text-blue-600'>
+                            <th className='w-[8%] '>#Order</th>
+                            <th className='w-[20%] '>Product</th>
+                            <th className='w-[20%]'>Category</th>
+                            <th className='w-[20%]'>Payment</th>
+                            <th className='w-[20%]'>Order Status</th>
+                            <th className='w-[12%]'>Rate</th>
+                        </tr>
+                    </thead>
+
+                    {/* order tabel body  */}
+
+                    {
+                        userOrderData.map(res => (
+
+
+
+                            <tbody className='font-bold'>
+
+
+
+                                <tr className=' '>
+                                    {/* id col  */}
+                                    <td className='text-blue-600 w-[8%] '>
+                                        #<span>1254</span>
+                                    </td>
+
+                                    {/* product and product image  */}
+                                    <td className=' w-[20%]'>
+                                        <div className='flex items-center'>
+                                            <div>
+                                                <img
+                                                    src=''
+                                                    alt=''
+                                                />
+                                            </div>
+                                            <div>
+                                                <p>Oculus Quest 2 VR Headset 64GB</p>
+                                                <div className='text-[10px] text-gray-400'>
+                                                    <p>Regular Price: 870</p>
+                                                    <p>Sale Price: 600</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    {/* category  */}
+                                    <td className=' w-[20%]'>
+                                        <div className='flex items-center gap-4'>
+                                            <div className='w-[25px] h-[25px] bg-[#035ECF] rounded'></div>
+                                            <p>Electronics</p>
+                                        </div>
+                                    </td>
+
+                                    {/* payment */}
+                                    <td className=' w-[20%] flex-col items-start'>
+                                        <p className=''>
+                                            $<span>600</span>
+                                        </p>
+                                        <small>
+                                            <p className='text-gray-500'>Fully Paid</p>
+                                        </small>
+                                    </td>
+
+                                    {/* order status  */}
+                                    <td className=' w-[20%]'>
+                                        <div className='uppercase py-1 px-3 bg-[#035ECF] text-white rounded-md'>
+                                            Completed
+                                        </div>
+                                    </td>
+                                    {/* rating  */}
+                                    <td className=' w-[12%]'>
+                                        <Rating
+                                            readonly
+                                            placeholderRating={3.5}
+                                            emptySymbol={
+                                                <FaStarHalfAlt className='text-yellow-500' />
+                                            }
+                                            placeholderSymbol={
+                                                <FaStar className='text-yellow-500' />
+                                            }
+                                        />
+                                    </td>
+                                </tr>
+
+
+
+                                {/* ends of all table */}
+
+
+
+                            </tbody>
+
+                        ))}
+
+                </table>
+
+            </section>
+
+
+            {/* this is the order product section ends */}
+
         </section>
     );
 };
