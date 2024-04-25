@@ -193,7 +193,32 @@ const AuthProvider = ({ children }) => {
 	// anything is open or not 
 	const [modalIsOpen, setModalIsOpen] = useState(false)
 
+	const [userProfile, setUserProfile] = useState(null);
+	const authToken = localStorage.getItem("userToken`");
+	console.log(authToken, "this is user token");
+	// Function to fetch user profile data
+	const fetchUserProfileData = async () => {
+		try {
+			const response = await fetch('http://localhost:5000/api/v1/user/profile', {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+					Authorization: `Bearer ${authToken}` // Include the authorization token here
+				}
+			});
+			const data = await response.json();
+			console.log(data)
+			setUserProfile(data);
+		} catch (error) {
+			console.error('Error fetching user profile data:', error);
+		}
+	};
 
+	useEffect(() => {
+		if (authToken) {
+			fetchUserProfileData();
+		}
+	}, [authToken]);
 	// all values to work with contex
 	const userInfos = {
 		user,
@@ -221,6 +246,7 @@ const AuthProvider = ({ children }) => {
 		setSellerCategory,
 		modalIsOpen,
 		setModalIsOpen,
+		userProfile,
 	};
 
 	return <ContexM.Provider value={userInfos}>{children}</ContexM.Provider>;

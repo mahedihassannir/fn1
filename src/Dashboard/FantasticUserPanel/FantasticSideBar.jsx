@@ -6,6 +6,7 @@ import { MdOutlinePayments } from 'react-icons/md';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { useContext } from 'react';
 import { ContexM } from '../../Authentication/AuthProvider/AuthProvider';
+import useUserProfile from '../../Hooks/user/userProfile';
 // import AuthorOfDashboard from '../../../../Components/Avengers/DashboardRelatedCompo/SidBarCompo/AuthorOfDashboard/AuthorOfDashboard';
 
 
@@ -15,23 +16,23 @@ const isAdmin = true
 // const seller = true
 
 const FantasticSideBar = () => {
-	const [activeRoute, setActiveRoute] = useState("Home")
-
-	const { user } = useContext(ContexM);
-
+	const [activeRoute, setActiveRoute] = useState("Home");
+	const authToken = localStorage.getItem("userToken");
+	const userProfile = useUserProfile(authToken);
+	console.log(userProfile);
 	return (
 		<div className=' text-white px-5 py-8'>
 			<div className='flex items-center justify-center'>
 				<img
 					className='w-[80px] h-[80px] rounded-[50%] '
 					// src='https://i.ibb.co/YDYc4hM/Black-Geometric-Depop-Profile-Picture.png'
-					src={user?.photoURL}
+					src={userProfile?.sanitizedResult?.profileImage}
 					alt=''
 				/>
 			</div>
 			<div className='text-center'>
-				<h3 className='mt-3 font-semibold'>{user?.displayName}</h3>
-				<h4>{user?.email}</h4>
+				<h3 className='mt-3 font-semibold'>{userProfile?.sanitizedResult?.name}</h3>
+				<h4>{userProfile?.sanitizedResult?.email}</h4>
 
 			</div>
 			<div className='text-left flex flex-col gap-1 mt-8 mx-3 font-normal'>

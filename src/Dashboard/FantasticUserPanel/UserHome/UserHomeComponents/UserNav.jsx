@@ -6,16 +6,19 @@ import UserDateAndTime from '../../UserDateAndTime/UserDateAndTime';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { ContexM } from '../../../../Authentication/AuthProvider/AuthProvider';
+import useUserProfile from '../../../../Hooks/user/userProfile';
 
 const UserNav = () => {
 
     const { user } = useContext(ContexM);
+    const authToken = localStorage.getItem("userToken")
+    const userProfile = useUserProfile(authToken);
 
     return (
         <div className='flex flex-col lg:flex-row md:flex-row justify-between items-center gap-4'>
             <div className='hidden lg:block'>
                 <p className='text-2xl font-bold' style={{ color: "#19D895" }}>Welcome To Small Shop</p>
-                <p className=''>hello user, Welcome back!</p>
+                <p className=''>hello {userProfile?.sanitizedResult?.name}, Welcome back!</p>
             </div>
             <div>
                 <div className='flex items-center justify-end rounded'>

@@ -24,18 +24,17 @@ const CartProductDetails = ({ productsData }) => {
 
 
 
+	const [address] = Useaddress();
 
 
 	const [cart, refetch] = UseCartHook();
 
 
-	const [address] = Useaddress();
+	
 
 	console.log("lijhg oijhg ipuuh 1212121212", address);
-
-
-
-
+	const { result } = cart
+	console.log(result);
 
 	refetch();
 	return (
@@ -97,9 +96,14 @@ const CartProductDetails = ({ productsData }) => {
 
 			{/* data product */}
 			<div className='flex flex-col gap-5'>
-				{cart.map(cart => (
-					<SingleCartProductCard singleProductData={cart} />
-				))}
+
+				{cart.result && cart.result.length > 0 ? (
+					cart.result.map(product => (
+						<SingleCartProductCard key={product._id} singleProductData={product} />
+					))
+				) : (
+					<p>No products in the cart</p>
+				)}
 			</div>
 		</div>
 	);

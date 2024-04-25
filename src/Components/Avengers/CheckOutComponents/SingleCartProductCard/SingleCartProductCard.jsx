@@ -12,13 +12,13 @@
 import { TbCurrencyTaka } from "react-icons/tb";
 import { FaRegTrashAlt } from "react-icons/fa";
 import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
+import { useEffect } from "react";
 
 const SingleCartProductCard = ({ singleProductData }) => {
-
-
-
-
 	const [, refetch] = UseCartHook();
+
+	console.log(singleProductData);
+	
 
 	let handleDeleteProduct = (id) => {
 
@@ -68,7 +68,7 @@ const SingleCartProductCard = ({ singleProductData }) => {
 					{/* quantity  */}
 					<div className='flex items-center gap-5 md:gap-10'>
 						<p>
-							Qty: <span>{singleProductData?.singleProductData?.quantity}</span>
+							Qty: <span>{singleProductData?.quantity}</span>
 						</p>
 
 						<FaRegTrashAlt onClick={() => handleDeleteProduct(singleProductData?._id)} className='text-gray-500 cursor-pointer hover:text-red-500' />

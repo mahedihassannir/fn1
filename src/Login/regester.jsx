@@ -100,7 +100,7 @@ const Register = () => {
                     {/* this is from div */}
                     <div className="md:w-1/2">
                         <label htmlFor="">
-                            <span>Your Name</span>
+                            <span>আপনার নাম দিন</span>
                         </label>
                         <br />
 
@@ -109,7 +109,7 @@ const Register = () => {
                         {/* email */}
                         <br />
                         <label htmlFor="">
-                            <span>Your Email</span>
+                            <span>আপনার ইমেইল দিন</span>
                         </label>
                         <br />
 
@@ -119,7 +119,7 @@ const Register = () => {
                         {/* email */}
                         <br />
                         <label className="" htmlFor="">
-                            <span>Type password</span>
+                            <span>আপনার password দিন </span>
                         </label>
                         <br />
 

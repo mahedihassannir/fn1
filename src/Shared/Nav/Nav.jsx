@@ -21,7 +21,9 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 	const [cart, refetch] = UseCartHook();
 	console.log(cart);
-	const { user, Logout, totalCart } = useContext(ContexM)
+	const { Logout, totalCart } = useContext(ContexM)
+
+	const user = localStorage.getItem("userToken");
 
 	const seller = localStorage.getItem("userID")
 	// const seller = false;
@@ -85,17 +87,14 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 	};
 
-
 	console.log("this is the serch result", results);
 
-
 	const handleLogout = () => {
-
-		Logout();
-
-
-
-	}
+		const token = localStorage.removeItem("userToken");
+		if (!token) {
+			navigate("/login")
+		}
+	};
 
 	function handleReload() {
 
@@ -175,7 +174,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 								</li>
 
 								<li>
-									<Link to={seller ? "/dashboard/dashboard/sellerhome" : "/seller_login"} className="justify-between">
+									<Link to={"/dashboard/userhome"} className="justify-between">
 										dashboard
 									</Link>
 								</li>

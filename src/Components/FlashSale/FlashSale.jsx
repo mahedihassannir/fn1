@@ -7,6 +7,7 @@ import { FaStar } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import useProducts from '../../Hooks/Fantastic/useProducts';
 import CardsOfProducts from '../fantasticprople/CardsOfProducts/CardsOfProducts';
+import useUserProfile from '../../Hooks/user/userProfile';
 
 
 const FlashSale = () => {
@@ -14,23 +15,32 @@ const FlashSale = () => {
 
     const [displaycount, SetdisplayCount] = useState(10)
 
-    const { products, loading } = useProducts()
-    // const singleProductData = products.find((product)=>product?._id === id)
-
+    const authToken = localStorage.getItem("userToken")
+    const userProfile = useUserProfile(authToken);
+    console.log(userProfile?.sanitizedResult?._id);
+    const [products, setProducts] = useState(null);
     useEffect(() => {
+        const fetchUserProfileData = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/api/v1/user/products`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${authToken}`
+                    }
+                });
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                console.error('Error fetching user profile data:', error);
+            };
+        };
 
-
-        fetch("http://localhost:5000/allcategory")
-
-            .then(res => res.json())
-
-            .then(data => {
-
-                SetData(data)
-
-            })
-    }, [])
-
+        if (authToken) {
+            fetchUserProfileData();
+        };
+    }, [authToken]);
+    console.log(products);
     {/* <Link to={`/products/${singleProduct._id}`}> */ }
     return (
         <div className='lg-11/12 mx-auto   my-20 lg:mx-10'>
@@ -43,10 +53,8 @@ const FlashSale = () => {
                 <div className=" grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 ">
 
 
+                    {/* <CardsOfProducts singleProduct={products} /> */}
 
-                    {
-                        products.slice(0, displaycount).map(allcategory => <CardsOfProducts singleProduct={allcategory} />)
-                    }
 
 
 

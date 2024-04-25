@@ -60,7 +60,7 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
           </div>
 
           <div className=' absolute bottom-0 w-full left-0 '>
-            <Link to={`/products/${singleProduct._id}`}>
+            <Link to={`/${singleProduct._id}/products`}>
               <button className="  bg-orange-500 w-full py-1 rounded  text-white font-extrabold">Shop Now</button>
             </Link>
           </div>

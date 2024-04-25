@@ -16,32 +16,31 @@ const Login = () => {
         loginwithpopup()
             .then(res => {
 
-                const userdata = res.user;
+                const userData = res.user;
 
 
 
-                const userinfo = { name: userdata.displayName, email: userdata.email, image: userdata.photoURL, verifed: userdata.emailVerified, phone: userdata.phoneNumber }
+                const userinfo = { name: userData?.displayName, email: userData?.email, image: userData?.photoURL, verifed: userdata.emailVerified, phone: userdata.phoneNumber }
 
                 console.log({ userinfo });
 
 
 
-                fetch("http://localhost:5000/userdata", {
+                fetch(`http://localhost:5000/api/v1/auth/user/register`, {
                     method: "POST",
                     headers: {
                         "content-type": "application/json"
                     },
-                    body: JSON.stringify(userinfo)
+                    body: JSON.stringify({ name: userinfo?.name, email: userinfo?.email, password: "$2b$10$i8kQM1fEvZFr8vl0P9Xo4ONKJ0X4LuS8vPfSxmAOOuXDfxV0vEDFC" })
                 })
-
                     .then(res => res.json())
                     .then(data => {
                         console.log(data);
-
-                        navigate("/");
-
+                        setResponse(data)
+                        if (data.code === 201) {
+                            navigate("/")
+                        }
                     })
-
 
             })
             .catch(err => {
@@ -62,21 +61,24 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
         // temp image
+        fetch(`http://localhost:5000/api/v1/auth/user/login`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ email, password })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.code === 200) {
+                    localStorage.setItem("userToken", data?.data?.access_token);
+                    navigate("/")
+                }
+            });
 
-        singinUser(email, password)
-            .then(res => {
-                console.log(res.user);
 
-            })
-            .catch(err => {
-                console.log(err.message);
-            })
-
-        navigate("/")
-
-
-
-    }
+    };
 
     return (
 
@@ -94,7 +96,7 @@ const Login = () => {
                         {/* email */}
                         <br />
                         <label htmlFor="">
-                            <span>Your Email</span>
+                            <span>আপনার ইমেইল দিন</span>
                         </label>
                         <br />
 
@@ -104,7 +106,7 @@ const Login = () => {
                         {/* email */}
                         <br />
                         <label className="" htmlFor="">
-                            <span>Type password</span>
+                            <span>আপনার password দিন</span>
                         </label>
                         <br />
 
