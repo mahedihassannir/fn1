@@ -9,8 +9,7 @@ const CodeWorms = () => {
             <section>
                 <SmallCategory></SmallCategory>
             </section>
-
-           
+            
             <section>
                 <FlashSale></FlashSale>
             </section>

@@ -2,13 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider } from 'react-router-dom'
-import router from './Routes/router'
 import AuthProvider from './Authentication/AuthProvider/AuthProvider'
 import {
   QueryClient,
   QueryClientProvider,
 } from '@tanstack/react-query'
 import ReactGA from "react-ga4";
+import router from './Routes/UserReturn'
 
 
 const queryClient = new QueryClient();

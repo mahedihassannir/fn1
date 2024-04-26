@@ -7,24 +7,39 @@
 import { useParams } from "react-router-dom";
 import Avengers from "../../Components/Avengers/SingleProductComponents/Avengers";
 import useProducts from "../../Hooks/Fantastic/useProducts";
+import { useEffect, useState } from "react";
 
 const SingleProduct = () => {
-
-	// All Products From Hooks
 	const { id } = useParams()
-	const { products, loading } = useProducts()
-	const singleProductData = products.find((product) => product?._id === id)
-
-
-	//Filter Only Fashion Category
-	// const allFashionProducts = products.filter(FashionProducts=>FashionProducts.category2==="fashion")
-	//console.log(id)
-
+	console.log(id);
+	const authToken = localStorage.getItem("userToken")
+	const [product, setProduct] = useState(null);
+	useEffect(() => {
+		const fetchUserProfileData = async () => {
+			try {
+				const response = await fetch(`http://localhost:5000/api/v1/user/product/${id}`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json',
+						Authorization: `Bearer ${authToken}`
+					}
+				});
+				const data = await response.json();
+				setProduct(data);
+			} catch (error) {
+				console.error('Error fetching  single product data:', error);
+			};
+		};
+		if (authToken) {
+			fetchUserProfileData();
+		};
+	}, [authToken]);
+	console.log(product);
 	return (
 		<div className=' w-full  my-10  md:px-20'>
 
 			<section>
-				<Avengers singleProductData={singleProductData} />
+				<Avengers singleProductData={product} />
 			</section>
 		</div>
 	);

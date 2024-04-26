@@ -6,11 +6,11 @@ import { Link } from 'react-router-dom';
 import { ContexM } from '../../../Authentication/AuthProvider/AuthProvider';
 
 const CardsOfProducts = ({ singleProduct, handle }) => {
+  console.log(singleProduct);
 
+  const { user } = useContext(ContexM);
 
-  const { user } = useContext(ContexM)
-
-  const email = user?.email
+  const email = user?.email;
 
 
   // use this arrow function we make the recent view system
@@ -40,7 +40,7 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
         <img className='w-full h-56' src={singleProduct.image} alt="bag" />
         <div className='p-4 bg-white'>
           {/* name */}
-          <p className='font-bold pb-2'>{singleProduct.name?.slice(0, 30)}</p>
+          <p className='font-bold pb-2'>{singleProduct?.product_name?.slice(0, 30)}</p>
           {/* name ends */}
 
           {/* price sec */}
@@ -56,11 +56,11 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
               <span className='text-yellow-600'><FaStar></FaStar></span>
               <span className='text-yellow-600'><FaStar></FaStar></span>
             </div>
-            <p>(11)</p>
+            <p>({singleProduct?.review?.length})</p>
           </div>
 
           <div className=' absolute bottom-0 w-full left-0 '>
-            <Link to={`/${singleProduct._id}/products`}>
+            <Link to={`/products/${singleProduct._id}`}>
               <button className="  bg-orange-500 w-full py-1 rounded  text-white font-extrabold">Shop Now</button>
             </Link>
           </div>

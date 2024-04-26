@@ -11,13 +11,8 @@ import useUserProfile from '../../Hooks/user/userProfile';
 
 
 const FlashSale = () => {
-    const [data, SetData] = useState([])
-
     const [displaycount, SetdisplayCount] = useState(10)
-
     const authToken = localStorage.getItem("userToken")
-    const userProfile = useUserProfile(authToken);
-    console.log(userProfile?.sanitizedResult?._id);
     const [products, setProducts] = useState(null);
     useEffect(() => {
         const fetchUserProfileData = async () => {
@@ -32,10 +27,9 @@ const FlashSale = () => {
                 const data = await response.json();
                 setProducts(data);
             } catch (error) {
-                console.error('Error fetching user profile data:', error);
+                console.error('Error fetching user products data:', error);
             };
         };
-
         if (authToken) {
             fetchUserProfileData();
         };
@@ -51,13 +45,7 @@ const FlashSale = () => {
             <section className="">
                 {/* main grid container */}
                 <div className=" grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 ">
-
-
-                    {/* <CardsOfProducts singleProduct={products} /> */}
-
-
-
-
+                    {products?.result?.map(data => <CardsOfProducts singleProduct={data} />)}
                 </div>
 
             </section>

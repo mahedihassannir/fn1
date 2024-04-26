@@ -2,11 +2,12 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
 import { FaAddressCard, FaBusinessTime, FaListUl, FaQuestionCircle } from 'react-icons/fa';
-import { MdOutlinePayments } from 'react-icons/md';
+import { MdOutlinePayments, MdReviews } from 'react-icons/md';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { useContext } from 'react';
 import { ContexM } from '../../Authentication/AuthProvider/AuthProvider';
 import useUserProfile from '../../Hooks/user/userProfile';
+import { GiHelp, GiReturnArrow } from 'react-icons/gi';
 // import AuthorOfDashboard from '../../../../Components/Avengers/DashboardRelatedCompo/SidBarCompo/AuthorOfDashboard/AuthorOfDashboard';
 
 
@@ -84,7 +85,7 @@ const FantasticSideBar = () => {
 
 					</div>
 				</Link>
-				<Link to="useraddressform">
+				{/* <Link to="useraddressform">
 					<div onClick={() => setActiveRoute("Address Book")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${activeRoute === "Address Book"
 							? "bg-[#19D895] text-[#0A1727]"
@@ -95,8 +96,7 @@ const FantasticSideBar = () => {
 						<h4>Address Book</h4>
 
 					</div>
-				</Link>
-
+				</Link> */}
 				{/* user wish list */}
 				<Link to="userwishlist">
 					<div onClick={() => setActiveRoute("Wish List")}
@@ -110,15 +110,27 @@ const FantasticSideBar = () => {
 					</div>
 				</Link>
 
-				<Link to="">
+				<Link to="return">
 					<div onClick={() => setActiveRoute("Returns and Refunds")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${activeRoute === "Returns and Refunds"
 							? "bg-[#19D895] text-[#0A1727]"
 							: ""
 							} cursor-pointer gap-4`}
 					>
-						<MdOutlinePayments className='w-4 h-4'></MdOutlinePayments>
+						<GiReturnArrow className='w-4 h-4'></GiReturnArrow>
 						<h4>Returns and Refunds</h4>
+					</div>
+				</Link>
+
+				<Link to="review">
+					<div onClick={() => setActiveRoute("Review")}
+						className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${activeRoute === "Review"
+							? "bg-[#19D895] text-[#0A1727]"
+							: ""
+							} cursor-pointer gap-4`}
+					>
+						<MdReviews className='w-4 h-4'></MdReviews>
+						<h4>Review</h4>
 					</div>
 				</Link>
 
@@ -144,7 +156,7 @@ const FantasticSideBar = () => {
 						<p>Please Contact Use for</p>
 						<p>More Information</p>
 						<div>
-							<Link to="dashboard/customersupport">
+							<Link to="/userhelp">
 								<button className='px-2 py-1 rounded-lg font-bold' style={{ color: "#ffffff", backgroundColor: "#0A1727" }}>Go To Help Center</button>
 							</Link>
 						</div>

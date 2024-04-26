@@ -115,6 +115,9 @@ import Commissions from "../Dashboard/CodeWorms/SellerSeeting/Commissions/Commis
 import AdditionalDetails from "../Dashboard/CodeWorms/SellerTool/AdditionalDetails/AdditionalDetails";
 import VoucherDetails from "../Dashboard/CodeWorms/SellerTool/VoucherDetails/VoucherDetails";
 import Deliveredorder from "../Dashboard/CodeWorms/Deliveredorder/Deliveredorder";
+import UserReturn from "../Dashboard/FantasticUserPanel/userReturn/userReturn";
+import UserReview from "../Dashboard/FantasticUserPanel/UserReview/UserReview";
+import UserHelp from "../Dashboard/FantasticUserPanel/UserHelp/UserHelp";
 
 
 const router = createBrowserRouter([
@@ -133,6 +136,10 @@ const router = createBrowserRouter([
 			{
 				path: "contact",
 				element: <Contact></Contact>,
+			},
+			{
+				path:"userhelp",
+				element:<UserHelp></UserHelp>
 			},
 			{
 				// avengers
@@ -466,6 +473,14 @@ const router = createBrowserRouter([
 				element: <PaymentHistory></PaymentHistory>
 
 
+			},
+			{
+				path:"return",
+				element:<UserReturn></UserReturn>
+			},
+			{
+				path:"review",
+				element:<UserReview></UserReview>
 			},
 
 

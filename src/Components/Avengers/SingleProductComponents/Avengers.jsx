@@ -56,16 +56,15 @@ const Avengers = ({ singleProductData }) => {
 				{/* this is the parent div */}
 				<div className="">
 					<div className="w-full py-3 bg-[#fafafa]" >
-						<span className="text-black font-semibold text-lg ">Product details of Exclusive AY-49 Phone Vlog Tripod Vlogging Kits Live Selfie Fill Light Integration with Remote Control Microphon</span>
+						<span className="text-black font-semibold text-lg ">Product details of {singleProductData?.result?.product_name}</span>
 					</div>
 					{/* ends fo teh leble */}
 					{/* description1  */}
 					<div className="flex justify-center px-10 py-5 gap-5">
 						<div className="w-1/2">
 							{/* <p>{singleProductData.description}</p> */}
-
-							{singleProductData?.description}
-
+							<p>{singleProductData?.result?.product_description}
+							</p>
 						</div>
 						{/* description1  ends */}
 
@@ -93,7 +92,7 @@ const Avengers = ({ singleProductData }) => {
 
 						{/* this is the lable */}
 						<div className="w-full py-3 bg-[#fafafa]" >
-							<span className="text-black font-semibold text-lg ">Ratings & Reviews of Exclusive AY-49 Phone Vlog Tripod Vlogging Kits Live Selfie Fill Light Integration with Remote Control Microph</span>
+							<span className="text-black font-semibold text-lg ">Ratings & Reviews of {singleProductData?.result?.product_name}</span>
 						</div>
 
 
@@ -132,7 +131,7 @@ const Avengers = ({ singleProductData }) => {
 					<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
 
 						{
-							products.slice(0, 10).map(allcategory => <CardsOfProducts handle={handletop} singleProduct={allcategory} />)
+							products?.result?.slice(0, 10).map(allcategory => <CardsOfProducts handle={handletop} singleProduct={allcategory} />)
 						}
 
 

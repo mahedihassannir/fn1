@@ -13,30 +13,13 @@ import UseCartHook from "../../Hooks/UseCartHook/UseCartHook";
 
 const ProceedToCheckout = () => {
 	const { id } = useParams();
-
-
-	const location = useLocation();
-
-	const thesingleProduct = location.state && location.state.singleProductData;
-
-	console.log({ thesingleProduct });
-
-	console.log({ id });
-
-	const [cart] = UseCartHook();
-
-
-	const { products, loading } = useProducts();
-	const singleProductData = products.filter(product => product?._id === id);
-
-
-	console.log(singleProductData);
-
+	
 	return (
 		<div className='my-3 md:px-20'>
 			{/* this page for Avengers */}
 			<section>
-				<Avengers productsData={singleProductData} />
+				{/* <Avengers productsData={singleProductData} /> */}
+				<Avengers/>
 			</section>
 		</div>
 	);

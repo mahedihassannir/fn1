@@ -125,7 +125,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 					<div >
 						<div className="relative">
 							<div className="flex justify-center items-center h-[20px] w-[20px] bg-white p-1 rounded-full absolute -left-3 -top-2">
-								<span className="text-black rounded-full text-[10px] font-semibold "> <small>+</small>{cart.length}</span>
+								<span className="text-black rounded-full text-[10px] font-semibold "> <small>+</small>{cart?.result?.length}</span>
 							</div>
 							<AiOutlineGift className="text-[#FC9E66] text-3xl" />
 						</div>

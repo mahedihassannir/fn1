@@ -1,31 +1,26 @@
 /* Date: 8/19/23
- * Author: MASUM
+ * Author: Mahedi
  * Description: Get all the products
 */
+import { useQuery } from "@tanstack/react-query";
+import useUserProfile from "../user/userProfile";
 
-import { useEffect, useState } from "react";
+const useProducts = (id) => {
+  console.log(id);
+  const authToken = localStorage.getItem("userToken")
+  const { refetch, data: products = [] } = useQuery({
 
-const useProducts = () => {
-  // store all products
-  const [products, setProducts] = useState([]);
+    queryKey: ['products', id],
 
-  // can use this loading to set any conditions based on data loading
-  const [loading, setLoading] = useState(true);
+    queryFn: async () => {
 
-  useEffect(() => {
-    fetch('http://localhost:5000/allcategory')
-      .then(response => response.json())
-      .then(data => {
-        setProducts(data);
-        setLoading(false);
+      const res = await fetch(`http://localhost:5000/api/v1/user/product/${id}`, {
+        headers: { Authorization: `Bearer ${authToken}` }
       })
-      .catch(error => {
-        console.error('Error to fetching data:', error);
-        setLoading(false);
-      });
-  }, []);
-
-  return { products, loading };
+      return res.json();
+    }
+  });
+  console.log(products, "products");
+  return [products, refetch];
 };
-
 export default useProducts;

@@ -18,18 +18,20 @@ import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 import { SyncLoader } from "react-spinners";
 import useProducts from "../../../../Hooks/Fantastic/useProducts";
 import axios from "axios";
+import useUserProfile from "../../../../Hooks/user/userProfile";
+import Swal from "sweetalert2";
 
 const ProductPurchase = ({ singleProductData }) => {
-
+	console.log(singleProductData);
+	const authToken = localStorage.getItem("userToken")
 	const { user } = useContext(ContexM)
+	const userProfile = useUserProfile(authToken);
+	console.log(userProfile?.sanitizedResult?._id);
 
 	console.log({ singleProductData });
 
 	const images = singleProductData?.imageurls;
 	console.log("111111", images);
-
-
-
 	let imageData = {}
 
 	for (let i = 0; i < images?.length; i++) {
@@ -71,20 +73,62 @@ const ProductPurchase = ({ singleProductData }) => {
 	console.log({ addToCart });
 
 	const email = user?.email;
-	
-	const handleWishList = (data) => {
-		
-		const productData = data?._id
-		console.log("wish list data", data);
-		fetch("http://localhost:5000/wish_list", {
+
+	const handleAddtoCart = (data) => {
+		console.log(data.result.seller);
+		console.log(data.result._id);
+		const seller = data.result.seller
+		const productId = data.result._id
+
+		const addToCartData = {
+			sellerId: seller,
+			product: productId,
+			quantity: quantity
+		}
+		console.log(addToCartData);
+		fetch("http://localhost:5000/api/v1/user/add_cart", {
 			method: "POST",
-			headers: { "content-type": "application/json" }
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${authToken}`
+			}
 			,
-			body: JSON.stringify({ data, email, productData })
+			body: JSON.stringify(addToCartData)
 		})
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
+				if (data.code === 201) {
+					navigate("/proceed_to_checkout")
+				};
+			});
+	};
+
+	const handleWishList = (data) => {
+		console.log(data);
+		const productId = data.result._id
+		console.log("wish list data", data);
+		fetch("http://localhost:5000/api/v1/user/wish_list", {
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${authToken}`
+			}
+			,
+			body: JSON.stringify({ productId })
+		})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data);
+				if (data.code === 201) {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'save to the wishList',
+						showConfirmButton: false,
+						timer: 2000
+					});
+				}
 			})
 	}
 
@@ -154,7 +198,7 @@ const ProductPurchase = ({ singleProductData }) => {
 				<div className='w-full md:w-2/3  font-normal'>
 					{/* name  */}
 					<h4 className='text-xl md:text-2xl font-bold'>
-						{singleProductData?.name}
+						{singleProductData?.result?.product_name}
 					</h4>
 
 					{/* rating and share  */}
@@ -175,7 +219,7 @@ const ProductPurchase = ({ singleProductData }) => {
 
 								{/* rating number  */}
 								<div>
-									<p className='text-[#1AACD9]'>92 Ratings</p>
+									<p className='text-[#1AACD9]'>{singleProductData?.result?.review?.length} Ratings</p>
 								</div>
 							</div>
 
@@ -217,7 +261,7 @@ const ProductPurchase = ({ singleProductData }) => {
 									className='w-[25px]'
 								/>
 							</div>
-							<span>{singleProductData?.price}</span>
+							<span>{singleProductData?.result?.price}</span>
 						</div>
 
 						<div className='mt-2'>
@@ -322,7 +366,7 @@ const ProductPurchase = ({ singleProductData }) => {
 								//TODO add to cart
 
 								onClick={() =>
-									addToCart(singleProductData)
+									handleAddtoCart(singleProductData)
 								}
 								className='bg-[#F57224] py-3 flex-1 text-white text-xl font-semibold'
 							>

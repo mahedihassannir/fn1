@@ -8,6 +8,7 @@ import { GiCardKingClubs } from 'react-icons/gi';
 import axios from 'axios';
 import useProducts from '../../Hooks/Fantastic/useProducts';
 import CardsOfProducts from '../fantasticprople/CardsOfProducts/CardsOfProducts';
+import useUserProfile from '../../Hooks/user/userProfile';
 /**
  * 
  * author:Mahedi Hassan
@@ -19,18 +20,31 @@ import CardsOfProducts from '../fantasticprople/CardsOfProducts/CardsOfProducts'
 
 const Mahedi = () => {
 
-    const [data, setData] = useState([])
-    const { products,loading} = useProducts()
-    // useEffect(() => {
-
-    //     fetch(`http://localhost:5000/allcategory`)
-    //         .then(res => res.json())
-    //         .then(data => setData(data))
-
-    // }, [])
-
-    console.log({ data });
-
+    const authToken = localStorage.getItem("userToken")
+    const userProfile = useUserProfile(authToken);
+    console.log(userProfile?.sanitizedResult?._id);
+    const [products, setProducts] = useState(null);
+    useEffect(() => {
+        const fetchUserProfileData = async () => {
+            try {
+                const response = await fetch(`http://localhost:5000/api/v1/user/products`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: `Bearer ${authToken}`
+                    }
+                });
+                const data = await response.json();
+                setProducts(data);
+            } catch (error) {
+                console.error('Error fetching user profile data:', error);
+            };
+        };
+        if (authToken) {
+            fetchUserProfileData();
+        };
+    }, [authToken]);
+    console.log(products?.result);
 
     return (
         <div>
@@ -50,11 +64,9 @@ const Mahedi = () => {
                 <section className="">
                     {/* main grid container */}
                     <div className=" grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 ">
-
-                        
-                                {
-                                    products.slice(5, 10).map(allcategory => <CardsOfProducts singleProduct={allcategory} />)
-                                }
+                        {
+                            products?.result?.slice(0, 5)?.map(allcategory => <CardsOfProducts singleProduct={allcategory} />)
+                        }
                     </div>
 
                 </section>
