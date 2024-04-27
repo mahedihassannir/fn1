@@ -5,7 +5,7 @@ import SmallCategory from "../SmallCategory/SmallCategory";
 const CodeWorms = () => {
     return (
         <div>
-            {/* Author Name: Nabila  */}
+            {/* Author Name: Nabila & Mahedi  */}
             <section>
                 <SmallCategory></SmallCategory>
             </section>

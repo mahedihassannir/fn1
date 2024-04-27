@@ -30,7 +30,7 @@ const CartProductDetails = ({ productsData }) => {
 	const [cart, refetch] = UseCartHook();
 
 
-	
+
 
 	console.log("lijhg oijhg ipuuh 1212121212", address);
 	const { result } = cart

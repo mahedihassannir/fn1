@@ -38,8 +38,8 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 const ProductPurchase = ({ singleProductData }) => {
 
 	console.log(singleProductData);
-	const authToken = localStorage.getItem("userToken")
-	const { user } = useContext(ContexM)
+	const authToken = localStorage.getItem("userToken");
+	const { user } = useContext(ContexM);
 	const userProfile = useUserProfile(authToken);
 	console.log(userProfile?.sanitizedResult?._id);
 
@@ -57,10 +57,10 @@ const ProductPurchase = ({ singleProductData }) => {
 		imageData[`image${i}`] = url;
 
 
-	}
+	};
 
 
-	console.log("he he he hklh lkjhlkjhljkh lkjhl hjklh 12123", imageData)
+	console.log("he he he hklh lkjhlkjhljkh lkjhl hjklh 12123", imageData);
 
 	const navigate = useNavigate();
 
@@ -70,7 +70,7 @@ const ProductPurchase = ({ singleProductData }) => {
 
 
 		navigate(`/direct_buy`, { state: { singleProductData, quantity } })
-	}
+	};
 
 	//default quantity value
 	const [quantity, setQuantity] = useState(1);
@@ -83,7 +83,7 @@ const ProductPurchase = ({ singleProductData }) => {
 
 	// here we use mongo db to save the data  ends
 
-	const { products, loading } = useProducts()
+	const { products, loading } = useProducts();
 
 	console.log({ addToCart });
 
@@ -92,8 +92,8 @@ const ProductPurchase = ({ singleProductData }) => {
 	const handleAddtoCart = (data) => {
 		console.log(data.result.seller);
 		console.log(data.result._id);
-		const seller = data.result.seller
-		const productId = data.result._id
+		const seller = data.result.seller;
+		const productId = data.result._id;
 
 		const addToCartData = {
 			sellerId: seller,
@@ -235,13 +235,13 @@ const ProductPurchase = ({ singleProductData }) => {
 
 					{/* band  */}
 					<div className='mt-2'>
-						<div className='flex items-center gap-3'>
-							<p>Brand</p>
-							<ul className='flex items-center gap-3 divide-gray-600 text-[#1AACD9] divide-x leading-4'>
-								<li>No Brand</li>
-								<li className='pl-3'>
+						<div className='flex items-center gap-2'>
+							<p>Brand:</p>
+							<ul className='flex items-center gap-1 divide-gray-600 text-[#1AACD9] divide-x leading-4'>
+								<p>{singleProductData?.result?.seller?.store_name}</p>
+								<p className='pl-3'>
 									More Men Bags from No Brand
-								</li>
+								</p>
 							</ul>
 						</div>
 					</div>
@@ -271,7 +271,7 @@ const ProductPurchase = ({ singleProductData }) => {
 										/>
 									</div>
 
-									<p className='font-normal'>500</p>
+									<p className='font-normal'>{singleProductData?.result?.price+150}</p>
 									<div className='h-[1px] w-full bg-[#9e9e9e] absolute'></div>
 								</div>
 								<div>

@@ -44,8 +44,8 @@ const FlashSale = () => {
 
             <section className="">
                 {/* main grid container */}
-                <div className=" grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 ">
-                    {products?.result?.map(data => <CardsOfProducts singleProduct={data} />)}
+                <div className=" grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+                    {products?.result?.slice(0, 20)?.map(data => <CardsOfProducts singleProduct={data} />)}
                 </div>
 
             </section>

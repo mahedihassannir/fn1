@@ -30,7 +30,7 @@ const PaymentDetails = ({ cartData }) => {
 
   refetch();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   console.log({ cart });
 
@@ -98,6 +98,32 @@ const PaymentDetails = ({ cartData }) => {
   };
 
 
+
+  // Assuming cartData is the array containing your cart items data
+
+  // Define the base price and price increase per quantity
+  const basePrice = 10;
+  const priceIncrease = 5;
+
+  // Assuming cartData is the object containing your cart data
+
+  // Initialize total price
+
+  let totalPrice = 0;
+
+  let itemsTotal = 0;
+
+  // Iterate over each item in the result array
+  cart?.result?.forEach(item => {
+    // Calculate the price for the current item by multiplying quantity with product price
+    const itemPrice = item?.product?.price * item?.quantity
+    itemsTotal += item?.quantity;
+    // Add item price to the total price
+    totalPrice += itemPrice
+  });
+
+
+  console.log("Total Price:", totalPrice);
 
 
   return (
@@ -170,7 +196,7 @@ const PaymentDetails = ({ cartData }) => {
               <p className="">Items Total</p>
               <div className="flex items-center gap-1">
                 <TbCurrencyTaka />
-                <span>111</span>
+                <span>{itemsTotal}</span>
               </div>
             </div>
             {/* Delivery Fee */}
@@ -178,7 +204,7 @@ const PaymentDetails = ({ cartData }) => {
               <p>Delivery Fee</p>
               <div className="flex items-center gap-1">
                 <TbCurrencyTaka />
-                <span>1111</span>
+                <span>{5 + cart.result.length * 5}</span>
               </div>
             </div>
             {/* Delivery Discount */}
@@ -194,7 +220,8 @@ const PaymentDetails = ({ cartData }) => {
               <p>Total Payment</p>
               <div className="flex items-center gap-1">
                 <TbCurrencyTaka />
-                <span>1111</span>
+                {/* <span>{cart?.result?.product.price * cart?.result?.product?.quantity}</span> */}
+                <span>{totalPrice + 5 + cart.result.length * 5}</span>
               </div>
             </div>
 

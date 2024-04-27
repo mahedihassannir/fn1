@@ -60,7 +60,7 @@ const SingleCartProductCard = ({ singleProductData }) => {
 						<h3>{singleProductData?.product?.product_name}</h3>
 						<p>
 							<small className='text-gray-500'>
-								No Brand,Color Family:Black
+								{singleProductData?.sellerId?.store_name}, Color Family:Black
 							</small>
 						</p>
 					</div>
@@ -82,7 +82,7 @@ const SingleCartProductCard = ({ singleProductData }) => {
 							{/* TODO: make it dynamic  */}
 							<div className='flex items-center gap-1  line-through text-gray-500'>
 								<TbCurrencyTaka />
-								<p>700</p>
+								<p>{singleProductData?.product?.price + 40}</p>
 							</div>
 
 							{/* discount  */}
@@ -105,14 +105,13 @@ const SingleCartProductCard = ({ singleProductData }) => {
 			<div className='mt-5 pt-5 border-t'>
 				<div className=''>
 					<p className='flex items-center  justify-end'>
-						<span>1</span> item(s). Subtotal:{" "}
+						<span>{singleProductData?.quantity}</span> item(s). Subtotal:{" "}
 						<span className='flex items-center text-red-500'>
 							<TbCurrencyTaka />{" "}
 							<p>
-								{singleProductData?.singleProductData?.quantity
-									? singleProductData?.singleProductData?.price *
-									singleProductData?.singleProductData?.quantity
-									: singleProductData?.singleProductData?.price}
+								{
+									singleProductData?.product?.price * singleProductData?.quantity
+								}
 							</p>
 						</span>
 					</p>
@@ -120,7 +119,7 @@ const SingleCartProductCard = ({ singleProductData }) => {
 						Saved
 						<span className='flex items-center '>
 							{/* TODO: Change it dynamic  */}
-							<TbCurrencyTaka /> <p>539</p>
+							<TbCurrencyTaka /> <p>{10 * singleProductData?.quantity}</p>
 						</span>
 					</p>
 				</div>

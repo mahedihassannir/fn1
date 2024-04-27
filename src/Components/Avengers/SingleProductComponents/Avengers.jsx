@@ -60,12 +60,20 @@ const Avengers = ({ singleProductData }) => {
 					</div>
 					{/* ends fo teh leble */}
 					{/* description1  */}
-					<div className="flex justify-center px-10 py-5 gap-5">
-						<div className="w-1/2">
+					<div className="h-screen">
+						{/* <div className="w-1/2"> */}
+						{/* <p>{singleProductData.description}</p> */}
+						{/* <p>{singleProductData?.result?.product_description} */}
+						{/* </p> */}
+						{/* </div> */}
+
+						<div className="flex justify-center">
 							{/* <p>{singleProductData.description}</p> */}
-							<p>{singleProductData?.result?.product_description}
-							</p>
+							<img className="" src={singleProductData?.result?.product_images[1]} alt="" />
+							
+
 						</div>
+
 						{/* description1  ends */}
 
 
@@ -79,11 +87,11 @@ const Avengers = ({ singleProductData }) => {
 					{/* description1  ends  */}
 
 					{/* this div is for the dyscription section */}
-					<div className="w-full h-screen ">
+					{/* <div className="w-full h-screen ">
 
 
 
-					</div>
+					</div> */}
 					{/* ends */}
 
 
@@ -118,17 +126,17 @@ const Avengers = ({ singleProductData }) => {
 
 
 					{/* this is the chat with or ask auestion in the seller */}
-					<div className="w-full h-screen mt-5">
+					{/* <div className="w-full h-screen mt-5">
 
 
 
-					</div>
+					</div> */}
 					{/* this is the chat with or ask auestion in the seller ends */}
 
 
 
 					{/* this is the recomended products */}
-					<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-5">
+					<div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
 
 						{
 							products?.result?.slice(0, 10).map(allcategory => <CardsOfProducts handle={handletop} singleProduct={allcategory} />)
