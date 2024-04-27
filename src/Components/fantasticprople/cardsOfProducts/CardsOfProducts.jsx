@@ -37,7 +37,7 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
   return <div onClick={() => handleProductClick(singleProduct)} className=""> <div onClick={handle} key={singleProduct._id}>
     <Link to={`/products/${singleProduct._id}`}>
       <div className=' relative lg:w-64 lg:h-[430px] w-56 h-[430px]  bg-white hover:shadow-md hover:border-2 hover:duration-300 cursor-pointer'>
-        <img className='w-full h-56' src={singleProduct.image} alt="bag" />
+        <img className='w-full h-56' src={singleProduct.product_images[0]} alt="bag" />
         <div className='p-4 bg-white'>
           {/* name */}
           <p className='font-bold pb-2'>{singleProduct?.product_name?.slice(0, 30)}</p>

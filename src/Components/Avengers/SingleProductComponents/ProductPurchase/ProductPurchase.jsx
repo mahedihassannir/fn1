@@ -13,7 +13,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import takaIcon from "../../../../assets/taka.png";
 import takaIconGray from "../../../../assets/taka_gray.png";
 import { Link, useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 import { SyncLoader } from "react-spinners";
 import useProducts from "../../../../Hooks/Fantastic/useProducts";
@@ -21,7 +21,22 @@ import axios from "axios";
 import useUserProfile from "../../../../Hooks/user/userProfile";
 import Swal from "sweetalert2";
 
+
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+
+
+// import required modules
+import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+
 const ProductPurchase = ({ singleProductData }) => {
+
 	console.log(singleProductData);
 	const authToken = localStorage.getItem("userToken")
 	const { user } = useContext(ContexM)
@@ -54,7 +69,7 @@ const ProductPurchase = ({ singleProductData }) => {
 		console.log(id);
 
 
-		// navigate(`/direct_buy`, { state: {singleProductData} })
+		navigate(`/direct_buy`, { state: { singleProductData, quantity } })
 	}
 
 	//default quantity value
@@ -98,9 +113,16 @@ const ProductPurchase = ({ singleProductData }) => {
 			.then(res => res.json())
 			.then(data => {
 				console.log(data);
+
 				if (data.code === 201) {
-					navigate("/proceed_to_checkout")
-				};
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'add to the cart',
+						showConfirmButton: false,
+						timer: 1000
+					});
+				}
 			});
 	};
 
@@ -132,66 +154,40 @@ const ProductPurchase = ({ singleProductData }) => {
 			})
 	}
 
-
+	const obj = {
+		singleProductData,
+		quantity
+	}
 	return (
 		<div className='relative my-10 '>
-			<div className='flex flex-col md:flex-row gap-10'>
+			<div className='flex flex-col md:flex-row gap-10 -mt-8 md:mt-10'>
 				{/* product Image  */}
 				<div className='w-full md:w-1/3 '>
-					<div>
-						<img
-							src={singleProductData?.image}
-							// src={imageData?.image0}
-							alt=''
-							className='w-full  hover:cursor-pointer '
-						/>
-					</div>
-					{/* <div class="relative w-64 h-64">
-						<img src={singleProductData?.image} alt="Product Image" class="w-full h-full object-cover" />
-						<div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
-							<img src={singleProductData?.image} alt="Zoomed Image" class="w-full h-96 object-cover" />
-						</div>
-					</div> */}
-
-					<div className='mt-5'>
-						<div className='flex items-center'>
-							<BsChevronLeft className='text-5xl' />
-
-							<div className='flex items-center gap-3'>
-								<div className='w-[70px] p-1 border hover:border-[#F57224] cursor-pointer'>
 
 
-									<img
-										src={singleProductData?.image}
+					<Swiper
+						spaceBetween={30}
+						centeredSlides={true}
+						autoplay={{
+							delay: 2500,
+							disableOnInteraction: false,
+						}}
+						pagination={{
+							clickable: true,
+						}}
+						navigation={true}
+						modules={[Autoplay, Pagination, Navigation]}
+						className="mySwiper"
+					>
 
-										// src={imageData?.image0}
-										alt=''
-										className="transition-transform transform hover:scale-105"
-									/>
-								</div>
+						{singleProductData?.result?.product_images.map((image, index) => (
 
-								<div className='w-[70px] p-1 '>
-									<img
-										src={singleProductData?.image}
+							<SwiperSlide key={index}>
+								<img className="h-full w-full" src={image} alt={`Product Image ${index + 1}`} />
+							</SwiperSlide>
 
-										// src={imageData?.image0}
-										alt=''
-									/>
-								</div>
-
-								<div className='w-[70px] p-1 '>
-									<img
-										src={singleProductData?.image}
-										// src={imageData?.image0}
-
-										alt=''
-									/>
-								</div>
-							</div>
-
-							<BsChevronRight className='text-5xl ml-auto' />
-						</div>
-					</div>
+						))}
+					</Swiper>
 				</div>
 
 				{/* product Details  */}
@@ -350,10 +346,11 @@ const ProductPurchase = ({ singleProductData }) => {
 						</div>
 
 						<div className='flex items-center gap-5 mt-4'>
+
 							<Link
 								// to={`/proceed_to_checkout/${singleProductData?._id}`}
-								to={`/direct_buy`}
-								state={singleProductData}
+								to={""}
+								state={obj}
 								className='flex-1'
 								onClick={() => handlepayment(singleProductData)}
 							>
@@ -361,6 +358,7 @@ const ProductPurchase = ({ singleProductData }) => {
 									Buy Now
 								</button>
 							</Link>
+
 							{/* this is my product add btn  */}
 							<button
 								//TODO add to cart

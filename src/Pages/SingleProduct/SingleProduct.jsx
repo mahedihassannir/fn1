@@ -1,5 +1,6 @@
 /**
- * Author: MG Rakib
+ * Author: Mahedi Hassan Nir. 
+ * mahedi: work intrigate the apis and 100% work done by mahedi
  * description: Make Single Product route and create a single product page
  * date: 17aug,2023
  */

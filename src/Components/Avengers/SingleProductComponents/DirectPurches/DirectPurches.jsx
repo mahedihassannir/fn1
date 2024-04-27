@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TbCurrencyTaka } from "react-icons/tb";
-import { FaArrowCircleRight, FaArrowRight } from "react-icons/fa";
+import { FaArrowCircleRight, FaArrowRight, FaProjectDiagram } from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
 import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
@@ -9,7 +9,7 @@ import Modal from "react-responsive-modal";
 import Useaddress from "../../../../Hooks/Useaddress/Useaddress";
 
 const DirectPurches = () => {
-
+    const authToken = localStorage.getItem("userToken")
     // hooks
     const { user } = useContext(ContexM);
 
@@ -72,9 +72,6 @@ const DirectPurches = () => {
     const offerTaka = 20
 
     useEffect(() => {
-
-
-
         if (inputValue?.target?.value === offerCode) {
 
             const totaloffer = productdata?.price - offerTaka
@@ -84,10 +81,18 @@ const DirectPurches = () => {
             SetofferPrice(totaloffer)
 
 
-        }
-    })
+        };
+    });
 
+    const [value, setInputValue] = useState('');
 
+    // Function to handle input change
+    const handleInputChange = (event) => {
+        // Retrieve the value from the input field using event.target.value
+        const newValue = event.target.value;
+        // Update the state with the new value
+        setInputValue(newValue);
+    };
 
     console.log(offerPrice);
 
@@ -97,31 +102,30 @@ const DirectPurches = () => {
     const productID = Math.random().toString(36).substr(2, 9) + Date.now()
 
     const handleDireact_order = () => {
-
-
+        console.log(productdata?.singleProductData?.result);
         // this is from the useeffect seller detailes
+        // create a object into array
+        const products = [productdata?.singleProductData?.result._id];
+        console.log(products);
         const data = {
-            Username: user?.displayName,
-            Useremail: user?.email,
-
-            cart: cartData,
-
-            productID: productID,
-            deliveryStatus: "processing",
-            totalMoney: totalMoney,
-            cod: "cod",// cash on delivery.
-            address: addressData.address0
+            products: products,
+            address: value,
+            addressId: "6629fe16384e634e64335d0a"
         };
+
+        console.log(productdata?.singleProductData?.result)
+        console.log("data fom paymentDetails", { data });
 
 
         console.log("data fom paymentDetails", { data });
-
         try {
-
-
-            fetch("http://localhost:5000/order", {
+            // handle the product buy 
+            fetch("http://localhost:5000/api/v1/user/buy_product", {
                 method: "POST",
-                headers: { "content-type": "application/json" },
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${authToken}`
+                },
                 body: JSON.stringify(data),
             })
                 .then((res) => res.json())
@@ -129,7 +133,7 @@ const DirectPurches = () => {
 
                     console.log(data);
 
-                    if (data.insertedId) {
+                    if (data.code === 201) {
                         Swal.fire({
                             position: 'top-end',
                             icon: 'success',
@@ -137,23 +141,14 @@ const DirectPurches = () => {
                             showConfirmButton: false,
                             timer: 5000
                         });
-
                         navigate("/cod_success")
-
-
                     }
-
-
-
                 });
-
         } catch (error) {
             console.log(error);
-
-        }
-
+        };
     };
-
+    // ends of the operation
 
 
 
@@ -272,7 +267,7 @@ const DirectPurches = () => {
 
                             <div className="w-full h-60 rounded-md shadow-lg bg-white p-3">
 
-                                <p className="pl-12 pb-1">Store name</p>
+                                <p className="pl-12 pb-1">{productdata?.singleProductData?.result?.seller.store_name}</p>
                                 <div className="flex items-center pl-10 ">
 
                                     <div className="">
@@ -282,15 +277,15 @@ const DirectPurches = () => {
                                     </div>
 
                                     <div className="pl-5">
-                                        <p>{productdata?.name}</p>
+                                        <p>{productdata?.singleProductData?.result?.product_name}</p>
                                     </div>
                                     <div className="pl-10">
-                                        qty
+                                        quantity: {productdata.quantity}
                                     </div>
                                     <div className="pl-5 flex items-center">
                                         <TbCurrencyTaka />
                                         <span className="pl-1">
-                                            {productdata?.price}
+                                            {productdata?.singleProductData?.result?.price}
 
                                         </span>
                                     </div>
@@ -308,19 +303,19 @@ const DirectPurches = () => {
                                         <p className="flex">
                                             Standard Delivery
                                             <span className="pl-2">|</span>
-                                            <span className="pl-2">৳ 69
+                                            <span className="pl-2">10
                                             </span>
                                         </p>
-                                        <p>Receive by 17 Oct - 21 Oct</p>
+                                        <p className="text-red-500 font-semibold  animate-pulse">Receive by 40 minutes</p>
 
 
                                     </div>
 
 
                                     <div className="">
-                                        <p>1 Item(s). Subtotal: ৳  {productdata?.price + deleveryFee}
+                                        <p>1 Item(s). Subtotal: ৳  {productdata?.singleProductData?.result?.price + 10}
                                             <br />
-                                            Saved ৳ 31</p>
+                                            Saved ৳ 100k time</p>
                                     </div>
 
                                 </div>
@@ -345,6 +340,21 @@ const DirectPurches = () => {
 
                         {/* this is the voucher and other work */}
                         <div className="">
+
+                            <div className=" mb-2 mt-2 w-f  overflow-hidden relative">
+                                <input
+                                    name="address"
+                                    type="text"
+                                    className="py-[10px] outline-none border rounded placeholder:text-gray-400 w-full px-2 focus:border-[#2ABBE8] duration-300"
+                                    placeholder="Enter address"
+                                    value={value}
+                                    onChange={handleInputChange}
+                                    required
+                                />
+                                <button className="absolute  right-0 top-1/2 -translate-y-1/2 border-l h-[50%] text-[#2ABBE8] px-3">
+                                    Confirm
+                                </button>
+                            </div>
 
                             <span>Discount and Payment</span>
                             <div className="pt-2">
@@ -408,8 +418,8 @@ const DirectPurches = () => {
 
                                     <span>Items Total </span>
                                     <span className="flex items-center gap-2">
-                                        {productdata?.price}
-                                        <TbCurrencyTaka />
+                                        {productdata?.quantity}
+                                        <FaProjectDiagram />
 
                                     </span>
                                 </div>
@@ -417,14 +427,15 @@ const DirectPurches = () => {
                                 <div className="flex justify-between pr-5 py-2">
                                     <span>Delivery Fee</span>
                                     <span className="flex items-center gap-2">
-                                        {deleveryFee} <TbCurrencyTaka />
+                                        10 <TbCurrencyTaka />
                                     </span>
                                 </div>
 
                                 <div className="flex justify-between pr-5 ">
                                     <span>Total Payment</span>
                                     <span className="flex items-center gap-2">
-                                        {offerPrice + deleveryFee} <TbCurrencyTaka />
+                                        {/* {offerPrice + deleveryFee} <TbCurrencyTaka /> */}
+                                        {productdata?.singleProductData?.result?.price + 10}<TbCurrencyTaka />
                                     </span>
                                 </div>
 

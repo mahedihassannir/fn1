@@ -65,12 +65,12 @@ const ProductDelivery = () => {
 								<p className='leading-4 '>
 									Started Delivery:{" "}
 									<span className='text-sm text-gray-800'>
-										22 Aug - 26 Aug
+										40 minutes
 									</span>
 									<br />
 									<small>
 										<span className='text-gray-400'>
-											6-10 day(s)
+										40 minutes
 										</span>
 									</small>
 								</p>
@@ -78,7 +78,7 @@ const ProductDelivery = () => {
 
 							<div className='ml-auto flex items-center gap-1'>
 								<TbCurrencyTaka />
-								<p>69</p>
+								<p className="text-sm">First product 10 taka & per product 5 taka</p>
 							</div>
 						</div>
 					</div>
@@ -119,10 +119,10 @@ const ProductDelivery = () => {
 							<RiRefund2Fill />
 
 							<p className='font-semibold leading-5'>
-								7 Days Returns
+								3 Days Returns
 								<br />
 								<span className='text-base text-gray-500'>
-									Change of mind is not applicable
+									Change of mind is  applicable
 								</span>
 							</p>
 						</div>

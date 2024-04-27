@@ -23,10 +23,9 @@ import { FaAddressBook, FaAddressCard } from "react-icons/fa";
 
 
 const PaymentDetails = ({ cartData }) => {
-
+  const authToken = localStorage.getItem("userToken")
   const [cart, refetch] = UseCartHook();
   const { result } = cart;
-  const authToken = localStorage.getItem("userToken")
   console.log(result);
 
   refetch();
@@ -58,12 +57,12 @@ const PaymentDetails = ({ cartData }) => {
 
     // this is from the useeffect seller detailes
     const data = {
-      products: result,
+      products: cart?.result,
       address: inputValue,
       addressId: "6629fe16384e634e64335d0a"
     };
 
-    console.log(data)
+    console.log(cart?.result)
     console.log("data fom paymentDetails", { data });
 
     try {
