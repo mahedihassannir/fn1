@@ -3,19 +3,26 @@
 // Description:Show male products
 
 import { FaStar } from "react-icons/fa";
-import useProducts from "../../../../Hooks/Fantastic/useProducts";
+
 import CardsOfProducts from "../../CardsOfProducts/CardsOfProducts";
 import { Link } from "react-router-dom";
+import useProducts from "../../../../Hooks/Fantastic/useProducts";
 
 const Male = () => {
-    // All Products From Hooks
-    const { products, loading } = useProducts()
+    const { products } = useProducts();
+    console.log(products);
 
-    // Filter Only Fashion Category
-    const maleFashion = products.filter(male => male.category === "male")
+    // filter only food related data
+    const fashionProducts = products?.result?.filter(product => product.secondCategory === "male");
+    console.log(fashionProducts);
+    if (fashionProducts) {
+        console.log("There are products in the fashion category.");
+    } else {
+        console.log("There are no products in the fashion category.");
+    }
     return (
         <section>
-             <div className="">
+            <div className="">
                 <img className="mb-10 w-full h-36 lg:h-96" src="https://i.ibb.co/fYkQS5K/Screenshot-2023-08-17-182335-1.png" alt="" />
 
             </div>
@@ -44,7 +51,7 @@ const Male = () => {
             {/* display male fashion product */}
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-5 gap-y-10 lg:mx-20 my-10'>
                 {
-                    maleFashion.map(male => <CardsOfProducts singleProduct={male} />)
+                    fashionProducts?.map(male => <CardsOfProducts singleProduct={male} />)
                 }
             </div>
         </section>

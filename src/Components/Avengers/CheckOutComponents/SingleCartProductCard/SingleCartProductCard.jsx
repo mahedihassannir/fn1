@@ -12,13 +12,13 @@
 import { TbCurrencyTaka } from "react-icons/tb";
 import { FaRegTrashAlt } from "react-icons/fa";
 import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const SingleCartProductCard = ({ singleProductData }) => {
 	const [, refetch] = UseCartHook();
 
 	console.log(singleProductData);
-	
+
 
 	let handleDeleteProduct = (id) => {
 
@@ -48,7 +48,7 @@ const SingleCartProductCard = ({ singleProductData }) => {
 				{/* product image  */}
 				<div className='w-[60px]'>
 					<img
-						src={singleProductData?.singleProductData?.image}
+						src={singleProductData?.product?.product_images[0]}
 						alt=''
 						className='w-full'
 					/>
@@ -57,7 +57,7 @@ const SingleCartProductCard = ({ singleProductData }) => {
 				<div className='flex items-center justify-between flex-1 gap-2'>
 					{/* product name  */}
 					<div>
-						<h3>{singleProductData?.singleProductData?.name}</h3>
+						<h3>{singleProductData?.product?.product_name}</h3>
 						<p>
 							<small className='text-gray-500'>
 								No Brand,Color Family:Black

@@ -3,20 +3,24 @@
 // Description:Display All Fashion Products
 
 import { Link } from "react-router-dom";
-import useProducts from "../../Hooks/Fantastic/useProducts";
+
 import { FaStar } from 'react-icons/fa';
 import CardsOfProducts from "./CardsOfProducts/CardsOfProducts";
+import useProducts from "../../Hooks/Fantastic/useProducts";
 
 
 const Fashion = () => {
-    // All Products From Hooks
-    const { products, loading } = useProducts()
-    // console.log(products)
-    // Filter Only Fashion Category
-    const allFashionProducts = products.filter(FashionProducts => FashionProducts.category2 === "fashion")
+    const { products } = useProducts();
+    console.log(products);
 
-    // const validImageUrls = allFashionProducts.imageurls.filter(url => url);
-
+    // filter only food related data
+    const fashionProducts = products?.result?.filter(product => product.category === "fashion");
+    console.log(fashionProducts);
+    if (fashionProducts) {
+        console.log("There are products in the fashion category.");
+    } else {
+        console.log("There are no products in the fashion category.");
+    }
 
     return (
         <section>
@@ -44,7 +48,7 @@ const Fashion = () => {
             {/* display all fashion product */}
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-1 gap-y-10 lg:mx-20 my-10'>
                 {
-                    allFashionProducts.map((fashionProducts) => <CardsOfProducts singleProduct={fashionProducts} />)
+                    fashionProducts?.map((fashionProducts) => <CardsOfProducts singleProduct={fashionProducts} />)
                 }
 
             </div>

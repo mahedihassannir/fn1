@@ -6,19 +6,24 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import useProducts from "../../Hooks/Fantastic/useProducts";
 import { Link } from 'react-router-dom';
 import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 import CartProductDetails from '../Avengers/CheckOutComponents/CartProductDetails/CartProductDetails';
+import useProducts from '../../Hooks/Fantastic/useProducts';
 
 
 const Beauty = () => {
-    // all products
-    const { products, loading } = useProducts()
+    const { products } = useProducts();
+    console.log(products);
 
-    // filter only beauty related data
-    const beautyProducts = products.filter(beauty => beauty.category === "beauty")
-
+    // filter only food related data
+    const beautyProducts = products?.result?.filter(product => product.category === "beauty");
+    console.log(beautyProducts);
+    if (beautyProducts) {
+        console.log("There are products in the beauty category.");
+    } else {
+        console.log("There are no products in the beauty category.");
+    }
     return (
         <section>
             {/* beauty swiper banner */}
@@ -71,7 +76,7 @@ const Beauty = () => {
             {/* display Beauty products */}
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-3 lg:mx-20 my-10'>
                 {
-                    beautyProducts.map(beauty => <CardsOfProducts singleProduct={beauty} />)
+                    beautyProducts?.map(beauty => <CardsOfProducts singleProduct={beauty} />)
                 }
             </div>
 

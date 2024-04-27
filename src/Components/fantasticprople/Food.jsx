@@ -8,14 +8,21 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import useProducts from "../../Hooks/Fantastic/useProducts";
 import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
+import { useEffect, useState } from 'react';
 
 
 const Food = () => {
-    // all products
-    const { products, loading } = useProducts()
-    // filter only food related data
-    const foodProducts = products.filter(foods => foods.category === "food")
+    const { products } = useProducts()
+    console.log(products);
 
+    // filter only food related data
+    const foodProducts = products?.result?.filter(product => product.category === "food");
+    console.log(foodProducts);
+    if (foodProducts) {
+        console.log("There are products in the food category.");
+    } else {
+        console.log("There are no products in the food category.");
+    }
     return (
         <section>
             {/* food swiper banner */}
@@ -44,7 +51,7 @@ const Food = () => {
             {/* display Foods */}
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-30 gap-y-5 lg:mx-20 my-10'>
                 {
-                    foodProducts.map(foods => <CardsOfProducts singleProduct={foods} />)
+                    foodProducts?.map(foods => <CardsOfProducts singleProduct={foods} />)
                 }
             </div>
 
@@ -52,7 +59,7 @@ const Food = () => {
 
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-30 gap-y-5 lg:mx-20 my-10'>
                 {
-                    foodProducts.map(foods => <CardsOfProducts singleProduct={foods} />)
+                    foodProducts?.map(foods => <CardsOfProducts singleProduct={foods} />)
                 }
             </div>
         </section>
