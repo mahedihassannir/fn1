@@ -10,6 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useCustomers from '../../../Hooks/Fantastic/useCustomers';
 import Useaddress from '../../../Hooks/Useaddress/Useaddress';
+import { Link, useNavigation } from 'react-router-dom';
 
 
 
@@ -21,6 +22,7 @@ const UserAddressForm = () => {
     const [selectCity, setSelectCity] = useState("")
     const [cities, setCities] = useState("")
     const { user } = useContext(ContexM)
+    const navigate = useNavigation()
     const [errors, setErrors] = useState({
         fullname: "",
         contactEmail: "",
@@ -30,7 +32,7 @@ const UserAddressForm = () => {
         selectcity: "",
         area: "",
     });
-
+    const authToken = localStorage.getItem("userToken")
     const HandleUserSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -90,19 +92,20 @@ const UserAddressForm = () => {
             return;
         }
 
-        const AllValue = { name, contactEmail, address, selectdivision, selectcity, mobile, area, email: user.email };
+        const AllValue = { full_name: name, email: contactEmail, address, division: selectdivision, city: selectcity, mobile_number: mobile, area, land_mark: landmark };
 
-
-        if (landmark) {
-            AllValue.landmark = landmark;
-        }
 
         console.log(AllValue);
 
 
         // send customer info to db
         setLoader(true)
-        axios.put('http://localhost:5000/customerInfo', AllValue)
+        axios.put('http://localhost:5000/api/v1/user/address', AllValue, {
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${authToken}`
+            }
+        })
             .then(response => {
                 console.log('Data sent successfully:', response.data);
                 toast(' Your Data has been saved!', {
@@ -116,6 +119,9 @@ const UserAddressForm = () => {
                     theme: "light",
                 });
                 setLoader(false)
+                if (response?.data?.code === 201) {
+                    navigate("http://localhost:5173/proceed_to_checkout")
+                }
             })
             .catch(error => {
                 console.error('Error sending data:', error);
@@ -160,10 +166,10 @@ const UserAddressForm = () => {
 
     }
     const custommerinfo = addressData.address0
-
+    console.log(address);
     refetch()
     return (
-        <section className=''>
+        <section className='w-full '>
             <ToastContainer
                 position="top-center"
                 autoClose={2000}
@@ -177,30 +183,30 @@ const UserAddressForm = () => {
                 theme="light"
             />
             <div className='flex justify-center'>
-                <form onSubmit={HandleUserSubmit} className='w-[70%]  flex flex-col gap-y-6 p-10 bg-white'>
+                <form onSubmit={HandleUserSubmit} className='w-[97%]  flex flex-col gap-y-6 p-10 bg-white'>
                     <div>
                         <p>Full Name</p>
-                        <input className='outline-none border w-full py-2 pl-3 rounded' type="text" placeholder={custommerinfo?.name|| "Write your full name"} name='fullname' />
-                        <p className="text-yellow-300">{errors.fullname}</p>
+                        <input className='outline-none border w-full py-2 pl-3 rounded' type="text" placeholder={address?.result?.address?.full_name || "Write your full name"} name='fullname' />
+                        <p className="text-red-500">{errors.fullname}</p>
                     </div>
                     <div>
                         <p>Email</p>
-                        <input className='outline-none border w-full py-2 pl-3 rounded' type="email" placeholder={custommerinfo?.email|| "Write your email"} name='contactEmail' />
-                        <p className="text-yellow-300">{errors.contactEmail}</p>
+                        <input className='outline-none border w-full py-2 pl-3 rounded' type="email" placeholder={address?.result?.email || "Write your email"} name='contactEmail' />
+                        <p className="text-red-500">{errors.contactEmail}</p>
                     </div>
 
                     <div>
                         <p>Address</p>
-                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={custommerinfo?.address || "House no./building/street/area"} name='address' />
-                        <p className="text-yellow-300">{errors.address}</p>
+                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={address?.result?.address?.address || "House no./building/street/area"} name='address' />
+                        <p className="text-red-500">{errors.address}</p>
                     </div>
 
                     <div>
                         <p>Mobile Number</p>
-                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={custommerinfo?.mobile || 'Write mobile number'} name='mobile' onInput={(e) => {
+                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={address?.result?.address?.mobile_number || 'Write mobile number'} name='mobile' onInput={(e) => {
                             e.target.value = e.target.value.replace(/[^0-9]/g, '');
                         }} />
-                        <p className="text-yellow-300">{errors.mobile}</p>
+                        <p className="text-red-500">{errors.mobile}</p>
                     </div>
 
                     <div>
@@ -223,7 +229,7 @@ const UserAddressForm = () => {
                                 )) : ""
                             }
                         </select>
-                        <p className="text-yellow-300">{errors.selectdivision}</p>
+                        <p className="text-red-500">{errors.selectdivision}</p>
                     </div>
 
                     <div>
@@ -251,18 +257,18 @@ const UserAddressForm = () => {
                                 ))
                             )}
                         </select>
-                        <p className="text-yellow-300">{errors.selectcity}</p>
+                        <p className="text-red-500">{errors.selectcity}</p>
                     </div>
 
                     <div>
                         <p>Area</p>
-                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={custommerinfo?.area || 'Please choose your area'} name='area' />
-                        <p className="text-yellow-300">{errors.area}</p>
+                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={address?.result?.address?.area || 'Please choose your area'} name='area' />
+                        <p className="text-red-500">{errors.area}</p>
                     </div>
                     {/*  */}
                     <div>
                         <p>Landmark(Optional)</p>
-                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={custommerinfo?.landmark || 'E.G. beside train station'} name='landmark' />
+                        <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={address?.result?.address?.land_mark || 'E.G. beside train station'} name='landmark' />
                     </div>
                     {loader ? (
                         <ScaleLoader style={{ backgroundColor: "#fff" }} color="#36d7b7" className='flex justify-center border btn-outline' />
@@ -273,6 +279,13 @@ const UserAddressForm = () => {
                             type="submit"
                             value="Save"
                         />
+                    )}
+                    {loader ? (
+                        <ScaleLoader style={{ backgroundColor: "#fff" }} color="#36d7b7" className='flex justify-center border btn-outline' />
+                    ) : (
+                        <Link style={{ backgroundColor: "#19D895" }} className='w-full py-2 pl-3 text-center text-white font-semibold rounded' to={"http://localhost:5173/proceed_to_checkout"}>
+                            back to cart
+                        </Link>
                     )}
 
                 </form>

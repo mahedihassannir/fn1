@@ -5,7 +5,7 @@ import useUserProfile from "../user/userProfile";
 
 
 const UseCartHook = () => {
-    const authToken = localStorage.getItem("userToken")
+    const authToken = localStorage.getItem("userToken");
     const userProfile = useUserProfile(authToken);
     console.log(userProfile?.sanitizedResult?._id);
     const id = userProfile?.sanitizedResult?._id

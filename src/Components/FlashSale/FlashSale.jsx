@@ -12,8 +12,8 @@ import useUserProfile from '../../Hooks/user/userProfile';
 
 const FlashSale = () => {
     const [displaycount, SetdisplayCount] = useState(10)
-    const authToken = localStorage.getItem("userToken")
     const [products, setProducts] = useState(null);
+    const id = "e-com"
     useEffect(() => {
         const fetchUserProfileData = async () => {
             try {
@@ -21,7 +21,7 @@ const FlashSale = () => {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${authToken}`
+
                     }
                 });
                 const data = await response.json();
@@ -30,10 +30,8 @@ const FlashSale = () => {
                 console.error('Error fetching user products data:', error);
             };
         };
-        if (authToken) {
-            fetchUserProfileData();
-        };
-    }, [authToken]);
+        fetchUserProfileData();
+    }, [id]);
     console.log(products);
     {/* <Link to={`/products/${singleProduct._id}`}> */ }
     return (

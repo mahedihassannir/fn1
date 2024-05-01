@@ -13,10 +13,6 @@ const useProducts = () => {
             try {
                 const response = await fetch(`http://localhost:5000/api/v1/user/products`, {
                     method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        Authorization: `Bearer ${authToken}`
-                    }
                 });
                 if (!response.ok) {
                     throw new Error('Failed to fetch products');

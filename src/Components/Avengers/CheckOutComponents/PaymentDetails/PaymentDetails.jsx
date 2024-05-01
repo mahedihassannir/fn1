@@ -25,6 +25,8 @@ import { FaAddressBook, FaAddressCard } from "react-icons/fa";
 const PaymentDetails = ({ cartData }) => {
   const authToken = localStorage.getItem("userToken")
   const [cart, refetch] = UseCartHook();
+  const [address] = Useaddress();
+
   const { result } = cart;
   console.log(result);
 
@@ -59,7 +61,7 @@ const PaymentDetails = ({ cartData }) => {
     const data = {
       products: cart?.result,
       address: inputValue,
-      addressId: "6629fe16384e634e64335d0a"
+      addressId: address?.result?.address?._id
     };
 
     console.log(cart?.result)
@@ -204,7 +206,7 @@ const PaymentDetails = ({ cartData }) => {
               <p>Delivery Fee</p>
               <div className="flex items-center gap-1">
                 <TbCurrencyTaka />
-                <span>{5 + cart.result.length * 5}</span>
+                <span>{5 + cart?.result?.length * 5}</span>
               </div>
             </div>
             {/* Delivery Discount */}
@@ -221,7 +223,7 @@ const PaymentDetails = ({ cartData }) => {
               <div className="flex items-center gap-1">
                 <TbCurrencyTaka />
                 {/* <span>{cart?.result?.product.price * cart?.result?.product?.quantity}</span> */}
-                <span>{totalPrice + 5 + cart.result.length * 5}</span>
+                <span>{totalPrice + 5 + cart?.result?.length * 5}</span>
               </div>
             </div>
 

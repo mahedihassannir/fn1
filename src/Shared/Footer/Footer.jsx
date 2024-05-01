@@ -1,5 +1,6 @@
 import { FaCompressArrowsAlt, FaFacebook, FaFacebookMessenger, FaInstagram, FaLinkedin, FaLocationArrow, FaPhoneAlt, FaTiktok, FaYoutube } from 'react-icons/fa';
 import ChatBot from './ChatBot/ChatBot';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 
@@ -21,23 +22,23 @@ const Footer = () => {
                     <div className=' lg:w-60 w-full flex justify-center gap-2 px-5  h-16 text-white bg-gray-900 items-center  border rounded-full hover:bg-orange-600'>
                         <p className=''> <FaPhoneAlt className='w-8 h-8 hover:text-green-400'></FaPhoneAlt> </p>
                         <p className='h-10 mt-3 mx-1  my-auto w-0.5 bg-white py-2 text-white opacity-100'> </p>
-                        <p className='text-lg font-semibold'> 09679148148 </p>
+                        <p className='text-lg font-semibold'> 01844554302 </p>
                     </div>
 
-                    <div className='lg:w-60 w-full flex gap-2 px-5 justify-center h-16 text-white items-center border rounded-full bg-gray-900 hover:bg-orange-600'>
+                    <Link className='lg:w-60 w-full flex gap-2 px-5 justify-center h-16 text-white items-center border rounded-full bg-gray-900 hover:bg-orange-600'>
                         <p className=''> <FaLocationArrow className='w-8 h-8 hover:text-blue-600'></FaLocationArrow> </p>
                         <p className='h-10 my-auto mt-3 mx-1 w-0.5 bg-white py-2 text-white opacity-100'> </p>
                         <div className='font-semibold'>
                             <p className='text-md'> Store Locator </p>
                             <p className='text-lg'> Find Our Stores </p>
                         </div>
-                    </div>
+                    </Link>
 
 
                     <ul className='text-white flex lg:w-60 md:w-60 w-full justify-around gap-2'>
                         <li className='text-base-200 bg-gray-300 hover:bg-gray-100 rounded w-10 h-10'><FaFacebook className='w-10 h-10 text-blue-700 p-1'></FaFacebook></li>
                         <li className='text-base-200 bg-gray-300 hover:bg-gray-100 rounded w-10 h-10'><FaInstagram className='w-10 h-10 text-red-500 p-1'></FaInstagram></li>
-                        <li className='text-base-200 bg-gray-300 hover:bg-gray-100 rounded w-10 h-10'><FaYoutube className='w-10 h-10 text-red-700 p-1'></FaYoutube></li>
+                        <Link to={"https://www.youtube.com/"} className='text-base-200 bg-gray-300 hover:bg-gray-100 rounded w-10 h-10'><FaYoutube className='w-10 h-10 text-red-700 p-1'></FaYoutube></Link>
                         <li className='text-base-200 bg-gray-300 hover:bg-gray-100 rounded w-10 h-10'><FaTiktok className='w-10 h-10 text-black p-1'></FaTiktok></li>
                         <li className='text-base-200 bg-gray-300 hover:bg-gray-100 rounded w-10 h-10'><FaLinkedin className='w-10 h-10 text-blue-800'></FaLinkedin></li>
                     </ul>

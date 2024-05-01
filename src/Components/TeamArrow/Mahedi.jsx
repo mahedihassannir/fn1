@@ -19,11 +19,8 @@ import useUserProfile from '../../Hooks/user/userProfile';
  */
 
 const Mahedi = () => {
-
-    const authToken = localStorage.getItem("userToken")
-    const userProfile = useUserProfile(authToken);
-    console.log(userProfile?.sanitizedResult?._id);
     const [products, setProducts] = useState(null);
+    const id = "mmm"
     useEffect(() => {
         const fetchUserProfileData = async () => {
             try {
@@ -31,7 +28,7 @@ const Mahedi = () => {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        Authorization: `Bearer ${authToken}`
+
                     }
                 });
                 const data = await response.json();
@@ -40,12 +37,9 @@ const Mahedi = () => {
                 console.error('Error fetching user profile data:', error);
             };
         };
-        if (authToken) {
-            fetchUserProfileData();
-        };
-    }, [authToken]);
+        fetchUserProfileData()
+    }, [id]);
     console.log(products?.result);
-
     return (
         <div>
 

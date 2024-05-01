@@ -5,19 +5,20 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 const Useaddress = () => {
-
-    const { user, loader } = useContext(ContexM)
-
-
+    const authToken = localStorage.getItem("userToken");
+    const id = "mmm";
     const { refetch, data: address = [] } = useQuery({
 
-        queryKey: ['address', user?.email],
-
-        enabled: !loader,
+        queryKey: ['address', id],
 
         queryFn: async () => {
 
-            const res = await fetch(`http://localhost:5000/customerInfo?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/api/v1/user/address`, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${authToken}`
+                }
+            })
 
             return res.json();
         }

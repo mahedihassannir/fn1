@@ -12,8 +12,6 @@ import { useEffect, useState } from "react";
 
 const SingleProduct = () => {
 	const { id } = useParams()
-	console.log(id);
-	const authToken = localStorage.getItem("userToken")
 	const [product, setProduct] = useState(null);
 	useEffect(() => {
 		const fetchUserProfileData = async () => {
@@ -22,7 +20,6 @@ const SingleProduct = () => {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json',
-						Authorization: `Bearer ${authToken}`
 					}
 				});
 				const data = await response.json();
@@ -31,10 +28,10 @@ const SingleProduct = () => {
 				console.error('Error fetching  single product data:', error);
 			};
 		};
-		if (authToken) {
+	
 			fetchUserProfileData();
-		};
-	}, [authToken]);
+		
+	}, [id]);
 	console.log(product);
 	return (
 		<div className=' w-full  my-10  md:px-20'>

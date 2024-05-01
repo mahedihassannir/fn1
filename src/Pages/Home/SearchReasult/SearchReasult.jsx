@@ -27,7 +27,7 @@ const SearchReasult = () => {
                 {/* //-----------------------// */}
 
                 {/* this is right side */}
-                <div className=" lg:w-[70%] px-2 grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <div className=" lg:w-[70%] px-1 grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {
                         searchData.map(allcategory => <CardsOfProducts singleProduct={allcategory} />)
                     }

@@ -4231,6 +4231,11 @@ ts-interface-checker@^0.1.9:
   resolved "https://registry.npmjs.org/ts-interface-checker/-/ts-interface-checker-0.1.13.tgz"
   integrity sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==
 
+ts-interface-checker@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.npmjs.org/ts-interface-checker/-/ts-interface-checker-1.0.2.tgz"
+  integrity sha512-4IKKvhZRXhvtYF/mtu+OCfBqJKV6LczUq4kQYcpT+iSB7++R9+giWnp2ecwWMIcnG16btVOkXFnoxLSYMN1Q1g==
+
 tslib@^2.1.0:
   version "2.6.1"
   resolved "https://registry.npmjs.org/tslib/-/tslib-2.6.1.tgz"

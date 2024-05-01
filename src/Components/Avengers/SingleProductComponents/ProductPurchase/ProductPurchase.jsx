@@ -31,7 +31,6 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 
-
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
@@ -90,6 +89,17 @@ const ProductPurchase = ({ singleProductData }) => {
 	const email = user?.email;
 
 	const handleAddtoCart = (data) => {
+		const authToken = localStorage.getItem("userToken")
+		if (!authToken) {
+			Swal.fire({
+				position: 'top-end',
+				icon: 'error',
+				title: 'you need to login',
+				showConfirmButton: false,
+				timer: 1000
+			});
+			navigate("/login")
+		}
 		console.log(data.result.seller);
 		console.log(data.result._id);
 		const seller = data.result.seller;
@@ -101,7 +111,7 @@ const ProductPurchase = ({ singleProductData }) => {
 			quantity: quantity
 		}
 		console.log(addToCartData);
-		fetch("http://localhost:5000/api/v1/user/add_cart", {
+		fetch(`http://localhost:5000/api/v1/user/add_cart?userId=${userProfile?.sanitizedResult?._id}`, {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json',
@@ -271,7 +281,7 @@ const ProductPurchase = ({ singleProductData }) => {
 										/>
 									</div>
 
-									<p className='font-normal'>{singleProductData?.result?.price+150}</p>
+									<p className='font-normal'>{singleProductData?.result?.price + 150}</p>
 									<div className='h-[1px] w-full bg-[#9e9e9e] absolute'></div>
 								</div>
 								<div>

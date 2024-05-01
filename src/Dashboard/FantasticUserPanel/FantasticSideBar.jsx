@@ -85,7 +85,7 @@ const FantasticSideBar = () => {
 
 					</div>
 				</Link>
-				{/* <Link to="useraddressform">
+				<Link to="useraddressform">
 					<div onClick={() => setActiveRoute("Address Book")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${activeRoute === "Address Book"
 							? "bg-[#19D895] text-[#0A1727]"
@@ -96,7 +96,7 @@ const FantasticSideBar = () => {
 						<h4>Address Book</h4>
 
 					</div>
-				</Link> */}
+				</Link>
 				{/* user wish list */}
 				<Link to="userwishlist">
 					<div onClick={() => setActiveRoute("Wish List")}

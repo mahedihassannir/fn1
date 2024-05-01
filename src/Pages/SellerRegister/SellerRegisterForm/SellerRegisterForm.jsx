@@ -6,6 +6,7 @@ import { Link, unstable_HistoryRouter, useNavigate } from "react-router-dom";
 import ReCAPTCHA from "react-google-recaptcha";
 import { useState } from "react";
 import UseSellerRegister from "../../../Hooks/SellerRegister/useSellerRegister";
+import Swal from "sweetalert2";
 
 
 const SellerRegisterForm = () => {
@@ -14,8 +15,8 @@ const SellerRegisterForm = () => {
 
 	const [captchaValue, SetCaptchaValue] = useState(null);
 
-	const [passworderr, Setpassworderr] = useState("")
-
+	const [passworderr, Setpassworderr] = useState("");
+	const [response, setResponse] = useState("");
 
 	const [fromdata, setdata] = useState(null);
 	console.log(fromdata);
@@ -56,43 +57,38 @@ const SellerRegisterForm = () => {
 
 		const password2 = from.password2.value;
 
+		// check password matching or not
 		if (password !== password2) {
-
 			Setpassworderr("password not match")
-
 			return
-		}
-
-		const fromDataobj = {
-			name,
-			email,
-			password,
-			password2,
-			responseStatus: 200
 		};
 
-		setdata(fromDataobj)
 
-
-		if (fromDataobj.responseStatus === 200) {
-
-			navigate("/seller_register/personal_details", { state: { fromDataobj } })
-
-		}
-		else {
-
-			return
-		}
-
-
-
+		console.log({ name, email, password });
+		fetch(`http://localhost:5000/api/v1/auth/seller/register`, {
+			method: "POST",
+			headers: {
+				"content-type": "application/json"
+			},
+			body: JSON.stringify({ name, email, password })
+		})
+			.then(res => res.json())
+			.then(data => {
+				console.log(data);
+				setResponse(data)
+				if (data.code === 201) {
+					Swal.fire({
+						position: 'top-end',
+						icon: 'success',
+						title: 'register Successfully',
+						showConfirmButton: false,
+						timer: 5000
+					});
+					navigate("/seller_login")
+				};
+			});
 	};
-
 	// getting value  ends
-
-
-
-
 	return (
 		<>
 			< div className=' my-3 md:my-10 md:px-20 '>
@@ -140,6 +136,11 @@ const SellerRegisterForm = () => {
 								/>
 							</div>
 						</div>
+						<span className="text-red-500">
+							{
+								response?.email
+							}
+						</span>
 
 						{/* password  */}
 						<div className='mt-3'>
@@ -157,11 +158,11 @@ const SellerRegisterForm = () => {
 									className='w-full py-1 px-2 outline-none mt-1 border border-gray-400 rounded focus:shadow-[0px_0px_0px_2px_rgba(249,115,22,.5)] duration-200'
 									placeholder='At least 6 characters'
 								/>
-								<div>
-									<small>
-										Passwords must be at least 6 characters.
-									</small>
-								</div>
+								<span className="text-red-500">
+									{
+										response?.password
+									}
+								</span>
 							</div>
 						</div>
 						{/* Re-enter password  */}
@@ -184,7 +185,7 @@ const SellerRegisterForm = () => {
 						</div>
 						<span className="text-red-500">
 							{
-								passworderr
+								passworderr ? passworderr : ""
 							}
 						</span>
 

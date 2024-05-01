@@ -63,39 +63,27 @@ const SellerLogin = () => {
         try {
 
 
-            const response = await axios.post("http://localhost:5000/login", { email, password });
+            const response = await axios.post("http://localhost:5000/api/v1/auth/seller/login", { email, password });
 
 
-            if (response.data.success) {
-
-                // successfully login
-                const successfullCode = response.data.userId;
-
-
+            if (response.data.code === 200) {
 
                 console.log(response.data);
 
-                console.log({ successfullCode });
-
-
-
                 //  local storage work
-                localStorage.setItem("userID", successfullCode)
+                localStorage.setItem("sellerToken", response.data.data.access_token);
                 // ///
-
-                navigate("/dashboard/dashboard/sellerhome")
-
+                navigate("/seller_register/personal_details");
             }
-
             else {
                 // Login failed
-                console.error(response.data.message);
-            }
+                console.error(response.data.data);
+            };
 
         } catch (error) {
             // Handle any errors from the request
             console.error('Error logging in:', error);
-        }
+        };
 
         // here is the fetching for the seller login detail eds
 
