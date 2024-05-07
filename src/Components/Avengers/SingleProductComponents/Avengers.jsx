@@ -69,8 +69,8 @@ const Avengers = ({ singleProductData }) => {
 
 						<div className="flex justify-center">
 							{/* <p>{singleProductData.description}</p> */}
-							<img className="" src={singleProductData?.result?.product_images[1]} alt="" />
-							
+							<img className="h-screen" src={singleProductData?.result?.product_images[0]} alt="" />
+
 
 						</div>
 

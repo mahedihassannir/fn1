@@ -1,139 +1,187 @@
 import { Link } from "react-router-dom";
-import {FaGreaterThan, FaRocket } from 'react-icons/fa';
+import { FaAngleRight, FaGreaterThan, FaRocket } from 'react-icons/fa';
+import { useEffect, useState } from "react";
+import axios from "axios";
 const CustommerReview = () => {
+    const [reviews, setReview] = useState();
+    const id = localStorage.getItem("sId");
+    console.log(id);
+    const sellerAuthToken = localStorage.getItem("sellerToken");
+    useEffect(() => {
+
+        const fetchData = async () => {
+
+            try {
+                const response = await axios.get(`http://localhost:5000/api/v1/seller/review?sellerId=${id}`, {
+                    headers: { Authorization: `Bearer ${sellerAuthToken}` }
+                });
+                const sellerData = response.data;
+                setReview(sellerData);
+                console.log({ sellerData });
+                console.log(sellerData);
+
+                // Set sellerData in your component state or context for rendering.
+            } catch (error) {
+                console.error('Error fetching seller data:', error);
+            };
+        };
+
+        fetchData();
+
+    }, []);
+
+    const review = reviews?.data?.result?.reviews;
+
     return (
-        <div className="p-6">
+        <div className="w-[98%] lg:w-11/12 mx-auto">
 
-<div className="space-y-4 mb-4">
-<h2 className="text-3xl text-black font-semibold">Campaign Management</h2>
-<p className="text-xl font-semibold text-gray-700">Create Campaign and advertise products increase of getting more product views and more sales </p>
-</div>
-   <div className="flex gap-x-3 w-auto">
-{/* Account summary */}
-<div className="bg-base-100 border rounded-lg pb-5 w-1/3">
-<div className="flex mx-5 gap-3 justify-between px-4 py-3 items-center">
-<h2 className="text-black text-2xl">Account Summary</h2>
-<p className="text-orange-500 font-bold">View Details</p>
-</div>
-<div className="bg-base-200 mx-5 p-5 space-y-3">
-<div className="flex justify-between text-lg gap-3">
-<div>
-<button className="px-2 py-1 rounded-md bg-green-500 text-white font-semibold border">PRE PAID</button>
-<p>Available Credit</p>
-</div>
-<div>
-<h3>Auto top-up</h3>
-<h2 className="font-bold">BDT 0</h2>
-</div>
-</div>
-<hr className="h-0.5 bg-gray-500" />
-<div className="flex justify-between">
-<p>Promotional credit balance</p>
-<h2>BDT 2500</h2>
-</div>
-</div>
-</div>
-{/* Performance Summary */}
-<div className="w-2/3 bg-base-100 border rounded-lg text-lg px-5 py-3 space-y-8">
-<div className="flex justify-between gap-3 items-center">
-<div>
-<h2>Performance Summary</h2>
-<p>This is a summary of last 30 days of ads performance</p>
-</div>
-<h2 className="text-orange-500 font-bold">View Details</h2>
-</div>
+            <section>
+                {/* this is for teh alert */}
+                <div className=" p-3 rounded-sm bg-[#e2efff] flex items-center gap-2">
 
-<div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
 
-<div className="border rounded-lg bg-base-200  p-3">
-<h3>Speed</h3>
-<h2 className="font-bold">BDT 0</h2>
-</div>
-<div className="border rounded-lg bg-base-200  p-3">
-<h3>Clicks</h3>
-<h2 className="font-bold">0</h2>
-</div>
-<div className="border rounded-lg bg-base-200  p-3">
-<h3>Store GMV</h3>
-<h2 className="font-bold">BDT 0</h2>
-</div>
-<div className="border rounded-lg bg-base-200  p-3">
-<h3>Store ROI</h3>
-<h2 className="font-bold">x0</h2>
-</div>
-</div>
-</div>
 
-<div>
-</div>
-</div>     
-{/* start to boost your sales in one click */}
-<div className="bg-base-100 p-5 my-5 space-y-7">
-<div className="space-y-3">
-<h2 className="text-3xl font-semibold">Start to boost your sales in one click!</h2>
-<p className="text-xl text-gray-700 font-semibold">Not sure where to start? <Link className="to-blue-500">Click here</Link> </p>
-</div>
+                    <span className="">
+                        <FaAngleRight></FaAngleRight>
+                    </span>
 
-<div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-5">
-<div className="flex justify-around  gap-x-4 items-center p-4 border-2 bg-base-200 rounded ">
-<p className="w-14 h-14"><FaRocket className="w-14 h-14 text-orange-500"> </FaRocket></p>
-<div className="space-y-2">
-<p className="text-xl font-bold">Grow your sales - Basic for 15 days</p>
-<h2 className="text-orange-600 text-lg font-bold">BDT 500 <span className="text-black">Daily budget</span></h2>
-</div>
-<button className="flex font-bold items-center px-4 py-2 bg-orange-600 text-white rounded-lg">Start <FaGreaterThan className="ml-1"></FaGreaterThan> </button>
-</div>
-<div className="flex justify-around  gap-x-4 items-center p-4 border-2 bg-base-200 rounded ">
-<p className="w-14 h-14"><FaRocket className="w-14 h-14 text-orange-500"> </FaRocket></p>
-<div className="space-y-2">
-<p className="text-xl font-bold">Grow your sales - Basic for 15 days</p>
-<h2 className="text-orange-600 text-lg font-bold">BDT 500 <span className="text-black">Daily budget</span></h2>
-</div>
-<button className="flex font-bold items-center px-4 py-2 bg-orange-600 text-white rounded-lg">Start <FaGreaterThan className="ml-1"></FaGreaterThan> </button>
-</div>
-<div className="flex justify-around  gap-x-4 items-center p-4 border-2 bg-base-200 rounded ">
-<p className="w-14 h-14"><FaRocket className="w-14 h-14 text-orange-500"> </FaRocket></p>
-<div className="space-y-2">
-<p className="text-xl font-bold">Grow your sales - Basic for 15 days</p>
-<h2 className="text-orange-600 text-lg font-bold">BDT 500 <span className="text-black">Daily budget</span></h2>
-</div>
-<button className="flex font-bold items-center px-4 py-2 bg-orange-600 text-white rounded-lg">Start <FaGreaterThan className="ml-1"></FaGreaterThan> </button>
-</div>
+                    {/* gap */}
 
-</div>
-</div>
+                    <span className="">
+                        E-Com Seller Center is able to generate a report for review.
+                    </span>
 
-<div className="bg-base-100">
-<div className="flex justify-between items-center px-3 py-4 gap-x-2">
-<h2 className="text-xl font-bold w-1/5">Campaign</h2>
-<select className="w-1/6 border-2 border-gray-700 py-1 w-f font-semibold" name="" id="">
-<option  value="status ">Status</option>
-<option  value="status">Ok</option>
-<option  value="status">Status</option>
-</select>
-<select className="w-1/6 border-2 border-gray-700 py-1 w-f font-semibold" name="" id="">
-<option  value="status ">Ad Group</option>
-<option  value="status">Ok</option>
-<option  value="status">Status</option>
-</select>
-<input type="text" placeholder="Input Campaign Name" className="w-1/4 border-gray-700 text-gray-700 font-semibold px-2 py-1 border-2" />
-<p className="w-1/7 text-orange-600 text-lg border-2 border-gray-700 px-3 py-1">+Create Campaign</p>
-</div>
-<hr className="text-gray-600 h-0.5" />
-<div className="my-5 bg-base-200 border-2 border-blue-900 text-center p-2">
-<p className="text-lg">Make sure all your campaigns are active and have sufficient budgets to keep them running,otherwise,campaigns are paused automatically. <a href="">Click here</a> for more information. </p>
-</div>
-<div className="bg-base-300 flex gap-x-3 justify-around px-2 py-5 text-lg font-semibold">
-<h2>Status</h2>
-<p>Campaign Name</p>
-<p>Daily Budget</p>
-<p>Start Date</p>
-<p>End Date</p>
-<p>Update on</p>
-</div>
-</div>
+                </div>
+                {/* this is for the alert // ends */}
+                {/* //------------------------------------------------------// */}
+                {/* this is for the filter section */}
+                <section className="w-full  bg-white mt-4 lg:mt-16 rounded-md py-2">
+                    {/* this is for teh sub hedding */}
+                    <div className="">
+                        <span className="py-2 pl-2">Key Summary</span>
 
-        </div>
+                    </div>
+                    {/* this is for teh sub hedding ends */}
+
+                    {/* this is for the cards */}
+                    <section className="flex gap-4 pl-4 mt-2 mb-2">
+
+
+
+                        <div className="box-border w-40 h-32 flex items-center  bg-[#f8f8f8]">
+
+                            <div className="  ">
+                                <div className="flex items-center gap-1">
+
+
+                                    <p className="">
+                                        Orders under  review
+                                    </p>
+                                </div>
+                                <h3 className="text-3xl font-bold text-[#dd6161]">0</h3>
+                            </div>
+
+                        </div>
+                        <div className="box-border w-40 h-32 flex items-center  bg-[#f8f8f8]">
+
+                            <div className="pl-2 ">
+                                <p className="">
+                                    Orders under  review
+                                </p>
+                                <h3 className="text-3xl font-bold text-[#dd6161]">0</h3>
+                            </div>
+
+                        </div>
+
+
+
+
+                    </section>
+                    {/* this is for the cards ends */}
+                </section>
+
+                {/* this is for the payment related starts */}
+
+                <section className="w-full rounded-md bg-white h-20  mt-5 lg:mt-10">
+
+                    <div className="">
+
+
+
+
+                    </div>
+
+                </section>
+
+                {/* this is for the payment related ends */}
+
+                {/* --------------------------------------------------------------------- */}
+
+                {/* this is for order return  */}
+
+                <section className="w-full py-20 flex justify-center items-center bg-white mt-10">
+                    <div className="">
+                        {
+                            review?.length > 0 ? (
+                                <div>
+                                    {
+                                        review.map(res => <tbody>
+                                            <tr>
+                                                <th>
+                                                    <label>
+                                                        <input type="checkbox" className="checkbox" />
+                                                    </label>
+                                                </th>
+                                                <td>
+                                                    <div className="flex items-center gap-3">
+                                                        <div className="avatar">
+                                                            <div className="mask mask-squircle w-12 h-12">
+                                                                <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div className="font-bold">Hart Hagerty</div>
+                                                            <div className="text-sm opacity-50">United States</div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    Zemlak, Daniel and Leannon
+                                                    <br />
+                                                    <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
+                                                </td>
+                                                <td>Purple</td>
+                                                <th>
+                                                    <button className="btn btn-ghost btn-xs">details</button>
+                                                </th>
+                                            </tr>
+                                        </tbody>)
+                                    }
+                                </div>
+                            ) : (
+                                <div>
+                                    <img className="" src="https://lzd-img-global.slatic.net/g/tps/imgextra/i3/O1CN01937XJc1v1nr0pZgrg_!!6000000006113-55-tps-179-153.svg" alt="" />
+                                    <h3 className="text-center test-2xl font-semibold mt-4">No return order under this status or filter</h3>
+                                </div>
+                            )
+
+                        }
+
+                    </div>
+                </section>
+
+
+
+                {/* this is for order return ends */}
+
+                {/* --------------------------------------------------------------------- */}
+
+
+
+            </section>
+
+
+        </div >
     );
 };
 
@@ -201,13 +249,13 @@ export default CustommerReview;
 
 // </div>
 // </div>
-// </div> 
+// </div>
 
 // <div className='flex gap-6 items-center mt-10'>
 // <p className='text-xl text-orange-600'>Transaction History</p>
 // <p className='text-xl'>Invoices</p>
-// </div>    
-// <hr  className='h-1.5 mt-2  w- bg-orange-600'/>    
+// </div>
+// <hr  className='h-1.5 mt-2  w- bg-orange-600'/>
 
 // {/* 2 input field create */}
 // <div className='flex justify-end gap-5 mt-8 pb-5'>

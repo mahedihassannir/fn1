@@ -27,6 +27,7 @@ const SellerDashboard = () => {
 
     const [cart] = USeemailCheck();
 
+    const [seller, SetSeller] = useState(null);
 
     const handleLogOut = () => {
 
@@ -45,53 +46,45 @@ const SellerDashboard = () => {
 
     }
 
-
-    const [seller, Setseller] = useState(null);
-
-
     useEffect(() => {
 
         const fetchData = async () => {
 
-            const id = localStorage.getItem("userID")
-            console.log(id);
+            const sellerAuthToken = localStorage.getItem("sellerToken")
+
 
             try {
-                const response = await axios.get(`http://localhost:5000/seller_data/${id}`);
+                const response = await axios.get(`http://localhost:5000/api/v1/seller/profile`, {
+                    headers: { Authorization: `Bearer ${sellerAuthToken}` }
+                });
                 const sellerData = response.data;
-
-                Setseller(sellerData);
-
+                SetSeller(sellerData);
                 console.log({ sellerData });
                 console.log(sellerData);
-
-
 
                 // Set sellerData in your component state or context for rendering.
             } catch (error) {
                 console.error('Error fetching seller data:', error);
-            }
-        }
+            };
+        };
 
         fetchData();
 
     }, [])
     console.log(seller);
-
-
-
     return (
         <div className=' text-white px-5 py-8'>
             <div className='flex items-center justify-center'>
                 <img
                     className='w-[100px] object-cover h-[100px] rounded-[50%] '
-                    src={seller?.image}
+                    src={seller?.result?.sellerProfile?.store_photo
+                    }
                     alt=''
                 />
             </div>
             <div className='text-center'>
-                <h3 className='mt-3 font-semibold'>{seller?.firstname + " " + seller?.lastname}</h3>
-                <h4>{seller?.email}</h4>
+                <h3 className='mt-3 font-semibold'>{seller?.result?.sellerProfile?.name}</h3>
+                <h4>{seller?.result?.sellerProfile?.email}</h4>
 
             </div>
             <div className='text-left flex flex-col gap-1 mt-8 mx-3 font-normal'>

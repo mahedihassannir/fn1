@@ -10,94 +10,38 @@ import { useContext, useEffect, useState } from "react";
 import { PiDotsThreeVerticalBold } from "react-icons/pi";
 import { TbCurrencyTaka } from "react-icons/tb";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const { RangePicker } = DatePicker;
 const OrderManage = () => {
-
-  const [order, refetch] = UseSellerOrders(null)
-  
-
-  // const { modalIsOpen, setModalIsOpen } = useState(false);
-  const [modalStates, setModalStates] = useState(Array(order.length).fill(false));
-
-  const toggleModal = (index) => {
-    const newModalStates = [...modalStates];
-    newModalStates[index] = !newModalStates[index];
-    setModalStates(newModalStates);
-  };
-
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('');
-
-  const handleSelectChange = (event) => {
-    setSelectedOption(event.target.value);
-  }
-
-  const toggleSelect = () => {
-    setIsOpen(!isOpen);
-  }
-  console.log(order);
-
-
-  const [orderData, SetOrderData] = useState(null)
+  const [orders, SetOrders] = useState(null);
+  const sellerAuthToken = localStorage.getItem("sellerToken");
+  const id = localStorage.getItem("sId")
+  console.log(id);
   useEffect(() => {
 
-    order.forEach(order => {
-      console.log(`Order ID: ${order._id}`);
-      console.log(`Total Money: ${order.totalMoney}`);
-      console.log(`Paid Status: ${order.paidStatus}`);
-      console.log(`Transaction ID: ${order.tranjectionId}`);
+    const fetchData = async () => {
 
-      // Iterate through the cart items in this order
-      Object.values(order.order.cart).forEach(cartItem => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/v1/seller/orders?sellerId=${id}`, {
+          headers: { Authorization: `Bearer ${sellerAuthToken}` }
+        });
+        const sellerData = response.data;
+        SetOrders(sellerData);
+        console.log({ sellerData });
+        console.log(sellerData);
 
-        SetOrderData(cartItem)
+        // Set sellerData in your component state or context for rendering.
+      } catch (error) {
+        console.error('Error fetching seller data:', error);
+      };
+    };
 
-      });
-    });
+    fetchData();
 
-  })
+  }, []);
+  console.log(orders);
 
-  const handleDelivered = (id) => {
-
-
-    Swal.fire({
-      title: 'Are you sure?',
-      text: "You won't be able to revert this!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, product delivered!'
-    }).then((result) => {
-      if (result.isConfirmed === true) {
-        console.log(result);
-
-        console.log("th is is the product cart id ", id);
-
-        fetch(`http://localhost:5000/update_delivery_progress/${id}`, {
-          method: "PATCH",
-        })
-          .then(res => res.json())
-          .then(data => {
-            console.log(data);
-          })
-
-        Swal.fire(
-          'Product delivered successfully',
-          'Your file has been deleted.',
-          'success'
-        )
-      }
-    })
-
-
-  }
-
-
-
-
-  refetch();
 
 
 
@@ -331,126 +275,129 @@ const OrderManage = () => {
 
             {/* here is the order manage tables */}
 
-            {order.map((item, index) => (
 
               // console.log(item.order.address?.address),
 
+            {
+              orders?.result?.map(res =>
+                <div className="w-full mt-5 ">
+                  {/* this dive is for change the progress of order */}
+                  <div className=" w-[100%] lg:w-[40%] shadow-lg  h-10 bg-white rounded-t-md ">
+
+                    <div className="flex items-center gap-1 pt-2 pl-4  ">
 
 
-              <div className="w-full mt-5 ">
-                {/* this dive is for change the progress of order */}
-                <div className=" w-[100%] lg:w-[40%] shadow-lg  h-10 bg-white rounded-t-md ">
-
-                  <div className="flex items-center gap-1 pt-2 pl-4  ">
+                      {/* this div is the button for the delivered or not delivered */}
+                      <div className="">
 
 
-                    {/* this div is the button for the delivered or not delivered */}
-                    <div className="">
+                        <button onClick={() => handleDelivered("")} className="py-2 px-5 border-2 border-red-300">
+
+                          PRODUCT DELIVERED
+
+                        </button>
 
 
-                      <button onClick={() => handleDelivered(item?._id)} className="py-2 px-5 border-2 border-red-300">
+                      </div>
+                      {/* this div is the button for the delivered or not delivered ends */}
 
-                        PRODUCT DELIVERED
 
-                      </button>
 
+
+
+                      {/* this dive is for the title */}
+                      <div className="">
+
+
+                        <p className="font-semibold text-[14px] uppercase">change the order progress</p>
+
+                      </div>
+                      {/* this dive is for the title ends */}
 
                     </div>
-                    {/* this div is the button for the delivered or not delivered ends */}
-
-
-
-
-
-                    {/* this dive is for the title */}
-                    <div className="">
-
-
-                      <p className="font-semibold text-[14px] uppercase">change the order progress</p>
-
-                    </div>
-                    {/* this dive is for the title ends */}
 
                   </div>
+                  {/* this dive is for change the progress of order ends */}
 
-                </div>
-                {/* this dive is for change the progress of order ends */}
+                  <div className=" rounded-md w-full shadow-md border-spacing-2 py-4 bg-white flex-row-reverse lg:flex">
+                    {/* starts of the product sheeping address and the person who ordered */}
 
-                <div className=" rounded-md w-full shadow-md border-spacing-2 py-4 bg-white flex-row-reverse lg:flex">
-                  {/* starts of the product sheeping address and the person who ordered */}
+                    <div className=" w-full lg:w-[20%]  flex lg:grid   ml-2 border-r-2 border-r-indigo-800">
 
-                  <div className=" w-full lg:w-[20%]  flex lg:grid   ml-2 border-r-2 border-r-indigo-800">
+                      <div className=" w-28 flex justify-center items-center h-28  rounded-full border-2 ">
 
-                    <div className=" w-28 flex justify-center items-center h-28  rounded-full border-2 ">
-
-                      <p className="text-lg font-semibold text-center">
-                        product <br /> <span className="text-center">{Object.values(item.order.cart).length}</span>
-                        <p className="flex items-center justify-center text-red-600">
-                          {/* TODO */}
-                          {/* {} */}
-                          <span> <TbCurrencyTaka /></span>
+                        <p className="text-lg font-semibold text-center">
+                          product <br /> <span className="text-center">"</span>
+                          <p className="flex items-center justify-center text-red-600">
+                            {/* TODO */}
+                            {/* {} */}
+                            <span> <TbCurrencyTaka /></span>
+                          </p>
                         </p>
-                      </p>
 
+
+                      </div>
+
+                      {/* this is the order product shipping details */}
+                      <div className="w-full p-2 ">
+
+                        <ul>
+                          <li className="text-[13px] font-semibold">f</li>
+                          <li className="text-[13px] font-semibold">f</li>
+                          <li className="text-[13px] font-semibold">f</li>
+                          <li className="text-[13px] font-semibold">f</li>
+                        </ul>
+
+
+                      </div>
+                      {/* this is the order product shipping details ends */}
 
                     </div>
-
-                    {/* this is the order product shipping details */}
-                    <div className="w-full p-2 ">
-
-                      <ul>
-                        <li className="text-[13px] font-semibold"></li>
-                        <li className="text-[13px] font-semibold">{item.order.address?.name}</li>
-                        <li className="text-[13px] font-semibold">{item.order.address?.mobile}</li>
-                        <li className="text-[13px] font-semibold">{item.order.address?.area}</li>
-                      </ul>
+                    <hr className="py-2  mt-2 text-blue-800" />
+                    {/* ends of the product sheeping detail */}
 
 
-                    </div>
-                    {/* this is the order product shipping details ends */}
+                    <div className=" w-full  lg:w-[80%] grid grid-cols-4 lg:grid-cols-6 gap-2 ">
+                      {/* {Object.values(item.order.cart).map((cartItem, cartIndex) => (
+                      console.log(cartItem), */}
 
-                  </div>
-                  <hr className="py-2  mt-2 text-blue-800" />
-                  {/* ends of the product sheeping detail */}
-
-
-                  <div className=" w-full  lg:w-[80%] grid grid-cols-4 lg:grid-cols-6 gap-2 ">
-                    {Object.values(item.order.cart).map((cartItem, cartIndex) => (
-                      console.log(cartItem),
-
-                      <div className="" key={cartIndex}>
+                      <div className="" key={""}>
                         {/* Display images */}
 
 
                         {/* <img className="w-40 h-32" src="https://i.ibb.co/jRDShZf/Screenshot-2023-08-19-162626.png" alt="" /> */}
-                        {Array.isArray(cartItem.imageurls) && cartItem.imageurls[0] &&
+                        {/* {Array.isArray(cartItem.imageurls) && cartItem.imageurls[0] &&
                           <img className="p-2 w-24 h-20  lg:ml-2 border-2 lg:w-40 lg:h-32" src={cartItem.imageurls[0]} alt="" />
 
-                        }
-
-                        <p className="pl-2 font-semibold">{cartItem.name}</p>
+                        } */}
+                        {/* 
+                        <p className="pl-2 font-semibold">{cartItem.name}</p> */}
                         {/* <h1>hi i am mahedi</h1> */}
 
                       </div>
-                    ))}
+                      {/* ))} */}
+
+                    </div>
+
+
 
                   </div>
 
 
 
+
+
+
+                  {/* this is the product name and the address detail work ends */}
+
                 </div>
 
+              )
+            }
 
 
 
 
-
-                {/* this is the product name and the address detail work ends */}
-
-              </div>
-
-
-            ))}
 
             {/* here is the order manage tables  ends*/}
 

@@ -9,11 +9,8 @@ import axios from "axios";
 
 const SellerLogin = () => {
 
-
     const [captchaValue, SetCaptchaValue] = useState(null);
-
-
-
+    // 
     const [fromdata, setdata] = useState(null);
 
     const navigate = useNavigate();
@@ -47,9 +44,6 @@ const SellerLogin = () => {
         const email = from.email.value;
         const password = from.password.value;
 
-
-
-
         const fromDataobj = {
             email,
             password
@@ -59,21 +53,22 @@ const SellerLogin = () => {
 
         // here is the fetching for the seller login detail
 
-
         try {
-
 
             const response = await axios.post("http://localhost:5000/api/v1/auth/seller/login", { email, password });
 
-
             if (response.data.code === 200) {
-
                 console.log(response.data);
-
                 //  local storage work
                 localStorage.setItem("sellerToken", response.data.data.access_token);
+                localStorage.setItem("sId", response.data.data.profileID);
                 // ///
-                navigate("/seller_register/personal_details");
+
+                if (response?.data?.data?.profileID) {
+                    navigate("/dashboard/dashboard/sellerhome");
+                } else {
+                    navigate("/seller_register/personal_details");
+                };
             }
             else {
                 // Login failed

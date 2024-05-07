@@ -29,11 +29,11 @@ const DashBoardManage = () => {
 				className={`w-[265px] absolute md:relative h-[100vh] overflow-y-auto bg-[#0A1727] z-[999] duration-500 sidbarContainer ${values ? "-left-[500px]" : "left-[0px]"
 					} md:left-0`}
 			>
-				{/* <SellerDashboard></SellerDashboard> */}
+				<SellerDashboard></SellerDashboard>
 
 				{/* <FantasticSideBar /> */}
 
-				<AdminSidebar />
+				{/* <AdminSidebar /> */}
 
 			</div>
 

@@ -5,11 +5,14 @@ import { useEffect, useState } from 'react';
 
 import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
+import Swal from "sweetalert2";
+import { ToastContainer, toast } from "react-toastify";
 
 const AddProduct = () => {
 
-    const [chaked, SetChack] = useState(false)
-
+    const [chaked, SetChack] = useState(false);
+    const sellerAuthToken = localStorage.getItem("sellerToken");
+    const sellerId = localStorage.getItem("sId");
     const [selectedCategory, setSelectedCategory] = useState('');
 
     const handleCategoryChange = (e) => {
@@ -51,25 +54,6 @@ const AddProduct = () => {
         setEditorHtml2(html);
     };
 
-    const [seller, Setseller] = useState(null);
-
-
-    const sellerid = localStorage.getItem("userID")
-
-    // here we fetch the seller Details
-    useEffect(() => {
-
-        fetch(`http://localhost:5000/seller_data/${sellerid}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                Setseller(data)
-            })
-
-    }, [])
-
-    console.log(seller);
-
     const [imageUrls, setImageUrls] = useState(Array(6).fill('')); // Initialize with empty strings
 
     const key = `890b5ec0923fcc8472f7e690406adc40`
@@ -100,11 +84,9 @@ const AddProduct = () => {
                     return updatedUrls;
                 });
             });
-    }
+    };
 
     console.log({ imageUrls });
-
-
 
     const handleData = (e) => {
 
@@ -113,77 +95,85 @@ const AddProduct = () => {
         const from = e.target;
 
         const name = from.name.value;
+        const title = from.title.value;
         const price2 = from.price.value;
         const sellerNumber = from.sellerNumber.value;
         const offer = from.PromoPrice.value;
         const stock = from.stock.value;
         const video = from.video.value;
 
-        const price = parseFloat(price2)
-
-
+        const price = parseFloat(price2);
+        console.log(price, description);
         const TotalData = {
-            name: name,
-            sellerid: seller?._id,
-            sellerEmail: seller?.email,
-            sellerfirstname: seller?.firstname,
-            sellerlastname: seller?.lastname,
-            sellerstoreimage: seller?.image,
-            sellerstorename: seller?.storename,
+            product_name: name,
             price: price,
-            sellernumber: sellerNumber,
-            offer: offer,
-            stock: stock,
-            description: description,
-            description2: description2,
-            productvideo: video,
-            imageurls: imageUrls,
-            category: selectedCategory2,
-            category2: selectedCategory,
-            deleveryFee: "5",
-            rating: "0",
-            totalSell: "0",
-            vouchercode: "mmm",
-            toppruduct: false,
-            selleraddress: seller?.address,
-            quantity: 0,
-
-
-
-
-
-
-
+            product_title: title,
+            product_description: description,
+            product_images: imageUrls,
+            category: selectedCategory,
+            secondCategory: selectedCategory2,
         };
 
         console.log(TotalData);
 
-        fetch("http://localhost:5000/add_product", {
+        fetch(`http://localhost:5000/api/v1/seller/product_add?sellerId=${sellerId}`, {
             method: "POST",
-
             headers: {
-                "content-type": "application/json"
-
+                "content-type": "application/json",
+                Authorization: `Bearer ${sellerAuthToken}`
             },
-
             body: JSON.stringify(TotalData)
-
         })
-
             .then(res => res.json())
-
             .then(data => {
                 console.log(data);
+                console.log(data?.code);
+                if (data?.code === 201) {
+                    toast(` product added successfully`, {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    navigate("/dashboard/dashboard/customerfeedback")
+                };
+                if (data.code === 401) {
+                    toast(` ${data?.message}`, {
+                        position: "top-center",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+
+                };
+
             });
-
-
-    }
+    };
 
 
 
     return (
         <form onSubmit={handleData} className="w-[98%] border-4 border-[#e1e8f0] rounded-md bg-white py-5">
-
+            <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             <div className="h-14 w-full bg-[#f7f8fa]">
                 <h3 className="font-semibold text-lg p-2 text-orange-600">Basic information</h3>
             </div>
@@ -206,7 +196,7 @@ const AddProduct = () => {
                 <div className="pt-10 ">
 
                     {/* <Test></Test> */}
-                    <div className="grid   grid-cols-4 gap-2 lg:gap-0 lg:grid-cols-10">
+                    <div className="grid   grid-cols-3 gap-2 lg:gap-0 lg:grid-cols-10">
 
                         {/* this is the image section  */}
 
@@ -283,6 +273,24 @@ const AddProduct = () => {
                     <div className="relative">
 
                         <input name="name" className="w-[99%] py-2 mt-2 pl-32  border-2 rounded-lg focus:outline-none focus:border-blue-500 border-gray-300" type="text" placeholder=" পণ্যের নাম লিখুন  " />
+
+                        <div className="absolute -mt-[41.7px] ml-[2px]">
+                            <button className=" rounded-lg py-2 px-4 bg-[#fafafa] text-black ">
+
+                                English
+
+                            </button>
+                        </div>
+                    </div>
+                    {/* this is the input ends */}
+                    <label htmlFor="">
+                        <span>পণ্যের শিরোনাম লিখুন ইংরেজিতে <span className="text-orange-600 text-lg">*</span></span>
+                    </label>
+
+                    {/* this is the input */}
+                    <div className="relative">
+
+                        <input name="title" className="w-[99%] py-2 mt-2 pl-24  border-2 rounded-lg focus:outline-none focus:border-blue-500 border-gray-300" type="text" placeholder=" পণ্যের শিরোনাম লিখুন ইংরেজিতে   " />
 
                         <div className="absolute -mt-[41.7px] ml-[2px]">
                             <button className=" rounded-lg py-2 px-4 bg-[#fafafa] text-black ">

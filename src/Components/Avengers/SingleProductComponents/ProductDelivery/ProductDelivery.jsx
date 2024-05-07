@@ -70,7 +70,7 @@ const ProductDelivery = () => {
 									<br />
 									<small>
 										<span className='text-gray-400'>
-										40 minutes
+											40 minutes
 										</span>
 									</small>
 								</p>

@@ -193,7 +193,7 @@ const ProductPurchase = ({ singleProductData }) => {
 						{singleProductData?.result?.product_images.map((image, index) => (
 
 							<SwiperSlide key={index}>
-								<img className="h-full w-full" src={image} alt={`Product Image ${index + 1}`} />
+								<img className="md:h-1/2 md:w-full " src={image} alt={`Product Image ${index + 1}`} />
 							</SwiperSlide>
 
 						))}

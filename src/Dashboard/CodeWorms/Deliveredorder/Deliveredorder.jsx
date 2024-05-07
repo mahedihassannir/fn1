@@ -18,7 +18,7 @@ const Deliveredorder = () => {
 
 
 
-            <div className="mx-10">
+            <div className="">
 
                 <div className=" p-3 rounded-sm bg-[#e2efff] flex items-center gap-2">
 
