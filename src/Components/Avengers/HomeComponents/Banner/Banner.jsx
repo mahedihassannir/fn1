@@ -46,7 +46,6 @@ const Banner = () => {
        <div className='lg:w-[440px] md:w-[250px] md:h-full h-1/2'>
        <img className=' ' src="https://i.ibb.co/6ysgTW7/img1.jpg" img alt="" />
        </div>
-        
     </div>
            </div>
         </div>
