@@ -40,7 +40,7 @@ const UserAddressForm = () => {
         const contactEmail = form.contactEmail.value;
         const address = form.address.value;
         const selectdivision = form.selectdivision.value;
-        const selectcity = form.selectcity.value;
+        const selectcity = "rupasdi"
         const mobile = form.mobile.value;
         const area = form.area.value;
         const landmark = form.landmark.value;
@@ -217,6 +217,23 @@ const UserAddressForm = () => {
                             value={selectDivision}
                             onChange={(e) => setSelectDivision(e.target.value)}
                         >
+
+
+
+                            <option>none</option>
+
+
+                        </select>
+                        <p className="text-red-500">{errors.selectdivision}</p>
+                    </div>
+                    {/* <div>
+                        <p>Division</p>
+                        <select
+                            name="selectdivision"
+                            className='w-full outline-none border  py-2'
+                            value={selectDivision}
+                            onChange={(e) => setSelectDivision(e.target.value)}
+                        >
                             {
                                 findCustomer.length > 0 ? <option value="" disabled selected>{findCustomer[0].
                                     selectdivision}</option> : <option value="" disabled selected>
@@ -230,11 +247,23 @@ const UserAddressForm = () => {
                             }
                         </select>
                         <p className="text-red-500">{errors.selectdivision}</p>
-                    </div>
+                    </div> */}
 
                     <div>
                         <p>City</p>
                         <select
+                            name="selectcity"
+                            className='w-full outline-none border  py-2'
+                            onChange={(e) => setCities(e.target.value)}
+                        >
+                            <option value="">
+                                Rupasdi
+                            </option>
+                            <option value="">
+                                mm
+                            </option>
+                        </select>
+                        {/* <select
                             name="selectcity"
                             className='w-full outline-none border  py-2'
                             value={cities}
@@ -256,7 +285,7 @@ const UserAddressForm = () => {
                                     ))
                                 ))
                             )}
-                        </select>
+                        </select> */}
                         <p className="text-red-500">{errors.selectcity}</p>
                     </div>
 

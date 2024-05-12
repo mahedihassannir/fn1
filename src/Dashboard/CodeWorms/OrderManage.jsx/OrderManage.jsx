@@ -276,7 +276,7 @@ const OrderManage = () => {
             {/* here is the order manage tables */}
 
 
-              // console.log(item.order.address?.address),
+              {/* // console.log(item.order.address?.address), */}
 
             {
               orders?.result?.map(res =>
@@ -327,11 +327,11 @@ const OrderManage = () => {
                       <div className=" w-28 flex justify-center items-center h-28  rounded-full border-2 ">
 
                         <p className="text-lg font-semibold text-center">
-                          product <br /> <span className="text-center">"</span>
+                          product <br /> <span className="text-center">{""}</span>
                           <p className="flex items-center justify-center text-red-600">
                             {/* TODO */}
                             {/* {} */}
-                            <span> <TbCurrencyTaka /></span>
+                            <span> <TbCurrencyTaka />{res?.product.price}</span>
                           </p>
                         </p>
 
@@ -342,10 +342,15 @@ const OrderManage = () => {
                       <div className="w-full p-2 ">
 
                         <ul>
-                          <li className="text-[13px] font-semibold">f</li>
-                          <li className="text-[13px] font-semibold">f</li>
-                          <li className="text-[13px] font-semibold">f</li>
-                          <li className="text-[13px] font-semibold">f</li>
+                          <li className="text-[13px] font-semibold">product name: <span className="text-red-500">{res?.product?.product_name}</span></li>
+
+
+                          <li className="text-[13px] font-semibold">product id: <span className="text-red-500">{res?._id}</span></li>
+
+                          <li className="text-[13px] font-semibold">delivery address: <span className="text-red-500">{res?.order?.address}</span></li>
+
+                          <li className="text-[13px] font-semibold">paymentMethod: <span className="text-red-500">{res?.order?.paymentMethod}</span></li>
+
                         </ul>
 
 
@@ -373,7 +378,8 @@ const OrderManage = () => {
                         {/* 
                         <p className="pl-2 font-semibold">{cartItem.name}</p> */}
                         {/* <h1>hi i am mahedi</h1> */}
-
+                        <img className="p-2 w-24 h-20  lg:ml-2 border-2 lg:w-40 lg:h-32" src={res?.product?.product_images[0]} alt="" />
+                      
                       </div>
                       {/* ))} */}
 
