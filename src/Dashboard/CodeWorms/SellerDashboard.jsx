@@ -105,23 +105,19 @@ const SellerDashboard = () => {
                 </div></Link>
                 {/* Seller Home ends */}
 
-
-                {/* Seller Add Product */}
-                <Link to="dashboard/additems"><div onClick={() => setActiveRoute("Add Product")}
-                    className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "Add Product"
+                <Link to="ordermanage"><div onClick={() => setActiveRoute("manage")}
+                    className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "manage"
                         ? "bg-[#19D895] text-[#0A1727]"
                         : ""
                         } cursor-pointer  gap-4`}
                 >
-                    <FaListUl className='w-4 h-4'></FaListUl>
-                    <h4>অরডার & রেভিও  </h4>
+                    <HiHome className='w-4 h-4'></HiHome>
+                    <h4>Order Manage</h4>
                 </div></Link>
-                {/* Seller Add Product ends */}
-
 
                 {/* Order progress and orders */}
 
-                <Link to="dashboard/manageproduct"><div onClick={() => setActiveRoute("Manage Product")}
+                <Link to="addproduct"><div onClick={() => setActiveRoute("Manage Product")}
                     className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "Manage Product"
                         ? "bg-[#19D895] text-[#0A1727]"
                         : ""
@@ -131,6 +127,46 @@ const SellerDashboard = () => {
                     <h4>এড & প্রোডাক্ট ম্যানেজমেন্ট </h4>
                 </div></Link>
                 {/* Order progress and orders */}
+                {/* Seller Home */}
+
+                <Link to="orderresuns"><div onClick={() => setActiveRoute("returns")}
+                    className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "returns"
+                        ? "bg-[#19D895] text-[#0A1727]"
+                        : ""
+                        } cursor-pointer  gap-4`}
+                >
+                    <HiHome className='w-4 h-4'></HiHome>
+                    <h4>returns</h4>
+                </div></Link>
+                {/* Seller Home ends */}
+                {/* Seller Home */}
+
+                <Link to="custommerreview"><div onClick={() => setActiveRoute("reviews")}
+                    className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "reviews"
+                        ? "bg-[#19D895] text-[#0A1727]"
+                        : ""
+                        } cursor-pointer  gap-4`}
+                >
+                    <HiHome className='w-4 h-4'></HiHome>
+                    <h4>reviews</h4>
+                </div></Link>
+                {/* Seller Home ends */}
+                {/* Seller Home */}
+
+                {/* Seller Add Product */}
+                <Link to="deliveredorders"><div onClick={() => setActiveRoute("deliveredorders")}
+                    className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "deliveredorders"
+                        ? "bg-[#19D895] text-[#0A1727]"
+                        : ""
+                        } cursor-pointer  gap-4`}
+                >
+                    <FaListUl className='w-4 h-4'></FaListUl>
+                    <h4>Delivered Products </h4>
+                </div></Link>
+                {/* Seller Add Product ends */}
+
+
+
 
                 {/* Order progress and orders */}
 
@@ -198,7 +234,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <FaBroadcastTower className='w-4 h-4'></FaBroadcastTower>
-                    <h4>Payment widhrow</h4>
+                    <h4>Payment withdraw</h4>
                 </div></Link>
 
 

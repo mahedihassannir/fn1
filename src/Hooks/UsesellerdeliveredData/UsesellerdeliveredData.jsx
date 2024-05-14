@@ -7,43 +7,8 @@ import axios from "axios";
 const UseSellerDeliveredData = () => {
 
     const { loader } = useContext(ContexM);
-
-    // seller data 
-    const [seller, Setseller] = useState(null);
-
-    // here is getting seller Data
-    useEffect(() => {
-
-        const fetchData = async () => {
-
-            const id = localStorage.getItem("userID")
-            console.log(id);
-
-            try {
-                const response = await axios.get(`http://localhost:5000/seller_data/${id}`);
-                const sellerData = response.data;
-
-                Setseller(sellerData);
-
-                console.log({ sellerData });
-                console.log(sellerData);
-
-
-
-                // Set sellerData in your component state or context for rendering.
-            } catch (error) {
-                console.error('Error fetching seller data:', error);
-            }
-        }
-
-        fetchData();
-
-    }, [])
-    console.log(seller);
-    // seller data ends
-
-
-
+    const sellerId = localStorage.getItem("sId");
+    const sellerAuthToken = localStorage.getItem("sellerToken");
 
     const { refetch, data: deliveredData = [] } = useQuery({
 
@@ -52,8 +17,9 @@ const UseSellerDeliveredData = () => {
 
         queryFn: async () => {
 
-            const res = await fetch(`http://localhost:5000/delivereddata?email=${seller?.SellerRegisterdataFromPriviousStep.email}`,)
-
+            const res = await fetch(`http://localhost:5000/api/v1/seller/delivered_data?sellerId=${sellerId}`, {
+                headers: { Authorization: `Bearer ${sellerAuthToken}` }
+            })
             return res.json();
         }
 

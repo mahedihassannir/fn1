@@ -1,59 +1,67 @@
-
 import axios from 'axios';
-import React, { useState } from 'react';
-import { useEffect } from 'react';
-import { FaExclamationCircle, FaGreaterThan, FaToggleOn, } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { FaDollarSign, FaExclamationCircle, FaGreaterThan, FaToggleOn, } from 'react-icons/fa';
 import UseSellerDeliveredData from '../../../../Hooks/UsesellerdeliveredData/UsesellerdeliveredData';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { data } from 'autoprefixer';
+import Modal from 'react-responsive-modal';
+import { useNavigation } from 'react-router-dom';
 // here is the all imports
 
 
 const AccStatement = () => {
-  // all stats starts
-  // 1
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
+  const [open, setOpen] = useState(false);
+
   const [errMessage, seterr] = useState();//1
   // 2
   const [selectValue, Setselect] = useState(null);//2
   // 3
   const [deliveredData, refetch] = UseSellerDeliveredData();//3
   // 4
-  // seller data 
-  const [seller, Setseller] = useState(null);//4
-  // ens of al stats
+  const [validationError, setValidationError] = useState();
+  //5 
+  const [paymentHistory, setPaymentHistory] = useState();
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigation();
 
 
-  // here is getting seller Data
+  const [seller, SetSeller] = useState(null);
+
+  const sellerAuthToken = localStorage.getItem("sellerToken");
+
   useEffect(() => {
 
     const fetchData = async () => {
 
-      const id = localStorage.getItem("userID")
-      console.log(id);
+
 
       try {
-        const response = await axios.get(`http://localhost:5000/seller_data/${id}`);
+        const response = await axios.get(`http://localhost:5000/api/v1/seller/profile`, {
+          headers: { Authorization: `Bearer ${sellerAuthToken}` }
+        });
         const sellerData = response.data;
-
-        Setseller(sellerData);
-
+        SetSeller(sellerData);
         console.log({ sellerData });
         console.log(sellerData);
-
-
 
         // Set sellerData in your component state or context for rendering.
       } catch (error) {
         console.error('Error fetching seller data:', error);
-      }
-    }
+      };
+    };
 
     fetchData();
 
-  }, [])
+  }, []);
   console.log(seller);
-  // seller data ends
+  // console.log(seller.result.sellerProfile._id);
+  const sellerId = localStorage.getItem("sId");
+  // refetch();
 
 
 
@@ -81,22 +89,23 @@ const AccStatement = () => {
     const withwraAmount = from.amount.value
     const paymentMethod = selectValue
     const mobilenumber = from.mobilenumber.value
+    const email = from.email.value
+    const password = from.password.value
+    const ref = from.ref.value
+    console.log(password);
+    console.log(email);
 
-    const all = totalMoney - withwraAmount
-    console.log("concatinate", all);
-
-    if (totalMoney < withwraAmount) {
+    if (seller?.result?.sellerProfile?.sellerBalance < withwraAmount) {
 
       seterr("NOT ENOUGH MONEY ")
-      return toast.error(`তোলার জন্য পর্যাপ্ত টাকা নেই ${totalMoney} 💸`)
-
+      return toast.error(`তোলার জন্য পর্যাপ্ত টাকা নেই ${seller?.result?.sellerProfile?.sellerBalance} 💸`)
 
     }
 
-    if (totalMoney > withwraAmount) {
+    if (withwraAmount > seller?.result?.sellerProfile?.sellerBalance) {
 
       seterr(!errMessage)
-
+      return toast.error(`তোলার জন্য পর্যাপ্ত টাকা নেই ${totalMoney} 💸`)
     }
 
 
@@ -110,24 +119,40 @@ const AccStatement = () => {
 
     const Data = {
 
-      withwraAmount: withwraAmount,
+      email: email,
+      password: password,
+      amount: withwraAmount,
       paymentMethod: paymentMethod,
-      seller,
-      mobile: mobilenumber
+      bankAccountName: paymentMethod,
+      bankAccountNumber: mobilenumber,
+      mobile: mobilenumber,
+      ref: ref
 
     }
 
 
-    fetch("http://localhost:5000/seller_payment_req", {
+    fetch(`http://localhost:5000/api/v1/seller/${sellerId}/withdraw_req`, {
       method: "POST",
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
+        Authorization: `Bearer ${sellerAuthToken}`
       },
       body: JSON.stringify(Data)
     })
       .then(res => res.json())
       .then(data => {
         console.log(data)
+        console.log(data.error)
+
+        setValidationError(data.error)
+        if (data.error) {
+          toast.error(data.error)
+        }
+        if (data.code === 201) {
+          toast.success("অনুরোধ সফলভাবে জমা দেওয়া হয়েছে")
+          return navigate("/sellerhome")
+        }
+
       })
 
 
@@ -140,13 +165,38 @@ const AccStatement = () => {
 
 
 
+  const [withdrawalMethod, setWithdrawalMethod] = useState('');
+  const [bankName, setBankName] = useState('');
+  const [branch, setBranch] = useState('');
 
+  const handleWithdrawalMethodChange = (e) => {
+    setWithdrawalMethod(e.target.value);
+  };
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:5000/api/v1/seller/${sellerId}/payment_history`, {
+          headers: { Authorization: `Bearer ${sellerAuthToken}` }
+        });
+        const historyData = response.data;
+        setPaymentHistory(historyData);
+        console.log(historyData);
+        // Set sellerData in your component state or context for rendering.
+      } catch (error) {
+        console.error('Error fetching seller data:', error);
+      };
+    };
+    fetchData();
+  }, []);
 
+  console.log(paymentHistory);
 
   refetch();
   return (
     <div className='bg-base-100 pb-10 px-5'>
+
+
       <ToastContainer />
       <div className="flex items-center ">
 
@@ -175,16 +225,16 @@ const AccStatement = () => {
                   <select onChange={handleSelection} className=' py-2 px-4 border-2 border-green-500 hover:border-blue-600 rounded-md' value={selectValue} required>
                     {/* 1 */}
                     <option className='py-2 text-blue-400 text-md font-medium font-sans'>Select </option>
-                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>Bkash👌 </option>
+                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>Bkash</option>
                     {/* 2 */}
-                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>Nagad ✌️</option>
+                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>Nagad </option>
                     {/* 3 */}
-                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>Rocket 👍</option>
-
+                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>Rocket </option>
                     {/* 3 */}
-                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>Check&&br 😍</option>
+                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>from e-com office</option>
                     {/* 3 */}
-                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>card 😎</option>
+                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>Bank transfer</option>
+                    <option className='py-2 text-blue-400 text-md font-medium font-sans'>Upay</option>
 
                     {/*  */}
 
@@ -198,10 +248,10 @@ const AccStatement = () => {
 
                 <div className="mt-4">
                   <label htmlFor="">
-                    <span>Mobile Number for money recive 💸</span>
+                    <span>Mobile Number for money receive 💲</span>
                   </label>
                   <br />
-                  <input className='text-md font-semibold outline-none border-2 hover:border-blue-500 border-green-500 w-full  py-2 pl-1  rounded-md  focus:text-blue-500' type="number" name="mobilenumber" placeholder='Mobile number for money recive' required />
+                  <input className='text-md font-semibold outline-none border-2 hover:border-blue-500 border-green-500 w-full  py-2 pl-1  rounded-md  focus:text-blue-500' type="number" name="mobilenumber" placeholder='Mobile number for money receive' required />
                 </div>
                 {/* recive ammount number  ends */}
 
@@ -209,10 +259,44 @@ const AccStatement = () => {
                 <div className="mt-3">
 
                   <label htmlFor="">
-                    <span> write your amount 💸</span>
+                    {
+                      validationError ?
+                        <span className='text-red-600 font-semibold'> {validationError}</span>
+                        :
+                        <span> write your amount💲</span>
+                    }
+
                   </label>
                   <br />
-                  <input className='text-md font-semibold outline-none border-2 hover:border-blue-500 border-green-500 w-full  py-3 pl-2 rounded-md  focus:text-blue-500' type="number" name="amount" placeholder='Write your amount 💰' required />
+                  <input className='text-md font-semibold outline-none border-2 hover:border-blue-500 border-green-500 w-full  py-3 pl-2 rounded-md  focus:text-blue-500' type="number" name="amount" placeholder='Write your amount 💲' required />
+                </div>
+                <div className="mt-3">
+                  <label htmlFor="">
+                    <span>ref</span>
+                  </label>
+                  <br />
+                  <input className='text-md font-semibold outline-none border-2 hover:border-blue-500 border-green-500 w-full  py-3 pl-2 rounded-md  focus:text-blue-500' type="text" name="ref" placeholder='Write your ref' required />
+
+                </div>
+                {/*  */}
+                <p className='font-semibold mt-5 text-red-500 animate-pulse'>নিরাপত্তা এর জন্য ইমেইল অ্যান্ড পাসওয়ার্ড দিন
+                </p>
+                <div className="">
+
+                  <label htmlFor="">
+                    <span> email</span>
+                  </label>
+                  <br />
+                  <input className='text-md font-semibold outline-none border-2 hover:border-blue-500 border-green-500 w-full  py-3 pl-2 rounded-md  focus:text-blue-500' type="email" name="email" placeholder='Write your email ' required />
+
+                </div>
+                <div className="mt-3">
+
+                  <label htmlFor="">
+                    <span>password</span>
+                  </label>
+                  <br />
+                  <input className='text-md font-semibold outline-none border-2 hover:border-blue-500 border-green-500 w-full  py-3 pl-2 rounded-md  focus:text-blue-500' type="password" name="password" placeholder='Write your password' required />
 
                 </div>
                 {/* this div is for the amount  */}
@@ -221,14 +305,12 @@ const AccStatement = () => {
 
                 <div className="mt-5 pl-2 ">
                   <button type='submit' className=" hover:text-black font-semibold py-2 px-3 bg-orange-600 text-white rounded-md">
-                    withawra now
+                    withdraw now
                   </button>
 
+
                 </div>
-
                 {/* this div is for the withawra payment btn ends */}
-
-
               </form>
               {/* ends of the payment selection */}
 
@@ -236,7 +318,7 @@ const AccStatement = () => {
               <div className='space-y-3 w-1/2 '>
                 <p className='text-xl '>Main balance</p>
                 <h2 className='text-xl  font-semibold'>BDT
-                  <span className='pl-2 pr-2 bg-blue-800 text-white'>{totalMoney}</span>
+                  <span className='pl-2 pr-2 bg-blue-800 text-white'>{seller?.result?.sellerProfile?.sellerBalance}</span>
                   <span>💸</span>
                 </h2>
                 <button className='px-3 py-1 text-white rounded-lg font-bold text-center bg-orange-500 text-xl'>Top Up</button>
@@ -257,8 +339,8 @@ const AccStatement = () => {
           <h2 className='text-xl font-bold p-4'>Monthly Summary</h2>
           <div className=' bg-base-200 border-2 border-gray-400 rounded-lg border-rounded'>
             <div className='bg-base-300 flex justify-between items-center gap-x-8 p-4'>
-              <p className='text-xl'>Available balance</p>
-              <p className='text-xl font-semibold'> ৫000 টাকা</p>
+              <p className='text-xl'>পর্যাপ্ত টাকা</p>
+              <p className='text-xl font-semibold'>{seller?.result?.sellerProfile?.sellerBalance} টাকা</p>
             </div>
             <div className='flex justify-between items-center gap-x-8  p-4'>
               <p className='text-xl'>Bonus </p>
@@ -278,7 +360,7 @@ const AccStatement = () => {
             </div>
             <div className='flex justify-between items-center gap-x-8 p-4'>
               <p className='text-xl'>Available Credit</p>
-              <p className='text-xl font-semibold'>80 টাকা</p>
+              <p className='text-xl font-semibold'>5 বার</p>
             </div>
 
           </div>
@@ -316,19 +398,22 @@ const AccStatement = () => {
               <th>Ad Tpe</th>
               <th>Transaction Type</th>
               <th>Transaction Number</th>
-              <th>Amount</th>
+              <th>পরিমাণ</th>
             </tr>
           </thead>
-          <tbody>
-            {/* row 1 */}
-            <tr className='grid grid-cols-5 text-lg'>
-              <td>06/09/2023</td>
-              <td>search</td>
-              <td>Promo Credit</td>
-              <td>PA000000454253</td>
-              <td>BDT 2,500</td>
-            </tr>
-          </tbody>
+          {
+            paymentHistory?.result.map(res =>
+              <tbody>
+                {/* row 1 */}
+                <tr className='grid grid-cols-5 text-lg'>
+                  <td>{res.withdrawalDate}</td>
+                  <td>status</td>
+                  <td>{res.paymentMethod}</td>
+                  <td>{res._id}</td>
+                  <td>BDT {res.withdrawalAmount}  টাকা</td>
+                </tr>
+              </tbody>)
+          }
         </table>
       </div>
     </div>

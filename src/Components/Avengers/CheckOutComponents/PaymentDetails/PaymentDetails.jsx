@@ -238,7 +238,7 @@ const PaymentDetails = ({ cartData }) => {
         <Link className="pt-5">
           {/* payment btn  */}
           <div>
-            <button className="py-3 w-full bg-[#F57224] hover:bg-[#DADADA] duration-300 hover:text-gray-500 text-white rounded" onClick={onOpenModal}>Open modal</button>
+            <button className="py-3 w-full bg-[#F57224] hover:bg-[#DADADA] duration-300 hover:text-gray-500 text-white rounded" onClick={onOpenModal}>Payment Now</button>
             <Modal open={open} onClose={onCloseModal} center>
               <div className="px-10  flex gap-10 justify-center items-center">
                 <button onClick={onSubmit2}>
