@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { FaAngleRight, FaGreaterThan, FaRocket } from 'react-icons/fa';
+import { FaAngleRight, FaDollarSign, FaGreaterThan, FaKorvue, FaRocket, FaStar } from 'react-icons/fa';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BiChevronsLeft, BiChevronsRight } from "react-icons/bi";
 const CustommerReview = () => {
     const [reviews, setReview] = useState();
     const id = localStorage.getItem("sId");
@@ -31,26 +32,20 @@ const CustommerReview = () => {
     }, []);
 
     const review = reviews?.data?.result?.reviews;
-
+    console.log(review);
     return (
         <div className="w-[98%] lg:w-11/12 mx-auto">
 
             <section>
                 {/* this is for teh alert */}
                 <div className=" p-3 rounded-sm bg-[#e2efff] flex items-center gap-2">
-
-
-
                     <span className="">
                         <FaAngleRight></FaAngleRight>
                     </span>
-
                     {/* gap */}
-
                     <span className="">
                         E-Com Seller Center is able to generate a report for review.
                     </span>
-
                 </div>
                 {/* this is for the alert // ends */}
                 {/* //------------------------------------------------------// */}
@@ -59,43 +54,29 @@ const CustommerReview = () => {
                     {/* this is for teh sub hedding */}
                     <div className="">
                         <span className="py-2 pl-2">Key Summary</span>
-
                     </div>
                     {/* this is for teh sub hedding ends */}
 
                     {/* this is for the cards */}
                     <section className="flex gap-4 pl-4 mt-2 mb-2">
-
-
-
                         <div className="box-border w-40 h-32 flex items-center  bg-[#f8f8f8]">
-
                             <div className="  ">
                                 <div className="flex items-center gap-1">
-
-
                                     <p className="">
                                         Orders under  review
                                     </p>
                                 </div>
                                 <h3 className="text-3xl font-bold text-[#dd6161]">0</h3>
                             </div>
-
                         </div>
                         <div className="box-border w-40 h-32 flex items-center  bg-[#f8f8f8]">
-
                             <div className="pl-2 ">
                                 <p className="">
                                     Orders under  review
                                 </p>
                                 <h3 className="text-3xl font-bold text-[#dd6161]">0</h3>
                             </div>
-
                         </div>
-
-
-
-
                     </section>
                     {/* this is for the cards ends */}
                 </section>
@@ -119,45 +100,68 @@ const CustommerReview = () => {
 
                 {/* this is for order return  */}
 
-                <section className="w-full py-20 flex justify-center items-center bg-white mt-10">
+                <section className="w-full  flex justify-center items-center bg-white mt-10">
                     <div className="">
                         {
                             review?.length > 0 ? (
-                                <div>
-                                    {
-                                        review.map(res => <tbody>
-                                            <tr>
-                                                <th>
-                                                    <label>
-                                                        <input type="checkbox" className="checkbox" />
-                                                    </label>
-                                                </th>
-                                                <td>
-                                                    <div className="flex items-center gap-3">
-                                                        <div className="avatar">
-                                                            <div className="mask mask-squircle w-12 h-12">
-                                                                <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div className="font-bold">Hart Hagerty</div>
-                                                            <div className="text-sm opacity-50">United States</div>
-                                                        </div>
+                                review.map((res, index) => (
+                                    <div className="">
+
+                                        <div className="md:w-[1300px] w-full md:h-96 mt-2 bg-white border-2 border-black rounded-md md:flex md:m-10">
+                                            {/* design */}
+                                            <div className="md:w-[350px] border-2 h-96 rounded-md block">
+                                                <div className="mt-3 pl-3">
+                                                    <h1 className="flex gap-2">Review: <span className="text-red-400 font-semibold">{res.comment}</span></h1>
+                                                    <p className="flex items-center gap-2"><FaKorvue></FaKorvue> Verified Buyer</p>
+                                                    <img className="mt-5 ml-3 w-[300px] h-[190px]" src={res?.product[0].product_images[0]} alt="" />
+                                                </div>
+
+                                            </div>
+                                            {/* design ends */}
+
+                                            {/* infos */}
+                                            <div className="md:w-[800px] bg-white p-2 rounded-md">
+                                                <div className="mt-4 ml-4">
+                                                    <div className="flex">
+                                                        <FaStar className="text-orange-500"></FaStar>
+                                                        <FaStar className="text-orange-500"></FaStar>
+                                                        <FaStar className="text-orange-500"></FaStar>
+                                                        <FaStar className="text-orange-500"></FaStar>
+                                                        <FaStar className="text-orange-500"></FaStar>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    Zemlak, Daniel and Leannon
-                                                    <br />
-                                                    <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                                                </td>
-                                                <td>Purple</td>
-                                                <th>
-                                                    <button className="btn btn-ghost btn-xs">details</button>
-                                                </th>
-                                            </tr>
-                                        </tbody>)
-                                    }
-                                </div>
+                                                    {/* title */}
+                                                    <div>
+                                                        <h2 className="text-2xl font-semibold">
+                                                            {res?.product[0].product_name}
+                                                        </h2>
+
+                                                        <h2 className="flex items-center text-2xl font-semibold text-red-500">
+                                                            {res?.product[0].price}
+                                                            <span className="pl-1">টাকা</span>
+                                                            <FaDollarSign></FaDollarSign>
+
+                                                        </h2>
+
+                                                    </div>
+                                                    {/* description */}
+                                                    <div className="w-11/12 mt-3">
+                                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos quae et aspernatur pariatur voluptas rem est cum, minus optio a nulla, id ipsam sed molestias libero fugiat amet? Repellendus, at!</p>
+                                                    </div>
+
+                                                    <Link to={""}>
+                                                        <button className="mt-3 underline text-md font-semibold">read more</button>
+                                                    </Link>
+
+                                                </div>
+
+                                            </div>
+                                            {/* infos ends */}
+
+
+                                        </div>
+
+                                    </div>
+                                ))
                             ) : (
                                 <div>
                                     <img className="" src="https://lzd-img-global.slatic.net/g/tps/imgextra/i3/O1CN01937XJc1v1nr0pZgrg_!!6000000006113-55-tps-179-153.svg" alt="" />

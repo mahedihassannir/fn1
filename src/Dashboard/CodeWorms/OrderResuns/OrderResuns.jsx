@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaAngleRight, FaQuestion } from "react-icons/fa";
+import { FaAngleRight, FaDollarSign, FaKorvue, FaQuestion, FaStar } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const OrderResuns = () => {
 
@@ -60,7 +61,6 @@ const OrderResuns = () => {
                     {/* this is for teh sub hedding */}
                     <div className="">
                         <span className="py-2 pl-2">Key Summary</span>
-
                     </div>
                     {/* this is for teh sub hedding ends */}
 
@@ -120,45 +120,64 @@ const OrderResuns = () => {
 
                 {/* this is for order return  */}
 
-                <section className="w-full py-20 flex justify-center items-center bg-white mt-10">
+                <section className="w-full  flex justify-center items-center bg-white mt-10">
                     <div className="">
                         {
                             returnss?.length > 0 ? (
-                                <div>
-                                    {
-                                        returnss.map(res => <tbody>
-                                            <tr>
-                                                <th>
-                                                    <label>
-                                                        <input type="checkbox" className="checkbox" />
-                                                    </label>
-                                                </th>
-                                                <td>
-                                                    <div className="flex items-center gap-3">
-                                                        <div className="avatar">
-                                                            <div className="mask mask-squircle w-12 h-12">
-                                                                <img src="https://img.daisyui.com/tailwind-css-component-profile-2@56w.png" alt="Avatar Tailwind CSS Component" />
-                                                            </div>
-                                                        </div>
-                                                        <div>
-                                                            <div className="font-bold">Hart Hagerty</div>
-                                                            <div className="text-sm opacity-50">United States</div>
-                                                        </div>
+                                returnss.map((res, index) => (
+                                    <div key={index} className="">
+
+                                        <div className="md:w-[1300px] w-full md:h-96 mt-2 bg-white border-2 border-black rounded-md md:flex md:m-10">
+                                            {/* design */}
+                                            <div className="md:w-[350px] border-2 h-96 rounded-md block">
+                                                <div className="mt-3 pl-3">
+                                                    {/* <h1 className="flex gap-2">Review: <span className="text-red-400 font-semibold">{res.comment}</span></h1> */}
+                                                    <p className="flex items-center gap-2"><FaKorvue></FaKorvue> Verified Buyer</p>
+                                                    <img className="mt-5 ml-3 w-[300px] h-[190px]" src={"https://www.advantageemblem.com/images/return_pic2.jpg"} alt="" />
+                                                </div>
+
+                                            </div>
+                                            {/* design ends */}
+
+                                            {/* infos */}
+                                            <div className="md:w-[800px] bg-white p-2 rounded-md">
+                                                <div className="mt-4 ml-4">
+                                                    <div className="flex">
+                                                        <FaStar className="text-orange-500"></FaStar>
+                                                        <FaStar className="text-orange-500"></FaStar>
+                                                        <FaStar className="text-orange-500"></FaStar>
+                                                        <FaStar className="text-orange-500"></FaStar>
+                                                        <FaStar className="text-orange-500"></FaStar>
                                                     </div>
-                                                </td>
-                                                <td>
-                                                    Zemlak, Daniel and Leannon
-                                                    <br />
-                                                    <span className="badge badge-ghost badge-sm">Desktop Support Technician</span>
-                                                </td>
-                                                <td>Purple</td>
-                                                <th>
-                                                    <button className="btn btn-ghost btn-xs">details</button>
-                                                </th>
-                                            </tr>
-                                        </tbody>)
-                                    }
-                                </div>
+                                                    {/* title */}
+                                                    <div>
+                                                        <h2 className="flex items-center gap-2 text-2xl font-semibold">
+                                                            <span>Id: </span>  {res?.productId}
+                                                        </h2>
+                                                        <h2 className="flex items-center text-2xl font-semibold text-red-500">
+                                                            {/* {res?.} */}
+                                                            <span className="pl-1">Reason: {res.comment}</span>
+                                                        </h2>
+                                                    </div>
+                                                    {/* description */}
+                                                    <div className="w-11/12 mt-3">
+                                                        <p className="text-md font-semibold">returnReason: {res?.returnReason}</p>
+                                                    </div>
+
+                                                    <Link to={""}>
+                                                        <button className="mt-3 underline text-md font-semibold">read more</button>
+                                                    </Link>
+
+                                                </div>
+
+                                            </div>
+                                            {/* infos ends */}
+
+
+                                        </div>
+
+                                    </div>
+                                ))
                             ) : (
                                 <div>
                                     <img className="" src="https://lzd-img-global.slatic.net/g/tps/imgextra/i3/O1CN01937XJc1v1nr0pZgrg_!!6000000006113-55-tps-179-153.svg" alt="" />

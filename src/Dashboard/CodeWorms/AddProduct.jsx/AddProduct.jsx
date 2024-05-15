@@ -317,9 +317,12 @@ const AddProduct = () => {
                                 className="block w-full mt-1 p-2 border rounded-md bg-white"
                             >
                                 <option value="">Select...</option>
+                                <option value="Food">Food</option>
                                 <option value="fashion">fashion</option>
-                                <option value="clothing">Clothing</option>
-                                <option value="books">Books</option>
+                                <option value="beauty">Beauty</option>
+                                <option value="homeAcc">Homeacc</option>
+                                <option value="kids">Kids</option>
+                                <option value="low">Low price</option>
                                 {/* Add more options as needed */}
                             </select>
 
@@ -345,7 +348,26 @@ const AddProduct = () => {
                                 <option value="">Select...</option>
                                 <option value="male">male</option>
                                 <option value="female">female</option>
-                                <option value="books">Books</option>
+                                <option value="food">Food</option>
+                                <option value="lips">lips</option>
+                                <option value="face">face</option>
+                                <option value="eyes">eyes</option>
+                                <option value="nails">nails</option>
+                                <option value="mensCare">Mens care</option>
+                                <option value="soap">Soap</option>
+                                <option value="cream">Cream</option>
+                                <option value="cream">Moisturiser</option>
+                                <option value="perfume">Mens perfume</option>
+                                <option value="menDeos">men Deos</option>
+                                <option value="hairDryers">Hair Dryers</option>
+                                <option value="hairColor">Hair color</option>
+                                <option value="curlerScolor">curlers</option>
+                                <option value="facial">Facial</option>
+                                <option value="Accessories">Beauty Accessories</option>
+                                <option value="makeup">Makeup</option>
+                                <option value="faceMusk">Face musk</option>
+                                <option value="hairTreatment">Hair Treatment</option>
+                                <option value="other">Other</option>
                                 {/* Add more options as needed */}
                             </select>
 

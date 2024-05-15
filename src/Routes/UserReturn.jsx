@@ -118,6 +118,7 @@ import Deliveredorder from "../Dashboard/CodeWorms/Deliveredorder/Deliveredorder
 import UserReturn from "../Dashboard/FantasticUserPanel/userReturn/userReturn";
 import UserReview from "../Dashboard/FantasticUserPanel/UserReview/UserReview";
 import UserHelp from "../Dashboard/FantasticUserPanel/UserHelp/UserHelp";
+import CategoryPage from "../Components/categoryPage/categoryPage";
 
 
 const router = createBrowserRouter([
@@ -138,8 +139,8 @@ const router = createBrowserRouter([
 				element: <Contact></Contact>,
 			},
 			{
-				path:"userhelp",
-				element:<UserHelp></UserHelp>
+				path: "userhelp",
+				element: <UserHelp></UserHelp>
 			},
 			{
 				// avengers
@@ -342,6 +343,10 @@ const router = createBrowserRouter([
 				path: "mensCare",
 				element: <MensCare></MensCare>,
 			},
+			{
+				path: "/category/:categoryName",
+				element: <CategoryPage></CategoryPage>
+			}
 
 
 
@@ -475,12 +480,12 @@ const router = createBrowserRouter([
 
 			},
 			{
-				path:"return",
-				element:<UserReturn></UserReturn>
+				path: "return",
+				element: <UserReturn></UserReturn>
 			},
 			{
-				path:"review",
-				element:<UserReview></UserReview>
+				path: "review",
+				element: <UserReview></UserReview>
 			},
 
 
