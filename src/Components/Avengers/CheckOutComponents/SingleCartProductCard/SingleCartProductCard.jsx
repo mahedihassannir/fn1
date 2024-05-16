@@ -16,7 +16,7 @@ import { useEffect, useState } from "react";
 
 const SingleCartProductCard = ({ singleProductData }) => {
 	const [, refetch] = UseCartHook();
-
+	const authToken = localStorage.getItem("userToken");
 	console.log(singleProductData);
 
 
@@ -24,22 +24,23 @@ const SingleCartProductCard = ({ singleProductData }) => {
 
 		console.log(id);
 
-		fetch(`http://localhost:5000/delete_added_product/${id}`, {
-			method: "DELETE"
+		fetch(`http://localhost:5000/api/v1/user/cart?cartId=${id}`, {
+			method: "DELETE",
+			headers: { Authorization: `Bearer ${authToken}` }
+
 		})
 			.then(res => res.json())
-			.then(data => {
-				console.log(data.deletedCount);
-				if (data.deletedCount < 1) {
-					alert("product remove from the cart")
-				}
-				refetch()
+			.then(res => {
+				console.log(res);
+				if (res.code === 203) {
+					// alert("product remove from the cart")
+				};
+				refetch();
 			})
 			.catch(err => {
 				console.log(err);
-			})
-
-	}
+			});
+	};
 
 	return (
 		<div className='text-xs p-5 border rounded font-semibold my-10'>

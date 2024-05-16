@@ -25,12 +25,8 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
       },
       body: JSON.stringify({ product, email })
     })
-
   }
   // use this arrow function we make the recent view system ends
-
-
-
 
   // const name = singleProduct.name.length < 10
 

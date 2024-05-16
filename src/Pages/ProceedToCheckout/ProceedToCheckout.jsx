@@ -13,13 +13,13 @@ import UseCartHook from "../../Hooks/UseCartHook/UseCartHook";
 
 const ProceedToCheckout = () => {
 	const { id } = useParams();
-	
+
 	return (
 		<div className='my-3 md:px-20'>
 			{/* this page for Avengers */}
 			<section>
 				{/* <Avengers productsData={singleProductData} /> */}
-				<Avengers/>
+				<Avengers />
 			</section>
 		</div>
 	);
