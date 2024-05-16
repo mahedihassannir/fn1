@@ -158,6 +158,15 @@ const AddProduct = () => {
             });
     };
 
+    // Define subcategories for each main category
+    const subcategories = {
+        Food: ['food',"potato","onion","grocery"],
+        fashion: ['male', 'female'],
+        beauty: ['nails', 'lips', 'eyes', 'face', 'Accessories', 'makeup', 'faceMusk', 'hairTreatment'],
+        homeAcc: ["bedSheets", "hangers", "clocks", "cushions", "wall", "lights"], // Define subcategories for homeAcc if needed
+        kids: ["toys", "other", "baby product"], // Define subcategories for kids if needed
+        low: [], // Define subcategories for low if needed
+    };
 
 
     return (
@@ -331,51 +340,25 @@ const AddProduct = () => {
                         </div>
                     </div>
                     {/* this is for the labeling category like male or female  */}
-                    <div className="mt-2">
-
-                        <div className="">
-
-                            {/* <input className="w-[99%] py-2 mt-1 pl-2  border-2 rounded-lg focus:outline-none focus:border-orange-500 border-gray-300" type="text" placeholder="select your category  " />
-                            <div> */}
-                            <label htmlFor="category" className="text-red-500 font-bold ">Select sub Main Category:</label>
-
+                    {selectedCategory && (
+                        <div>
+                            <label htmlFor="subcategory">Select Subcategory:</label>
                             <select
-                                id="category"
+                                id="subcategory"
                                 value={selectedCategory2}
                                 onChange={handleCategoryChange2}
                                 className="block w-full mt-1 p-2 border rounded-md bg-white"
                             >
                                 <option value="">Select...</option>
-                                <option value="male">male</option>
-                                <option value="female">female</option>
-                                <option value="food">Food</option>
-                                <option value="lips">lips</option>
-                                <option value="face">face</option>
-                                <option value="eyes">eyes</option>
-                                <option value="nails">nails</option>
-                                <option value="mensCare">Mens care</option>
-                                <option value="soap">Soap</option>
-                                <option value="cream">Cream</option>
-                                <option value="cream">Moisturiser</option>
-                                <option value="perfume">Mens perfume</option>
-                                <option value="menDeos">men Deos</option>
-                                <option value="hairDryers">Hair Dryers</option>
-                                <option value="hairColor">Hair color</option>
-                                <option value="curlerScolor">curlers</option>
-                                <option value="facial">Facial</option>
-                                <option value="Accessories">Beauty Accessories</option>
-                                <option value="makeup">Makeup</option>
-                                <option value="faceMusk">Face musk</option>
-                                <option value="hairTreatment">Hair Treatment</option>
-                                <option value="other">Other</option>
-                                {/* Add more options as needed */}
+                                {subcategories[selectedCategory].map((subcategory) => (
+                                    <option key={subcategory} value={subcategory}>
+                                        {subcategory}
+                                    </option>
+                                ))}
                             </select>
-
-                            <p>Selected Category: <span className="text-red-600 font-bold ">{selectedCategory2}</span></p>
-
+                            <p>Selected Subcategory: {selectedCategory2}</p>
                         </div>
-                    </div>
-
+                    )}
                 </div>
                 {/* category selection ends */}
 

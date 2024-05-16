@@ -34,6 +34,13 @@ const FlashSale = () => {
     }, [id]);
     console.log(products);
     {/* <Link to={`/products/${singleProduct._id}`}> */ }
+
+    const loadMore = (pageSize) => {
+
+
+
+
+    };
     return (
         <div className='lg-11/12 mx-auto   my-20 lg:mx-10'>
 
@@ -43,13 +50,13 @@ const FlashSale = () => {
             <section className="">
                 {/* main grid container */}
                 <div className=" grid md:mx-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-                    {products?.result?.slice(0, 20)?.map(data => <CardsOfProducts singleProduct={data} />)}
+                    {products?.result?.slice(0, 40)?.map(data => <CardsOfProducts singleProduct={data} />)}
                 </div>
 
             </section>
             {/* this is the  flesh sell card section ends */}
             <div className='mx-auto text-center mb-12 mt-6'>
-                <button className='py-3 px-32 rounded-lg bg-[#FC9E66] text-white font-bold text-lg text-center' onClick={() => SetdisplayCount(displaycount + 10)}>Load More</button>
+                <button className='py-3 px-32 rounded-lg bg-[#FC9E66] text-white font-bold text-lg text-center' onClick={""}>Load More</button>
             </div>
 
         </div>

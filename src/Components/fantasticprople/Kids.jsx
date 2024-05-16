@@ -2,13 +2,14 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 import useProducts from '../../Hooks/Fantastic/useProducts';
+import { Link } from 'react-router-dom';
 
 const Kids = () => {
     const { products } = useProducts();
     console.log(products);
 
     // filter only food related data
-    const kidsProducts = products?.result?.filter(product => product.secondCategory === "kids");
+    const kidsProducts = products?.result?.filter(product => product.category === "kids");
     console.log(kidsProducts);
     if (kidsProducts) {
         console.log("There are products in the kidsProducts category.");
@@ -33,7 +34,7 @@ const Kids = () => {
                     modules={[Autoplay, Pagination, Navigation]}
                     className="mySwiper "
                 >
-                    <SwiperSlide><img src="https://i.ibb.co/LdDVZKz/Untitled-2.jpg" /></SwiperSlide>
+                    <SwiperSlide><img className='w-full' src="https://i.ibb.co/Ph1rDtc/Whats-App-Image-2024-05-05-at-11-34-43-AM.jpg" /></SwiperSlide>
                     <SwiperSlide><img src="https://i.ibb.co/LdDVZKz/Untitled-2.jpg" /></SwiperSlide>
                     <SwiperSlide><img src="https://i.ibb.co/LdDVZKz/Untitled-2.jpg" /></SwiperSlide>
                     <SwiperSlide><img src="https://i.ibb.co/LdDVZKz/Untitled-2.jpg" /></SwiperSlide>

@@ -16,7 +16,7 @@ const Food = () => {
     console.log(products);
 
     // filter only food related data
-    const foodProducts = products?.result?.filter(product => product.category === "food");
+    const foodProducts = products?.result?.filter(product => product.category === "Food");
     console.log(foodProducts);
     if (foodProducts) {
         console.log("There are products in the food category.");
