@@ -119,6 +119,7 @@ import UserReturn from "../Dashboard/FantasticUserPanel/userReturn/userReturn";
 import UserReview from "../Dashboard/FantasticUserPanel/UserReview/UserReview";
 import UserHelp from "../Dashboard/FantasticUserPanel/UserHelp/UserHelp";
 import CategoryPage from "../Components/categoryPage/categoryPage";
+import SellerPrivate from "../Private/sellerPrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -504,7 +505,9 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "dashboard/sellerhome",
-				element: <SellerHome></SellerHome>,
+				element: <SellerPrivate>
+					<SellerHome></SellerHome>
+				</SellerPrivate>,
 			},
 			{
 				path: "dashboard/additems",

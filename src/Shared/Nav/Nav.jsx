@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AiOutlineGift } from "react-icons/ai";
 import { HiOutlineSearch, HiMenu, HiOutlineMinusSm } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaArrowRight, FaChevronCircleRight, FaClone, FaCut, FaUser } from "react-icons/fa";
 import { ContexM } from "../../Authentication/AuthProvider/AuthProvider";
 import UseCartHook from "../../Hooks/UseCartHook/UseCartHook";
@@ -18,6 +18,8 @@ import useUserProfile from "../../Hooks/user/userProfile";
 
 
 const Nav = ({ isNavOpen, setIsNavOpen }) => {
+
+	const [seller, SetSeller] = useState(null);
 	//get added quantity from auth provider
 	const authToken = localStorage.getItem("userToken");
 	const [cart, refetch] = UseCartHook();
@@ -27,7 +29,6 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 	const user = localStorage.getItem("userToken");
 	const userProfile = useUserProfile(user);
 	console.log(userProfile);
-	const seller = localStorage.getItem("userID")
 	// const seller = false;
 	const navigate = useNavigate();
 
@@ -108,6 +109,34 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 
 
+	// get the seller log status;
+	useEffect(() => {
+
+		const fetchData = async () => {
+
+			const sellerAuthToken = localStorage.getItem("sellerToken")
+
+
+			try {
+				const response = await axios.get(`http://localhost:5000/api/v1/seller/profile`, {
+					headers: { Authorization: `Bearer ${sellerAuthToken}` }
+				});
+				const sellerData = response.data;
+				SetSeller(sellerData);
+				console.log({ sellerData });
+				console.log(sellerData);
+
+				// Set sellerData in your component state or context for rendering.
+			} catch (error) {
+				console.error('Error fetching seller data:', error);
+			};
+		};
+
+		fetchData();
+
+	}, [])
+	console.log(seller?.result.identityId);
+	const status = seller?.result.identityId;
 	refetch()
 	const navItem = (
 		<>
@@ -179,9 +208,20 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 								<li>
 									<Link to={"/dashboard/userhome"} className="justify-between">
-										dashboard
+										User dashboard
 									</Link>
 								</li>
+
+								{
+									status ?
+
+										<li>
+											<Link to={"/dashboard/dashboard/sellerhome"} className="justify-between">
+												seller dashboard
+											</Link>
+										</li>
+										: ""
+								}
 
 								<li><a>Settings</a></li>
 								<li><a onClick={handleLogout}>Logout</a></li>
@@ -242,8 +282,8 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 				<li>Home</li>
 			</Link>
 
-			<Link className='hover:underline hover:text-orange-600 duration-300'>
-				<li>Home</li>
+			<Link to={"/dashboard/dashboard/sellerhome"} className='hover:underline hover:text-orange-600 duration-300'>
+				<li>Seller Penal</li>
 			</Link>
 
 			<Link className='hover:underline hover:text-orange-600 duration-300'>
@@ -274,8 +314,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 	const handelIsOpenNav = event => {
 		event.stopPropagation()
 		setIsNavOpen(true)
-	}
-
+	};
 
 	const [isSecondNavOpen, setIsSecondNavOpen] = useState(false);
 	const handelSecondNav = event => {
