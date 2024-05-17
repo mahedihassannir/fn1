@@ -25,7 +25,7 @@ const Footer = () => {
                         <p className='text-lg font-semibold'> 01844554302 </p>
                     </div>
 
-                    <Link className='lg:w-60 w-full flex gap-2 px-5 justify-center h-16 text-white items-center border rounded-full bg-gray-900 hover:bg-orange-600'>
+                    <Link to={"https://maps.app.goo.gl/dL1TTWcReXv258E67"} className='lg:w-60 w-full flex gap-2 px-5 justify-center h-16 text-white items-center border rounded-full bg-gray-900 hover:bg-orange-600'>
                         <p className=''> <FaLocationArrow className='w-8 h-8 hover:text-blue-600'></FaLocationArrow> </p>
                         <p className='h-10 my-auto mt-3 mx-1 w-0.5 bg-white py-2 text-white opacity-100'> </p>
                         <div className='font-semibold'>

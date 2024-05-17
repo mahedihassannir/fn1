@@ -1,6 +1,7 @@
-import { FaStar, FaStarHalfAlt } from "react-icons/fa";
+import { FaDollarSign, FaKorvue, FaStar, FaStarHalfAlt } from "react-icons/fa";
 import useUserProfile from "../../../Hooks/user/userProfile";
 import Rating from "react-rating";
+import { Link } from "react-router-dom";
 
 const UserOrder = () => {
     const authToken = localStorage.getItem("userToken");
@@ -8,87 +9,82 @@ const UserOrder = () => {
 
     console.log(userProfile);
 
+    let totalPrice = 0;
+    const func = () => {
+        userProfile?.sanitizedResult?.orderHistory.forEach(res => {
 
+            totalPrice += res.totalPrice
+
+        })
+    }
+    func()
+    console.log(totalPrice);
     return (
         <div className='min-w-[900px]'>
-            <table className='text-[11px]  w-full'>
-                {/* order table head  */}
-                <thead>
-                    <tr className='uppercase   py-5 text-blue-600'>
-                        <th className='w-[8%] '>#Order</th>
-                        <th className='w-[20%] '>Product</th>
-                        <th className='w-[20%]'>Category</th>
-                        <th className='w-[20%]'>Payment</th>
-                        <th className='w-[20%]'>Order Status</th>
-                        <th className='w-[12%]'>products</th>
-                    </tr>
-                </thead>
+            <div className="w-full h-20 bg-white rounded-lg py-2 px-4">
+                <h1 className="text-lg font-semibold">ই-কমে মোট টাকা খরচ </h1>
+                <h1 className="font-semibold text-lg text-red-500 flex items-center gap-2">{totalPrice}  <span>টাকা</span></h1>
+            </div>
 
-                {/* order tabel body  */}
-                {userProfile?.sanitizedResult?.orderHistory.map((res, index) => (
-                    <tbody className='font-bold'>
-                        <tr className=' '>
-                            {/* id col  */}
-                            <td className='text-blue-600 w-[8%] '>
-                                #<span>{index + 1}</span>
-                            </td>
+            {/* order tabel body  */}
+            {userProfile?.sanitizedResult?.orderHistory.map((res, index) => (
+                <div key={index} className="">
 
-                            {/* product and product image  */}
-                            <td className=' w-[20%]'>
-                                <div className='flex items-center'>
-                                    <div>
-                                        <img
-                                            src=''
-                                            alt=''
-                                        />
-                                    </div>
-                                    <div>
-                                        {res.products.map((product) => (
+                    <div className="md:w-[1300px] w-[400px] md:h-96 mt-2 bg-white border-2 border-black rounded-md md:flex md:m-10">
+                        {/* design */}
+                        <div className="md:w-[350px] border-2 h-96 rounded-md block">
+                            <div className="mt-3 pl-3">
+                                {/* <h1 className="flex gap-2">Review: <span className="text-red-400 font-semibold">{res.comment}</span></h1> */}
+                                <p className="flex items-center gap-2"><FaKorvue></FaKorvue> Verified Buyer</p>
+                                {/* infos */}
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBqvZ_SoPlVM0REGEjcjVcLMiOwCz9XT4k1A&usqp=CAU" alt="" />
+                            </div>
 
-                                            <div className='text-[10px] text-gray-400'>
-                                                <p>product name : </p>
-                                                <p>quantity: {product?.quantity}</p>
-                                                
-                                            </div>
+                        </div>
+                        {/* design ends */}
 
-
-                                        ))}
-                                    </div>
+                        {/* infos */}
+                        <div className="md:w-[800px] bg-white p-2 rounded-md">
+                            <div className="mt-4 ml-4">
+                                <div className="flex">
+                                    <FaStar className="text-orange-500"></FaStar>
+                                    <FaStar className="text-orange-500"></FaStar>
+                                    <FaStar className="text-orange-500"></FaStar>
+                                    <FaStar className="text-orange-500"></FaStar>
+                                    <FaStar className="text-orange-500"></FaStar>
                                 </div>
-                            </td>
-
-                            {/* category  */}
-                            <td className=' w-[20%]'>
-                                <div className='flex items-center gap-4'>
-                                    <div className='w-[25px] h-[25px] bg-[#035ECF] rounded'></div>
+                                {/* title */}
+                                <div>
+                                    <h2 className="flex items-center gap-2 text-2xl font-semibold">
+                                        <span>Id: </span>  {res?._id}
+                                    </h2>
+                                    <h2 className="flex items-center text-2xl font-semibold text-red-500">
+                                        {/* {res?.} */}
+                                        <span className="">PaymentMethod: {res.paymentMethod}</span>
+                                    </h2>
                                 </div>
-                            </td>
-
-                            {/* payment */}
-                            <td className=' w-[20%] flex-col items-start'>
-                                <p className=''>
-                                    $<span>{res.totalPrice}</span>
-                                </p>
-                                <small>
-                                    <p className='text-gray-500'>{res.paymentMethod}</p>
-                                </small>
-                            </td>
-
-                            {/* order status  */}
-                            <td className=' w-[20%]'>
-                                <div className='uppercase py-1 px-3 bg-[#035ECF] text-white rounded-md'>
-                                    {res.status}
+                                <div>
+                                    <h1 className="text-md font-semibold">Address: {res?.address}</h1>
+                                    <h1 className="text-md font-semibold">Charge: {res?.deliveryCharge}</h1>
+                                    <h1 className="text-md font-semibold">PaymentStatus: {res?.paymentStatus}</h1>
+                                    <h1 className="text-md font-semibold">Price: <span className="text-red-500">{res?.totalPrice} টাকা</span></h1>
+                                    <h1 className="text-md font-semibold">totalProducts: {res?.product?.length}</h1>
                                 </div>
-                            </td>
-                            {/* rating  */}
-                            <td className=' w-[12%]'>
-                                {res?.products?.length}
-                            </td>
-                        </tr>
+                                <Link to={""}>
+                                    <button className="mt-3 underline text-md font-semibold">read more</button>
+                                </Link>
 
-                    </tbody>
-                ))}
-            </table>
+                            </div>
+
+                        </div>
+                        {/* infos ends */}
+
+
+                    </div>
+
+                </div>
+            ))}
+
         </div>
     );
 };

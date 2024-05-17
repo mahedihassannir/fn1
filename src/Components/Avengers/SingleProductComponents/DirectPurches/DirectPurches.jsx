@@ -7,15 +7,21 @@ import { ContexM } from "../../../../Authentication/AuthProvider/AuthProvider";
 import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
 import Modal from "react-responsive-modal";
 import Useaddress from "../../../../Hooks/Useaddress/Useaddress";
+import useUserProfile from "../../../../Hooks/user/userProfile";
 
 const DirectPurches = () => {
-    const authToken = localStorage.getItem("userToken")
+    const authToken = localStorage.getItem("userToken");
     // hooks
-    const { user } = useContext(ContexM);
 
+    const userId = localStorage.getItem("userToken");
+    const user = localStorage.getItem("userToken");
+    const userProfile = useUserProfile(user);
+    console.log(userProfile?.sanitizedResult._id);
     const [cart] = UseCartHook();
 
     const [address] = Useaddress();
+    console.log(address);
+    console.log(address?.result?.address?._id);
     // hooks ends
     // address related work 
     let addressData = {}
@@ -101,16 +107,24 @@ const DirectPurches = () => {
     const cartData = { cart0: { singleProductData: productdata } }
     const productID = Math.random().toString(36).substr(2, 9) + Date.now()
 
+    console.log(productdata?.singleProductData?.result._id);
+    console.log(productdata?.singleProductData?.result?.seller?._id);
     const handleDireact_order = () => {
-        console.log(productdata?.singleProductData?.result);
         // this is from the useeffect seller detailes
         // create a object into array
         const products = [productdata?.singleProductData?.result._id];
         console.log(products);
         const data = {
-            products: products,
             address: value,
-            addressId: "6629fe16384e634e64335d0a"
+            products: [
+                {
+                    product: productdata?.singleProductData?.result?._id,
+                    user: userProfile?.sanitizedResult?._id,
+                    sellerId: productdata?.singleProductData?.result?.seller?._id,
+                    quantity: productdata?.quantity,
+                }
+            ],
+            addressId: address?.result?.address?._id
         };
 
         console.log(productdata?.singleProductData?.result)
@@ -206,59 +220,57 @@ const DirectPurches = () => {
 
                     <div className="md:w-[60%]">
                         {/* this div is for the address  */}
-                        {
-                            address.map(addressd => <div className='text-xs p-5 border rounded font-semibold'>
-                                <div>
-                                    <h2>
-                                        Deliver to: {addressd.name}
-                                    </h2>
+                        <div className='text-xs p-5 border rounded font-semibold'>
+                            <div>
+                                <h2>
+                                    {/* Deliver to: {addressd.name} */}
+                                </h2>
 
-                                    <div className='mt-3 flex items-center gap-3'>
-                                        {/* address  */}
-                                        <p>
-                                            <span className='bg-[#EBF4F6] inline-block py-[2px] px-2 text-[10px] rounded'>
-                                                HOME {addressd.selectcity} ,{addressd.area}
-                                            </span>
+                                <div className='mt-3 flex items-center gap-3'>
+                                    {/* address  */}
+                                    <p>
+                                        <span className='bg-[#EBF4F6] inline-block py-[2px] px-2 text-[10px] rounded'>
+                                            HOME {address?.result?.address?.address} ,{address?.result?.address?.area}
+                                        </span>
+                                    </p>
+
+                                    {/* number and address  */}
+                                    <div className='flex items-center gap-3 divide-x'>
+                                        <p>{address?.result?.address?.mobile_number}</p>
+                                        <p className='pl-3'>
+
                                         </p>
-
-                                        {/* number and address  */}
-                                        <div className='flex items-center gap-3 divide-x'>
-                                            <p>{addressd.mobile}</p>
-                                            <p className='pl-3'>
-
-                                            </p>
-                                        </div>
-                                        <Link to="/dashboard/useraddressform">
-                                            {/* TODO: emplement change funtionality */}
-                                            <button className='text-[#2ABBE8]'>Change</button>
-                                        </Link>
                                     </div>
-
-                                    {/* email  */}
-                                    <div className='mt-3 flex items-center gap-5'>
-
-                                        <p>Email to:{addressd.email}</p>
-
-                                        <p>
-                                            <span className='bg-[#EBF4F6] inline-block py-[2px] px-2 text-[10px] rounded'>
-                                                HOME {addressd.selectcity} ,{addressd.area} ,{addressd.landmark}
-                                            </span>
-                                        </p>
-
-                                        <div className='flex items-center gap-2'>
-                                            <p></p>
-                                            {/* TODO: emplement change funtionality */}
-
-                                            <Link to="/dashboard/useraddressform">
-
-                                                <button className='text-[#2ABBE8]'>Edit</button>
-                                            </Link>
-                                        </div>
-                                    </div>
+                                    <Link to="/dashboard/useraddressform">
+                                        {/* TODO: emplement change funtionality */}
+                                        <button className='text-[#2ABBE8]'>Change</button>
+                                    </Link>
                                 </div>
 
-                            </div>)
-                        }
+                                {/* email  */}
+                                <div className='mt-3 flex items-center gap-5'>
+
+                                    <p>Email to:{address?.result?.address?.email}</p>
+
+                                    <p>
+                                        <span className='bg-[#EBF4F6] inline-block py-[2px] px-2 text-[10px] rounded'>
+                                            HOME {address?.result?.address?.city} ,{address?.result?.address?.landmark} ,{address?.result?.address?.division}
+                                        </span>
+                                    </p>
+
+                                    <div className='flex items-center gap-2'>
+                                        <p></p>
+                                        {/* TODO: emplement change funtionality */}
+
+                                        <Link to="/dashboard/useraddressform">
+
+                                            <button className='text-[#2ABBE8]'>Edit</button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                         {/* this div is for the address  ends */}
 
 
@@ -267,24 +279,24 @@ const DirectPurches = () => {
 
                             <div className="w-full h-60 rounded-md shadow-lg bg-white p-3">
 
-                                <p className="pl-12 pb-1">{productdata?.singleProductData?.result?.seller.store_name}</p>
-                                <div className="flex items-center pl-10 ">
+                                {/* <p className="pl-12 pb-1">{productdata?.singleProductData?.result?.seller.store_name}</p> */}
+                                <div className="flex justify-between pl-10 ">
 
                                     <div className="">
 
-                                        <img className="w-[60px] h-[60px]" src={productdata?.image} alt="" />
+                                        <img className="w-[60px] h-[60px]" src={productdata?.singleProductData?.result?.product_images[0]} alt="" />
 
                                     </div>
 
                                     <div className="pl-5">
-                                        <p>{productdata?.singleProductData?.result?.product_name}</p>
+                                        <p className="font-semibold">{productdata?.singleProductData?.result?.product_name}</p>
                                     </div>
-                                    <div className="pl-10">
+                                    <div className="pl-10  font-semibold">
                                         quantity: {productdata.quantity}
                                     </div>
                                     <div className="pl-5 flex items-center">
                                         <TbCurrencyTaka />
-                                        <span className="pl-1">
+                                        <span className="pl-1 font-semibold text-red-600">
                                             {productdata?.singleProductData?.result?.price}
 
                                         </span>
@@ -313,7 +325,7 @@ const DirectPurches = () => {
 
 
                                     <div className="">
-                                        <p>1 Item(s). Subtotal: ৳  {productdata?.singleProductData?.result?.price + 10}
+                                        <p>{productdata?.quantity} Item(s). Subtotal: ৳  {productdata?.singleProductData?.result?.price * productdata?.quantity + 10}
                                             <br />
                                             Saved ৳ 100k time</p>
                                     </div>
@@ -435,7 +447,7 @@ const DirectPurches = () => {
                                     <span>Total Payment</span>
                                     <span className="flex items-center gap-2">
                                         {/* {offerPrice + deleveryFee} <TbCurrencyTaka /> */}
-                                        {productdata?.singleProductData?.result?.price + 10}<TbCurrencyTaka />
+                                        {productdata?.singleProductData?.result?.price * productdata?.quantity + 10}<TbCurrencyTaka />
                                     </span>
                                 </div>
 

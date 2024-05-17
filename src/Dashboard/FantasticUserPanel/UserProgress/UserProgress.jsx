@@ -130,28 +130,18 @@ const UserProgress = () => {
                                     </td>
 
                                     {/* product and product image  */}
-                                    <td className=' w-[20%]'>
-                                        <div className='flex items-center'>
-                                            <div>
-                                                <img
-                                                    src=''
-                                                    alt=''
-                                                />
-                                            </div>
-                                            <div>
-                                                <p>Oculus Quest 2 VR Headset 64GB</p>
-                                                <div className='text-[10px] text-gray-400'>
-                                                    <p>Regular Price: 870</p>
-                                                    <p>Sale Price: 600</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <div className='mr-10'>
+                                        <img
+                                            src={res.products[0]?.product?.product_images[0]} // Assuming product images are stored in an array
+                                            alt={""} // Assuming product name is available
+                                            className='w-16 h-16 rounded-md'
+                                        />
+                                    </div>
 
                                     {/* category  */}
                                     <td className=' w-[20%]'>
                                         <div className='flex items-center gap-4'>
-                                            <div className='w-[25px] h-[25px] bg-[#035ECF] rounded'></div>
+                                            <h1>{res.products[0]?.product?.category}</h1>
                                         </div>
                                     </td>
 
@@ -185,7 +175,7 @@ const UserProgress = () => {
                                         />
                                     </td> */}
                                     <td className=' w-[12%]'>
-                                    <p>{res.products.length}</p>
+                                        <p>{res.products.length}</p>
                                     </td>
                                 </tr>
 
