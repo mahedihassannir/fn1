@@ -19,7 +19,6 @@ ReactGA.initialize("G-36NYQKSLWL");
 ReactGA.send({
   hitType: "pageview",
   page: window.location.pathname,
-
 });
 
 ReactDOM.createRoot(document.getElementById('root')).render(

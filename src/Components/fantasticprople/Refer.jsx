@@ -1,13 +1,49 @@
+import { useState } from "react";
 import { BsArrowRightShort } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import useUserProfile from "../../Hooks/user/userProfile";
 
 const Refer = () => {
-    const handleRafer = () => {
+    const token = localStorage.getItem("userToken");
+    const navigate = useNavigation();
+    const [data, SetResData] = useState();
 
-        toast.success("আপনার রাফের সম্পন্ন হয়েছে")
+    const authToken = localStorage.getItem("userToken")
+    const userProfile = useUserProfile(authToken);
+    console.log(userProfile);
+    const id = userProfile?.sanitizedResult?._id;
 
-    }
+
+
+    const handleRafer = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const referInp = form.referinp.value
+        console.log(referInp);
+
+        fetch(`http://localhost:5000/api/v1/auth/user/referral?userId=${id}`, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({ referralCode: referInp })
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                SetResData(data)
+                toast.warn(data.message)
+                if (data.code === 200) {
+                    // toast.success("আপনার রাফের সম্পন্ন হয়েছে")
+                    navigate("/dashboard/userhome")
+
+                }
+            });
+
+
+    };
 
     return (
         <div className="flex justify-center items-center">
@@ -42,14 +78,14 @@ const Refer = () => {
                     <div className='flex justify-center items-center  w-[400px] h-[500px] bg-white rounded-md '>
 
                         <div className=" ">
-
-                            <div className='text-center'>
-                                <input className='w-11/12 h-14 rounded-md border-2  pl-2' placeholder='রাফের কোড বসান' type="text" />
-                                <button onClick={handleRafer} className='bg-red-500 py-5 px-9 rounded-lg border-none text-white font-bold mt-5'>
+                            <span className="pl-2 mb-5 text-red-600">{data?.message}</span>
+                            <form onSubmit={handleRafer} className='text-center'>
+                                <input name="referinp" className='w-11/12 h-14 rounded-md border-2  pl-2' placeholder='রাফের কোড বসান' type="text" required />
+                                <button value={"submit"} className='bg-red-500 py-5 px-9 rounded-lg border-none text-white font-bold mt-5'>
                                     রাফের করোন
                                 </button>
 
-                            </div>
+                            </form>
                         </div>
                     </div>
 

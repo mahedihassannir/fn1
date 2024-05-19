@@ -11,7 +11,7 @@ import useProducts from "../../Hooks/Fantastic/useProducts";
 import { useEffect, useState } from "react";
 
 const SingleProduct = () => {
-	const { id } = useParams()
+	const { id } = useParams();
 	const [product, setProduct] = useState(null);
 	useEffect(() => {
 		const fetchUserProfileData = async () => {
