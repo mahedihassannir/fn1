@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
-import { FaAddressCard, FaBusinessTime, FaListUl, FaQuestionCircle } from 'react-icons/fa';
+import { FaAddressCard, FaBalanceScale, FaBusinessTime, FaListUl, FaQuestionCircle } from 'react-icons/fa';
 import { MdOutlinePayments, MdReviews } from 'react-icons/md';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { useContext } from 'react';
@@ -49,6 +49,17 @@ const FantasticSideBar = () => {
 					<h4> Home</h4>
 				</div></Link>
 				{/* User Order */}
+				<Link to="referr">
+					<div onClick={() => setActiveRoute("Referrer Program")}
+						className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${activeRoute === "Referrer Program"
+							? "bg-[#19D895] text-[#0A1727]"
+							: ""
+							} cursor-pointer gap-4`}
+					>
+						<FaBalanceScale className='w-4 h-4'></FaBalanceScale>
+						<h4>Referrer Program</h4>
+					</div>
+				</Link>
 				<Link to="userorder">
 					<div onClick={() => setActiveRoute("My Order")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${activeRoute === "My Order"

@@ -120,6 +120,8 @@ import UserReview from "../Dashboard/FantasticUserPanel/UserReview/UserReview";
 import UserHelp from "../Dashboard/FantasticUserPanel/UserHelp/UserHelp";
 import CategoryPage from "../Components/categoryPage/categoryPage";
 import SellerPrivate from "../Private/sellerPrivateRoute";
+import RaferrProgram from "../Dashboard/FantasticUserPanel/RaferrProgram/RaferrProgram";
+import Refer from "../Components/fantasticprople/Refer";
 
 
 const router = createBrowserRouter([
@@ -142,6 +144,10 @@ const router = createBrowserRouter([
 			{
 				path: "userhelp",
 				element: <UserHelp></UserHelp>
+			},
+			{
+				path: "refer_user",
+				element: <Refer></Refer>
 			},
 			{
 				// avengers
@@ -426,6 +432,10 @@ const router = createBrowserRouter([
 
 
 			// this is for user order
+			{
+				path: "referr",
+				element: <RaferrProgram></RaferrProgram>,
+			},
 			{
 				path: "userorder",
 				element: <UserOrder></UserOrder>,

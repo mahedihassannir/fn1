@@ -141,15 +141,15 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 	const navItem = (
 		<>
 			{/* latest offers  */}
-			<div className='flex items-center gap-1 text-white'>
+			<Link to={"refer_user"} className='flex items-center gap-1 text-white'>
 				<AiOutlineGift className='text-[#FC9E66] text-3xl' />
 				<p className='leading-4 font-bold'>
-					Offers <br />
+				Refer <br />
 					<span className='text-xs font-normal'>
-						Latest Offers
+						Refer Friends
 					</span>{" "}
 				</p>
-			</div>
+			</Link>
 
 			{/* CART  */}
 			<div className='flex items-center gap-1 text-white'>
@@ -278,8 +278,8 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 				<li>Home</li>
 			</Link>
 
-			<Link className='hover:underline hover:text-orange-600 duration-300'>
-				<li>Home</li>
+			<Link to={"refer_user"} className='hover:underline hover:text-orange-600 duration-300'>
+				<li>Refer</li>
 			</Link>
 
 			<Link to={"/dashboard/dashboard/sellerhome"} className='hover:underline hover:text-orange-600 duration-300'>
