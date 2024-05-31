@@ -1,5 +1,5 @@
 import React from 'react';
-import './OrdersTable.css'
+import './OrdersTable.css';
 import Rating from 'react-rating';
 import { FaBeer, FaStar, FaStarHalfAlt } from "react-icons/fa";
 const OrdersTable = () => {

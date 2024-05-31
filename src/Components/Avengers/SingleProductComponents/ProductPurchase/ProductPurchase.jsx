@@ -67,8 +67,23 @@ const ProductPurchase = ({ singleProductData }) => {
 	const handlepayment = (id) => {
 		console.log(id);
 
+		const authToken = localStorage.getItem("userToken")
+		if (!authToken) {
+			Swal.fire({
+				position: 'top-end',
+				icon: 'error',
+				title: 'প্রথমে লগিন করোন',
+				showConfirmButton: false,
+				timer: 1000
+			});
+		}
+		{
+			authToken ?
+				navigate(`/direct_buy`, { state: { singleProductData, quantity } })
+				: ""
+			navigate("/login")
 
-		navigate(`/direct_buy`, { state: { singleProductData, quantity } })
+		}
 	};
 
 	//default quantity value
@@ -94,7 +109,7 @@ const ProductPurchase = ({ singleProductData }) => {
 			Swal.fire({
 				position: 'top-end',
 				icon: 'error',
-				title: 'you need to login',
+				title: 'প্রথমে লগিন করোন',
 				showConfirmButton: false,
 				timer: 1000
 			});

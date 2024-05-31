@@ -32,9 +32,8 @@ const CartProductDetails = ({ productsData }) => {
 
 
 
-	console.log("lijhg oijhg ipuuh 1212121212", address);
 	const { result } = cart
-	console.log(result);
+	
 
 	refetch();
 	return (

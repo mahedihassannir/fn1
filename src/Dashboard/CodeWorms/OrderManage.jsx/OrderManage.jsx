@@ -12,41 +12,22 @@ import { TbCurrencyTaka } from "react-icons/tb";
 import Swal from "sweetalert2";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
+import UseOrders from "../../../Hooks/useOrderManage/UseOrderManage";
 
 const { RangePicker } = DatePicker;
 const OrderManage = () => {
-  const [orders, SetOrders] = useState(null);
   const sellerAuthToken = localStorage.getItem("sellerToken");
   const id = localStorage.getItem("sId");
-  console.log(id);
-  useEffect(() => {
 
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(`http://localhost:5000/api/v1/seller/orders?sellerId=${id}`, {
-          headers: { Authorization: `Bearer ${sellerAuthToken}` }
-        });
-        const sellerData = response.data;
-        SetOrders(sellerData);
-        console.log({ sellerData });
-        console.log(sellerData);
+  const [orders, refetch] = UseOrders();
 
-        // Set sellerData in your component state or context for rendering.
-      } catch (error) {
-        console.error('Error fetching seller data:', error);
-      };
-    };
 
-    fetchData();
-
-  }, []);
-  console.log(orders);
-
-  const handleDelivered = (productId) => {
+  const handleDelivered = (productId, userId) => {
     console.log(productId);
+    console.log(userId);
     axios.post(
       `http://localhost:5000/api/v1/seller/orders/${productId}/delivered?sellerId=${id}`,
-      {},
+      { userId },
       {
         headers: {
           "Content-Type": "application/json",
@@ -56,8 +37,10 @@ const OrderManage = () => {
     )
       .then(response => {
         console.log(response.data.code);
+        console.log(response.data);
+
         if (response.data.code === 201) {
-          toast.success("অনুরোধ সফলভাবে জমা দেওয়া হয়েছে ই কম এর অফিস থেকে ডেলিভারি এর জন্য লোক আসবে ৫ মিনিট এর মধ্যে")
+          toast.success("অনুরোধ সফলভাবে জমা দেওয়া হয়েছে ই কম এর অফিস থেকে ডেলিভারি এর জন্য লোক আসবে ৫ মিনিট এর মধ্যে");
         }
       })
       .catch(error => {
@@ -66,7 +49,7 @@ const OrderManage = () => {
     console.log("handle delivery");
   };
 
-
+  refetch();
   return (
     <div>
       <ToastContainer />
@@ -304,7 +287,7 @@ const OrderManage = () => {
 
             {orders && orders.result && orders.result.length > 0 ? (
               orders?.result?.map(res =>
-                <div className="w-full mt-5 ">
+                <div key={res._id} className="w-full mt-5 ">
                   {/* this dive is for change the progress of order */}
                   <div className=" w-[100%] lg:w-[40%] shadow-lg  h-10 bg-white rounded-t-md ">
 
@@ -315,7 +298,7 @@ const OrderManage = () => {
                       <div className="">
 
 
-                        <button onClick={() => handleDelivered(res?.order?._id)} className="py-2 px-5 border-2 border-red-300">
+                        <button onClick={() => handleDelivered(res?.order?._id, res?.order?.user,)} className="py-2 px-5 border-2 border-red-300">
 
                           PRODUCT DELIVERED
 

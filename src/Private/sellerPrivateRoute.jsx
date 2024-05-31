@@ -1,40 +1,44 @@
 import { useContext, useEffect, useState } from "react";
-import { ContexM } from "../Authentication/AuthProvider/AuthProvider";
-import { Children } from "react";
 import { Navigate } from "react-router-dom";
-import useUserProfile from "../Hooks/user/userProfile";
+import axios from "axios";
 
-const SellerPrivate = ({ Children }) => {
-    const [seller, SetSeller] = useState(null);
+const SellerPrivate = ({ children }) => {
+    const [seller, setSeller] = useState(null);
+    const [loading, setLoading] = useState(true);
     const sellerAuthToken = localStorage.getItem("sellerToken");
-    useEffect(() => {
 
+    useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/api/v1/seller/profile`, {
                     headers: { Authorization: `Bearer ${sellerAuthToken}` }
                 });
                 const sellerData = response.data;
-                SetSeller(sellerData);
+                setSeller(sellerData);
                 console.log({ sellerData });
-                console.log(sellerData);
-
-                // Set sellerData in your component state or context for rendering.
             } catch (error) {
                 console.error('Error fetching seller data:', error);
-            };
+            } finally {
+                setLoading(false);
+            }
         };
 
-        fetchData();
+        if (sellerAuthToken) {
+            fetchData();
+        } else {
+            setLoading(false);
+        }
+    }, [sellerAuthToken]);
 
-    }, []);
-    console.log(seller);
-    if (sellerAuthToken) {
-        return Children;
-    };
+    if (loading) {
+        return <div>Loading...</div>; // You can replace this with a proper loading component
+    }
 
-    return <Navigate to="/seller_login" replace={true} />
+    if (seller) {
+        return children;
+    }
 
+    return <Navigate to="/seller_login" replace={true} />;
 };
 
 export default SellerPrivate;

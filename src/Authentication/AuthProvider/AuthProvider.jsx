@@ -72,14 +72,13 @@ const AuthProvider = ({ children }) => {
 		const off = onAuthStateChanged(auth, watch => {
 			Setuser(watch)
 
-			console.log(watch.email);
 			// first we see the use if the use is true then save on local storage is false then remove item 
 
 			if (watch) { // if condition 
 
 				axios.post("http://localhost:5000/jwt", { email: watch.email })
 					.then(data => {
-						console.log(data.data.token);
+					
 						localStorage.setItem("token", data.data.token)
 
 					})
@@ -127,7 +126,7 @@ const AuthProvider = ({ children }) => {
 		})
 			.then(res => res.json())
 			.then(resdata => {
-				console.log(resdata);
+				
 			})
 
 
@@ -165,12 +164,11 @@ const AuthProvider = ({ children }) => {
 	};
 
 	const [totalCart, setTotalCart] = useState(0);
-	console.log({ totalCart });
-	useEffect(() => {
+
 		const cartValue = JSON.parse(localStorage.getItem("cartProduct"));
 		let totalCart = 0;
 		for (let key in cartValue) {
-			console.log(cartValue[key]);
+			
 			totalCart += cartValue[key];
 		}
 
@@ -195,7 +193,7 @@ const AuthProvider = ({ children }) => {
 
 	const [userProfile, setUserProfile] = useState(null);
 	const authToken = localStorage.getItem("userToken`");
-	console.log(authToken, "this is user token");
+	
 	// Function to fetch user profile data
 	const fetchUserProfileData = async () => {
 		try {
@@ -207,7 +205,7 @@ const AuthProvider = ({ children }) => {
 				}
 			});
 			const data = await response.json();
-			console.log(data)
+			
 			setUserProfile(data);
 		} catch (error) {
 			console.error('Error fetching user profile data:', error);

@@ -21,7 +21,7 @@ const Table = ({ sellerdeliveredData }) => {
                             <tr className='uppercase   py-5 text-blue-600'>
                                 <th className='w-[8%] '>#delivered</th>
                                 <th className='w-[20%] '>Product</th>
-                                <th className='w-[20%]'>Category</th>
+                                <th className='w-[20%]'>Quantity</th>
                                 <th className='w-[20%]'>Payment</th>
                                 <th className='w-[20%]'>Order Status</th>
                                 <th className='w-[12%]'>date</th>

@@ -28,13 +28,13 @@ const PaymentDetails = ({ cartData }) => {
   const [address] = Useaddress();
 
   const { result } = cart;
-  console.log(result);
+  // console.log(result);
 
   refetch();
 
   const navigate = useNavigate();
 
-  console.log({ cart });
+  // console.log({ cart });
 
 
   const [open, setOpen] = useState(false);
@@ -64,8 +64,8 @@ const PaymentDetails = ({ cartData }) => {
       addressId: address?.result?.address?._id
     };
 
-    console.log(cart?.result)
-    console.log("data fom paymentDetails", { data });
+    // console.log(cart?.result)
+    // console.log("data fom paymentDetails", { data });
 
     try {
       // handle the product buy 
@@ -80,7 +80,7 @@ const PaymentDetails = ({ cartData }) => {
         .then((res) => res.json())
         .then((data) => {
 
-          console.log(data);
+          // console.log(data);
 
           if (data.code === 201) {
             Swal.fire({
@@ -94,7 +94,7 @@ const PaymentDetails = ({ cartData }) => {
           }
         });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
 
     }
   };
@@ -125,7 +125,7 @@ const PaymentDetails = ({ cartData }) => {
   });
 
 
-  console.log("Total Price:", totalPrice);
+  // console.log("Total Price:", totalPrice);
 
 
   return (

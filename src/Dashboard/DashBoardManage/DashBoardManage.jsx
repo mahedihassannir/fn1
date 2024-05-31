@@ -9,6 +9,8 @@ import FantasticSideBar from "../FantasticUserPanel/FantasticSideBar";
 import SellerDashboard from "../CodeWorms/SellerDashboard";
 import AdminSidebar from "../Avengers/adminpanel/AdminSidebar/AdminSidebar";
 import { FaArrowLeft, FaLeaf } from "react-icons/fa";
+import axios from "axios";
+import useUserProfile from "../../Hooks/user/userProfile";
 
 
 const DashBoardManage = () => {
@@ -18,15 +20,14 @@ const DashBoardManage = () => {
 	const [values, setValue] = useState(true);
 
 
+	const user = localStorage.getItem("userToken");
+	const userProfile = useUserProfile(user);
+	const isUSer = userProfile?.sanitizedResult?._id;
 	const [seller, SetSeller] = useState(null);
 	// get the seller log status;
 	useEffect(() => {
-
 		const fetchData = async () => {
-
-			const sellerAuthToken = localStorage.getItem("sellerToken")
-
-
+			const sellerAuthToken = localStorage.getItem("sellerToken");
 			try {
 				const response = await axios.get(`http://localhost:5000/api/v1/seller/profile`, {
 					headers: { Authorization: `Bearer ${sellerAuthToken}` }
@@ -35,16 +36,13 @@ const DashBoardManage = () => {
 				SetSeller(sellerData);
 				console.log({ sellerData });
 				console.log(sellerData);
-
 				// Set sellerData in your component state or context for rendering.
 			} catch (error) {
 				console.error('Error fetching seller data:', error);
 			};
 		};
-
 		fetchData();
-
-	}, [])
+	}, []);
 	console.log(seller?.result.identityId);
 	const status = seller?.result.identityId;
 	return (
@@ -59,15 +57,12 @@ const DashBoardManage = () => {
 				className={`w-[265px] absolute md:relative h-[100vh] overflow-y-auto bg-[#0A1727] z-[999] duration-500 sidbarContainer ${values ? "-left-[500px]" : "left-[0px]"
 					} md:left-0`}
 			>
-
-				<SellerDashboard></SellerDashboard>
-
-				<FantasticSideBar />
-
+				{/* <SellerDashboard></SellerDashboard>
+				<FantasticSideBar /> */}
 				{/* <AdminSidebar /> */}
-
+				{seller?.result.identityId && <SellerDashboard />}
+				{isUSer && <FantasticSideBar />}
 			</div>
-
 
 			<div
 				onClick={() => setValue(!values)}

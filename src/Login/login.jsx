@@ -1,11 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { FaFacebook, FaGoogle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { ContexM } from "../Authentication/AuthProvider/AuthProvider";
 
 const Login = () => {
 
-
+    const [res, setResponses] = useState(null);
+    console.log(res);
 
     const { loginwithpopup, singinUser } = useContext(ContexM)
 
@@ -36,7 +37,7 @@ const Login = () => {
                     .then(res => res.json())
                     .then(data => {
                         console.log(data);
-                        setResponse(data)
+                        setResponses(data)
                         if (data.code === 201) {
                             navigate("/")
                         }
@@ -70,7 +71,7 @@ const Login = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                setResponses(data)
                 if (data.code === 200) {
                     localStorage.setItem("userToken", data?.data?.access_token);
                     navigate("/")
@@ -98,15 +99,21 @@ const Login = () => {
                         <label htmlFor="">
                             <span>আপনার ইমেইল দিন</span>
                         </label>
-                        <br />
 
+                        <br />
 
                         <input name="email" className=" my-2 w-full md:w-3/4 py-3 border-[2px] pl-2 border-gray-400" type="email" placeholder="Please enter your Email" />
 
                         {/* email */}
                         <br />
                         <label className="" htmlFor="">
-                            <span>আপনার password দিন</span>
+                            {
+                                res?.error ?
+                                    <span className="text-red-500">{res?.error}</span>
+                                    :
+                                    <span>আপনার পাসওয়ার্ড দিন</span>
+
+                            }
                         </label>
                         <br />
 

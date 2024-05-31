@@ -18,17 +18,17 @@ import useUserProfile from "../../Hooks/user/userProfile";
 
 
 const Nav = ({ isNavOpen, setIsNavOpen }) => {
-
 	const [seller, SetSeller] = useState(null);
 	//get added quantity from auth provider
 	const authToken = localStorage.getItem("userToken");
 	const [cart, refetch] = UseCartHook();
-	console.log(cart);
+	console.log(seller);
+	console.log(seller?.result?.store_photo);
 	const { Logout, totalCart } = useContext(ContexM);
 
 	const user = localStorage.getItem("userToken");
 	const userProfile = useUserProfile(user);
-	console.log(userProfile);
+	const isUSer = userProfile?.sanitizedResult?._id;
 	// const seller = false;
 	const navigate = useNavigate();
 
@@ -138,13 +138,14 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 	console.log(seller?.result.identityId);
 	const status = seller?.result.identityId;
 	refetch()
+
 	const navItem = (
 		<>
 			{/* latest offers  */}
 			<Link to={"refer_user"} className='flex items-center gap-1 text-white'>
 				<AiOutlineGift className='text-[#FC9E66] text-3xl' />
 				<p className='leading-4 font-bold'>
-				Refer <br />
+					Refer <br />
 					<span className='text-xs font-normal'>
 						Refer Friends
 					</span>{" "}
@@ -173,15 +174,32 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 				</Link>
 			</div>
 			{/* PER ORDER  */}
-			<div className='flex items-center gap-1 text-white'>
-				<AiOutlineGift className='text-[#FC9E66] text-3xl' />
-				<p className='leading-4 font-bold'>
-					Per-Order <br />
-					<span className='text-xs font-normal'>
-						Order Today
-					</span>{" "}
-				</p>
-			</div>
+			{seller?.result?._id ?
+				<Link Link to={"/dashboard/sellerhome"} className='flex items-center gap-1 text-white'>
+					{
+						seller?.result?._id &&
+						<img className="w-11 h-10 rounded-full" src={seller?.result?.sellerProfile?.store_photo} alt="" />
+
+					}
+					<p className='leading-4 font-bold'>
+						SELLER  <br />
+						<span className='text-xs font-normal'>
+							Dashboard
+						</span>{""}
+					</p>
+				</Link>
+				:
+				<Link to={"seller_login"} className='flex items-center gap-1 text-white'>
+					<AiOutlineGift className='text-[#FC9E66] text-3xl' />
+					<p className='leading-4 font-bold'>
+						SELLER  <br />
+						<span className='text-xs font-normal'>
+							Dashboard
+						</span>{" "}
+					</p>
+				</Link>
+
+			}
 			{/* ACCOUNT  */}
 			<div className="flex gap-2">
 
@@ -201,26 +219,23 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 										{
 											userProfile?.sanitizedResult?.email
 										}
-
 									</p>
-
 								</li>
 
-								<li>
-									<Link to={"/dashboard/userhome"} className="justify-between">
-										User dashboard
-									</Link>
-								</li>
-
+								{isUSer &&
+									<li>
+										<Link to={"/dashboard/userhome"} className="justify-between">
+											USER DASHBOARD
+										</Link>
+									</li>
+								}
 								{
-									status ?
-
-										<li>
-											<Link to={"/dashboard/dashboard/sellerhome"} className="justify-between">
-												seller dashboard
-											</Link>
-										</li>
-										: ""
+									seller?.result?._id &&
+									<li>
+										<Link to={"/dashboard/sellerhome"} className="justify-between">
+											SELLER DASHBOARD
+										</Link>
+									</li>
 								}
 
 								<li><a>Settings</a></li>

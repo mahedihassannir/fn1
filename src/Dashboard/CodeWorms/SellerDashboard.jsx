@@ -13,7 +13,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { HiArchiveBoxXMark, HiMiniAdjustmentsHorizontal, HiMiniCalculator, HiMiniShoppingCart, HiMiniUsers } from "react-icons/hi2";
 import { HiAcademicCap, HiChartBar, HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
-import { FaBackspace, FaBroadcastTower, FaBusinessTime, FaDropbox, FaHome, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle, FaSignOutAlt, FaTools } from 'react-icons/fa';
+import { FaBackspace, FaBroadcastTower, FaBusinessTime, FaDropbox, FaHome, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle, FaRProject, FaSignOutAlt, FaTools } from 'react-icons/fa';
 import { MdOutlinePayments } from 'react-icons/md';
 import USeemailCheck from '../../Hooks/USeemailCheck/USeemailCheck';
 import { useEffect } from 'react';
@@ -30,21 +30,16 @@ const SellerDashboard = () => {
     const [seller, SetSeller] = useState(null);
 
     const handleLogOut = () => {
-
-        localStorage.removeItem("userID")
-
+        localStorage.removeItem("sellerToken");
         try {
-
-            if (localStorage.getItem("userID") === null) {
+            if (localStorage.getItem("sellerToken") === null) {
                 navigate("/seller_register")
             }
         }
         catch (error) {
             console.log(error);
         }
-
-
-    }
+    };
 
     useEffect(() => {
 
@@ -89,12 +84,9 @@ const SellerDashboard = () => {
             </div>
             <div className='text-left flex flex-col gap-1 mt-8 mx-3 font-normal'>
                 {/* sidebar items */}
-
-
-
                 {/* Seller Home */}
 
-                <Link to="dashboard/sellerhome"><div onClick={() => setActiveRoute("Seller Home")}
+                <Link to="sellerhome"><div onClick={() => setActiveRoute("Seller Home")}
                     className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "Seller Home"
                         ? "bg-[#19D895] text-[#0A1727]"
                         : ""
@@ -111,8 +103,8 @@ const SellerDashboard = () => {
                         : ""
                         } cursor-pointer  gap-4`}
                 >
-                    <HiHome className='w-4 h-4'></HiHome>
-                    <h4>Order Manage</h4>
+                    <FaRProject className='w-4 h-4'></FaRProject>
+                    <h4>অর্ডার ম্যানেজ করুন</h4>
                 </div></Link>
 
                 {/* Order progress and orders */}
@@ -136,7 +128,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <HiHome className='w-4 h-4'></HiHome>
-                    <h4>returns</h4>
+                    <h4>রিটার্ন</h4>
                 </div></Link>
                 {/* Seller Home ends */}
                 {/* Seller Home */}
@@ -148,7 +140,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <HiHome className='w-4 h-4'></HiHome>
-                    <h4>reviews</h4>
+                    <h4>পর্যালোচনা</h4>
                 </div></Link>
                 {/* Seller Home ends */}
                 {/* Seller Home */}
@@ -161,7 +153,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <FaListUl className='w-4 h-4'></FaListUl>
-                    <h4>Delivered Products </h4>
+                    <h4>ডেলিভাড প্রোডাক্ট</h4>
                 </div></Link>
                 {/* Seller Add Product ends */}
 
@@ -196,8 +188,6 @@ const SellerDashboard = () => {
                     <h4> Manage Product</h4>
                 </div></Link>
                 {/* custommer feedback on my product ends */}
-
-
 
                 {/* Markating solution for seller starts */}
                 <Link to="/dashboard/markatingpage"><div onClick={() => setActiveRoute("Markating Solution")}
@@ -234,7 +224,7 @@ const SellerDashboard = () => {
                         } cursor-pointer  gap-4`}
                 >
                     <FaBroadcastTower className='w-4 h-4'></FaBroadcastTower>
-                    <h4>Payment withdraw</h4>
+                    <h4>টাকা তুলুন</h4>
                 </div></Link>
 
 

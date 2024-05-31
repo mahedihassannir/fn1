@@ -30,7 +30,7 @@ const Register = () => {
 
 
     // the contex form authprovider
-    // contex
+    // contexx`
     const { creareUser, UpdateUser, loginwithpopup } = useContext(ContexM)
 
 

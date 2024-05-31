@@ -1,4 +1,4 @@
-// import required modules
+
 
 import { Swiper,SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation } from 'swiper/modules';

@@ -17,12 +17,12 @@ import { useEffect, useState } from "react";
 const SingleCartProductCard = ({ singleProductData }) => {
 	const [, refetch] = UseCartHook();
 	const authToken = localStorage.getItem("userToken");
-	console.log(singleProductData);
+	// console.log(singleProductData);
 
 
 	let handleDeleteProduct = (id) => {
 
-		console.log(id);
+		// console.log(id);
 
 		fetch(`http://localhost:5000/api/v1/user/cart?cartId=${id}`, {
 			method: "DELETE",
@@ -31,14 +31,14 @@ const SingleCartProductCard = ({ singleProductData }) => {
 		})
 			.then(res => res.json())
 			.then(res => {
-				console.log(res);
+				// console.log(res);
 				if (res.code === 203) {
 					// alert("product remove from the cart")
 				};
 				refetch();
 			})
 			.catch(err => {
-				console.log(err);
+				// console.log(err);
 			});
 	};
 

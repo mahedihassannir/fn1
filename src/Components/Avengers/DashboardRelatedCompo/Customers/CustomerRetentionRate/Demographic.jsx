@@ -4,31 +4,31 @@ import useCustomersInfo from "../../../../../Hooks/Avengers/useCustomersInfo/use
 
 const Demographic = () => {
   const { customerInfo } = useCustomersInfo();
-  const {  usersAge } = customerInfo;
- console.log()
-const userAgeArr = usersAge?.[0]?.users;
+  const { usersAge } = customerInfo;
+
+  const userAgeArr = usersAge?.[0]?.users;
 
 
   return (
     <div className="p-5">
-     {
-      userAgeArr?.map((singleUser, index)=> {
-console.log(Object.keys(singleUser)?.[0])
-     return  <div key={index}>
-        <div className="flex justify-between text-base mt-3">
-          <h3 className="text-[#688D8C] font-bold  ">Age {Object.keys(singleUser)?.[0]}</h3>
-          <h3 className="text-[#00193B] font-bold  ">{singleUser?.[Object.keys(singleUser)?.[0]]}</h3>
-        </div>
-        <span className="flex items-center font-bold">
-          <progress
-            className="text-[#00193B] progress mt-1 h-4 w-[100%] mr-4 "
-            value="50"//todo dynamic
-            max="100"
-          ></progress>
-        </span>
-      </div>
-      })
-     }
+      {
+        userAgeArr?.map((singleUser, index) => {
+          console.log(Object.keys(singleUser)?.[0])
+          return <div key={index}>
+            <div className="flex justify-between text-base mt-3">
+              <h3 className="text-[#688D8C] font-bold  ">Age {Object.keys(singleUser)?.[0]}</h3>
+              <h3 className="text-[#00193B] font-bold  ">{singleUser?.[Object.keys(singleUser)?.[0]]}</h3>
+            </div>
+            <span className="flex items-center font-bold">
+              <progress
+                className="text-[#00193B] progress mt-1 h-4 w-[100%] mr-4 "
+                value="50"//todo dynamic
+                max="100"
+              ></progress>
+            </span>
+          </div>
+        })
+      }
 
 
       {/* <div>

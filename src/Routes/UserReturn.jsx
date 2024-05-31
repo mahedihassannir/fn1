@@ -448,7 +448,6 @@ const router = createBrowserRouter([
 				path: "userprogress",
 				element: <UserProgress></UserProgress>,
 			},
-
 			// user progress ends
 
 			// user wishlist starts
@@ -457,38 +456,24 @@ const router = createBrowserRouter([
 				element: <UserWhichlist></UserWhichlist>,
 			},
 			// user wishlist ends
-
 			// user userpayment starts
-
 			{
 				path: "userpaymenthistory",
 				element: <UserpaymentHistory></UserpaymentHistory>,
 			},
 			// user userpayment ends
-
 			// user Customer Support
-
 			{
-
 				path: "customersupport",
 				element: <UserCustomerSupport></UserCustomerSupport>
-
-
 			},
-
 			{
-
 				path: "wishlist",
 				element: <Wishlist></Wishlist>
-
-
 			},
 			{
-
 				path: "payhistory",
 				element: <PaymentHistory></PaymentHistory>
-
-
 			},
 			{
 				path: "return",
@@ -514,7 +499,7 @@ const router = createBrowserRouter([
 				element: <CustomerFeedback></CustomerFeedback>,
 			},
 			{
-				path: "dashboard/sellerhome",
+				path: "/dashboard/sellerhome",
 				element: <SellerPrivate>
 					<SellerHome></SellerHome>
 				</SellerPrivate>,
@@ -525,7 +510,9 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "dashboard/manageproduct",
-				element: <ManageProduct></ManageProduct>
+				element: <SellerPrivate>
+					<ManageProduct></ManageProduct>
+				</SellerPrivate>,
 			},
 
 			// TeamArrow ends
@@ -538,16 +525,18 @@ const router = createBrowserRouter([
 			{
 
 				path: "/dashboard/orderresuns",
-				element: <OrderResuns></OrderResuns>
-
-
+				element: <SellerPrivate>
+					<OrderResuns></OrderResuns>
+				</SellerPrivate>,
 			},
 			// this is for the teamarrow ends
 			// this is for the teamarrow 
 			{
 
 				path: "/dashboard/custommerreview",
-				element: <CustommerReview></CustommerReview>
+				element: <SellerPrivate>
+					<CustommerReview></CustommerReview>
+				</SellerPrivate>,
 
 
 			},
@@ -556,7 +545,9 @@ const router = createBrowserRouter([
 			{
 
 				path: "/dashboard/ordermanage",
-				element: <OrderManage></OrderManage>
+				element: <SellerPrivate>
+					<OrderManage></OrderManage>
+				</SellerPrivate>,
 
 
 			},
@@ -565,7 +556,9 @@ const router = createBrowserRouter([
 			{
 
 				path: "/dashboard/deliveredorders",
-				element: <Deliveredorder></Deliveredorder>
+				element: <SellerPrivate>
+					<Deliveredorder></Deliveredorder>
+				</SellerPrivate>,
 
 
 			},
@@ -575,7 +568,9 @@ const router = createBrowserRouter([
 			{
 
 				path: "/dashboard/addproduct",
-				element: <AddProduct></AddProduct>
+				element: <SellerPrivate>
+					<AddProduct></AddProduct>
+				</SellerPrivate>,
 
 
 			},
@@ -585,7 +580,9 @@ const router = createBrowserRouter([
 			{
 
 				path: "/dashboard/markatingpage",
-				element: <Markatingpage></Markatingpage>
+				element: <SellerPrivate>
+					<Markatingpage></Markatingpage>
+				</SellerPrivate>,
 
 
 			},
@@ -594,7 +591,9 @@ const router = createBrowserRouter([
 			{
 
 				path: "/dashboard/productad",
-				element: <Productad></Productad>
+				element: <SellerPrivate>
+					<Productad></Productad>
+				</SellerPrivate>,
 
 
 			},
@@ -604,7 +603,9 @@ const router = createBrowserRouter([
 			{
 
 				path: "/dashboard/addperformence",
-				element: <Addperformence></Addperformence>
+				element: <SellerPrivate>
+					<Addperformence></Addperformence>
+				</SellerPrivate>,
 
 
 			},
@@ -613,15 +614,19 @@ const router = createBrowserRouter([
 			// this is for acc state ment
 			{
 				path: "/dashboard/accStatementseller",
-				element: <AccStatement></AccStatement>
-
+				element: <SellerPrivate>
+					<AccStatement></AccStatement>
+				</SellerPrivate>,
 			}
 			// this is for acc state ment ends
 			,
 			{
 
 				path: "/dashboard/markatingsolution",
-				element: <MarkatingSolution></MarkatingSolution>
+				element: <SellerPrivate>
+					<MarkatingSolution></MarkatingSolution>
+				</SellerPrivate>,
+
 
 
 			},

@@ -1,8 +1,5 @@
 import { Link, unstable_HistoryRouter, useNavigate } from "react-router-dom";
 
-
-
-
 import ReCAPTCHA from "react-google-recaptcha";
 import { useState } from "react";
 import axios from "axios";
@@ -65,7 +62,7 @@ const SellerLogin = () => {
                 // ///
 
                 if (response?.data?.data?.profileID) {
-                    navigate("/dashboard/dashboard/sellerhome");
+                    navigate("/dashboard/sellerhome");
                 } else {
                     navigate("/seller_register/personal_details");
                 };

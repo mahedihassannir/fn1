@@ -10,8 +10,8 @@ const Main = () => {
 	/**
 	 * when isNavOpen is true then scroll will be stop
 	 */
-   const [isNavOpen, setIsNavOpen] = useState(false)
-    useEffect(() => {
+	const [isNavOpen, setIsNavOpen] = useState(false)
+	useEffect(() => {
 		const handleScroll = () => {
 			if (isNavOpen) {
 				document.body.style.overflow = "hidden";
@@ -24,12 +24,12 @@ const Main = () => {
 	}, [isNavOpen]);
 
 
-	
-    return (
+
+	return (
 		<div onClick={() => {
 			// close navbar 
 			setIsNavOpen(false)
-			
+
 
 		}} className="overflow-x-hidden">
 			<Nav

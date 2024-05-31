@@ -35,7 +35,6 @@ const Test = () => {
             });
     }
 
-    console.log({ imageUrls });
 
     const handleSellerAddProduct = () => {
 
