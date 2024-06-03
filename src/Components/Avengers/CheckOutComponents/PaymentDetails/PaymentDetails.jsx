@@ -17,18 +17,20 @@ import { Modal } from 'react-responsive-modal';
 import Swal from "sweetalert2";
 import Useaddress from "../../../../Hooks/Useaddress/Useaddress";
 import { FaAddressBook, FaAddressCard } from "react-icons/fa";
+import { ToastContainer, toast } from "react-toastify";
 
 //import { result } from "lodash";
 
 
 
 const PaymentDetails = ({ cartData }) => {
-  const authToken = localStorage.getItem("userToken")
+  const authToken = localStorage.getItem("userToken");
   const [cart, refetch] = UseCartHook();
   const [address] = Useaddress();
+  const [isInputEmpty, setIsInputEmpty] = useState(true);
 
   const { result } = cart;
-  // console.log(result);
+  console.log(result);
 
   refetch();
 
@@ -49,13 +51,18 @@ const PaymentDetails = ({ cartData }) => {
     const newValue = event.target.value;
     // Update the state with the new value
     setInputValue(newValue);
+    setIsInputEmpty(newValue === '');
   };
 
   const onSubmit2 = () => {
 
-    if (!result.length) {
-      window.alert("not product added in the cart")
-    }
+    if (isInputEmpty) {
+      return toast.info("ডেলিভারি অ্যাড্রেস দিন");
+    };
+
+    if (!result) {
+      return toast.info("cart এ কনো প্রোডাক্ট অ্যাড করা নেই ");
+    };
 
     // this is from the useeffect seller detailes
     const data = {
@@ -97,11 +104,8 @@ const PaymentDetails = ({ cartData }) => {
     } catch (error) {
       // console.log(error);
 
-    }
+    };
   };
-
-
-
   // Assuming cartData is the array containing your cart items data
 
   // Define the base price and price increase per quantity
@@ -131,6 +135,7 @@ const PaymentDetails = ({ cartData }) => {
 
   return (
     <form>
+      <ToastContainer />
       <div className="text-xs font-semibold ">
         <div className="pb-5 border-b">
           <p>Discount and Payment</p>
@@ -153,7 +158,7 @@ const PaymentDetails = ({ cartData }) => {
               <input
                 name="address"
                 type="text"
-                className="py-[10px] outline-none border rounded placeholder:text-gray-400 w-full px-2 focus:border-[#2ABBE8] duration-300"
+                className={`py-[10px] outline-none border rounded placeholder:text-gray-400 w-full px-2 focus:border-[#2ABBE8] duration-300 ${isInputEmpty ? 'border-red-500  border-4' : 'border-green-500'}`}
                 placeholder="Enter address"
                 value={inputValue}
                 onChange={handleInputChange}
