@@ -292,7 +292,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 				<li>Refer</li>
 			</Link>
 
-			<Link to={"/dashboard/dashboard/sellerhome"} className='hover:underline hover:text-orange-600 duration-300'>
+			<Link to={"/dashboard/sellerhome"} className='hover:underline hover:text-orange-600 duration-300'>
 				<li>Seller Penal</li>
 			</Link>
 
