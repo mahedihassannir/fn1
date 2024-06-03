@@ -5,7 +5,8 @@ import { useState } from "react";
 import axios from "axios";
 
 const SellerLogin = () => {
-
+    const [res, setRes] = useState(null);
+    // console.log(res);
     const [captchaValue, SetCaptchaValue] = useState(null);
     // 
     const [fromdata, setdata] = useState(null);
@@ -13,7 +14,7 @@ const SellerLogin = () => {
     const navigate = useNavigate();
 
     function onChange(value) {
-        console.log("Captcha value:", value);
+        // console.log("Captcha value:", value);
 
         SetCaptchaValue(value)
     }
@@ -54,13 +55,14 @@ const SellerLogin = () => {
 
             const response = await axios.post("http://localhost:5000/api/v1/auth/seller/login", { email, password });
 
+            // console.log(response.data);
+            setRes(response.data)
+
             if (response.data.code === 200) {
-                console.log(response.data);
                 //  local storage work
                 localStorage.setItem("sellerToken", response.data.data.access_token);
                 localStorage.setItem("sId", response.data.data.profileID);
                 // ///
-
                 if (response?.data?.data?.profileID) {
                     navigate("/dashboard/sellerhome");
                 } else {
@@ -69,7 +71,7 @@ const SellerLogin = () => {
             }
             else {
                 // Login failed
-                console.error(response.data.data);
+                console.error(response.data);
             };
 
         } catch (error) {
@@ -113,6 +115,9 @@ const SellerLogin = () => {
                             >
                                 Email
                             </label>
+
+                            {res?.error}
+
                             <div>
                                 <input
                                     type='email'
@@ -131,6 +136,7 @@ const SellerLogin = () => {
                             >
                                 Password
                             </label>
+
                             <div>
                                 <input
                                     type='password'

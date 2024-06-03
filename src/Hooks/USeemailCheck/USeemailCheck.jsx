@@ -7,7 +7,7 @@ import { ContexM } from "../../Authentication/AuthProvider/AuthProvider";
 const USeemailCheck = () => {
     const { user, loader } = useContext(ContexM);
 
-    console.log(user?.email);
+    // console.log(user?.email);
     // const token = localStorage.getItem("jwtToken")
 
 

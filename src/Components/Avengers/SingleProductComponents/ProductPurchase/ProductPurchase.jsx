@@ -36,16 +36,16 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const ProductPurchase = ({ singleProductData }) => {
 
-	console.log(singleProductData);
+	// console.log(singleProductData);
 	const authToken = localStorage.getItem("userToken");
 	const { user } = useContext(ContexM);
 	const userProfile = useUserProfile(authToken);
-	console.log(userProfile?.sanitizedResult?._id);
+	// console.log(userProfile?.sanitizedResult?._id);
 
-	console.log({ singleProductData });
+	// console.log({ singleProductData });
 
 	const images = singleProductData?.imageurls;
-	console.log("111111", images);
+	// console.log("111111", images);
 	let imageData = {}
 
 	for (let i = 0; i < images?.length; i++) {
@@ -59,15 +59,16 @@ const ProductPurchase = ({ singleProductData }) => {
 	};
 
 
-	console.log("he he he hklh lkjhlkjhljkh lkjhl hjklh 12123", imageData);
+	// console.log("he he he hklh lkjhlkjhljkh lkjhl hjklh 12123", imageData);
 
 	const navigate = useNavigate();
 
 
 	const handlepayment = (id) => {
-		console.log(id);
+		// console.log(id);
 
 		const authToken = localStorage.getItem("userToken")
+
 		if (!authToken) {
 			Swal.fire({
 				position: 'top-end',
@@ -77,13 +78,11 @@ const ProductPurchase = ({ singleProductData }) => {
 				timer: 1000
 			});
 		}
-		{
-			authToken ?
-				navigate(`/direct_buy`, { state: { singleProductData, quantity } })
-				: ""
-			navigate("/login")
-
-		}
+		if (!authToken) {
+			navigate("/login");
+		} else {
+			navigate(`/direct_buy`, { state: { singleProductData, quantity } });
+		};
 	};
 
 	//default quantity value
@@ -99,7 +98,7 @@ const ProductPurchase = ({ singleProductData }) => {
 
 	const { products, loading } = useProducts();
 
-	console.log({ addToCart });
+	// console.log({ addToCart });
 
 	const email = user?.email;
 
@@ -115,8 +114,8 @@ const ProductPurchase = ({ singleProductData }) => {
 			});
 			navigate("/login")
 		}
-		console.log(data.result.seller);
-		console.log(data.result._id);
+		// console.log(data.result.seller);
+		// console.log(data.result._id);
 		const seller = data.result.seller;
 		const productId = data.result._id;
 
@@ -125,7 +124,7 @@ const ProductPurchase = ({ singleProductData }) => {
 			product: productId,
 			quantity: quantity
 		}
-		console.log(addToCartData);
+		// console.log(addToCartData);
 		fetch(`http://localhost:5000/api/v1/user/add_cart?userId=${userProfile?.sanitizedResult?._id}`, {
 			method: "POST",
 			headers: {
@@ -137,7 +136,7 @@ const ProductPurchase = ({ singleProductData }) => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
+				// console.log(data);
 
 				if (data.code === 201) {
 					Swal.fire({
@@ -147,14 +146,15 @@ const ProductPurchase = ({ singleProductData }) => {
 						showConfirmButton: false,
 						timer: 1000
 					});
+					localStorage.setItem("cart", "added")
 				}
 			});
 	};
 
 	const handleWishList = (data) => {
-		console.log(data);
+		// console.log(data);
 		const productId = data.result._id
-		console.log("wish list data", data);
+		// console.log("wish list data", data);
 		fetch("http://localhost:5000/api/v1/user/wish_list", {
 			method: "POST",
 			headers: {
@@ -166,7 +166,7 @@ const ProductPurchase = ({ singleProductData }) => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
+				// console.log(data);
 				if (data.code === 201) {
 					Swal.fire({
 						position: 'top-end',

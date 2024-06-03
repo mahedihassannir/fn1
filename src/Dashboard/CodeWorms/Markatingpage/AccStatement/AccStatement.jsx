@@ -46,8 +46,8 @@ const AccStatement = () => {
         });
         const sellerData = response.data;
         SetSeller(sellerData);
-        console.log({ sellerData });
-        console.log(sellerData);
+        // console.log({ sellerData });
+        // console.log(sellerData);
 
         // Set sellerData in your component state or context for rendering.
       } catch (error) {
@@ -58,7 +58,7 @@ const AccStatement = () => {
     fetchData();
 
   }, []);
-  console.log(seller);
+  // console.log(seller);
   // console.log(seller.result.sellerProfile._id);
   const sellerId = localStorage.getItem("sId");
   // refetch();
@@ -71,11 +71,11 @@ const AccStatement = () => {
     Setselect(e.target.value)
 
   }
-  console.log(selectValue);
+  // console.log(selectValue);
 
 
 
-  console.log("121212", deliveredData);
+  // console.log("121212", deliveredData);
 
 
   const totalMoney = seller?.sellerAccountBalance
@@ -92,8 +92,8 @@ const AccStatement = () => {
     const email = from.email.value
     const password = from.password.value
     const ref = from.ref.value
-    console.log(password);
-    console.log(email);
+    // console.log(password);
+    // console.log(email);
 
     if (seller?.result?.sellerProfile?.sellerBalance < withwraAmount) {
 
@@ -141,8 +141,8 @@ const AccStatement = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
-        console.log(data.error)
+        // console.log(data)
+        // console.log(data.error)
 
         setValidationError(data.error)
         if (data.error) {
@@ -159,7 +159,7 @@ const AccStatement = () => {
 
 
 
-    console.log(Data);
+    // console.log(Data);
 
   }
 
@@ -181,7 +181,7 @@ const AccStatement = () => {
         });
         const historyData = response.data;
         setPaymentHistory(historyData);
-        console.log(historyData);
+        // console.log(historyData);
         // Set sellerData in your component state or context for rendering.
       } catch (error) {
         console.error('Error fetching seller data:', error);
@@ -190,7 +190,7 @@ const AccStatement = () => {
     fetchData();
   }, []);
 
-  console.log(paymentHistory);
+  // console.log(paymentHistory);
 
   refetch();
   return (

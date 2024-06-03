@@ -9,7 +9,7 @@ const UserProgress = () => {
     const progressValue = 'processing'; // it can be processing, placed, shipped, or delivered pp
 
     const authToken = localStorage.getItem("userToken")
-    console.log(authToken);
+    // console.log(authToken);
     const [products, setProducts] = useState(null);
     useEffect(() => {
         const fetchUserProfileData = async () => {
@@ -32,7 +32,7 @@ const UserProgress = () => {
             fetchUserProfileData();
         };
     }, [authToken]);
-    console.log(products?.result);
+    // console.log(products?.result);
     return (
         <div>
 

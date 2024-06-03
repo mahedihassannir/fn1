@@ -4,9 +4,9 @@ import UseSellerDeliveredData from "../../../Hooks/UsesellerdeliveredData/Usesel
 const Deliveredorder = () => {
 
     const [deliveredData, refetch] = UseSellerDeliveredData();
-    console.log(deliveredData);
+    // console.log(deliveredData);
 
-    console.log("i am from seller orders", deliveredData);
+    // console.log("i am from seller orders", deliveredData);
 
 
     refetch();

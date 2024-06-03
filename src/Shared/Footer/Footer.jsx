@@ -8,7 +8,7 @@ const Footer = () => {
 
         window.scrollTo({
             top: 0,
-            behavior:"smooth"
+            behavior: "smooth"
         })
 
     }
@@ -47,7 +47,9 @@ const Footer = () => {
                 <div className='space-y-5'>
                     <h2 className=' text-orange-500 font-bold text-lg'>ABOUT US</h2>
                     <ul className='grid grid-cols-2 md:grid-cols-1 lg:grid-cols-1 text-white space-y-3'>
-                        <li className='hover:text-gray-200 text-lg font-semibold hover:underline'>About Us</li>
+                        <Link to={"/about"}>
+                            <li className='hover:text-gray-200 text-lg font-semibold hover:underline'>About Us</li>
+                        </Link>
                         <li className='hover:text-gray-200 text-lg font-semibold hover:underline'>Order Tracking</li>
                         <li className='hover:text-gray-200 text-lg font-semibold hover:underline'>Shop Address</li>
                         <li className='hover:text-gray-200 text-lg font-semibold hover:underline'>Careers</li>
@@ -61,7 +63,9 @@ const Footer = () => {
                     <h2 className='text-orange-500 font-bold text-lg'>HELP</h2>
                     <ul className='grid grid-cols-2 md:grid-cols-1 lg:grid-cols-1 text-white space-y-3'>
                         <li className='hover:text-gray-200 text-lg font-semibold hover:underline'>EM Policy</li>
+                        <Link to={"/privacy_policy"}>
                         <li className='hover:text-gray-200 text-lg font-semibold hover:underline'>privacy policy</li>
+                        </Link>
                         <li className='hover:text-gray-200 text-lg font-semibold hover:underline'>Refund Policy</li>
                         <li className='hover:text-gray-200 text-lg font-semibold hover:underline'>Warranty Policy</li>
                         <li className='hover:text-gray-200 text-lg font-semibold hover:underline'>how to Exchange <br /> Any Device</li>

@@ -32,7 +32,7 @@ const useProducts = () => {
 
     }, [authToken]);
 
-    console.log(products);
+    // console.log(products);
     return { products, loading, error };
 };
 

@@ -32,7 +32,7 @@ const SingleProduct = () => {
 			fetchUserProfileData();
 		
 	}, [id]);
-	console.log(product);
+	// console.log(product);
 	return (
 		<div className=' w-full  my-10  md:px-20'>
 

@@ -22,8 +22,8 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 	//get added quantity from auth provider
 	const authToken = localStorage.getItem("userToken");
 	const [cart, refetch] = UseCartHook();
-	console.log(seller);
-	console.log(seller?.result?.store_photo);
+	// console.log(seller);
+	// console.log(seller?.result?.store_photo);
 	const { Logout, totalCart } = useContext(ContexM);
 
 	const user = localStorage.getItem("userToken");
@@ -43,7 +43,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 		try {
 			const response = await axios.get(`http://localhost:5000/suggestions?search=${input}`);
 			setSuggestions(response.data);
-			console.log("41", response.data);
+			// console.log("41", response.data);
 		} catch (error) {
 			console.error(error);
 		}
@@ -65,7 +65,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 			setResults(response.data);
 
 
-			console.log(response?.data?.code === 200);
+			// console.log(response?.data?.code === 200);
 			if (response?.data?.code === 200) {
 
 				// navigate("/search_result",)
@@ -76,7 +76,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 			}
 
 		} catch (error) {
-			console.error(error);
+			// console.error(error);
 		}
 	};
 
@@ -92,7 +92,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 
 	};
 
-	console.log("this is the serch result", results);
+	// console.log("this is the serch result", results);
 
 	const handleLogout = () => {
 		const token = localStorage.removeItem("userToken");
@@ -123,8 +123,8 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 				});
 				const sellerData = response.data;
 				SetSeller(sellerData);
-				console.log({ sellerData });
-				console.log(sellerData);
+				// console.log({ sellerData });
+				// console.log(sellerData);
 
 				// Set sellerData in your component state or context for rendering.
 			} catch (error) {
@@ -135,7 +135,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 		fetchData();
 
 	}, [])
-	console.log(seller?.result.identityId);
+	// console.log(seller?.result.identityId);
 	const status = seller?.result.identityId;
 	refetch()
 
@@ -204,85 +204,80 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 			<div className="flex gap-2">
 
 
-				{
-					user
-						?
+				<div className="hidden md:block">
+					{user ? (
 						<div className="dropdown dropdown-end">
 							<label tabIndex={0} className="btn btn-ghost btn-circle avatar">
 								<div className="w-10 rounded-full">
-									<img src={userProfile ? userProfile?.sanitizedResult?.profileImage : ""} />
+									<img src={userProfile ? userProfile?.sanitizedResult?.profileImage : ""} alt="Profile" />
 								</div>
 							</label>
 							<ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
 								<li>
-									<p className="justify-between">
-										{
-											userProfile?.sanitizedResult?.email
-										}
-									</p>
+									<p className="justify-between">{userProfile?.sanitizedResult?.email}</p>
 								</li>
-
-								{isUSer &&
+								{isUSer && (
 									<li>
 										<Link to={"/dashboard/userhome"} className="justify-between">
 											USER DASHBOARD
 										</Link>
 									</li>
-								}
-								{
-									seller?.result?._id &&
+								)}
+								{seller?.result?._id && (
 									<li>
 										<Link to={"/dashboard/sellerhome"} className="justify-between">
 											SELLER DASHBOARD
 										</Link>
 									</li>
-								}
-
-								<li><a>Settings</a></li>
-								<li><a onClick={handleLogout}>Logout</a></li>
+								)}
+								<li>
+									<a>Settings</a>
+								</li>
+								<li>
+									<a onClick={handleLogout}>Logout</a>
+								</li>
 							</ul>
 						</div>
-
-						:
-
-						<Link to="/login" className='flex items-center gap-1 text-white'>
-
-
-
-
-							{/* <abbr title={user.displayName} className="cursor-pointer"> */}
-
-							{/* <img className="h-10 rounded-full" src={} alt="" /> */}
-							{/* </abbr> */}
-
-
-							<FaUser className='text-[#FC9E66] text-3xl' />
-
-
-
-							<div className='leading-4 font-bold'>
-
-
-
-								<span>
-									Account
-								</span>
-
-
-
-
+					) : (
+						<Link to="/login" className="flex items-center gap-1 text-white">
+							<FaUser className="text-[#FC9E66] text-3xl" />
+							<div className="leading-4 font-bold">
+								<span>Account</span>
 								<br />
-
-
-								<span className='text-xs font-normal'>
-									Register or Login
-								</span>
-
+								<span className="text-xs font-normal">Register or Login</span>
 							</div>
 						</Link>
+					)}
+				</div>
 
+				{/* For small screens */}
+				<div className="block md:hidden">
+					{user ?
+						<div className="dropdown dropdown-end flex items-center gap-1 text-white">
+							<Link to={"/dashboard/userhome"} tabIndex={0} className="btn btn-ghost btn-circle avatar">
+								<div className="w-10 rounded-full">
+									<img src={userProfile ? userProfile?.sanitizedResult?.profileImage : ""} alt="Profile" />
+								</div>
+							</Link>
+							<div className="leading-4 font-bold">
+								<span>{userProfile?.sanitizedResult?.name}</span>
+								<br />
+								<span className="text-xs font-normal">logged In</span>
+							</div>
 
-				}
+						</div>
+						:
+						<Link to="/login" className="flex items-center gap-1 text-white">
+							<FaUser className="text-[#FC9E66] text-3xl" />
+							<div className="leading-4 font-bold">
+								<span>Account</span>
+								<br />
+								<span className="text-xs font-normal">Register or Login</span>
+							</div>
+						</Link>
+					}
+
+				</div>
 			</div>
 		</>
 	);

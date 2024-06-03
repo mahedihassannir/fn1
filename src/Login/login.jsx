@@ -6,7 +6,7 @@ import { ContexM } from "../Authentication/AuthProvider/AuthProvider";
 const Login = () => {
 
     const [res, setResponses] = useState(null);
-    console.log(res);
+    // console.log(res);
 
     const { loginwithpopup, singinUser } = useContext(ContexM)
 
@@ -23,7 +23,7 @@ const Login = () => {
 
                 const userinfo = { name: userData?.displayName, email: userData?.email, image: userData?.photoURL, verifed: userdata.emailVerified, phone: userdata.phoneNumber }
 
-                console.log({ userinfo });
+                // console.log({ userinfo });
 
 
 
@@ -36,7 +36,7 @@ const Login = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        console.log(data);
+                        // console.log(data);
                         setResponses(data)
                         if (data.code === 201) {
                             navigate("/")
@@ -45,7 +45,7 @@ const Login = () => {
 
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
             });
 
     }
@@ -108,12 +108,14 @@ const Login = () => {
                         <br />
                         <label className="" htmlFor="">
                             {
-                                res?.error ?
-                                    <span className="text-red-500">{res?.error}</span>
+                                res?.password
+                                    || res?.error ?
+                                    <span className="text-red-500">{res?.password || res?.error}</span>
                                     :
                                     <span>আপনার পাসওয়ার্ড দিন</span>
 
                             }
+
                         </label>
                         <br />
 
@@ -195,7 +197,7 @@ const Login = () => {
                 </form>
                 {/* handle reg ends  */}
 
-            </div>
+            </div >
 
 
 

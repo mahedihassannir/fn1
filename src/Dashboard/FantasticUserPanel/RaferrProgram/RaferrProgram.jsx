@@ -8,7 +8,7 @@ const RaferrProgram = () => {
 
     const authToken = localStorage.getItem("userToken")
     const userProfile = useUserProfile(authToken);
-    console.log(userProfile);
+    // console.log(userProfile);
     return (
         <div className="w-full h-screen bg-white">
             {/* parent div */}
@@ -48,8 +48,8 @@ const RaferrProgram = () => {
                     <div className="w-11/12 mx-auto shadow-lg md:h-44 rounded-lg  border-2 ">
 
                         <div className="p-2">
-                            <h1 className="text-xl">Your raferr code</h1>
-                            <p className="text-xl">You can do raferr by this code</p>
+                            <h1 className="text-xl">আপনার রেফারেল কোড</h1>
+                            <p className="text-xl">আপনি এই কোড দ্বারা অন্নকে রেফার করতে পারেন এবং প্রতিটি রেফারে ১০ টাকা বোনাস পাবেন</p>
 
                             <div className="md:flex  gap-10 mt-4">
                                 <div className="text-lg font-semibold bg-gray-200 flex justify-center items-center md:w-3/5  h-14 border-gray-500 rounded-lg ">

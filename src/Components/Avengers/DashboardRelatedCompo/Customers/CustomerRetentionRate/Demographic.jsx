@@ -13,7 +13,7 @@ const Demographic = () => {
     <div className="p-5">
       {
         userAgeArr?.map((singleUser, index) => {
-          console.log(Object.keys(singleUser)?.[0])
+          // console.log(Object.keys(singleUser)?.[0])
           return <div key={index}>
             <div className="flex justify-between text-base mt-3">
               <h3 className="text-[#688D8C] font-bold  ">Age {Object.keys(singleUser)?.[0]}</h3>

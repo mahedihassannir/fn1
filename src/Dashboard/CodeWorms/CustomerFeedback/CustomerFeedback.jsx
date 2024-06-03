@@ -26,8 +26,8 @@ const CustomerFeedback = () => {
                 });
                 const sellerData = response.data;
                 SetSeller(sellerData);
-                console.log({ sellerData });
-                console.log(sellerData);
+                // console.log({ sellerData });
+                // console.log(sellerData);
 
                 // Set sellerData in your component state or context for rendering.
             } catch (error) {
@@ -38,7 +38,7 @@ const CustomerFeedback = () => {
         fetchData();
 
     }, []);
-    console.log(seller?.result?.sellerProfile?.products);
+    // console.log(seller?.result?.sellerProfile?.products);
 
 
 

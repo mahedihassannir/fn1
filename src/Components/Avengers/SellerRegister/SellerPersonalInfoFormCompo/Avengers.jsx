@@ -15,7 +15,7 @@ import Swal from 'sweetalert2'
 const Avengers = () => {
 
 	const sellerAuthToken = localStorage.getItem("sellerToken");
-	console.log(sellerAuthToken);
+	// console.log(sellerAuthToken);
 
 	window.addEventListener("beforeunload", (e) => {
 		if (window.location.pathname.startsWith("/seller_register/personal_details")) {
@@ -38,8 +38,8 @@ const Avengers = () => {
 	const [mobile, Setmobile] = useState(null);
 	const [imageUrls, setImageUrls] = useState(Array(2).fill('')); // Initialize with empty strings
 	const [imageUrls2, setImageUrls2] = useState(Array(1).fill('')); // Initialize with empty strings
-	console.log(imageUrls);
-	console.log(imageUrls2);
+	// console.log(imageUrls);
+	// console.log(imageUrls2);
 	const key = `890b5ec0923fcc8472f7e690406adc40`
 
 	// const uploadUrl = `https://api.imgbb.com/1/upload?key=${key}`
@@ -92,7 +92,7 @@ const Avengers = () => {
 			});
 	}
 
-	console.log({ imageUrls });
+	// console.log({ imageUrls });
 
 
 	const handleSubmit = (e) => {
@@ -133,7 +133,7 @@ const Avengers = () => {
 			monthly_income: monthlyIncome,
 		};
 
-		console.log(allData);
+		// console.log(allData);
 
 
 		// console.log("this data is come from the 85 num line", allData);
@@ -148,7 +148,7 @@ const Avengers = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log("this is checking the data is it ok ot not", data);
+				// console.log("this is checking the data is it ok ot not", data);
 				// this blog is for the is insertedId is successful then go to the another page else any problem stay in this page 
 				if (data.code === 201) {
 

@@ -39,7 +39,7 @@ const Mahedi = () => {
         };
         fetchUserProfileData()
     }, [id]);
-    console.log(products?.result);
+    // console.log(products?.result);
     return (
         <div>
 

@@ -14,7 +14,7 @@ import { TbMapSearch } from "react-icons/tb";
 import { ContexM } from "../../../../../Authentication/AuthProvider/AuthProvider";
 const SellerRequestTable = () => {
     const { modalIsOpen, setModalIsOpen } = useContext(ContexM);
-    console.log(modalIsOpen)
+    // console.log(modalIsOpen)
 	
 	return (
 		<div className='min-w-[900px]'>

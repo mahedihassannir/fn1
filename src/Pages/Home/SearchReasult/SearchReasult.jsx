@@ -7,7 +7,7 @@ const SearchReasult = () => {
 
     const searchData = location.state && location.state.result;
 
-    console.log(searchData);
+    // console.log(searchData);
 
 
 

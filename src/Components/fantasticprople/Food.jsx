@@ -81,11 +81,11 @@ import { useEffect, useState } from 'react';
 
 const Food = () => {
     const { products, loading, error } = useProducts();
-    console.log(products);
+    // console.log(products);
 
     // filter only food related data
     const foodProducts = products?.result?.filter(product => product.category === "Food");
-    console.log(foodProducts);
+    // console.log(foodProducts);
     if (foodProducts) {
         console.log("There are products in the food category.");
     } else {

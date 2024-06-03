@@ -6,7 +6,7 @@ import { BiChevronsLeft, BiChevronsRight } from "react-icons/bi";
 const CustommerReview = () => {
     const [reviews, setReview] = useState();
     const id = localStorage.getItem("sId");
-    console.log(id);
+    // console.log(id);
     const sellerAuthToken = localStorage.getItem("sellerToken");
     useEffect(() => {
 
@@ -18,8 +18,8 @@ const CustommerReview = () => {
                 });
                 const sellerData = response.data;
                 setReview(sellerData);
-                console.log({ sellerData });
-                console.log(sellerData);
+                // console.log({ sellerData });
+                // console.log(sellerData);
 
                 // Set sellerData in your component state or context for rendering.
             } catch (error) {
@@ -32,7 +32,7 @@ const CustommerReview = () => {
     }, []);
 
     const review = reviews?.data?.result?.reviews;
-    console.log(review);
+    // console.log(review);
     return (
         <div className="w-[98%] lg:w-11/12 mx-auto">
 
@@ -105,7 +105,7 @@ const CustommerReview = () => {
                         {
                             review?.length > 0 ? (
                                 review.map((res, index) => (
-                                    <div className="">
+                                    <div key={index} className="">
 
                                         <div className="md:w-[1300px] w-full md:h-96 mt-2 bg-white border-2 border-black rounded-md md:flex md:m-10">
                                             {/* design */}

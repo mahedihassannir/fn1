@@ -11,7 +11,7 @@ import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 const Drone = () => {
     const [category] = useCategory();
-    console.log(category);
+    // console.log(category);
 
     const products = category.filter(item => item.category === 'Drone');
     return (

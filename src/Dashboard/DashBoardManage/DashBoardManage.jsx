@@ -34,8 +34,8 @@ const DashBoardManage = () => {
 				});
 				const sellerData = response.data;
 				SetSeller(sellerData);
-				console.log({ sellerData });
-				console.log(sellerData);
+				// console.log({ sellerData });
+				// console.log(sellerData);
 				// Set sellerData in your component state or context for rendering.
 			} catch (error) {
 				console.error('Error fetching seller data:', error);
@@ -43,7 +43,7 @@ const DashBoardManage = () => {
 		};
 		fetchData();
 	}, []);
-	console.log(seller?.result.identityId);
+	// console.log(seller?.result.identityId);
 	const status = seller?.result.identityId;
 	return (
 		<div

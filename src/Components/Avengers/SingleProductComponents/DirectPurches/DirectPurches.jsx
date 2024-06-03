@@ -16,12 +16,12 @@ const DirectPurches = () => {
     const userId = localStorage.getItem("userToken");
     const user = localStorage.getItem("userToken");
     const userProfile = useUserProfile(user);
-    console.log(userProfile?.sanitizedResult._id);
+    // console.log(userProfile?.sanitizedResult._id);
     const [cart] = UseCartHook();
 
     const [address] = Useaddress();
-    console.log(address);
-    console.log(address?.result?.address?._id);
+    // console.log(address);
+    // console.log(address?.result?.address?._id);
     // hooks ends
     // address related work 
     let addressData = {}
@@ -36,7 +36,7 @@ const DirectPurches = () => {
 
     }
 
-    console.log("22223", addressData.address0);
+    // console.log("22223", addressData.address0);
     // address related work ends
 
     const [open2, setOpen] = useState(false);
@@ -52,7 +52,7 @@ const DirectPurches = () => {
 
     const productdata = location.state;
 
-    console.log({ productdata });
+    // console.log({ productdata });
 
     const [inputValue, SetinputValue] = useState(null)
 
@@ -82,7 +82,7 @@ const DirectPurches = () => {
 
             const totaloffer = productdata?.price - offerTaka
 
-            console.log({ totaloffer });
+            // console.log({ totaloffer });
 
             SetofferPrice(totaloffer)
 
@@ -100,20 +100,20 @@ const DirectPurches = () => {
         setInputValue(newValue);
     };
 
-    console.log(offerPrice);
+    // console.log(offerPrice);
 
     const totalMoney = offerPrice + deleveryFee
 
     const cartData = { cart0: { singleProductData: productdata } }
     const productID = Math.random().toString(36).substr(2, 9) + Date.now()
 
-    console.log(productdata?.singleProductData?.result._id);
-    console.log(productdata?.singleProductData?.result?.seller?._id);
+    // console.log(productdata?.singleProductData?.result._id);
+    // console.log(productdata?.singleProductData?.result?.seller?._id);
     const handleDireact_order = () => {
         // this is from the useeffect seller detailes
         // create a object into array
         const products = [productdata?.singleProductData?.result._id];
-        console.log(products);
+        // console.log(products);
         const data = {
             address: value,
             products: [
@@ -127,11 +127,11 @@ const DirectPurches = () => {
             addressId: address?.result?.address?._id
         };
 
-        console.log(productdata?.singleProductData?.result)
-        console.log("data fom paymentDetails", { data });
+        // console.log(productdata?.singleProductData?.result)
+        // console.log("data fom paymentDetails", { data });
 
 
-        console.log("data fom paymentDetails", { data });
+        // console.log("data fom paymentDetails", { data });
         try {
             // handle the product buy 
             fetch("http://localhost:5000/api/v1/user/buy_product", {
@@ -145,8 +145,7 @@ const DirectPurches = () => {
                 .then((res) => res.json())
                 .then((data) => {
 
-                    console.log(data);
-
+                    // console.log(data);
                     if (data.code === 201) {
                         Swal.fire({
                             position: 'top-end',
@@ -159,7 +158,7 @@ const DirectPurches = () => {
                     }
                 });
         } catch (error) {
-            console.log(error);
+            // console.log(error);
         };
     };
     // ends of the operation
@@ -182,7 +181,7 @@ const DirectPurches = () => {
 
         };
 
-        console.log("data fom paymentDetails", { data });
+        // console.log("data fom paymentDetails", { data });
 
 
         try {
@@ -196,13 +195,13 @@ const DirectPurches = () => {
                 .then((res) => res.json())
                 .then((data) => {
 
-                    console.log(data.url);
+                    // console.log(data.url);
 
                     window.location.replace(data.url);
                 });
 
         } catch (error) {
-            console.log(error);
+            // console.log(error);
 
         };
     };

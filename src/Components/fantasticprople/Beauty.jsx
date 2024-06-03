@@ -18,13 +18,13 @@ const Beauty = () => {
 
     // const history = useHistory();
 
-    console.log(products);
+    // console.log(products);
 
     // filter only food related data
     const beautyProducts = products?.result?.filter(product => product.category === "beauty");
     console.log(beautyProducts);
     if (beautyProducts) {
-        console.log("There are products in the beauty category.");
+        console.log/("There are products in the beauty category.");
     } else {
         console.log("There are no products in the beauty category.");
     }

@@ -122,6 +122,8 @@ import CategoryPage from "../Components/categoryPage/categoryPage";
 import SellerPrivate from "../Private/sellerPrivateRoute";
 import RaferrProgram from "../Dashboard/FantasticUserPanel/RaferrProgram/RaferrProgram";
 import Refer from "../Components/fantasticprople/Refer";
+import About from "../Components/Avengers/additionals/About";
+import PrivacyPolicy from "../Components/Avengers/additionals/PrivacyPolicy";
 
 
 const router = createBrowserRouter([
@@ -353,7 +355,28 @@ const router = createBrowserRouter([
 			{
 				path: "/category/:categoryName",
 				element: <CategoryPage></CategoryPage>
-			}
+			},
+
+
+			// additional 
+			// about page
+			{
+				path: "about",
+				element: <About></About>,
+			},
+			{
+				path: "ourTeam",
+				element: <About></About>,
+			},
+			{
+				path: "privacy_policy",
+				element: <PrivacyPolicy></PrivacyPolicy>,
+			},
+
+
+
+
+			// additional  ends
 
 
 
@@ -404,11 +427,23 @@ const router = createBrowserRouter([
 
 			// this area for the user panel work
 
+
+
+
+
+
+
+
+
+
 			// fantastic people routes
 
 			{
 				path: "userhome",
-				element: <UserHome></UserHome>,
+				element:
+					<Privateroute>
+						<UserHome></UserHome>,
+					</Privateroute>,
 			},
 			// Home Components Routes
 			{
@@ -417,10 +452,14 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "useraddressform",
-				element: <UserAddressForm></UserAddressForm>
+				element:
+					<Privateroute>
+						<UserAddressForm></UserAddressForm>
+					</Privateroute>,
 			},
 
 
+			// admin panel ends
 
 
 
@@ -428,17 +467,21 @@ const router = createBrowserRouter([
 
 
 
-
-
-
+			// user panel starts
 			// this is for user order
 			{
 				path: "referr",
-				element: <RaferrProgram></RaferrProgram>,
+				element: <Privateroute>
+					<RaferrProgram></RaferrProgram>
+				</Privateroute>,
+
 			},
 			{
 				path: "userorder",
-				element: <UserOrder></UserOrder>,
+				element: <Privateroute>
+					<UserOrder></UserOrder>
+				</Privateroute>,
+
 			},
 
 			// this is for user order ends
@@ -446,42 +489,70 @@ const router = createBrowserRouter([
 			// user progress
 			{
 				path: "userprogress",
-				element: <UserProgress></UserProgress>,
+				element:
+					<Privateroute>
+						<UserProgress></UserProgress>
+					</Privateroute>,
+
+
 			},
 			// user progress ends
 
 			// user wishlist starts
 			{
 				path: "userwishlist",
-				element: <UserWhichlist></UserWhichlist>,
+				element: <Privateroute>
+					<UserWhichlist></UserWhichlist>,
+				</Privateroute>,
+
 			},
 			// user wishlist ends
 			// user userpayment starts
 			{
 				path: "userpaymenthistory",
-				element: <UserpaymentHistory></UserpaymentHistory>,
+				element:
+					<Privateroute>
+						<UserpaymentHistory></UserpaymentHistory>,
+					</Privateroute>,
+
 			},
 			// user userpayment ends
 			// user Customer Support
 			{
 				path: "customersupport",
-				element: <UserCustomerSupport></UserCustomerSupport>
+				element: <Privateroute>
+					<Privateroute>
+
+					</Privateroute>,
+
+				</Privateroute>,
+
+
 			},
 			{
 				path: "wishlist",
-				element: <Wishlist></Wishlist>
+				element: <Privateroute>
+					<Wishlist></Wishlist>
+				</Privateroute>,
+
 			},
 			{
 				path: "payhistory",
-				element: <PaymentHistory></PaymentHistory>
+				element: <Privateroute>
+					<PaymentHistory></PaymentHistory>
+				</Privateroute>,
 			},
 			{
 				path: "return",
-				element: <UserReturn></UserReturn>
+				element: <Privateroute>
+					<UserReturn></UserReturn>
+				</Privateroute>,
 			},
 			{
 				path: "review",
-				element: <UserReview></UserReview>
+				element: <Privateroute>
+					<UserReview></UserReview>
+				</Privateroute>,
 			},
 
 
@@ -493,10 +564,13 @@ const router = createBrowserRouter([
 
 			// TeamArrow
 			// TeamArrow
-
+			// seller panel
 			{
 				path: "dashboard/customerfeedback",
-				element: <CustomerFeedback></CustomerFeedback>,
+				element:
+					<SellerPrivate>
+						<CustomerFeedback></CustomerFeedback>,
+					</SellerPrivate>,
 			},
 			{
 				path: "/dashboard/sellerhome",
@@ -506,7 +580,10 @@ const router = createBrowserRouter([
 			},
 			{
 				path: "dashboard/additems",
-				element: <AddItems></AddItems>,
+				element:
+					<SellerPrivate>
+						<AddItems></AddItems>,
+					</SellerPrivate>,
 			},
 			{
 				path: "dashboard/manageproduct",
@@ -640,7 +717,10 @@ const router = createBrowserRouter([
 			{
 
 				path: "/dashboard/sellerSeeting",
-				element: <SellerSeeting></SellerSeeting>
+				element:
+					<SellerPrivate>
+						<SellerSeeting></SellerSeeting>
+					</SellerPrivate>,
 
 
 			},
@@ -649,7 +729,10 @@ const router = createBrowserRouter([
 			{
 
 				path: "/dashboard/sellertools",
-				element: <SellerTool></SellerTool>
+				element:
+					<SellerPrivate>
+						<SellerTool></SellerTool>
+					</SellerPrivate>,
 			},
 			// this side is for seller
 
@@ -658,32 +741,53 @@ const router = createBrowserRouter([
 			// seller Account
 			{
 				path: '/dashboard/sellerSetting/sellerAccount',
-				element: <SellerAccount></SellerAccount>
+				element:
+					<SellerPrivate>
+						<SellerAccount></SellerAccount>
+					</SellerPrivate>,
 			},
 			{
 				path: '/dashboard/sellersetting/sellerLogo',
-				element: <SellerLogo></SellerLogo>
+				element:
+					<SellerPrivate>
+						<SellerLogo></SellerLogo>
+					</SellerPrivate>,
 			},
 
 			{
 				path: '/dashboard/sellersetting/bankaccount',
-				element: <BankAccount></BankAccount>
+				element:
+					<SellerPrivate>
+						<BankAccount></BankAccount>
+					</SellerPrivate>,
 			},
 			{
 				path: '/dashboard/sellersetting/businessInformation',
-				element: <BusinessInformation></BusinessInformation>
+				element:
+					<SellerPrivate>
+						<BusinessInformation></BusinessInformation>
+					</SellerPrivate>,
 			},
 			{
 				path: '/dashboard/sellersetting/commissions',
-				element: <Commissions></Commissions>
+				element:
+					<SellerPrivate>
+						<Commissions></Commissions>
+					</SellerPrivate>,
 			},
 			{
 				path: '/dashboard/sellertools/additional',
-				element: <AdditionalDetails></AdditionalDetails>
+				element:
+					<SellerPrivate>
+						<AdditionalDetails></AdditionalDetails>
+					</SellerPrivate>,
 			},
 			{
 				path: '/dashboard/sellertools/voucherDetails',
-				element: <VoucherDetails></VoucherDetails>
+				element:
+					<SellerPrivate>
+						<VoucherDetails></VoucherDetails>
+					</SellerPrivate>,
 			}
 		],
 	},

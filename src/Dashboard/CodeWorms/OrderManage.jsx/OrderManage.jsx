@@ -23,8 +23,8 @@ const OrderManage = () => {
 
 
   const handleDelivered = (productId, userId) => {
-    console.log(productId);
-    console.log(userId);
+    // console.log(productId);
+    // console.log(userId);
     axios.post(
       `http://localhost:5000/api/v1/seller/orders/${productId}/delivered?sellerId=${id}`,
       { userId },
@@ -36,8 +36,8 @@ const OrderManage = () => {
       }
     )
       .then(response => {
-        console.log(response.data.code);
-        console.log(response.data);
+        // console.log(response.data.code);
+        // console.log(response.data);
 
         if (response.data.code === 201) {
           toast.success("অনুরোধ সফলভাবে জমা দেওয়া হয়েছে ই কম এর অফিস থেকে ডেলিভারি এর জন্য লোক আসবে ৫ মিনিট এর মধ্যে");
@@ -46,7 +46,7 @@ const OrderManage = () => {
       .catch(error => {
         console.error('Error handling delivery:', error);
       });
-    console.log("handle delivery");
+    // console.log("handle delivery");
   };
 
   refetch();

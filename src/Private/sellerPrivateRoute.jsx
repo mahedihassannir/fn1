@@ -7,6 +7,8 @@ const SellerPrivate = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const sellerAuthToken = localStorage.getItem("sellerToken");
 
+    // console.log(seller?.result?._id);
+
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -15,7 +17,7 @@ const SellerPrivate = ({ children }) => {
                 });
                 const sellerData = response.data;
                 setSeller(sellerData);
-                console.log({ sellerData });
+                // console.log({ sellerData });
             } catch (error) {
                 console.error('Error fetching seller data:', error);
             } finally {
@@ -34,7 +36,7 @@ const SellerPrivate = ({ children }) => {
         return <div>Loading...</div>; // You can replace this with a proper loading component
     }
 
-    if (seller) {
+    if (seller?.result?._id) {
         return children;
     }
 

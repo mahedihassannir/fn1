@@ -20,7 +20,7 @@ const Avengers = ({ singleProductData }) => {
 	// const { products } = useProducts();
 
 
-	console.log("091", singleProductData)
+	// console.log("091", singleProductData)
 
 	const handletop = () => {
 

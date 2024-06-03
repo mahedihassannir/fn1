@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
-import { FaAddressCard, FaBalanceScale, FaBusinessTime, FaListUl, FaQuestionCircle } from 'react-icons/fa';
+import { FaAddressCard, FaBalanceScale, FaBusinessTime, FaListUl, FaQuestionCircle, FaSignOutAlt } from 'react-icons/fa';
 import { MdOutlinePayments, MdReviews } from 'react-icons/md';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { useContext } from 'react';
@@ -16,11 +16,21 @@ const isAdmin = true
 // const user = true
 // const seller = true
 
+
 const FantasticSideBar = () => {
 	const [activeRoute, setActiveRoute] = useState("Home");
 	const authToken = localStorage.getItem("userToken");
 	const userProfile = useUserProfile(authToken);
-	console.log(userProfile);
+	// console.log(userProfile);
+	const navigate = useNavigate();
+
+	const handleLogOut = () => {
+		localStorage.removeItem("userToken")
+		if (!localStorage.getItem("userToken")) {
+			navigate("/login")
+		};
+	};
+
 	return (
 		<div className=' text-white px-5 py-8'>
 			<div className='flex items-center justify-center'>
@@ -157,6 +167,14 @@ const FantasticSideBar = () => {
 						<h4 className=''>Home Page</h4>
 					</div>
 				</Link>
+
+				<div onClick={handleLogOut}
+					className={`flex hover:bg-[#19D895] duration-700 items-center p-2 
+                    } cursor-pointer  gap-4`}
+				>
+					<FaSignOutAlt className='w-4 h-4'></FaSignOutAlt>
+					<h4>Logout</h4>
+				</div>
 				<div className='text-center text-black relative mt-6'>
 					<div className='absolute -top-5 left-20 flex justify-center rounded-full' style={{ color: "#bdf094", border: "6px solid #0A1727", backgroundColor: "#0A1727" }} >
 						<FaQuestionCircle className='text-2xl' />

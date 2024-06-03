@@ -19,8 +19,8 @@ const UseSellerOrders = () => {
                 });
                 const sellerData = response.data;
                 SetSeller(sellerData);
-                console.log({ sellerData });
-                console.log(sellerData);
+                // console.log({ sellerData });
+                // console.log(sellerData);
 
                 // Set sellerData in your component state or context for rendering.
             } catch (error) {
@@ -31,7 +31,7 @@ const UseSellerOrders = () => {
         fetchData();
 
     }, []);
-    console.log(seller);
+    // console.log(seller);
     const { refetch, data: order = [] } = useQuery({
 
 
@@ -44,7 +44,7 @@ const UseSellerOrders = () => {
             return res.json();
         }
     });
-    console.log(order.length);
+    // console.log(order.length);
     return [order, refetch];
     // return [seller]
 };

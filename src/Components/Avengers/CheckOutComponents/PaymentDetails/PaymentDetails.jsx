@@ -90,6 +90,7 @@ const PaymentDetails = ({ cartData }) => {
               showConfirmButton: false,
               timer: 5000
             });
+            localStorage.removeItem("cart")
             navigate("/cod_success")
           }
         });

@@ -11,11 +11,11 @@ import useProducts from "../../Hooks/Fantastic/useProducts";
 
 const Fashion = () => {
     const { products } = useProducts();
-    console.log(products);
+    // console.log(products);
 
     // filter only food related data
     const fashionProducts = products?.result?.filter(product => product.category === "fashion");
-    console.log(fashionProducts);
+    // console.log(fashionProducts);
     if (fashionProducts) {
         console.log("There are products in the fashion category.");
     } else {

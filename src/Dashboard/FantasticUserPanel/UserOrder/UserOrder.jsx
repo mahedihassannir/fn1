@@ -7,7 +7,7 @@ const UserOrder = () => {
     const authToken = localStorage.getItem("userToken");
     const userProfile = useUserProfile(authToken);
 
-    console.log(userProfile);
+    // console.log(userProfile);
 
     let totalPrice = 0;
     const func = () => {
@@ -18,7 +18,7 @@ const UserOrder = () => {
         })
     }
     func()
-    console.log(totalPrice);
+    // console.log(totalPrice);
     return (
         <div className='min-w-[900px]'>
             <div className="w-full h-20 bg-white rounded-lg py-2 px-4">
@@ -37,6 +37,7 @@ const UserOrder = () => {
                                 {/* <h1 className="flex gap-2">Review: <span className="text-red-400 font-semibold">{res.comment}</span></h1> */}
                                 <p className="flex items-center gap-2"><FaKorvue></FaKorvue> Verified Buyer</p>
                                 {/* infos */}
+                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBqvZ_SoPlVM0REGEjcjVcLMiOwCz9XT4k1A&usqp=CAU" alt="" />
                                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBqvZ_SoPlVM0REGEjcjVcLMiOwCz9XT4k1A&usqp=CAU" alt="" />
                             </div>
 

@@ -21,7 +21,7 @@ const getCart = () => {
 
     });
 
-    console.log(RecentActivity.length);
+    // console.log(RecentActivity.length);
 
     return [cart, refetch];
 

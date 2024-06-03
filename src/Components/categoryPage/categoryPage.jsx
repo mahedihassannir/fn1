@@ -9,10 +9,10 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 const CategoryPage = () => {
     const { categoryName } = useParams();
-    console.log(categoryName);
+    // console.log(categoryName);
     const { products } = useProducts();
     const categoryProducts = products?.result?.filter(product => product.secondCategory === categoryName);
-    console.log(categoryProducts);
+    // console.log(categoryProducts);
     return (
         <div>
 

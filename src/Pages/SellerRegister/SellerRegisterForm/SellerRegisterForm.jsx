@@ -19,12 +19,12 @@ const SellerRegisterForm = () => {
 	const [response, setResponse] = useState("");
 
 	const [fromdata, setdata] = useState(null);
-	console.log(fromdata);
+	// console.log(fromdata);
 
 	const navigate = useNavigate();
 
 	function onChange(value) {
-		console.log("Captcha value:", value);
+		// console.log("Captcha value:", value);
 
 		SetCaptchaValue(value)
 	}
@@ -64,7 +64,7 @@ const SellerRegisterForm = () => {
 		};
 
 
-		console.log({ name, email, password });
+		// console.log({ name, email, password });
 		fetch(`http://localhost:5000/api/v1/auth/seller/register`, {
 			method: "POST",
 			headers: {
@@ -74,7 +74,7 @@ const SellerRegisterForm = () => {
 		})
 			.then(res => res.json())
 			.then(data => {
-				console.log(data);
+				// console.log(data);
 				setResponse(data)
 				if (data.code === 201) {
 					Swal.fire({

@@ -5,11 +5,11 @@ import useProducts from '../../Hooks/Fantastic/useProducts';
 
 const Below = () => {
     const { products } = useProducts();
-    console.log(products);
+    // console.log(products);
 
     // filter only food related data
     const lowProducts = products?.result?.filter(product => product.secondCategory === "low");
-    console.log(lowProducts);
+    // console.log(lowProducts);
     if (lowProducts) {
         console.log("There are products in the lowProducts category.");
     } else {

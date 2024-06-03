@@ -43,7 +43,7 @@ const Register = () => {
                 navigate('/')
             })
             .catch(err => {
-                console.log(err.message);
+                // console.log(err.message);
             })
 
     }
@@ -64,7 +64,7 @@ const Register = () => {
         // from iput values ends
 
 
-        console.log({ name, email, password });
+        // console.log({ name, email, password });
         fetch(`http://localhost:5000/api/v1/auth/user/register`, {
             method: "POST",
             headers: {
@@ -74,7 +74,7 @@ const Register = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 setResponse(data)
                 if (data.code === 201) {
                     navigate("/login")

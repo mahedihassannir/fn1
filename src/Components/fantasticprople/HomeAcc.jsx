@@ -13,15 +13,15 @@ import { Link } from 'react-router-dom';
 
 const HomeAcc = () => {
     const { products } = useProducts();
-    console.log(products);
+    // console.log(products);
 
     // filter only food related data
     const homeProducts = products?.result?.filter(product => product.category === "homeAcc");
-    console.log(homeProducts);
+    // console.log(homeProducts);
     if (homeProducts) {
-        console.log("There are products in the homeProducts category.");
+        // console.log("There are products in the homeProducts category.");
     } else {
-        console.log("There are no products in the homeProducts category.");
+        // console.log("There are no products in the homeProducts category.");
     }
     return (
         <section>

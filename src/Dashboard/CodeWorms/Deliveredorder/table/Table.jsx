@@ -7,7 +7,7 @@ import { FaBeer, FaStar, FaStarHalfAlt } from "react-icons/fa";
 
 
 const Table = ({ sellerdeliveredData }) => {
-    console.log(sellerdeliveredData);
+    // console.log(sellerdeliveredData);
     return (
         <div>
 

@@ -4,7 +4,7 @@ import IphoneCard from './IphoneCard';
 
 const Iphone = () => {
     const [category] = useCategory();
-    console.log(category);
+    // console.log(category);
 
     const iPhones = category.filter(item => item.category === "iPhone");
     return (

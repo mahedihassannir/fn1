@@ -7,7 +7,7 @@ const OrderResuns = () => {
 
     const [returns, setReturn] = useState()
     const id = localStorage.getItem("sId")
-    console.log(id);
+    // console.log(id);
     const sellerAuthToken = localStorage.getItem("sellerToken");
     useEffect(() => {
 
@@ -19,8 +19,8 @@ const OrderResuns = () => {
                 });
                 const sellerData = response.data;
                 setReturn(sellerData);
-                console.log({ sellerData });
-                console.log(sellerData);
+                // console.log({ sellerData });
+                // console.log(sellerData);
 
                 // Set sellerData in your component state or context for rendering.
             } catch (error) {
@@ -31,7 +31,7 @@ const OrderResuns = () => {
         fetchData();
 
     }, []);
-    console.log(returns?.data?.result?.returns);
+    // console.log(returns?.data?.result?.returns);
     const returnss = returns?.data?.result?.returns
 
     return (

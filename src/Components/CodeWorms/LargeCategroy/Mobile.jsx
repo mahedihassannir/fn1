@@ -5,7 +5,7 @@ import MobileCard from './MobileCard';
 const Mobile = () => {
 
     const [category] = useCategory();
-    console.log(category);
+    // console.log(category);
 
     const mobileAccessories = category.filter(item => item.category === 'Mobile Accessories');
 

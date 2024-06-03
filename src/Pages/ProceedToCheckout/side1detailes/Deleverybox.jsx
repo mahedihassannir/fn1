@@ -31,7 +31,7 @@ const Deleverybox = ({ singleProductData }) => {
         totalPrice += item.singleProductData.price;
 
     }
-    console.log({ totalPrice });
+    // console.log({ totalPrice });
 
     const { user } = useContext(ContexM);
 
@@ -57,7 +57,7 @@ const Deleverybox = ({ singleProductData }) => {
         totalTaka + (deliveryInfo?.deliveryFee - deliveryInfo?.deliveryDiscount)
     );
 
-    console.log("42line", singleProductData);
+    // console.log("42line", singleProductData);
 
     // for sslcommerze payment
     const onSubmit = () => {
@@ -70,7 +70,7 @@ const Deleverybox = ({ singleProductData }) => {
             category: singleProductData?.category2,
         };
 
-        console.log("data fom Deleverybox", data);
+        // console.log("data fom Deleverybox", data);
         fetch("http://localhost:5000/payment", {
             method: "POST",
             headers: { "content-type": "application/json" },
@@ -78,7 +78,7 @@ const Deleverybox = ({ singleProductData }) => {
         })
             .then((res) => res.json())
             .then((result) => {
-                console.log(result);
+                // console.log(result);
 
                 //	window.location.replace(result.url);
             });

@@ -7,6 +7,7 @@ import 'react-quill/dist/quill.snow.css';
 import ReactQuill from 'react-quill';
 import Swal from "sweetalert2";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const AddProduct = () => {
 
@@ -14,6 +15,7 @@ const AddProduct = () => {
     const sellerAuthToken = localStorage.getItem("sellerToken");
     const sellerId = localStorage.getItem("sId");
     const [selectedCategory, setSelectedCategory] = useState('');
+    const navigate = useNavigate();
 
     const handleCategoryChange = (e) => {
         setSelectedCategory(e.target.value);
@@ -24,7 +26,7 @@ const AddProduct = () => {
         setSelectedCategory2(e.target.value);
     };
 
-    console.log(selectedCategory, selectedCategory2);
+    // console.log(selectedCategory, selectedCategory2);
 
     const handleCheckboxChange = () => {
         SetChack(!chaked);
@@ -43,12 +45,12 @@ const AddProduct = () => {
     // prevent ends
 
     const [description, setEditorHtml] = useState('');
-    console.log(description);
+    // console.log(description);
     const handleChange = (html) => {
         setEditorHtml(html);
     };
     const [description2, setEditorHtml2] = useState('');
-    console.log(description2);
+    // console.log(description2);
 
     const handleChangetext = (html) => {
         setEditorHtml2(html);
@@ -86,7 +88,7 @@ const AddProduct = () => {
             });
     };
 
-    console.log({ imageUrls });
+    // console.log({ imageUrls });
 
     const handleData = (e) => {
 
@@ -103,7 +105,7 @@ const AddProduct = () => {
         const video = from.video.value;
 
         const price = parseFloat(price2);
-        console.log(price, description);
+        // console.log(price, description);
         const TotalData = {
             product_name: name,
             price: price,
@@ -114,7 +116,7 @@ const AddProduct = () => {
             secondCategory: selectedCategory2,
         };
 
-        console.log(TotalData);
+        // console.log(TotalData);
 
         fetch(`http://localhost:5000/api/v1/seller/product_add?sellerId=${sellerId}`, {
             method: "POST",
@@ -126,8 +128,8 @@ const AddProduct = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
-                console.log(data?.code);
+                // console.log(data);
+                // console.log(data?.code);
                 if (data?.code === 201) {
                     toast(` product added successfully`, {
                         position: "top-center",
@@ -139,7 +141,21 @@ const AddProduct = () => {
                         progress: undefined,
                         theme: "light",
                     });
-                    navigate("/dashboard/dashboard/customerfeedback")
+
+                    navigate("/dashboard/ordermanage");
+                    Swal.fire({
+                        title: "ই কম এ আপনার প্রোডাক্ট অ্যাড করা হয়েছে এখন সবাই আপনার প্রোডাক্ট কিনতে পারবে",
+                        width: 600,
+                        padding: "3em",
+                        color: "#716add",
+                        background: "#fff url(/images/trees.png)",
+                        backdrop: `
+                          rgba(0,0,123,0.4)
+                          url("https://i.ibb.co/P9tbKgZ/logo.jpg")
+                          left top
+                          no-repeat
+                        `
+                      });
                 };
                 if (data.code === 401) {
                     toast(` ${data?.message}`, {
@@ -160,7 +176,7 @@ const AddProduct = () => {
 
     // Define subcategories for each main category
     const subcategories = {
-        Food: ['food',"potato","onion","grocery"],
+        Food: ['food', "potato", "onion", "grocery"],
         fashion: ['male', 'female'],
         beauty: ['nails', 'lips', 'eyes', 'face', 'Accessories', 'makeup', 'faceMusk', 'hairTreatment'],
         homeAcc: ["bedSheets", "hangers", "clocks", "cushions", "wall", "lights"], // Define subcategories for homeAcc if needed
@@ -529,7 +545,7 @@ const AddProduct = () => {
 
 
 
-                <button type="submit">Add Product</button>
+                <button className="mt-4 ml-5 py-5 px-6 border-dotted rounded-lg bg-orange-500 font-semibold text-white" type="submit">Add Product</button>
 
 
             </section>

@@ -37,7 +37,7 @@ const SellerDashboard = () => {
             }
         }
         catch (error) {
-            console.log(error);
+            // console.log(error);
         }
     };
 
@@ -54,8 +54,8 @@ const SellerDashboard = () => {
                 });
                 const sellerData = response.data;
                 SetSeller(sellerData);
-                console.log({ sellerData });
-                console.log(sellerData);
+                // console.log({ sellerData });
+                // console.log(sellerData);
 
                 // Set sellerData in your component state or context for rendering.
             } catch (error) {
@@ -66,7 +66,7 @@ const SellerDashboard = () => {
         fetchData();
 
     }, [])
-    console.log(seller);
+    // console.log(seller);
     return (
         <div className=' text-white px-5 py-8'>
             <div className='flex items-center justify-center'>

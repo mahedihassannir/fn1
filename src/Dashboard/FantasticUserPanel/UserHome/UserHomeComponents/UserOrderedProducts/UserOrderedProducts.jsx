@@ -79,7 +79,7 @@ const UserOrderedProducts = () => {
         if (landmark) {
             AllValue.landmark = landmark;
         }
-        console.log(AllValue);
+        // console.log(AllValue);
 
         // send customer info to db
         Swal.fire({
@@ -94,7 +94,7 @@ const UserOrderedProducts = () => {
             if (result.isConfirmed) {
                 axios.put('http://localhost:5000/customerInfo', AllValue)
                     .then(response => {
-                        console.log('Data sent successfully:', response.data);
+                        // console.log('Data sent successfully:', response.data);
                     })
                     .catch(error => {
                         console.error('Error sending data:', error);

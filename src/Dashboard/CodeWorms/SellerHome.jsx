@@ -32,8 +32,8 @@ const SellerHome = () => {
         });
         const sellerData = response.data;
         SetSeller(sellerData);
-        console.log({ sellerData });
-        console.log(sellerData);
+        // console.log({ sellerData });
+        // console.log(sellerData);
 
         // Set sellerData in your component state or context for rendering.
       } catch (error) {
@@ -44,7 +44,7 @@ const SellerHome = () => {
     fetchData();
 
   }, [])
-  console.log(seller);
+  // console.log(seller);
   // console.log(seller.result.sellerProfile._id);
 
   // refetch()

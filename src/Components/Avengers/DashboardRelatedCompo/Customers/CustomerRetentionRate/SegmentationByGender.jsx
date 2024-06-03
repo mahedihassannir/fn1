@@ -9,7 +9,7 @@ import useCustomersInfo from '../../../../../Hooks/Avengers/useCustomersInfo/use
 const SegmentationByGender = () => {
     const { customerInfo } = useCustomersInfo();
   const { gender, usersAge } = customerInfo;
- console.log(gender?.[0]?.count)
+//  console.log(gender?.[0]?.count)
 
     return (
         <div>

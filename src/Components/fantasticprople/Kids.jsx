@@ -10,7 +10,7 @@ const Kids = () => {
 
     // filter only food related data
     const kidsProducts = products?.result?.filter(product => product.category === "kids");
-    console.log(kidsProducts);
+    // console.log(kidsProducts);
     if (kidsProducts) {
         console.log("There are products in the kidsProducts category.");
     } else {

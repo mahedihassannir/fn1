@@ -9,7 +9,7 @@ import { GiLoveHowl, GiLoveLetter } from "react-icons/gi";
 const UserWhichlist = () => {
     const authToken = localStorage.getItem("userToken")
     const userProfile = useUserProfile(authToken);
-    console.log(userProfile?.sanitizedResult?._id);
+    // console.log(userProfile?.sanitizedResult?._id);
     const [wishList, setWishListData] = useState(null);
     useEffect(() => {
         const fetchUserProfileData = async () => {
@@ -32,7 +32,7 @@ const UserWhichlist = () => {
             fetchUserProfileData();
         };
     }, [authToken]);
-    console.log(wishList);
+    // console.log(wishList);
     return (
         <div>
             <section>

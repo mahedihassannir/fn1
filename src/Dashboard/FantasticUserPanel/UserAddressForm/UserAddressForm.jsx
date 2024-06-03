@@ -95,7 +95,7 @@ const UserAddressForm = () => {
         const AllValue = { full_name: name, email: contactEmail, address, division: selectdivision, city: selectcity, mobile_number: mobile, area, land_mark: landmark };
 
 
-        console.log(AllValue);
+        // console.log(AllValue);
 
 
         // send customer info to db
@@ -107,7 +107,7 @@ const UserAddressForm = () => {
             }
         })
             .then(response => {
-                console.log('Data sent successfully:', response.data);
+                // console.log('Data sent successfully:', response.data);
                 toast(' Your Data has been saved!', {
                     position: "top-center",
                     autoClose: 1000,
@@ -166,7 +166,7 @@ const UserAddressForm = () => {
 
     }
     const custommerinfo = addressData.address0
-    console.log(address);
+    // console.log(address);
     refetch()
     return (
         <section className='w-full '>

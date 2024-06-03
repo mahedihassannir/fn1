@@ -25,7 +25,7 @@ const UserReturn = () => {
             fetchUserProfileData();
         };
     }, [authToken]);
-    console.log(returns);
+    // console.log(returns);
     return (
         <div>
             <div className='min-w-[900px] bg-white px-2 rounded-md'>

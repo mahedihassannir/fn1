@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { ContexM } from '../../../Authentication/AuthProvider/AuthProvider';
 
 const CardsOfProducts = ({ singleProduct, handle }) => {
-  console.log(singleProduct);
+  // console.log(singleProduct);
 
   const { user } = useContext(ContexM);
 
@@ -16,7 +16,7 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
   // use this arrow function we make the recent view system
   const handleProductClick = (product) => {
 
-    console.log("productId", product);
+    // console.log("productId", product);
 
     fetch("http://localhost:5000/recent_views", {
       method: "POST",

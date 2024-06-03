@@ -5,7 +5,7 @@ import HeadPhoneCard from './HeadPhoneCard';
 const HeadPhones = () => {
     const[category] = useCategory();
     const headphoneProduct  = category.filter(item => item.category === "Headphones");
-    console.log('headphones', headphoneProduct);
+    // console.log('headphones', headphoneProduct);
     return (
         <div>
             <div>
