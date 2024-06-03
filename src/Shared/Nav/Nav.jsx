@@ -9,7 +9,7 @@ import { AiOutlineGift } from "react-icons/ai";
 import { HiOutlineSearch, HiMenu, HiOutlineMinusSm } from "react-icons/hi";
 import { IoClose } from "react-icons/io5";
 import { useContext, useEffect, useState } from "react";
-import { FaArrowRight, FaChevronCircleRight, FaClone, FaCut, FaUser } from "react-icons/fa";
+import { FaArrowRight, FaChevronCircleRight, FaClone, FaCut, FaPersonBooth, FaUser } from "react-icons/fa";
 import { ContexM } from "../../Authentication/AuthProvider/AuthProvider";
 import UseCartHook from "../../Hooks/UseCartHook/UseCartHook";
 import axios from "axios";
@@ -190,7 +190,7 @@ const Nav = ({ isNavOpen, setIsNavOpen }) => {
 				</Link>
 				:
 				<Link to={"seller_login"} className='flex items-center gap-1 text-white'>
-					<AiOutlineGift className='text-[#FC9E66] text-3xl' />
+					<FaPersonBooth className='text-[#FC9E66] text-3xl' />
 					<p className='leading-4 font-bold'>
 						SELLER  <br />
 						<span className='text-xs font-normal'>
