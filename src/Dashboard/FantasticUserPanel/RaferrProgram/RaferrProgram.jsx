@@ -55,8 +55,9 @@ const RaferrProgram = () => {
                                 <div className="text-lg font-semibold bg-gray-200 flex justify-center items-center md:w-3/5  h-14 border-gray-500 rounded-lg ">
                                     {userProfile?.sanitizedResult?.referralCode}
                                 </div>
-                                <button className="py-5 px-10 md:m-0 m-2 bg-red-200 rounded-md">copy link</button>
-                                <button className="py-5 px-10 md:m-0 m-2 bg-red-200 rounded-md">Share</button>
+                                {/* <button className="py-5 px-10 md:m-0 m-2 bg-red-200 rounded-md">copy link</button>
+                                <button className="py-5 px-10 md:m-0 m-2 bg-red-200 rounded-md">Share</button> */}
+                                <p>রেফার কোড কপি করে নিন </p>
                             </div>
                         </div>
 
