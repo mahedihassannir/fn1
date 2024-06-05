@@ -26,14 +26,14 @@ const CartProductDetails = ({ productsData }) => {
 
 	const [address] = Useaddress();
 
-
+	console.log(address);
 	const [cart, refetch] = UseCartHook();
 
 
 
 
 	const { result } = cart
-	
+
 
 	refetch();
 	return (

@@ -8,7 +8,7 @@
 //     useEffect(() => {
 //         const fetchUserProfileData = async () => {
 //             try {
-//                 const response = await fetch('http://localhost:5000/api/v1/user/profile', {
+//                 const response = await fetch('https://e-com-server-7zwq.onrender.com/api/v1/user/profile', {
 //                     method: 'GET',
 //                     headers: {
 //                         'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ const SellerPrivate = ({ children }) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/v1/user/profile`, {
+                const response = await axios.get(`https://e-com-server-7zwq.onrender.com/api/v1/user/profile`, {
                     headers: { Authorization: `Bearer ${authToken}` }
                 });
                 const userData = response.data;

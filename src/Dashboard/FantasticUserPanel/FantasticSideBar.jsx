@@ -94,7 +94,7 @@ const FantasticSideBar = () => {
 					</div>
 				</Link>
 				{/* Payment History */}
-				<Link to="userpaymenthistory">
+				{/* <Link to="userpaymenthistory">
 					<div onClick={() => setActiveRoute("Payment History")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${activeRoute === "Payment History"
 							? "bg-[#19D895] text-[#0A1727]"
@@ -105,7 +105,7 @@ const FantasticSideBar = () => {
 						<h4>Payment History</h4>
 
 					</div>
-				</Link>
+				</Link> */}
 				<Link to="useraddressform">
 					<div onClick={() => setActiveRoute("Address Book")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${activeRoute === "Address Book"
@@ -119,7 +119,7 @@ const FantasticSideBar = () => {
 					</div>
 				</Link>
 				{/* user wish list */}
-				<Link to="userwishlist">
+				{/* <Link to="userwishlist">
 					<div onClick={() => setActiveRoute("Wish List")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${activeRoute === "Wish List"
 							? "bg-[#19D895] text-[#0A1727]"
@@ -129,9 +129,9 @@ const FantasticSideBar = () => {
 						<MdOutlinePayments className='w-4 h-4'></MdOutlinePayments>
 						<h4>Wish List</h4>
 					</div>
-				</Link>
+				</Link> */}
 
-				<Link to="return">
+				{/* <Link to="return">
 					<div onClick={() => setActiveRoute("Returns and Refunds")}
 						className={`flex hover:bg-[#19D895] duration-700 items-center relative p-2 ${activeRoute === "Returns and Refunds"
 							? "bg-[#19D895] text-[#0A1727]"
@@ -141,7 +141,7 @@ const FantasticSideBar = () => {
 						<GiReturnArrow className='w-4 h-4'></GiReturnArrow>
 						<h4>Returns and Refunds</h4>
 					</div>
-				</Link>
+				</Link> */}
 
 				<Link to="review">
 					<div onClick={() => setActiveRoute("Review")}

@@ -22,7 +22,7 @@ const Refer = () => {
         const referInp = form.referinp.value
         // console.log(referInp);
 
-        fetch(`http://localhost:5000/api/v1/auth/user/referral?userId=${id}`, {
+        fetch(`https://e-com-server-7zwq.onrender.com/api/v1/auth/user/referral?userId=${id}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

@@ -71,7 +71,7 @@ const Deleverybox = ({ singleProductData }) => {
         };
 
         // console.log("data fom Deleverybox", data);
-        fetch("http://localhost:5000/payment", {
+        fetch("https://e-com-server-7zwq.onrender.com/payment", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(data),

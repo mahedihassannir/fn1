@@ -13,7 +13,7 @@ const useCustomers = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('http://localhost:5000/customerInfo')
+    fetch('https://e-com-server-7zwq.onrender.com/customerInfo')
       .then(response => response.json())
       .then(data => {
         setCustomers(data);

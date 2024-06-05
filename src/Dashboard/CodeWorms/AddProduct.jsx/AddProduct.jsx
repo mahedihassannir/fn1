@@ -118,7 +118,7 @@ const AddProduct = () => {
 
         // console.log(TotalData);
 
-        fetch(`http://localhost:5000/api/v1/seller/product_add?sellerId=${sellerId}`, {
+        fetch(`https://e-com-server-7zwq.onrender.com/api/v1/seller/product_add?sellerId=${sellerId}`, {
             method: "POST",
             headers: {
                 "content-type": "application/json",

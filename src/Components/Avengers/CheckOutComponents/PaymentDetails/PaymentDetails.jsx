@@ -30,7 +30,7 @@ const PaymentDetails = ({ cartData }) => {
   const [isInputEmpty, setIsInputEmpty] = useState(true);
 
   const { result } = cart;
-  console.log(result);
+  console.log(address?.result?.address?._id);
 
   refetch();
 
@@ -56,6 +56,11 @@ const PaymentDetails = ({ cartData }) => {
 
   const onSubmit2 = () => {
 
+    if (!address?.result?.address?._id) {
+      navigate("/dashboard/useraddressform")
+      toast.info("ডেলিভারি অ্যাড্রেস দিন");
+    };
+
     if (isInputEmpty) {
       return toast.info("ডেলিভারি অ্যাড্রেস দিন");
     };
@@ -76,7 +81,7 @@ const PaymentDetails = ({ cartData }) => {
 
     try {
       // handle the product buy 
-      fetch("http://localhost:5000/api/v1/user/buy_product", {
+      fetch("https://e-com-server-7zwq.onrender.com/api/v1/user/buy_product", {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',

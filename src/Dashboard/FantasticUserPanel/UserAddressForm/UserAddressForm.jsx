@@ -100,7 +100,7 @@ const UserAddressForm = () => {
 
         // send customer info to db
         setLoader(true)
-        axios.put('http://localhost:5000/api/v1/user/address', AllValue, {
+        axios.put('https://e-com-server-7zwq.onrender.com/api/v1/user/address', AllValue, {
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: `Bearer ${authToken}`
@@ -185,24 +185,24 @@ const UserAddressForm = () => {
             <div className='flex justify-center'>
                 <form onSubmit={HandleUserSubmit} className='w-[97%]  flex flex-col gap-y-6 p-10 bg-white'>
                     <div>
-                        <p>Full Name</p>
+                        <p>আপনার পুরো নাম দিন </p>
                         <input className='outline-none border w-full py-2 pl-3 rounded' type="text" placeholder={address?.result?.address?.full_name || "Write your full name"} name='fullname' />
                         <p className="text-red-500">{errors.fullname}</p>
                     </div>
                     <div>
-                        <p>Email</p>
+                        <p>ইমেইল দিন</p>
                         <input className='outline-none border w-full py-2 pl-3 rounded' type="email" placeholder={address?.result?.email || "Write your email"} name='contactEmail' />
                         <p className="text-red-500">{errors.contactEmail}</p>
                     </div>
 
                     <div>
-                        <p>Address</p>
+                        <p>ঠিকানা দিন</p>
                         <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={address?.result?.address?.address || "House no./building/street/area"} name='address' />
                         <p className="text-red-500">{errors.address}</p>
                     </div>
 
                     <div>
-                        <p>Mobile Number</p>
+                        <p>মোবাইল নম্বর</p>
                         <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={address?.result?.address?.mobile_number || 'Write mobile number'} name='mobile' onInput={(e) => {
                             e.target.value = e.target.value.replace(/[^0-9]/g, '');
                         }} />
@@ -210,7 +210,7 @@ const UserAddressForm = () => {
                     </div>
 
                     <div>
-                        <p>Division</p>
+                        <p>বিভাগ</p>
                         <select
                             name="selectdivision"
                             className='w-full outline-none border  py-2'
@@ -250,7 +250,7 @@ const UserAddressForm = () => {
                     </div> */}
 
                     <div>
-                        <p>City</p>
+                        <p>শহর</p>
                         <select
                             name="selectcity"
                             className='w-full outline-none border  py-2'
@@ -258,9 +258,6 @@ const UserAddressForm = () => {
                         >
                             <option value="">
                                 Rupasdi
-                            </option>
-                            <option value="">
-                                mm
                             </option>
                         </select>
                         {/* <select
@@ -290,7 +287,7 @@ const UserAddressForm = () => {
                     </div>
 
                     <div>
-                        <p>Area</p>
+                        <p>এলাকা</p>
                         <input className='outline-none border  w-full py-2 pl-3 rounded' type="text" placeholder={address?.result?.address?.area || 'Please choose your area'} name='area' />
                         <p className="text-red-500">{errors.area}</p>
                     </div>

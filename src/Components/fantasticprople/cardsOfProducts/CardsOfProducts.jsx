@@ -18,7 +18,7 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
 
     // console.log("productId", product);
 
-    fetch("http://localhost:5000/recent_views", {
+    fetch("https://e-com-server-7zwq.onrender.com/recent_views", {
       method: "POST",
       headers: {
         "content-type": "application/json"
@@ -32,7 +32,7 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
 
   return <div onClick={() => handleProductClick(singleProduct)} className=""> <div onClick={handle} key={singleProduct._id}>
     <Link to={`/products/${singleProduct._id}`}>
-      <div className=' relative lg:w-64 lg:h-[430px] w-[190px] h-[430px]  bg-white hover:shadow-md hover:border-2 hover:duration-300 cursor-pointer'>
+      <div className=' relative lg:w-64 lg:h-[430px] w-[178px] h-[430px]  bg-white hover:shadow-md hover:border-2 hover:duration-300 cursor-pointer gap-2'>
         <img className='w-full h-56' src={singleProduct.product_images[0]} alt="bag" />
         <div className='p-4 bg-white'>
           {/* name */}

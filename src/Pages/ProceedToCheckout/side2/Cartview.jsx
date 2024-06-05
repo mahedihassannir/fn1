@@ -28,7 +28,7 @@ const Cartview = ({ productsData }) => {
 
     // useEffect(() => {
 
-    // 	fetch(`http://localhost:5000/carts`)
+    // 	fetch(`https://e-com-server-7zwq.onrender.com/carts`)
     // 		.then(res => res.json())
     // 		.then(data => {
     // 			SetData(data)

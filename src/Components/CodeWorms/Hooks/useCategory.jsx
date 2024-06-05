@@ -5,7 +5,7 @@ const useCategory = () => {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allcategory')
+        fetch('https://e-com-server-7zwq.onrender.com/allcategory')
         .then(res => res.json())
         .then(data => {
             setCategory(data)

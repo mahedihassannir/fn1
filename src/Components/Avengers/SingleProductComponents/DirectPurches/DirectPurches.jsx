@@ -8,16 +8,16 @@ import UseCartHook from "../../../../Hooks/UseCartHook/UseCartHook";
 import Modal from "react-responsive-modal";
 import Useaddress from "../../../../Hooks/Useaddress/Useaddress";
 import useUserProfile from "../../../../Hooks/user/userProfile";
+import { ToastContainer, toast } from "react-toastify";
 
 const DirectPurches = () => {
     const authToken = localStorage.getItem("userToken");
     // hooks
+    // const navigate = useNavigate();
 
-    const userId = localStorage.getItem("userToken");
     const user = localStorage.getItem("userToken");
     const userProfile = useUserProfile(user);
     // console.log(userProfile?.sanitizedResult._id);
-    const [cart] = UseCartHook();
 
     const [address] = Useaddress();
     // console.log(address);
@@ -54,7 +54,6 @@ const DirectPurches = () => {
 
     // console.log({ productdata });
 
-    const [inputValue, SetinputValue] = useState(null)
 
     const [open, Setopen] = useState(false)
 
@@ -89,8 +88,10 @@ const DirectPurches = () => {
 
         };
     });
+    const [inputValue, setInputValue] = useState('');
 
-    const [value, setInputValue] = useState('');
+    const [isInputEmpty, setIsInputEmpty] = useState(true);
+
 
     // Function to handle input change
     const handleInputChange = (event) => {
@@ -98,7 +99,9 @@ const DirectPurches = () => {
         const newValue = event.target.value;
         // Update the state with the new value
         setInputValue(newValue);
+        setIsInputEmpty(newValue === '');
     };
+
 
     // console.log(offerPrice);
 
@@ -110,12 +113,21 @@ const DirectPurches = () => {
     // console.log(productdata?.singleProductData?.result._id);
     // console.log(productdata?.singleProductData?.result?.seller?._id);
     const handleDireact_order = () => {
+        if (!address?.result?.address?._id) {
+            navigate("/dashboard/useraddressform")
+            toast.info("ডেলিভারি অ্যাড্রেস দিন");
+        };
+        if (isInputEmpty) {
+            return toast.info("ডেলিভারি অ্যাড্রেস দিন");
+        };
+
+
         // this is from the useeffect seller detailes
         // create a object into array
         const products = [productdata?.singleProductData?.result._id];
         // console.log(products);
         const data = {
-            address: value,
+            address: inputValue,
             products: [
                 {
                     product: productdata?.singleProductData?.result?._id,
@@ -134,7 +146,7 @@ const DirectPurches = () => {
         // console.log("data fom paymentDetails", { data });
         try {
             // handle the product buy 
-            fetch("http://localhost:5000/api/v1/user/buy_product", {
+            fetch("https://e-com-server-7zwq.onrender.com/api/v1/user/buy_product", {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json',
@@ -187,7 +199,7 @@ const DirectPurches = () => {
         try {
 
 
-            fetch("http://localhost:5000/order", {
+            fetch("https://e-com-server-7zwq.onrender.com/order", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
                 body: JSON.stringify(data),
@@ -210,7 +222,7 @@ const DirectPurches = () => {
 
     return (
         <div className="w-full  bg-[#F4F4F4]">
-
+            <ToastContainer />
 
             <div className="w-11/12  py-10 mx-auto   ">
 
@@ -276,14 +288,14 @@ const DirectPurches = () => {
                         {/* this is the added cart in the buy secton */}
                         <div className="pt-5">
 
-                            <div className="w-full h-60 rounded-md shadow-lg bg-white p-3">
+                            <div className="w-full md:h-60 h-auto rounded-md shadow-lg bg-white p-3">
 
                                 {/* <p className="pl-12 pb-1">{productdata?.singleProductData?.result?.seller.store_name}</p> */}
-                                <div className="flex justify-between pl-10 ">
+                                <div className="md:flex md:justify-between pl-10 ">
 
                                     <div className="">
 
-                                        <img className="w-[60px] h-[60px]" src={productdata?.singleProductData?.result?.product_images[0]} alt="" />
+                                        <img className="md:w-[60px] md:h-[60px] w-auto  h-[100px]" src={productdata?.singleProductData?.result?.product_images[0]} alt="" />
 
                                     </div>
 
@@ -291,7 +303,7 @@ const DirectPurches = () => {
                                         <p className="font-semibold">{productdata?.singleProductData?.result?.product_name}</p>
                                     </div>
                                     <div className="pl-10  font-semibold">
-                                        quantity: {productdata.quantity}
+                                        quantity: {productdata?.quantity}
                                     </div>
                                     <div className="pl-5 flex items-center">
                                         <TbCurrencyTaka />
@@ -305,7 +317,7 @@ const DirectPurches = () => {
                                 <hr className="mt-2" />
 
                                 {/* this section is for the  */}
-                                <div className="flex justify-between items-center">
+                                <div className="md:flex justify-between items-center">
 
 
 
@@ -356,9 +368,9 @@ const DirectPurches = () => {
                                 <input
                                     name="address"
                                     type="text"
-                                    className="py-[10px] outline-none border rounded placeholder:text-gray-400 w-full px-2 focus:border-[#2ABBE8] duration-300"
+                                    className={`py-[10px] outline-none border rounded placeholder:text-gray-400 w-full px-2 focus:border-[#2ABBE8] duration-300 ${isInputEmpty ? 'border-red-500  border-4' : 'border-green-500'}`}
                                     placeholder="Enter address"
-                                    value={value}
+                                    value={inputValue}
                                     onChange={handleInputChange}
                                     required
                                 />

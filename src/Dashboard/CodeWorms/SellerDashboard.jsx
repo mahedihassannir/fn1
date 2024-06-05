@@ -13,11 +13,12 @@ import React, { useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { HiArchiveBoxXMark, HiMiniAdjustmentsHorizontal, HiMiniCalculator, HiMiniShoppingCart, HiMiniUsers } from "react-icons/hi2";
 import { HiAcademicCap, HiChartBar, HiHome, HiOutlineFolder, HiUsers } from 'react-icons/hi';
-import { FaBackspace, FaBroadcastTower, FaBusinessTime, FaDropbox, FaHome, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle, FaRProject, FaSignOutAlt, FaTools } from 'react-icons/fa';
+import { FaBackspace, FaBroadcastTower, FaBusinessTime, FaDropbox, FaHome, FaLightbulb, FaListUl, FaProductHunt, FaQuestionCircle, FaRProject, FaSignOutAlt, FaStreetView, FaTools } from 'react-icons/fa';
 import { MdOutlinePayments } from 'react-icons/md';
 import USeemailCheck from '../../Hooks/USeemailCheck/USeemailCheck';
 import { useEffect } from 'react';
 import axios from 'axios';
+import { FadeLoader } from 'react-spinners';
 
 const SellerDashboard = () => {
 
@@ -49,7 +50,7 @@ const SellerDashboard = () => {
 
 
             try {
-                const response = await axios.get(`http://localhost:5000/api/v1/seller/profile`, {
+                const response = await axios.get(`https://e-com-server-7zwq.onrender.com/api/v1/seller/profile`, {
                     headers: { Authorization: `Bearer ${sellerAuthToken}` }
                 });
                 const sellerData = response.data;
@@ -139,7 +140,7 @@ const SellerDashboard = () => {
                         : ""
                         } cursor-pointer  gap-4`}
                 >
-                    <HiHome className='w-4 h-4'></HiHome>
+                    <FaStreetView className='w-4 h-4'></FaStreetView>
                     <h4>পর্যালোচনা</h4>
                 </div></Link>
                 {/* Seller Home ends */}
@@ -152,7 +153,7 @@ const SellerDashboard = () => {
                         : ""
                         } cursor-pointer  gap-4`}
                 >
-                    <FaListUl className='w-4 h-4'></FaListUl>
+                    <FaProductHunt className='w-4 h-4'></FaProductHunt>
                     <h4>ডেলিভাড প্রোডাক্ট</h4>
                 </div></Link>
                 {/* Seller Add Product ends */}
@@ -178,7 +179,7 @@ const SellerDashboard = () => {
                     <h4>Seller tools</h4>
                 </div></Link>
                 {/* custommer feedback on my product */}
-                <Link to="dashboard/customerfeedback"><div onClick={() => setActiveRoute("CustomerFeedback")}
+                {/* <Link to="dashboard/customerfeedback"><div onClick={() => setActiveRoute("CustomerFeedback")}
                     className={`flex hover:bg-[#19D895] duration-700 items-center p-2 ${activeRoute === "CustomerFeedback"
                         ? "bg-[#19D895] text-[#0A1727]"
                         : ""
@@ -186,7 +187,7 @@ const SellerDashboard = () => {
                 >
                     <MdOutlinePayments className='w-4 h-4'></MdOutlinePayments>
                     <h4> Manage Product</h4>
-                </div></Link>
+                </div></Link> */}
                 {/* custommer feedback on my product ends */}
 
                 {/* Markating solution for seller starts */}

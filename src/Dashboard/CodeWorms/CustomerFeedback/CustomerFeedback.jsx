@@ -21,7 +21,7 @@ const CustomerFeedback = () => {
             const sellerAuthToken = localStorage.getItem("sellerToken");
 
             try {
-                const response = await axios.get(`http://localhost:5000/api/v1/seller/profile`, {
+                const response = await axios.get(`https://e-com-server-7zwq.onrender.com/api/v1/seller/profile`, {
                     headers: { Authorization: `Bearer ${sellerAuthToken}` }
                 });
                 const sellerData = response.data;

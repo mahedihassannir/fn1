@@ -13,7 +13,7 @@ const CustommerReview = () => {
         const fetchData = async () => {
 
             try {
-                const response = await axios.get(`http://localhost:5000/api/v1/seller/review?sellerId=${id}`, {
+                const response = await axios.get(`https://e-com-server-7zwq.onrender.com/api/v1/seller/review?sellerId=${id}`, {
                     headers: { Authorization: `Bearer ${sellerAuthToken}` }
                 });
                 const sellerData = response.data;
@@ -113,7 +113,7 @@ const CustommerReview = () => {
                                                 <div className="mt-3 pl-3">
                                                     <h1 className="flex gap-2">Review: <span className="text-red-400 font-semibold">{res.comment}</span></h1>
                                                     <p className="flex items-center gap-2"><FaKorvue></FaKorvue> Verified Buyer</p>
-                                                    <img className="mt-5 ml-3 w-[300px] h-[190px]" src={res?.product[0].product_images[0]} alt="" />
+                                                    <img className="mt-5 ml-3 w-[300px] h-[190px]" src={res?.product[0]?.product_images[0]} alt="" />
                                                 </div>
 
                                             </div>
@@ -132,11 +132,11 @@ const CustommerReview = () => {
                                                     {/* title */}
                                                     <div>
                                                         <h2 className="text-2xl font-semibold">
-                                                            {res?.product[0].product_name}
+                                                            {res?.product[0]?.product_name}
                                                         </h2>
 
                                                         <h2 className="flex items-center text-2xl font-semibold text-red-500">
-                                                            {res?.product[0].price}
+                                                            {res?.product[0]?.price}
                                                             <span className="pl-1">টাকা</span>
                                                             <FaDollarSign></FaDollarSign>
 
