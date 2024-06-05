@@ -26,7 +26,7 @@ const OrderManage = () => {
     // console.log(productId);
     // console.log(userId);
     axios.post(
-      `https://e-com-server-7zwq.onrender.com/api/v1/seller/orders/${productId}/delivered?sellerId=${id}`,
+      `http://localhost:5000/api/v1/seller/orders/${productId}/delivered?sellerId=${id}`,
       { userId },
       {
         headers: {

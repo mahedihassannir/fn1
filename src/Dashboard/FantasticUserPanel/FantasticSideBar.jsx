@@ -185,9 +185,9 @@ const FantasticSideBar = () => {
 						<p>Please Contact Use for</p>
 						<p>More Information</p>
 						<div>
-							<Link to="/userhelp">
+							<div >
 								<button className='px-2 py-1 rounded-lg font-bold' style={{ color: "#ffffff", backgroundColor: "#0A1727" }}>Go To Help Center</button>
-							</Link>
+							</div>
 						</div>
 					</div>
 				</div>

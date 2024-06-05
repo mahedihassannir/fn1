@@ -7,7 +7,7 @@ const UserReturn = () => {
     useEffect(() => {
         const fetchUserProfileData = async () => {
             try {
-                const response = await fetch(`https://e-com-server-7zwq.onrender.com/api/v1/user/return`, {
+                const response = await fetch(`http://localhost:5000/api/v1/user/return`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',

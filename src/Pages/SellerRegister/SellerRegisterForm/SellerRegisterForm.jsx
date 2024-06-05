@@ -65,7 +65,7 @@ const SellerRegisterForm = () => {
 
 
 		// console.log({ name, email, password });
-		fetch(`https://e-com-server-7zwq.onrender.com/api/v1/auth/seller/register`, {
+		fetch(`http://localhost:5000/api/v1/auth/seller/register`, {
 			method: "POST",
 			headers: {
 				"content-type": "application/json"

@@ -12,7 +12,7 @@ const UseWishList = () => {
 
         queryFn: async () => {
 
-            const res = await fetch(`https://e-com-server-7zwq.onrender.com/wishlist?email=${user?.email}`)
+            const res = await fetch(`http://localhost:5000/wishlist?email=${user?.email}`)
 
             return res.json();
         }

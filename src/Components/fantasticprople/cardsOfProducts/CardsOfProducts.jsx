@@ -18,7 +18,7 @@ const CardsOfProducts = ({ singleProduct, handle }) => {
 
     // console.log("productId", product);
 
-    fetch("https://e-com-server-7zwq.onrender.com/recent_views", {
+    fetch("http://localhost:5000/recent_views", {
       method: "POST",
       headers: {
         "content-type": "application/json"

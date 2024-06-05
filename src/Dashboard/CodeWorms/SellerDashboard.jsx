@@ -50,7 +50,7 @@ const SellerDashboard = () => {
 
 
             try {
-                const response = await axios.get(`https://e-com-server-7zwq.onrender.com/api/v1/seller/profile`, {
+                const response = await axios.get(`http://localhost:5000/api/v1/seller/profile`, {
                     headers: { Authorization: `Bearer ${sellerAuthToken}` }
                 });
                 const sellerData = response.data;
@@ -266,9 +266,9 @@ const SellerDashboard = () => {
                     <p>যোগাযোগ করুন</p>
                     <p>আরও তথ্যের জন্য</p>
                     <div>
-                        <Link to="dashboard/customersupport">
+                        <div>
                             <button className='px-2 py-1 rounded-lg font-bold' style={{ color: "#ffffff", backgroundColor: "#0A1727" }}>সাহায্য কেন্দ্রে যান</button>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>

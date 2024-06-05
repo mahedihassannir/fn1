@@ -77,7 +77,7 @@ const AuthProvider = ({ children }) => {
 
 			if (watch) { // if condition 
 
-				axios.post("https://e-com-server-7zwq.onrender.com/jwt", { email: watch.email })
+				axios.post("http://localhost:5000/jwt", { email: watch.email })
 					.then(data => {
 						console.log(data.data.token);
 						localStorage.setItem("token", data.data.token)
@@ -117,7 +117,7 @@ const AuthProvider = ({ children }) => {
 		const addToCartData = { singleProductData, email: user.email }
 		// here is the main data for send in the database this is the the product data;
 
-		fetch("https://e-com-server-7zwq.onrender.com/addto_cart", {
+		fetch("http://localhost:5000/addto_cart", {
 			method: "POST",
 			headers: {
 				'content-type': 'application/json'

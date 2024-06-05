@@ -14,7 +14,7 @@ const OrderResuns = () => {
         const fetchData = async () => {
 
             try {
-                const response = await axios.get(`https://e-com-server-7zwq.onrender.com/api/v1/seller/order_return?sellerId=${id}`, {
+                const response = await axios.get(`http://localhost:5000/api/v1/seller/order_return?sellerId=${id}`, {
                     headers: { Authorization: `Bearer ${sellerAuthToken}` }
                 });
                 const sellerData = response.data;
