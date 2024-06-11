@@ -1,34 +1,35 @@
 import {
 	createBrowserRouter,
-} from "react-router-dom";
-
-// make by leader 
-import Main from "../Layout/Layout";
-import Home from "../Pages/Home/Home";
-import Contact from "../Pages/Contact/Contact";
-// make by leader ends 
-
-
-import SingleProduct from "../Pages/SingleProduct/SingleProduct";
-
-// make by arrow
-import Register from "../Login/regester";
-import Login from '../Login/login'
-
-// make by arrow ends
-
-// this is make by fantastic people 
-import Fashion from "../Components/fantasticprople/Fashion";
-import Food from "../Components/fantasticprople/Food";
-import Beauty from "../Components/fantasticprople/Beauty";
-import HomeAcc from "../Components/fantasticprople/HomeAcc";
-import Below from "../Components/fantasticprople/Below";
-import Kids from "../Components/fantasticprople/Kids";
-// this is make by fantastic people ends 
-
-
-import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
-// thi is some categories 
+	} from "react-router-dom";
+	
+	// make by leader 
+	import Main from "../Layout/Layout";
+	import Home from "../Pages/Home/Home";
+	import Contact from "../Pages/Contact/Contact";
+	// make by leader ends 
+	
+	
+	import SingleProduct from "../Pages/SingleProduct/SingleProduct";
+	
+	// make by arrow
+	import Register from "../Login/regester";
+	import Login from '../Login/login'
+	
+	// make by arrow ends
+	
+	// this is make by fantastic people 
+	import Fashion from "../Components/fantasticprople/Fashion";
+	import Food from "../Components/fantasticprople/Food";
+	import Beauty from "../Components/fantasticprople/Beauty";
+	import HomeAcc from "../Components/fantasticprople/HomeAcc";
+	import Below from "../Components/fantasticprople/Below";
+	import Kids from "../Components/fantasticprople/Kids";
+	// this is make by fantastic people ends 
+	import Privateroute from "../Private/Privateroute";
+	
+	
+	import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
+	// thi is some categories 
 import Lips from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Lips";
 import Eyes from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Eyes";
 import Nails from "../Components/fantasticprople/FashaionmaleFemail/insidebeauty/Nails";
@@ -98,7 +99,7 @@ import SellerAccountCreatedDone from "../Components/SellerAcc/SellerAccountCreat
 import SellerSeeting from "../Dashboard/CodeWorms/SellerSeeting/SellerSeeting";
 import SellerTool from "../Dashboard/CodeWorms/SellerTool/SellerTool";
 import DirectPurches from "../Components/Avengers/SingleProductComponents/DirectPurches/DirectPurches";
-import Privateroute from "../Private/Privateroute";
+
 import SellerLogin from "../Dashboard/SellerLogin/SellerLogin";
 import SearchReasult from "../Pages/Home/SearchReasult/SearchReasult";
 import CodSuccessOrder from "../Components/CodSuccessOrder/CodSuccessOrder";
