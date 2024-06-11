@@ -11,7 +11,7 @@ import { Link } from 'react-router-dom';
 import CartProductDetails from '../Avengers/CheckOutComponents/CartProductDetails/CartProductDetails';
 import useProducts from '../../Hooks/Fantastic/useProducts';
 import UserpaymentHistory from '../../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory';
-import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
+import CardsOfProducts from './cardsOfProducts/CardsOfProducts';
 // import { useHistory } from 'react-router-dom';
 const Beauty = () => {
     const { products } = useProducts();
@@ -25,7 +25,7 @@ const Beauty = () => {
     const beautyProducts = products?.result?.filter(product => product.category === "beauty");
     console.log(beautyProducts);
     if (beautyProducts) {
-        console.log/("There are products in the beauty category.");
+        console.log / ("There are products in the beauty category.");
     } else {
         console.log("There are no products in the beauty category.");
     }
