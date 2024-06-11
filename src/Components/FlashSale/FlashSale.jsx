@@ -68,7 +68,8 @@
 // FlashSale.jsx
 // FlashSale.jsx
 import { useEffect, useState } from 'react';
-import CardsOfProducts from '../fantasticprople/CardsOfProducts/CardsOfProducts';
+import CardsOfProducts from '../fantasticprople/cardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from '../fantasticprople/CardsOfProducts/CardsOfProducts';
 
 const FlashSale = () => {
     const [displayCount, setDisplayCount] = useState(12);
