@@ -63,7 +63,6 @@ import UserOrder from "../Dashboard/FantasticUserPanel/UserOrder/UserOrder";
 import UserProgress from "../Dashboard/FantasticUserPanel/UserProgress/UserProgress";
 import UserWhichlist from "../Dashboard/FantasticUserPanel/UserWhichlist/UserWhichlist";
 import UserpaymentHistory from "../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory";
-import UserCustomerSupport from "../Dashboard/FantasticUserPanel/UserCustomerSupport/UserCustomerSupport";
 
 import SellerHome from "../Dashboard/CodeWorms/SellerHome";
 import AddItems from "../Dashboard/CodeWorms/AddItems";
@@ -76,7 +75,7 @@ import SellerRequest from "../Dashboard/Avengers/adminpanel/Pages/SellerRequest/
 import SellerRegister from "../Pages/SellerRegister/SellerRegister";
 import MyListing from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/MyListing/MyListing";
 import Habibvaiwork from "../Components/Habibvaiwork/Habibvaiwork";
-import UserOrderedProducts from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/UserOrderedProducts/UserOrderedProducts";
+
 import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
 import Female from "../Components/fantasticprople/FashaionmaleFemail/Female/Female";
 import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/SellerRegisterForm";
