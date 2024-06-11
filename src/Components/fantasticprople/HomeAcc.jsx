@@ -7,8 +7,9 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import useProducts from "../../Hooks/Fantastic/useProducts";
-import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 import { Link } from 'react-router-dom';
+import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 
 
 const HomeAcc = () => {

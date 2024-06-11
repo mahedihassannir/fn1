@@ -1,8 +1,9 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 import useProducts from '../../Hooks/Fantastic/useProducts';
 import { Link } from 'react-router-dom';
+import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 
 const Kids = () => {
     const { products } = useProducts();

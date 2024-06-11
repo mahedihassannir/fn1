@@ -7,10 +7,11 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Link } from 'react-router-dom';
-import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 import CartProductDetails from '../Avengers/CheckOutComponents/CartProductDetails/CartProductDetails';
 import useProducts from '../../Hooks/Fantastic/useProducts';
 import UserpaymentHistory from '../../Dashboard/FantasticUserPanel/UserpaymentHistory/UserpaymentHistory';
+import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 // import { useHistory } from 'react-router-dom';
 const Beauty = () => {
     const { products } = useProducts();

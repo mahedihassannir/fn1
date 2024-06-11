@@ -1,7 +1,8 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 import useProducts from '../../Hooks/Fantastic/useProducts';
+import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 
 const Below = () => {
     const { products } = useProducts();
