@@ -25,7 +25,7 @@ import {
 	import Below from "../Components/fantasticprople/Below";
 	import Kids from "../Components/fantasticprople/Kids";
 	// this is make by fantastic people ends 
-	import Privateroute from "../Private/Privateroute";
+	// import UserPrivateRoute from "../Private/UserPrivateRoute";
 	
 	
 	import ProceedToCheckout from "../Pages/ProceedToCheckout/ProceedToCheckout";
@@ -123,6 +123,7 @@ import RaferrProgram from "../Dashboard/FantasticUserPanel/RaferrProgram/RaferrP
 import Refer from "../Components/fantasticprople/Refer";
 import About from "../Components/Avengers/additionals/About";
 import PrivacyPolicy from "../Components/Avengers/additionals/PrivacyPolicy";
+import UserPrivateRoute from "../Private/UserPrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -440,9 +441,9 @@ const router = createBrowserRouter([
 			{
 				path: "userhome",
 				element:
-					<Privateroute>
+					<UserPrivateRoute>
 						<UserHome></UserHome>,
-					</Privateroute>,
+					</UserPrivateRoute>,
 			},
 			// Home Components Routes
 			{
@@ -452,9 +453,9 @@ const router = createBrowserRouter([
 			{
 				path: "useraddressform",
 				element:
-					<Privateroute>
+					<UserPrivateRoute>
 						<UserAddressForm></UserAddressForm>
-					</Privateroute>,
+					</UserPrivateRoute>,
 			},
 
 
@@ -470,16 +471,16 @@ const router = createBrowserRouter([
 			// this is for user order
 			{
 				path: "referr",
-				element: <Privateroute>
+				element: <UserPrivateRoute>
 					<RaferrProgram></RaferrProgram>
-				</Privateroute>,
+				</UserPrivateRoute>,
 
 			},
 			{
 				path: "userorder",
-				element: <Privateroute>
+				element: <UserPrivateRoute>
 					<UserOrder></UserOrder>
-				</Privateroute>,
+				</UserPrivateRoute>,
 
 			},
 
@@ -489,9 +490,9 @@ const router = createBrowserRouter([
 			{
 				path: "userprogress",
 				element:
-					<Privateroute>
+					<UserPrivateRoute>
 						<UserProgress></UserProgress>
-					</Privateroute>,
+					</UserPrivateRoute>,
 
 
 			},
@@ -500,9 +501,9 @@ const router = createBrowserRouter([
 			// user wishlist starts
 			{
 				path: "userwishlist",
-				element: <Privateroute>
+				element: <UserPrivateRoute>
 					<UserWhichlist></UserWhichlist>,
-				</Privateroute>,
+				</UserPrivateRoute>,
 
 			},
 			// user wishlist ends
@@ -510,48 +511,48 @@ const router = createBrowserRouter([
 			{
 				path: "userpaymenthistory",
 				element:
-					<Privateroute>
+					<UserPrivateRoute>
 						<UserpaymentHistory></UserpaymentHistory>,
-					</Privateroute>,
+					</UserPrivateRoute>,
 
 			},
 			// user userpayment ends
 			// user Customer Support
 			{
 				path: "customersupport",
-				element: <Privateroute>
-					<Privateroute>
+				element: <UserPrivateRoute>
+					<UserPrivateRoute>
 
-					</Privateroute>,
+					</UserPrivateRoute>,
 
-				</Privateroute>,
+				</UserPrivateRoute>,
 
 
 			},
 			{
 				path: "wishlist",
-				element: <Privateroute>
+				element: <UserPrivateRoute>
 					<Wishlist></Wishlist>
-				</Privateroute>,
+				</UserPrivateRoute>,
 
 			},
 			{
 				path: "payhistory",
-				element: <Privateroute>
+				element: <UserPrivateRoute>
 					<PaymentHistory></PaymentHistory>
-				</Privateroute>,
+				</UserPrivateRoute>,
 			},
 			{
 				path: "return",
-				element: <Privateroute>
+				element: <UserPrivateRoute>
 					<UserReturn></UserReturn>
-				</Privateroute>,
+				</UserPrivateRoute>,
 			},
 			{
 				path: "review",
-				element: <Privateroute>
+				element: <UserPrivateRoute>
 					<UserReview></UserReview>
-				</Privateroute>,
+				</UserPrivateRoute>,
 			},
 
 

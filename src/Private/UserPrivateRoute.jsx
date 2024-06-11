@@ -1,9 +1,8 @@
-import { Navigate } from "react-router-dom";
-import axios from "axios";
-import { useEffect, useState } from "react";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { Navigate } from 'react-router-dom';
 
-const Privateroute = ({ children }) => {
-
+const UserPrivateRoute = (children) => {
     const authToken = localStorage.getItem("userToken")
     const [userProfile, setUserProfile] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -45,4 +44,4 @@ const Privateroute = ({ children }) => {
 
 };
 
-export default Privateroute;
+export default UserPrivateRoute;
