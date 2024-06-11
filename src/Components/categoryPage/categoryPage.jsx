@@ -1,12 +1,13 @@
 import React from 'react';
 import useProducts from '../../Hooks/Fantastic/useProducts';
-import CardsOfProducts from '../fantasticprople/CardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from '../fantasticprople/CardsOfProducts/CardsOfProducts';
 import { useParams } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import CardsOfProducts from '../fantasticprople/cardsOfProducts/CardsOfProducts';
 const CategoryPage = () => {
     const { categoryName } = useParams();
     // console.log(categoryName);
