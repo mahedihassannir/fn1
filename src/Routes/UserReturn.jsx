@@ -77,7 +77,6 @@ import SellerRegister from "../Pages/SellerRegister/SellerRegister";
 import MyListing from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/MyListing/MyListing";
 import Habibvaiwork from "../Components/Habibvaiwork/Habibvaiwork";
 import UserOrderedProducts from "../Dashboard/FantasticUserPanel/UserHome/UserHomeComponents/UserOrderedProducts/UserOrderedProducts";
-import { element } from "prop-types";
 import Male from "../Components/fantasticprople/FashaionmaleFemail/Male/Male";
 import Female from "../Components/fantasticprople/FashaionmaleFemail/Female/Female";
 import SellerRegisterForm from "../Pages/SellerRegister/SellerRegisterForm/SellerRegisterForm";
