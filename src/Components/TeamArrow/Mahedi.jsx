@@ -7,8 +7,9 @@ import { GiCardKingClubs } from 'react-icons/gi';
 
 import axios from 'axios';
 import useProducts from '../../Hooks/Fantastic/useProducts';
-import CardsOfProducts from '../fantasticprople/CardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from '../fantasticprople/CardsOfProducts/CardsOfProducts';
 import useUserProfile from '../../Hooks/user/userProfile';
+import CardsOfProducts from '../fantasticprople/cardsOfProducts/CardsOfProducts';
 /**
  * 
  * author:Mahedi Hassan
