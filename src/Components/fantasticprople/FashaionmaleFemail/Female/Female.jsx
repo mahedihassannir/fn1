@@ -3,9 +3,10 @@
 // Description:Show female products
 
 import { FaStar } from "react-icons/fa";
-import CardsOfProducts from "../../CardsOfProducts/CardsOfProducts";
+// import CardsOfProducts from "../../CardsOfProducts/CardsOfProducts";
 import { Link } from "react-router-dom";
 import useProducts from "../../../../Hooks/Fantastic/useProducts";
+import CardsOfProducts from "../../cardsOfProducts/CardsOfProducts";
 
 const Female = () => {
     const { products } = useProducts();

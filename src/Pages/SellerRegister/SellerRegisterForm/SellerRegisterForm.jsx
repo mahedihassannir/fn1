@@ -5,7 +5,6 @@ import { Link, unstable_HistoryRouter, useNavigate } from "react-router-dom";
 
 import ReCAPTCHA from "react-google-recaptcha";
 import { useState } from "react";
-import UseSellerRegister from "../../../Hooks/SellerRegister/useSellerRegister";
 import Swal from "sweetalert2";
 
 

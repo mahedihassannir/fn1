@@ -8,7 +8,8 @@ import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 
 import useProducts from '../../../../../Hooks/Fantastic/useProducts';
-import CardsOfProducts from '../../../../../Components/fantasticprople/CardsOfProducts/CardsOfProducts';
+import CardsOfProducts from '../../../../../Components/fantasticprople/cardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from '../../../../../Components/fantasticprople/CardsOfProducts/CardsOfProducts';
 
 
 const MyListing = () => {
