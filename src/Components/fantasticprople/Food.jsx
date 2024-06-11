@@ -79,6 +79,7 @@ import useProducts from "../../Hooks/Fantastic/useProducts";
 // import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 import { useEffect, useState } from 'react';
 import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from './CardsOfProducts/CardsOfProducts';
 
 const Food = () => {
     const { products, loading, error } = useProducts();
