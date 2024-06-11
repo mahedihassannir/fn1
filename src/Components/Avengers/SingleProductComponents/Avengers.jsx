@@ -8,9 +8,10 @@
 
 import { useEffect, useState } from "react";
 import useProducts from "../../../Hooks/Fantastic/useProducts";
-import CardsOfProducts from "../../fantasticprople/CardsOfProducts/CardsOfProducts";
+// import CardsOfProducts from "../../fantasticprople/CardsOfProducts/CardsOfProducts";
 import ProductDelivery from "./ProductDelivery/ProductDelivery";
 import ProductPurchase from "./ProductPurchase/ProductPurchase";
+import CardsOfProducts from "../../fantasticprople/cardsOfProducts/CardsOfProducts";
 
 
 
