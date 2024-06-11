@@ -1,5 +1,6 @@
 import { useLocation } from "react-router-dom";
-import CardsOfProducts from "../../../Components/fantasticprople/CardsOfProducts/CardsOfProducts";
+import CardsOfProducts from "../../../Components/fantasticprople/cardsOfProducts/CardsOfProducts";
+// import CardsOfProducts from "../../../Components/fantasticprople/CardsOfProducts/CardsOfProducts";
 
 const SearchReasult = () => {
 
