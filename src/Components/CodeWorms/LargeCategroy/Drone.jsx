@@ -1,7 +1,7 @@
 import React from 'react';
 import useCategory from '../Hooks/useCategory';
 import DroneCard from './DroneCard';
-import CardsOfProducts from '../../fantasticprople/CardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from '../../fantasticprople/CardsOfProducts/CardsOfProducts';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -40,9 +40,9 @@ const Drone = () => {
 
             {/* display Foods */}
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 lg:mx-10 my-10'>
-                {
+                {/* {
                     products.map(Drone => <CardsOfProducts singleProduct={Drone} />)
-                }
+                } */}
             </div>
 
 
