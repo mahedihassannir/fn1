@@ -5,8 +5,9 @@
 import { Link } from "react-router-dom";
 
 import { FaStar } from 'react-icons/fa';
-import CardsOfProducts from "./CardsOfProducts/CardsOfProducts";
+// import CardsOfProducts from "./CardsOfProducts/CardsOfProducts";
 import useProducts from "../../Hooks/Fantastic/useProducts";
+import CardsOfProducts from "./CardsOfProducts/CardsOfProducts";
 
 
 const Fashion = () => {
