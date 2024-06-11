@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import useProducts from '../../../../Hooks/Fantastic/useProducts';
-import CardsOfProducts from './cardsOfProducts/CardsOfProducts';
+import CardsOfProducts from '../../cardsOfProducts/CardsOfProducts';
 // import CardsOfProducts from '../../CardsOfProducts/CardsOfProducts';
 
 
