@@ -7,7 +7,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import useProducts from '../../../../Hooks/Fantastic/useProducts';
-import CardsOfProducts from '../../CardsOfProducts/CardsOfProducts';
+// import CardsOfProducts from '../../cardsOfProducts/CardsOfProducts';
 
 
 const Nails = () => {
@@ -43,9 +43,9 @@ const Nails = () => {
 
             {/* display nails */}
             <div className='grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-5 gap-y-10 lg:mx-20 my-10'>
-                {
+                {/* {
                     nailsProducts.map(nails => <CardsOfProducts singleProduct={nails}/>)
-                }
+                } */}
             </div>
 
         </section>
